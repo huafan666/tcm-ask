@@ -1,0 +1,28 @@
+# ===== 密钥：绝对不要提交 =====
+# 真实 API key 只留在本机，仓库里只保留 env.example（空 key 模板）
+.env
+.env.*
+!.env.example
+**/.env
+!**/env.example
+
+# ===== 打包产物 =====
+# dist/ 是构建出来的用户版（含 88MB 便携 node.exe，且内含另一份 .env），不适合入库
+dist/
+*.zip
+
+# ===== 开发端本地状态 =====
+dev/.backups/
+plugins/.layout.json
+
+# ===== 依赖与日志 =====
+node_modules/
+package-lock.json
+*.log
+npm-debug.log*
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

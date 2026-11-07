@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中医辨证助手</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f2ea; --card: #fff; --ink: #3a3226; --sub: #8a7d68;
+    --brand: #8a2b2b; --brand-soft: #f3e3e0; --accent: #2f6f63;
+    --bubble: #f0ebe2; --mine: #8a2b2b; --mine-txt: #fff;
+    --border: #ddd3c2; --pill: #fff;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--ink);
+    display: flex; flex-direction: column; height: 100vh;
+  }
+  header {
+    padding: 14px 22px; background: var(--brand); color: #fff;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  header .logo { font-size: 26px; }
+  header h1 { font-size: 18px; letter-spacing: 1px; }
+  header .sub { font-size: 12px; opacity: .85; margin-left: auto; }
+  header .llm-badge {
+    font-size: 11px; background: rgba(255,255,255,.22); padding: 3px 10px;
+    border-radius: 20px; margin-left: 8px;
+  }
+  #chat {
+    flex: 1 1 auto; overflow-y: auto; padding: 22px 16px;
+    display: flex; flex-direction: column; gap: 14px;
+    scroll-behavior: smooth;
+  }
+  .msg {
+    max-width: 78%; padding: 11px 15px; border-radius: 14px;
+    line-height: 1.6; font-size: 15px; white-space: pre-wrap; word-break: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); position: relative;
+  }
+  .msg.assistant { align-self: flex-start; background: var(--bubble); border-bottom-left-radius: 4px; }
+  .msg.user { align-self: flex-end; background: var(--mine); color: var(--mine-txt); border-bottom-right-radius: 4px; }
+  .msg .meta { display: block; font-size: 11px; color: var(--sub); margin-bottom: 5px; }
+  .msg.user .meta { color: rgba(255,255,255,.8); }
+  .msg.hint {
+    align-self: center; background: transparent; color: var(--sub);
+    font-size: 12px; box-shadow: none; padding: 4px 8px;
+  }
+
+  /* 反问三选面板 */
+  #question-panel {
+    padding: 0 16px 12px; flex-shrink: 0; display: none;
+  }
+  #question-panel .q-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.07);
+  }
+  #question-panel .q-title { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+  #question-panel .q-text { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  #question-panel .q-remain { font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+  #question-panel .q-actions { display: flex; gap: 10px; }
+  #question-panel .qa-btn {
+    flex: 1; padding: 12px 0; border: 1px solid var(--brand);
+    background: #fff; color: var(--brand); border-radius: 12px;
+    font-size: 16px; font-weight: 600; cursor: pointer; transition: all .15s;
+  }
+  #question-panel .qa-btn:hover { background: var(--brand); color: #fff; }
+  #question-panel .q-tools { display: flex; gap: 10px; margin-top: 10px; }
+  #question-panel .q-tools .tl-btn {
+    flex: 1; padding: 8px 0; border: 1px dashed var(--border); border-radius: 8px;
+    background: #fff; color: var(--sub); font-size: 13px; cursor: pointer;
+  }
+  #question-panel .q-tools .tl-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* 输入区 */
+  footer {
+    flex-shrink: 0; padding: 12px 16px 16px; border-top: 1px solid var(--border);
+    background: var(--card); display: flex; gap: 10px;
+  }
+  #input { flex: 1; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 15px; outline: none; background: #fff; }
+  #input:focus { border-color: var(--accent); }
+  #send {
+    padding: 0 22px; border: none; background: var(--brand); color: #fff;
+    border-radius: 12px; font-size: 15px; cursor: pointer; transition: .15s;
+  }
+  #send:hover { background: #6f1f1f; }
+  #send:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* 状态标签 */
+  .legend { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border);
+  }
+  .chip.yes { background: #e6f4ea; color: #1b7a3d; border-color: #b7e3c3; }
+  .chip.no { background: #fdeeee; color: #a33; border-color: #f0cccc; }
+
+  .formula-banner {
+    background: var(--brand-soft); border: 1px solid #e0b9b5; color: var(--brand);
+    padding: 10px 14px; border-radius: 10px; margin-top: 8px; font-size: 14px;
+  }
+  .formula-banner b { font-size: 16px; }
+  .contra {
+    margin-top: 8px; padding: 8px 12px; background: #fff7e6; border-left: 3px solid #d9a441;
+    font-size: 12px; color: #7a5a16; border-radius: 6px;
+  }
+
+  /* 对话输入提示 */
+  .input-hint { font-size: 11px; color: var(--sub); text-align: right; padding: 2px 4px 0 0; }
+  .thinking {
+    align-self: flex-end; color: var(--sub); font-size: 13px;
+    padding: 8px 2px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">🌿</span>
+  <h1>中医辨证助手</h1>
+  <span class="llm-badge" id="llm-badge">…</span>
+  <span class="sub" id="cand-count"></span>
+</header>
+
+<div id="chat"></div>
+
+<div id="question-panel">
+  <div class="q-card">
+    <div class="q-title">❓ 请回答</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="q-remain" id="q-remain"></div>
+    <div class="q-actions">
+      <button class="qa-btn" data-v="1">是</button>
+      <button class="qa-btn" data-v="2">否</button>
+      <button class="qa-btn" data-v="3">不知道</button>
+    </div>
+    <div class="q-tools">
+      <button class="tl-btn" id="btn-undo">↩ 撤回上一步</button>
+      <button class="tl-btn" id="btn-restart">🔄 重新开始</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <input id="input" placeholder="描述症状，如：发烧、怕冷、有点咳嗽、不出汗" autocomplete="off">
+  <button id="send">发送</button>
+</footer>
+
+<script>
+let sid = null;
+let hasLLM = false;
+let finished = false;   // 是否已完成辨证(进入对话模式)
+
+const chat = document.getElementById('chat');
+const input = document.getElementById('input');
+const sendBtn = document.getElementById('send');
+const panel = document.getElementById('question-panel');
+const qText = document.getElementById('q-text');
+const qRemain = document.getElementById('q-remain');
+const llmBadge = document.getElementById('llm-badge');
+const candCount = document.getElementById('cand-count');
+
+function addMsg(role, content, extra) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  const d = new Date();
+  const stamp = d.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'});
+  div.innerHTML = `<span class="meta">${role === 'user' ? '病人' : '助手'} · ${stamp}</span>${escapeHtml(content)}`;
+  if (extra) div.appendChild(extra);
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+function addHint(t) {
+  const div = document.createElement('div'); div.className='msg hint'; div.textContent = t;
+  chat.appendChild(div); chat.scrollTop = chat.scrollHeight;
+}
+function addThinking(label) {
+  const div = document.createElement('div'); div.className='thinking'; div.textContent = label || '大模型正在处理，请稍候…';
+  chat.appendChild(div); chat.scrollTop = chat.scrollHeight;
+  return div;
+}
+function escapeHtml(s){
+  return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// 状态 chips
+function renderState(stateLines) {
+  if (!stateLines || !stateLines.length) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'legend';
+  stateLines.forEach(item => {
+    const c = document.createElement('span');
+    c.className = 'chip ' + (item.yes ? 'yes' : 'no');
+    c.textContent = (item.yes ? '✓ ' : '✗ ') + item.title;
+    wrap.appendChild(c);
+  });
+  addMsg('assistant', '当前辨证状态：', wrap);
+}
+
+// 显示问题面板
+function showQuestion(q) {
+  if (!q) { panel.style.display = 'none'; document.getElementById('cand-count').textContent=''; return; }
+  qText.textContent = q.phrase;
+  qRemain.textContent = `还有 ${q.candidates} 个候选方待分辨`;
+  candCount.textContent = `候选方 ${q.candidates}`;
+  panel.style.display = 'block';
+  input.placeholder = q.candidates <= 12 ? '也可以直接补充描述…' : '直接补充描述（可选）…';
+}
+function hideQuestion() { panel.style.display = 'none'; candCount.textContent=''; }
+
+// 收敛结果展示
+function showResult(result) {
+  const extra = document.createElement('div');
+  if (result.formulas && result.formulas.length) {
+    const fb = document.createElement('div');
+    fb.className = 'formula-banner';
+    fb.innerHTML = '<b>辨证倾向：</b>' + result.formulas.map(f=>escapeHtml(f.title)).join('、') +
+      '（需执业医师确认）';
+    extra.appendChild(fb);
+  }
+  if (result.contraindications && result.contraindications.length) {
+    const c = document.createElement('div');
+    c.className = 'contra';
+    c.textContent = '⚠️ ' + result.contraindications.join('；');
+    extra.appendChild(c);
+  }
+  if (extra.children.length) addMsg('assistant', '已生成辨证结果：', extra);
+  addMsg('assistant', result.explanation);
+  // 完成标志：后续输入走 /api/chat（问大模型）
+  finished = true;
+  // 加两个操作按钮：继续问大模型 / 重新开始
+  addActionButtons();
+  addHint('辨证完成。你可以继续问大模型，或点「重新开始」发起新的辨证。');
+}
+
+// 辨证完成后显示两个操作按钮
+function addActionButtons() {
+  const wrap = document.createElement('div');
+  wrap.className = 'q-tools';
+
+  const askBtn = document.createElement('button');
+  askBtn.className = 'tl-btn';
+  askBtn.id = 'btn-ask-llm';
+  askBtn.innerHTML = '💬 继续问大模型';
+  askBtn.addEventListener('click', () => {
+    // 聚焦输入框，提示输入问题
+    input.placeholder = '输入你想问大模型的问题（如：这个方子怎么喝？）…';
+    input.focus();
+    addHint('你可以继续输入问题，直接问大模型。');
+  });
+
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'tl-btn';
+  resetBtn.id = 'btn-restart2';
+  resetBtn.innerHTML = '🔄 重新开始';
+  resetBtn.addEventListener('click', restartNew);
+
+  wrap.appendChild(askBtn);
+  wrap.appendChild(resetBtn);
+  // 放到消息列表末尾（横向排布）
+  const box = document.createElement('div');
+  box.className = 'msg assistant';
+  box.style.cssText = 'padding:8px;background:transparent;box-shadow:none;max-width:96%;';
+  box.appendChild(wrap);
+  chat.appendChild(box);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+async function restartNew() {
+  finished = false;
+  chat.innerHTML = '';
+  const data = await api('restart/'+sid, {}, 'GET');
+  addMsg('assistant', hasLLM ? '已重新开始。请描述病人症状。' : '已重新开始。请描述症状（仅规则辨证）。');
+  if (data.question) showQuestion(data.question);
+  else hideQuestion();
+}
+
+// 处理 view
+function applyView(v, opts = {}) {
+  if (v && v.question) showQuestion(v.question);
+  else if (v && v.finished) hideQuestion();
+  else if (v && v.view && v.view.question) showQuestion(v.view.question);
+  else if (v && v.view && v.view.finished) hideQuestion();
+  if (v && v.note) addHint(v.note);
+  if (v && opts.changed && !v.finished && !(v.view && v.view.finished)) {
+    // 状态 chips
+  }
+}
+
+async function api(path, body, method='POST'){
+  const r = await fetch('/api/'+path, {
+    method, headers:{'Content-Type':'application/json'},
+    body: method==='POST'?JSON.stringify(body||{}):undefined
+  });
+  return r.json();
+}
+
+// 开始新会话
+async function startNew() {
+  localStorage.setItem('sid','');   // 每次刷新重新建
+  const data = await api('new', {}, 'GET');
+  sid = data.id;
+  hasLLM = data.hasLLM;
+  llmBadge.textContent = hasLLM ? 'LLM 已连接' : '仅规则辨证';
+  llmBadge.title = hasLLM ? '已配置大模型，可生成完整解释' : '未配置 LLM_KEY，只能做经络规则辨证';
+  chat.innerHTML='';
+  addMsg('assistant', data.intro || '欢迎！请描述症状。');
+  if (data.question) showQuestion(data.question);
+}
+
+// 发送输入
+async function sendText(text) {
+  if (!text.trim()) return;
+  addMsg('user', text);
+  input.value = '';
+  setBusy(true);
+
+  if (finished) {
+    // 辨证完成 → 走 /api/chat 问大模型
+    const think = addThinking('大模型正在回答…');
+    try {
+      const r = await api('chat', { text, sid }, 'POST');
+      addMsg('assistant', (r.reply || '(无回复)'));
+    } catch(e) {
+      addMsg('assistant', '网络或服务器错误：' + e.message);
+    } finally {
+      think.remove(); setBusy(false);
+    }
+    return;
+  }
+
+  // 诊断阶段：可能有大模型整理症状 / 生成解释，给明确提示
+  const think = addThinking('大模型正在整理症状，请稍候…');
+  try {
+    const r = await api('input', { text, sid }, 'POST');
+    if (r.error) { addMsg('assistant', r.error); }
+    else {
+      if (r.view && r.view.finished) {
+        hideQuestion();
+        if (r.state) renderState(r.state);
+        if (r.result) showResult(r.result);
+      }
+      else if (r.view && r.view.question) {
+        if (r.state) renderState(r.state);
+        showQuestion(r.view.question);
+      }
+      else if (r.view && r.view.question === null) {
+        // 无更多问题但未交付（歧义/无候选）
+        if (r.note) addHint(r.note);
+        hideQuestion();
+      }
+      else if (r.undone) {
+        if (r.state) renderState(r.state);
+        if (r.view && r.view.question) showQuestion(r.view.question);
+        else hideQuestion();
+      }
+    }
+  } catch(e) {
+    addMsg('assistant', '网络或服务器错误：' + e.message);
+  } finally {
+    think.remove(); setBusy(false);
+  }
+}
+
+function setBusy(b){ sendBtn.disabled = b; }
+
+// 三选按钮
+document.querySelectorAll('.qa-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const txt = btn.dataset.v==='1'?'1':(btn.dataset.v==='2'?'2':'3');
+    addMsg('user', btn.textContent);
+    setBusy(true);
+    const think = addThinking('正在判别辨证…');
+    api('input', { text: txt, sid }, 'POST').then(r => {
+      // 若需大模型生成解释，fetch 等待期间已提示
+      if (r.view && r.view.finished) { hideQuestion(); if(r.state)renderState(r.state); if(r.result)showResult(r.result); }
+      else if (r.view && r.view.question) { if(r.state)renderState(r.state); showQuestion(r.view.question); }
+      else { if(r.state)renderState(r.state); showQuestion(null); }
+    }).catch(e=>addMsg('assistant','出错: '+e.message))
+      .finally(()=>{ think.remove(); setBusy(false); });
+  });
+});
+
+document.getElementById('btn-undo').addEventListener('click', () => {
+  sendText('撤回');
+});
+document.getElementById('btn-restart').addEventListener('click', restartNew);
+
+sendBtn.addEventListener('click', () => sendText(input.value));
+input.addEventListener('keydown', e => { if (e.key==='Enter') sendText(input.value); });
+
+startNew();
+</script>
+</body>
+</html>
