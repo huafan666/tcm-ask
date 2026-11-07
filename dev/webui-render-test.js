@@ -174,7 +174,10 @@ global.fetch = async (url, opts) => {
       state: [{ yes: true, title: '恶寒' }]
     }
   } else if (p === 'chat') {
-    data = { reply: '麻黄汤一般是先泡半小时，再小火煎两次混合后分两次温服。' }
+    // 故意给一段「带 Markdown」的回答，验证前端的兜底清洗 + 轻排版
+    data = {
+      reply: '### 煎药方法\n\n**麻黄汤**一般是先泡半小时，再小火煎两次。\n\n- 先泡三十分钟，水位没过药材两指\n- 头煎二十分钟，二煎十五分钟，两次混匀后分两次温服\n\n**需要注意**\n不要自行加量，附子类药必须先煎。\n\n### 饮食配合\n\n1. 偏清透的：绿豆、冬瓜\n2. 偏补气的：山药、小米\n\n想细问煎法里的哪一步，直接问我。'
+    }
   } else if (p.startsWith('restart')) {
     data = { question: { leaf: 'cold_aversion', title: '恶寒', phrase: '是不是怕冷、想盖被子？', candidates: 113 } }
   } else {
@@ -301,11 +304,30 @@ const countCls = cls => clsHtmlList(cls).length
   ok('提问卡片全部置灰（不再可点）', countCls('answered') >= 2, String(countCls('answered')))
   ok('顶栏候选 pill 已隐藏', getEl('cand-pill').hidden === true)
 
-  console.log('\n[5] 辨证后追问（走 /api/chat）')
+  console.log('\n[5] 辨证后追问（走 /api/chat）——顺带验证答案排版')
   await scope.sendText('这个方子怎么煎？')
   await new Promise(r => setTimeout(r, 120))
   ok('发出了 chat 请求', calls.some(c => c.path === 'chat'))
   ok('大模型回答显示为一条助手消息', /小火煎两次/.test(allText()))
+
+  const clsEls = cls => {
+    const out = []
+    const walk = x => x.children.forEach(c => { if (c.classList.contains(cls)) out.push(c); walk(c) })
+    walk(thread)
+    return out
+  }
+  const replyText = allText()
+  ok('回答里没有 ** 粗体记号', !replyText.includes('**'), (replyText.match(/\*\*[^\n]*/g) || []).join(' | '))
+  ok('回答里没有 # 标题记号', !/^\s*#{1,6}\s/m.test(replyText), (replyText.match(/^\s*#.*$/gm) || []).join(' | '))
+  ok('Markdown 的 - 列表已转成「·」', replyText.includes('· 先泡三十分钟'), '')
+  ok('小标题排成 .a-h 块（带左侧竖条）', clsEls('a-h').length >= 2,
+    '得到 ' + clsEls('a-h').length + ' 个：' + clsEls('a-h').map(e => '[' + e.textContent + ']').join('') +
+    ' ┃ 段落：' + clsEls('a-p').map(e => '[' + String(e.textContent).slice(0, 14) + ']').join(''))
+  ok('列表项排成 .a-li', clsEls('a-li').length >= 3, '得到 ' + clsEls('a-li').length + ' 个')
+  ok('编号项用 .a-li-n（悬挂缩进更宽）', clsEls('a-li-n').length >= 2, '得到 ' + clsEls('a-li-n').length + ' 个')
+  ok('普通段落排成 .a-p', clsEls('a-p').length >= 1, '得到 ' + clsEls('a-p').length + ' 个')
+  ok('回答容器带 .bubble-answer（white-space:normal）', clsEls('bubble-answer').length === 1)
+  ok('结尾的引导语仍在', /想细问煎法/.test(replyText))
 
   console.log('\n[6] 状态折叠块')
   let statebox = null

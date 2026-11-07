@@ -329,6 +329,42 @@ button { font-family: inherit; cursor: pointer; }
 .chip.yes { background: var(--yes-soft); border-color: var(--brand-line); color: var(--yes); }
 .chip.no { background: var(--no-soft); border-color: #f2d5d3; color: var(--no); text-decoration: line-through; }
 
+/* ===================== 答案轻排版（模型输出是纯文本） ===================== */
+.bubble.bubble-answer { white-space: normal; padding: 12px 15px 13px; }
+.answer { display: flex; flex-direction: column; }
+.a-h {
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  margin: 13px 0 4px;
+  padding-left: 10px;
+  line-height: 22px;
+}
+.a-h:first-child { margin-top: 2px; }
+.a-h::before {
+  content: '';
+  position: absolute; left: 0; top: 4px; bottom: 4px;
+  width: 3px; border-radius: 2px;
+  background: var(--brand-line);
+}
+.a-p {
+  font-size: var(--fs-body);
+  line-height: 27px;
+  color: var(--ink);
+  margin: 3px 0;
+  white-space: pre-wrap;
+}
+.a-list { display: flex; flex-direction: column; gap: 4px; margin: 4px 0 2px; }
+.a-li {
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--ink);
+  padding-left: 1.15em;
+  text-indent: -1.15em;
+}
+.a-li-n { padding-left: 1.85em; text-indent: -1.85em; }
+
 /* ===================== 结论卡片 ===================== */
 .resultcard {
   width: min(100%, 640px);
@@ -573,6 +609,105 @@ function addAssistantText(text, opts) {
   return b;
 }
 
+// ------------------------------------------------------------
+// 答案轻排版
+//   模型被要求输出纯文本（不许 Markdown），但为了万无一失，
+//   这里既做「兜底清洗」，也把纯文本里的天然结构（小标题 / 编号 / ·）
+//   排成有层次的版面，避免一整坨文字。
+// ------------------------------------------------------------
+function cleanMarkdown(raw) {
+  let t = String(raw == null ? '' : raw).replace(/\r\n/g, '\n');
+  t = t.replace(/```[a-zA-Z]*\n?([\s\S]*?)```/g, '$1');   // 代码围栏
+  t = t.replace(/\*\*([^*\n]+)\*\*/g, '$1');               // **粗体**
+  t = t.replace(/__([^_\n]+)__/g, '$1');                   // __粗体__
+  t = t.replace(/`([^`\n]+)`/g, '$1');                     // `行内代码`
+  t = t.replace(/\[([^\]\n]+)\]\([^)\n]*\)/g, '$1');       // [文字](链接)
+  t = t.replace(/^\s{0,3}#{1,6}\s*/gm, '');                // # 标题记号
+  t = t.replace(/^\s{0,3}>\s?/gm, '');                     // > 引用
+  t = t.replace(/^\s{0,3}[-*+]\s+/gm, '· ');               // - 列表 → ·
+  t = t.replace(/^\s*([-*_]\s*){3,}$/gm, '');              // 分隔线
+  t = t.replace(/[ \t]+$/gm, '');
+  t = t.replace(/\n{3,}/g, '\n\n');
+  return t.trim();
+}
+
+const isListItem = s => /^[·•]\s?/.test(s) || /^(\d{1,2}[.、)]|[一二三四五六七八九十]{1,3}、)\s*/.test(s);
+const isNumbered = s => /^(\d{1,2}[.、)]|[一二三四五六七八九十]{1,3}、)\s*/.test(s);
+function looksLikeHeading(s) {
+  const t = s.trim();
+  if (!t || isListItem(t)) return false;
+  if (t.length > 20) return false;
+  if (/[。！？；：，、…]$/.test(t)) return false;
+  return true;
+}
+
+function renderAnswer(raw) {
+  const wrap = document.createElement('div');
+  wrap.className = 'answer';
+  const addHeading = t => {
+    const h = document.createElement('div');
+    h.className = 'a-h';
+    h.textContent = t;
+    wrap.appendChild(h);
+  };
+  const addPara = lines => {
+    const p = document.createElement('div');
+    p.className = 'a-p';
+    p.textContent = lines.join('\n');
+    wrap.appendChild(p);
+  };
+
+  const blocks = cleanMarkdown(raw).split(/\n{2,}/);
+  blocks.forEach(block => {
+    const lines = block.split('\n').map(s => s.trim()).filter(Boolean);
+    if (!lines.length) return;
+    let i = 0;
+    while (i < lines.length) {
+      // 1) 列表（· 或 编号）
+      if (isListItem(lines[i])) {
+        const list = document.createElement('div');
+        list.className = 'a-list';
+        while (i < lines.length && isListItem(lines[i])) {
+          const li = document.createElement('div');
+          li.className = 'a-li' + (isNumbered(lines[i]) ? ' a-li-n' : '');
+          li.textContent = lines[i];
+          list.appendChild(li);
+          i++;
+        }
+        wrap.appendChild(list);
+        continue;
+      }
+      // 2) 小标题：短、无结尾标点，且它不是本段的最后一行（后面还有内容）
+      if (looksLikeHeading(lines[i]) && i + 1 < lines.length) {
+        addHeading(lines[i]);
+        i++;
+        continue;
+      }
+      // 3) 其余连续行合成一个段落；途中遇到「小标题 + 后续内容」则断开
+      const buf = [lines[i]];
+      i++;
+      while (i < lines.length && !isListItem(lines[i])
+        && !(looksLikeHeading(lines[i]) && i + 1 < lines.length)) {
+        buf.push(lines[i]);
+        i++;
+      }
+      if (buf.length === 1 && looksLikeHeading(buf[0]) && i >= lines.length) addHeading(buf[0]);
+      else addPara(buf);
+    }
+  });
+  return wrap;
+}
+
+/** 渲染一条「长答案」消息（带轻排版） */
+function addAnswer(raw) {
+  const b = document.createElement('div');
+  b.className = 'bubble bubble-answer';
+  b.appendChild(renderAnswer(raw));
+  rowAssistant(b);
+  scrollToBottom();
+  return b;
+}
+
 function addHint(text) {
   if (!text) return;
   const wrap = document.createElement('div');
@@ -743,7 +878,7 @@ function showResult(result) {
   if (result.explanation) {
     const ex = document.createElement('div');
     ex.className = 'explain';
-    ex.textContent = result.explanation;
+    ex.appendChild(renderAnswer(result.explanation));   // 解释同样走轻排版
     body.appendChild(ex);
   }
 
@@ -903,7 +1038,8 @@ async function sendText(text) {
     try {
       const r = await api('chat', { text: t, sid });
       typing.remove();
-      addAssistantText(r.reply || '（没有返回内容）');
+      if (r && r.reply) addAnswer(r.reply);            // 长答案走轻排版
+      else addAssistantText('（没有返回内容）');
     } catch (e) {
       typing.remove();
       addAssistantText('网络或服务出错：' + e.message);
