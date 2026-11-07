@@ -80,7 +80,14 @@ Copy-Item env.example .env     # 然后把 LLM_KEY= 后面填上你的 DeepSeek 
 node server.js        # 或双击 start.bat
 ```
 
-打开 http://127.0.0.1:3088
+打开 http://127.0.0.1:3088 —— 白色主题的对话式问诊界面：
+
+- **对话流**：助手与病人的消息左右分栏，提问卡片直接出现在对话里（答过的卡片自动置灰）
+- **选项竖向排列**：`是 / 否 / 不清楚` 三个整行按钮，每个带一行小字说明
+- **结论卡片**：辨证倾向的方剂、完整解释、禁忌与注意事项、免责声明，后面可直接「继续提问」
+- **状态可折叠**：已确认 / 已排除的症状收在一个可展开的区块里，不刷屏
+- **可读性**：正文 16px/26px，问题 17px/27px，最小字号 12px，关键配色均满足 WCAG AA 对比度
+- 输入框可一次说多个症状；`Enter` 发送、`Shift+Enter` 换行；空状态给了 4 个可点示例
 
 ### 3) 用画布改条文（开发端）
 
@@ -106,9 +113,11 @@ node dev/server.js    # 或双击 dev\启动开发端.bat
 ## 验证脚本
 
 ```powershell
-node dev\selftest.js     # 插件解析/改写地基：269 个文件「解析→原值回灌」字节级一致（571 项断言）
-node dev\checkui.js      # 开发端前端静态体检：import/export、DOM id、资源引用
-node dev\uisimtest.js    # 前端集成测试：DOM 仿真真跑渲染路径 + 载荷过服务端校验
+node dev\selftest.js        # 插件解析/改写地基：269 个文件「解析→原值回灌」字节级一致（571 项断言）
+node dev\checkui.js         # 开发端前端静态体检：import/export、DOM id、资源引用
+node dev\uisimtest.js       # 开发端集成测试：DOM 仿真真跑渲染路径 + 载荷过服务端校验
+node dev\webui-contract.js  # 问诊界面接口契约：把页面发的每个请求走一遍，断言字段齐全（需先启动 server.js）
+node dev\webui-render-test.js # 问诊界面渲染：直接执行页面脚本，验证对话流/竖排选项/结论卡片
 ```
 
 另有引擎回归测试：`test-mvp.js`、`test-yangming.js`、`test-jueyin.js`、`test-taiyin-shaoyin.js`、`test-undo.js`、`test-asker.js`、`test-hotreload.js`。

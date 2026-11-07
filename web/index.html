@@ -1,395 +1,994 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <title>中医辨证助手</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f5f2ea; --card: #fff; --ink: #3a3226; --sub: #8a7d68;
-    --brand: #8a2b2b; --brand-soft: #f3e3e0; --accent: #2f6f63;
-    --bubble: #f0ebe2; --mine: #8a2b2b; --mine-txt: #fff;
-    --border: #ddd3c2; --pill: #fff;
-  }
-  html, body { height: 100%; }
-  body {
-    font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
-    background: var(--bg); color: var(--ink);
-    display: flex; flex-direction: column; height: 100vh;
-  }
-  header {
-    padding: 14px 22px; background: var(--brand); color: #fff;
-    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-  }
-  header .logo { font-size: 26px; }
-  header h1 { font-size: 18px; letter-spacing: 1px; }
-  header .sub { font-size: 12px; opacity: .85; margin-left: auto; }
-  header .llm-badge {
-    font-size: 11px; background: rgba(255,255,255,.22); padding: 3px 10px;
-    border-radius: 20px; margin-left: 8px;
-  }
-  #chat {
-    flex: 1 1 auto; overflow-y: auto; padding: 22px 16px;
-    display: flex; flex-direction: column; gap: 14px;
-    scroll-behavior: smooth;
-  }
-  .msg {
-    max-width: 78%; padding: 11px 15px; border-radius: 14px;
-    line-height: 1.6; font-size: 15px; white-space: pre-wrap; word-break: break-word;
-    box-shadow: 0 1px 3px rgba(0,0,0,.06); position: relative;
-  }
-  .msg.assistant { align-self: flex-start; background: var(--bubble); border-bottom-left-radius: 4px; }
-  .msg.user { align-self: flex-end; background: var(--mine); color: var(--mine-txt); border-bottom-right-radius: 4px; }
-  .msg .meta { display: block; font-size: 11px; color: var(--sub); margin-bottom: 5px; }
-  .msg.user .meta { color: rgba(255,255,255,.8); }
-  .msg.hint {
-    align-self: center; background: transparent; color: var(--sub);
-    font-size: 12px; box-shadow: none; padding: 4px 8px;
-  }
+/* ============================================================
+   中医辨证助手 · 问诊界面（白色 · 对话流）
+   设计参考 DeepSeek Harness 前端：系统字体栈 / 12px 圆角 /
+   0.2s cubic-bezier(.4,0,.2,1) 过渡 / 克制的中性色 + 单一点缀色
+   ============================================================ */
 
-  /* 反问三选面板 */
-  #question-panel {
-    padding: 0 16px 12px; flex-shrink: 0; display: none;
-  }
-  #question-panel .q-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.07);
-  }
-  #question-panel .q-title { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
-  #question-panel .q-text { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  #question-panel .q-remain { font-size: 12px; color: var(--accent); margin-bottom: 12px; }
-  #question-panel .q-actions { display: flex; gap: 10px; }
-  #question-panel .qa-btn {
-    flex: 1; padding: 12px 0; border: 1px solid var(--brand);
-    background: #fff; color: var(--brand); border-radius: 12px;
-    font-size: 16px; font-weight: 600; cursor: pointer; transition: all .15s;
-  }
-  #question-panel .qa-btn:hover { background: var(--brand); color: #fff; }
-  #question-panel .q-tools { display: flex; gap: 10px; margin-top: 10px; }
-  #question-panel .q-tools .tl-btn {
-    flex: 1; padding: 8px 0; border: 1px dashed var(--border); border-radius: 8px;
-    background: #fff; color: var(--sub); font-size: 13px; cursor: pointer;
-  }
-  #question-panel .q-tools .tl-btn:hover { border-color: var(--accent); color: var(--accent); }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
 
-  /* 输入区 */
-  footer {
-    flex-shrink: 0; padding: 12px 16px 16px; border-top: 1px solid var(--border);
-    background: var(--card); display: flex; gap: 10px;
-  }
-  #input { flex: 1; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 15px; outline: none; background: #fff; }
-  #input:focus { border-color: var(--accent); }
-  #send {
-    padding: 0 22px; border: none; background: var(--brand); color: #fff;
-    border-radius: 12px; font-size: 15px; cursor: pointer; transition: .15s;
-  }
-  #send:hover { background: #6f1f1f; }
-  #send:disabled { opacity: .5; cursor: not-allowed; }
+:root {
+  /* 中性色（白底为基调，靠层次而不是阴影区分） */
+  --bg: #ffffff;
+  --bg-soft: #f7f8fa;      /* 对话区底色 */
+  --surface: #ffffff;      /* 卡片 */
+  --surface-2: #f2f4f6;    /* 次级块 */
+  --ink: #16181c;          /* 主文字 */
+  --ink-2: #4b5563;        /* 次要文字 */
+  --ink-3: #6b7480;        /* 辅助文字（12.5px 也满足 4.5:1 对比度） */
+  --line: #e5e7eb;         /* 分隔线 */
+  --line-2: #eef0f2;
 
-  /* 状态标签 */
-  .legend { display: flex; gap: 8px; flex-wrap: wrap; }
-  .chip {
-    font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border);
-  }
-  .chip.yes { background: #e6f4ea; color: #1b7a3d; border-color: #b7e3c3; }
-  .chip.no { background: #fdeeee; color: #a33; border-color: #f0cccc; }
+  /* 点缀色：单一日系青绿，只用在主按钮 / 用户气泡 / 选中态 */
+  --brand: #0c7a57;
+  --brand-ink: #0a6247;
+  --brand-soft: #e9f7f1;
+  --brand-line: #bfe6d7;
 
-  .formula-banner {
-    background: var(--brand-soft); border: 1px solid #e0b9b5; color: var(--brand);
-    padding: 10px 14px; border-radius: 10px; margin-top: 8px; font-size: 14px;
-  }
-  .formula-banner b { font-size: 16px; }
-  .contra {
-    margin-top: 8px; padding: 8px 12px; background: #fff7e6; border-left: 3px solid #d9a441;
-    font-size: 12px; color: #7a5a16; border-radius: 6px;
-  }
+  --yes: #0c7a57;
+  --yes-soft: #e9f7f1;
+  --no: #b4453f;
+  --no-soft: #fdf0ef;
+  --warn: #8a5a00;
+  --warn-soft: #fff8e8;
+  --warn-line: #f0dcae;
 
-  /* 对话输入提示 */
-  .input-hint { font-size: 11px; color: var(--sub); text-align: right; padding: 2px 4px 0 0; }
-  .thinking {
-    align-self: flex-end; color: var(--sub); font-size: 13px;
-    padding: 8px 2px;
-  }
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+  --dur: .2s;
+
+  /* 字体：与 harness 同一套系统栈 */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+
+  /* 字号刻度（读起来舒服为准，正文 16/26，最小 12.5） */
+  --fs-body: 16px;
+  --lh-body: 26px;
+  --fs-question: 17px;
+  --lh-question: 27px;
+  --fs-label: 13px;
+  --fs-meta: 12.5px;
+  --fs-title: 15px;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+/* ===================== 顶栏 ===================== */
+.topbar {
+  flex: none;
+  height: 56px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.86);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 10;
+}
+.mark {
+  width: 28px; height: 28px; flex: none;
+  border-radius: 9px;
+  background: linear-gradient(150deg, #12a074, #0a6247);
+  color: #fff;
+  font-size: 15px; font-weight: 600;
+  display: grid; place-items: center;
+  letter-spacing: .5px;
+}
+.topbar h1 {
+  font-size: var(--fs-title);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.topbar .spacer { flex: 1; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 26px; padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); }
+.pill.ok { border-color: var(--brand-line); background: var(--brand-soft); color: var(--brand-ink); }
+.pill.ok .dot { background: var(--brand); }
+
+/* ===================== 对话区 ===================== */
+.scroller {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg-soft);
+  scroll-behavior: smooth;
+}
+.thread {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row { display: flex; gap: 10px; align-items: flex-start; }
+.row.user { justify-content: flex-end; }
+.row.assistant { justify-content: flex-start; }
+
+.avatar {
+  width: 26px; height: 26px; flex: none;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+  color: var(--brand-ink);
+  font-size: 12.5px; font-weight: 600;
+  display: grid; place-items: center;
+  margin-top: 2px;
+  user-select: none;
+}
+
+.bubble {
+  max-width: min(86%, 620px);
+  padding: 11px 15px;
+  border-radius: var(--radius-lg);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.row.assistant .bubble {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top-left-radius: 5px;
+  color: var(--ink);
+}
+.row.user .bubble {
+  background: var(--brand);
+  color: #fff;
+  border-top-right-radius: 5px;
+  box-shadow: 0 1px 2px rgba(12,122,87,.20);
+}
+/* 助手气泡里的加粗/小标题 */
+.bubble b { font-weight: 600; }
+.bubble .small { font-size: var(--fs-meta); color: var(--ink-3); }
+
+/* 系统提示（居中细字） */
+.hint-row { display: flex; justify-content: center; }
+.hint {
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  padding: 4px 12px;
+  max-width: 90%;
+}
+
+/* 正在输入 */
+.typing { display: inline-flex; gap: 4px; align-items: center; padding: 4px 2px; }
+.typing i {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--ink-3);
+  animation: blink 1.3s var(--ease) infinite;
+}
+.typing i:nth-child(2) { animation-delay: .18s; }
+.typing i:nth-child(3) { animation-delay: .36s; }
+@keyframes blink { 0%, 60%, 100% { opacity: .25; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+
+/* ===================== 提问卡片（选项上下分布） ===================== */
+.qcard {
+  width: min(100%, 640px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  border-top-left-radius: 5px;
+  padding: 15px 15px 12px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.04);
+}
+.qcard.answered { opacity: .55; }
+.qhead {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--fs-label);
+  color: var(--ink-3);
+  margin-bottom: 7px;
+}
+.qtag {
+  display: inline-flex; align-items: center; height: 21px; padding: 0 8px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.qtext {
+  font-size: var(--fs-question);
+  line-height: var(--lh-question);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.qremain { font-size: var(--fs-meta); color: var(--ink-3); margin-bottom: 13px; }
+
+/* 选项：竖向排列，整行可点 */
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  display: flex; align-items: center; gap: 11px;
+  text-align: left;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.opt .ic {
+  width: 22px; height: 22px; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 700;
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+.opt .tx { flex: 1; }
+.opt .tx small { display: block; font-size: var(--fs-meta); font-weight: 400; color: var(--ink-3); margin-top: 1px; }
+.opt:hover { border-color: #cfd6dd; background: #fcfcfd; }
+.opt:active { transform: scale(.995); }
+.opt:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.opt.yes:hover { border-color: var(--brand-line); background: var(--yes-soft); }
+.opt.yes:hover .ic { background: var(--yes); color: #fff; }
+.opt.no:hover { border-color: #f0c9c6; background: var(--no-soft); }
+.opt.no:hover .ic { background: var(--no); color: #fff; }
+
+/* 卡片底部小工具（撤回 / 重新开始） */
+.qtools {
+  display: flex; gap: 8px; justify-content: flex-end;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-2);
+}
+.tool {
+  height: 32px; padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-3);
+  font-size: var(--fs-meta);
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.tool:hover { color: var(--ink-2); background: var(--surface-2); }
+
+/* ===================== 辨证状态（可折叠） ===================== */
+.statebox {
+  width: min(100%, 640px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 13px;
+  font-size: var(--fs-label);
+}
+.statebox summary {
+  cursor: pointer;
+  color: var(--ink-2);
+  list-style: none;
+  display: flex; align-items: center; gap: 7px;
+  font-size: var(--fs-label);
+}
+.statebox summary::-webkit-details-marker { display: none; }
+.statebox summary .caret {
+  transition: transform var(--dur) var(--ease);
+  color: var(--ink-3); font-size: 11px;
+}
+.statebox[open] summary .caret { transform: rotate(90deg); }
+.statebox summary b { font-weight: 600; color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; max-height: 168px; overflow-y: auto; }
+.chip {
+  font-size: var(--fs-meta);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  background: var(--surface);
+  white-space: nowrap;
+}
+.chip.yes { background: var(--yes-soft); border-color: var(--brand-line); color: var(--yes); }
+.chip.no { background: var(--no-soft); border-color: #f2d5d3; color: var(--no); text-decoration: line-through; }
+
+/* ===================== 结论卡片 ===================== */
+.resultcard {
+  width: min(100%, 640px);
+  background: var(--surface);
+  border: 1px solid var(--brand-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(16,24,40,.05);
+}
+.resultcard .rhead {
+  padding: 12px 15px;
+  background: var(--brand-soft);
+  border-bottom: 1px solid var(--brand-line);
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--fs-label); color: var(--brand-ink); font-weight: 600;
+}
+.resultcard .rbody { padding: 14px 15px; display: flex; flex-direction: column; gap: 12px; }
+.formulas { display: flex; flex-wrap: wrap; gap: 7px; }
+.formula {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--brand-ink);
+  background: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+  border-radius: 999px;
+  padding: 5px 13px;
+}
+.contra {
+  background: var(--warn-soft);
+  border: 1px solid var(--warn-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 14.5px;
+  line-height: 23px;
+  color: var(--warn);
+}
+.contra .ct { font-weight: 600; display: block; margin-bottom: 3px; font-size: var(--fs-label); }
+.explain {
+  font-size: var(--fs-body);
+  line-height: 28px;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+.disclaimer {
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  border-top: 1px dashed var(--line);
+  padding-top: 9px;
+}
+
+/* 结论后的动作 */
+.after-actions { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 2px; }
+.btn {
+  height: 40px; padding: 0 16px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn.primary:hover { background: var(--brand-ink); border-color: var(--brand-ink); }
+
+/* ===================== 输入区 ===================== */
+.composer {
+  flex: none;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+}
+.composer-inner {
+  max-width: 760px; margin: 0 auto;
+  display: flex; gap: 10px; align-items: flex-end;
+}
+.field {
+  flex: 1;
+  min-height: 48px;
+  max-height: 132px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--ink);
+  resize: none;
+  outline: none;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.field::placeholder { color: var(--ink-3); }
+.field:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(12,122,87,.14); }
+.send {
+  flex: none;
+  height: 48px;
+  min-width: 76px;
+  padding: 0 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  transition: background var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.send:hover { background: var(--brand-ink); }
+.send:disabled { opacity: .45; cursor: not-allowed; }
+.composer-tip {
+  max-width: 760px; margin: 8px auto 0;
+  font-size: 12px; color: var(--ink-3);
+  display: flex; justify-content: space-between; gap: 10px;
+}
+.composer-tip kbd {
+  font-family: inherit; font-size: 11.5px;
+  border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 4px; padding: 0 4px; color: var(--ink-2); background: var(--surface-2);
+}
+
+/* ===================== 示例（空状态） ===================== */
+.examples { display: flex; flex-wrap: wrap; gap: 8px; }
+.example {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 14.5px;
+  transition: all var(--dur) var(--ease);
+}
+.example:hover { border-color: var(--brand-line); background: var(--brand-soft); color: var(--brand-ink); }
+
+/* ===================== 响应式 ===================== */
+@media (max-width: 560px) {
+  .topbar { padding: 0 14px; height: 52px; }
+  .thread { padding: 16px 12px 8px; gap: 12px; }
+  .bubble { max-width: 88%; }
+  .avatar { display: none; }
+  .composer { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+  .composer-tip { display: none; }
+  .qcard, .resultcard, .statebox { width: 100%; }
+  .qtools { justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
 </style>
 </head>
 <body>
-<header>
-  <span class="logo">🌿</span>
+
+<header class="topbar">
+  <div class="mark" aria-hidden="true">辨</div>
   <h1>中医辨证助手</h1>
-  <span class="llm-badge" id="llm-badge">…</span>
-  <span class="sub" id="cand-count"></span>
+  <span class="spacer"></span>
+  <span class="pill" id="cand-pill" hidden><span class="dot"></span><span id="cand-text">候选方 —</span></span>
+  <span class="pill" id="llm-pill"><span class="dot"></span><span id="llm-text">连接中…</span></span>
 </header>
 
-<div id="chat"></div>
+<main class="scroller" id="scroller">
+  <div class="thread" id="thread"></div>
+</main>
 
-<div id="question-panel">
-  <div class="q-card">
-    <div class="q-title">❓ 请回答</div>
-    <div class="q-text" id="q-text"></div>
-    <div class="q-remain" id="q-remain"></div>
-    <div class="q-actions">
-      <button class="qa-btn" data-v="1">是</button>
-      <button class="qa-btn" data-v="2">否</button>
-      <button class="qa-btn" data-v="3">不知道</button>
-    </div>
-    <div class="q-tools">
-      <button class="tl-btn" id="btn-undo">↩ 撤回上一步</button>
-      <button class="tl-btn" id="btn-restart">🔄 重新开始</button>
-    </div>
+<footer class="composer">
+  <div class="composer-inner">
+    <textarea class="field" id="field" rows="1" autocomplete="off"
+      placeholder="用口语描述症状，例如：发烧、怕冷、有点咳嗽、不出汗"></textarea>
+    <button class="send" id="send">发送</button>
   </div>
-</div>
-
-<footer>
-  <input id="input" placeholder="描述症状，如：发烧、怕冷、有点咳嗽、不出汗" autocomplete="off">
-  <button id="send">发送</button>
+  <div class="composer-tip">
+    <span id="mode-tip">可以一次说多个症状</span>
+    <span><kbd>Enter</kbd> 发送 · <kbd>Shift</kbd>+<kbd>Enter</kbd> 换行</span>
+  </div>
 </footer>
 
 <script>
+'use strict';
+// ============================================================
+// 状态
+// ============================================================
 let sid = null;
 let hasLLM = false;
-let finished = false;   // 是否已完成辨证(进入对话模式)
+let finished = false;        // 辨证完成后进入「问大模型」模式
+let busy = false;
+let currentCard = null;      // 当前待回答的提问卡片
+let lastStateKey = '';       // 状态摘要去重
 
-const chat = document.getElementById('chat');
-const input = document.getElementById('input');
-const sendBtn = document.getElementById('send');
-const panel = document.getElementById('question-panel');
-const qText = document.getElementById('q-text');
-const qRemain = document.getElementById('q-remain');
-const llmBadge = document.getElementById('llm-badge');
-const candCount = document.getElementById('cand-count');
+const $ = id => document.getElementById(id);
+const scroller = $('scroller');
+const thread = $('thread');
+const field = $('field');
+const sendBtn = $('send');
 
-function addMsg(role, content, extra) {
-  const div = document.createElement('div');
-  div.className = 'msg ' + role;
-  const d = new Date();
-  const stamp = d.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'});
-  div.innerHTML = `<span class="meta">${role === 'user' ? '病人' : '助手'} · ${stamp}</span>${escapeHtml(content)}`;
-  if (extra) div.appendChild(extra);
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
-function addHint(t) {
-  const div = document.createElement('div'); div.className='msg hint'; div.textContent = t;
-  chat.appendChild(div); chat.scrollTop = chat.scrollHeight;
-}
-function addThinking(label) {
-  const div = document.createElement('div'); div.className='thinking'; div.textContent = label || '大模型正在处理，请稍候…';
-  chat.appendChild(div); chat.scrollTop = chat.scrollHeight;
-  return div;
-}
-function escapeHtml(s){
-  return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+));
+
+function scrollToBottom(smooth) {
+  requestAnimationFrame(() => {
+    scroller.scrollTo({ top: scroller.scrollHeight, behavior: smooth === false ? 'auto' : 'smooth' });
+  });
 }
 
-// 状态 chips
+// ============================================================
+// 渲染基础件
+// ============================================================
+function rowAssistant(node, withAvatar) {
+  const row = document.createElement('div');
+  row.className = 'row assistant';
+  if (withAvatar !== false) {
+    const av = document.createElement('div');
+    av.className = 'avatar';
+    av.setAttribute('aria-hidden', 'true');
+    av.textContent = '辨';
+    row.appendChild(av);
+  }
+  row.appendChild(node);
+  thread.appendChild(row);
+  return row;
+}
+
+function rowUser(text) {
+  const row = document.createElement('div');
+  row.className = 'row user';
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.textContent = text;
+  row.appendChild(b);
+  thread.appendChild(row);
+  scrollToBottom();
+  return row;
+}
+
+function addAssistantText(text, opts) {
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.textContent = text;
+  if (opts && opts.html) b.innerHTML = opts.html; else b.textContent = text;
+  rowAssistant(b, !(opts && opts.noAvatar));
+  scrollToBottom();
+  return b;
+}
+
+function addHint(text) {
+  if (!text) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'hint-row';
+  const span = document.createElement('span');
+  span.className = 'hint';
+  span.textContent = text;
+  wrap.appendChild(span);
+  thread.appendChild(wrap);
+  scrollToBottom();
+}
+
+function addTyping(label) {
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>'
+    + (label ? '<span class="small" style="margin-left:8px">' + esc(label) + '</span>' : '');
+  const row = rowAssistant(b);
+  scrollToBottom();
+  return row;
+}
+
+// ============================================================
+// 提问卡片（选项上下分布）
+// ============================================================
+function showQuestion(q) {
+  if (!q) { hideQuestion(); return; }
+  if (currentCard) currentCard.classList.add('answered');
+
+  const card = document.createElement('div');
+  card.className = 'qcard';
+
+  const head = document.createElement('div');
+  head.className = 'qhead';
+  head.innerHTML = '<span class="qtag">请回答</span>'
+    + (q.title ? '<span>' + esc(q.title) + '</span>' : '');
+  card.appendChild(head);
+
+  const text = document.createElement('div');
+  text.className = 'qtext';
+  text.textContent = q.phrase || q.title || '';
+  card.appendChild(text);
+
+  if (typeof q.candidates === 'number') {
+    const remain = document.createElement('div');
+    remain.className = 'qremain';
+    remain.textContent = '当前还有 ' + q.candidates + ' 个候选方待分辨';
+    card.appendChild(remain);
+    $('cand-pill').hidden = false;
+    $('cand-text').textContent = '候选方 ' + q.candidates;
+  }
+
+  const opts = document.createElement('div');
+  opts.className = 'opts';
+  const defs = [
+    { v: '1', cls: 'yes', ic: '✓', tx: '是', sub: '确实有这个症状' },
+    { v: '2', cls: 'no', ic: '✗', tx: '否', sub: '没有这个症状' },
+    { v: '3', cls: '', ic: '?', tx: '不清楚', sub: '说不好 / 没注意' }
+  ];
+  defs.forEach(d => {
+    const b = document.createElement('button');
+    b.className = 'opt ' + d.cls;
+    b.type = 'button';
+    b.innerHTML = '<span class="ic">' + d.ic + '</span>'
+      + '<span class="tx">' + d.tx + '<small>' + d.sub + '</small></span>';
+    b.addEventListener('click', () => {
+      if (busy) return;
+      card.classList.add('answered');
+      disableCard(card);
+      sendAnswer(d.v, d.tx);
+    });
+    opts.appendChild(b);
+  });
+  card.appendChild(opts);
+
+  const tools = document.createElement('div');
+  tools.className = 'qtools';
+  const undo = document.createElement('button');
+  undo.className = 'tool';
+  undo.type = 'button';
+  undo.innerHTML = '↩ 撤回上一步';
+  undo.addEventListener('click', () => { if (!busy) sendText('撤回'); });
+  const restart = document.createElement('button');
+  restart.className = 'tool';
+  restart.type = 'button';
+  restart.innerHTML = '↻ 重新开始';
+  restart.addEventListener('click', restartNew);
+  tools.appendChild(undo);
+  tools.appendChild(restart);
+  card.appendChild(tools);
+
+  rowAssistant(card);
+  currentCard = card;
+  scrollToBottom();
+  ensureSendState();
+}
+
+function disableCard(card) {
+  card.querySelectorAll('.opt, .tool').forEach(b => { b.disabled = true; });
+}
+
+function hideQuestion() {
+  if (currentCard) currentCard.classList.add('answered');
+  currentCard = null;
+  $('cand-pill').hidden = true;
+  ensureSendState();
+}
+
+// ============================================================
+// 辨证状态（折叠）
+// ============================================================
 function renderState(stateLines) {
   if (!stateLines || !stateLines.length) return;
-  const wrap = document.createElement('div');
-  wrap.className = 'legend';
+  const key = stateLines.map(x => (x.yes ? '+' : '-') + x.title).join('|');
+  if (key === lastStateKey) return;
+  lastStateKey = key;
+
+  const yes = stateLines.filter(x => x.yes);
+  const no = stateLines.filter(x => !x.yes);
+
+  const box = document.createElement('details');
+  box.className = 'statebox';
+  const sum = document.createElement('summary');
+  sum.innerHTML = '<span class="caret">▶</span>'
+    + '已确认 <b>' + yes.length + '</b> 项 · 已排除 <b>' + no.length + '</b> 项';
+  box.appendChild(sum);
+
+  const chips = document.createElement('div');
+  chips.className = 'chips';
   stateLines.forEach(item => {
     const c = document.createElement('span');
     c.className = 'chip ' + (item.yes ? 'yes' : 'no');
-    c.textContent = (item.yes ? '✓ ' : '✗ ') + item.title;
-    wrap.appendChild(c);
+    c.textContent = item.title;
+    chips.appendChild(c);
   });
-  addMsg('assistant', '当前辨证状态：', wrap);
+  box.appendChild(chips);
+  rowAssistant(box, false);
+  scrollToBottom();
 }
 
-// 显示问题面板
-function showQuestion(q) {
-  if (!q) { panel.style.display = 'none'; document.getElementById('cand-count').textContent=''; return; }
-  qText.textContent = q.phrase;
-  qRemain.textContent = `还有 ${q.candidates} 个候选方待分辨`;
-  candCount.textContent = `候选方 ${q.candidates}`;
-  panel.style.display = 'block';
-  input.placeholder = q.candidates <= 12 ? '也可以直接补充描述…' : '直接补充描述（可选）…';
-}
-function hideQuestion() { panel.style.display = 'none'; candCount.textContent=''; }
-
-// 收敛结果展示
+// ============================================================
+// 结论
+// ============================================================
 function showResult(result) {
-  const extra = document.createElement('div');
+  const card = document.createElement('div');
+  card.className = 'resultcard';
+
+  const head = document.createElement('div');
+  head.className = 'rhead';
+  head.innerHTML = '<span>辨证倾向</span>';
+  card.appendChild(head);
+
+  const body = document.createElement('div');
+  body.className = 'rbody';
+
   if (result.formulas && result.formulas.length) {
-    const fb = document.createElement('div');
-    fb.className = 'formula-banner';
-    fb.innerHTML = '<b>辨证倾向：</b>' + result.formulas.map(f=>escapeHtml(f.title)).join('、') +
-      '（需执业医师确认）';
-    extra.appendChild(fb);
+    const fs = document.createElement('div');
+    fs.className = 'formulas';
+    result.formulas.forEach(f => {
+      const s = document.createElement('span');
+      s.className = 'formula';
+      s.textContent = f.title || f.name;
+      fs.appendChild(s);
+    });
+    body.appendChild(fs);
   }
+
+  if (result.explanation) {
+    const ex = document.createElement('div');
+    ex.className = 'explain';
+    ex.textContent = result.explanation;
+    body.appendChild(ex);
+  }
+
   if (result.contraindications && result.contraindications.length) {
     const c = document.createElement('div');
     c.className = 'contra';
-    c.textContent = '⚠️ ' + result.contraindications.join('；');
-    extra.appendChild(c);
+    const t = document.createElement('span');
+    t.className = 'ct';
+    t.textContent = '⚠ 禁忌与注意事项';
+    c.appendChild(t);
+    c.appendChild(document.createTextNode(result.contraindications.join('；')));
+    body.appendChild(c);
   }
-  if (extra.children.length) addMsg('assistant', '已生成辨证结果：', extra);
-  addMsg('assistant', result.explanation);
-  // 完成标志：后续输入走 /api/chat（问大模型）
+
+  const d = document.createElement('div');
+  d.className = 'disclaimer';
+  d.textContent = '以上为条文推演的参考结论，不能替代执业医师的面诊与处方。';
+  body.appendChild(d);
+
+  const acts = document.createElement('div');
+  acts.className = 'after-actions';
+  const ask = document.createElement('button');
+  ask.className = 'btn primary';
+  ask.textContent = '继续提问';
+  ask.addEventListener('click', () => {
+    field.placeholder = '想问什么就问，例如：这个方子怎么煎、要喝几天？';
+    field.focus();
+    addHint('下面可以继续追问，比如煎服方法、饮食禁忌、能不能加味。');
+  });
+  const again = document.createElement('button');
+  again.className = 'btn';
+  again.textContent = '重新开始';
+  again.addEventListener('click', restartNew);
+  acts.appendChild(ask);
+  acts.appendChild(again);
+  body.appendChild(acts);
+
+  card.appendChild(body);
+  rowAssistant(card);
   finished = true;
-  // 加两个操作按钮：继续问大模型 / 重新开始
-  addActionButtons();
-  addHint('辨证完成。你可以继续问大模型，或点「重新开始」发起新的辨证。');
+  scrollToBottom();
 }
 
-// 辨证完成后显示两个操作按钮
-function addActionButtons() {
-  const wrap = document.createElement('div');
-  wrap.className = 'q-tools';
-
-  const askBtn = document.createElement('button');
-  askBtn.className = 'tl-btn';
-  askBtn.id = 'btn-ask-llm';
-  askBtn.innerHTML = '💬 继续问大模型';
-  askBtn.addEventListener('click', () => {
-    // 聚焦输入框，提示输入问题
-    input.placeholder = '输入你想问大模型的问题（如：这个方子怎么喝？）…';
-    input.focus();
-    addHint('你可以继续输入问题，直接问大模型。');
+// ============================================================
+// 接口
+// ============================================================
+async function api(path, body, method) {
+  const m = method || 'POST';
+  const res = await fetch('/api/' + path, {
+    method: m,
+    headers: { 'Content-Type': 'application/json' },
+    body: m === 'POST' ? JSON.stringify(body || {}) : undefined
   });
-
-  const resetBtn = document.createElement('button');
-  resetBtn.className = 'tl-btn';
-  resetBtn.id = 'btn-restart2';
-  resetBtn.innerHTML = '🔄 重新开始';
-  resetBtn.addEventListener('click', restartNew);
-
-  wrap.appendChild(askBtn);
-  wrap.appendChild(resetBtn);
-  // 放到消息列表末尾（横向排布）
-  const box = document.createElement('div');
-  box.className = 'msg assistant';
-  box.style.cssText = 'padding:8px;background:transparent;box-shadow:none;max-width:96%;';
-  box.appendChild(wrap);
-  chat.appendChild(box);
-  chat.scrollTop = chat.scrollHeight;
+  return res.json();
 }
 
-async function restartNew() {
-  finished = false;
-  chat.innerHTML = '';
-  const data = await api('restart/'+sid, {}, 'GET');
-  addMsg('assistant', hasLLM ? '已重新开始。请描述病人症状。' : '已重新开始。请描述症状（仅规则辨证）。');
-  if (data.question) showQuestion(data.question);
-  else hideQuestion();
+function setBusy(b) {
+  busy = b;
+  ensureSendState();
+}
+function ensureSendState() {
+  // 等待时不禁用输入框（用户可以先打字），只禁用发送
+  sendBtn.disabled = busy || !field.value.trim();
 }
 
-// 处理 view
-function applyView(v, opts = {}) {
-  if (v && v.question) showQuestion(v.question);
-  else if (v && v.finished) hideQuestion();
-  else if (v && v.view && v.view.question) showQuestion(v.view.question);
-  else if (v && v.view && v.view.finished) hideQuestion();
-  if (v && v.note) addHint(v.note);
-  if (v && opts.changed && !v.finished && !(v.view && v.view.finished)) {
-    // 状态 chips
-  }
-}
-
-async function api(path, body, method='POST'){
-  const r = await fetch('/api/'+path, {
-    method, headers:{'Content-Type':'application/json'},
-    body: method==='POST'?JSON.stringify(body||{}):undefined
-  });
-  return r.json();
-}
-
-// 开始新会话
+// ============================================================
+// 流程
+// ============================================================
 async function startNew() {
-  localStorage.setItem('sid','');   // 每次刷新重新建
+  thread.innerHTML = '';
+  lastStateKey = '';
+  finished = false;
+  currentCard = null;
+  $('cand-pill').hidden = true;
+  field.placeholder = '用口语描述症状，例如：发烧、怕冷、有点咳嗽、不出汗';
+
   const data = await api('new', {}, 'GET');
   sid = data.id;
-  hasLLM = data.hasLLM;
-  llmBadge.textContent = hasLLM ? 'LLM 已连接' : '仅规则辨证';
-  llmBadge.title = hasLLM ? '已配置大模型，可生成完整解释' : '未配置 LLM_KEY，只能做经络规则辨证';
-  chat.innerHTML='';
-  addMsg('assistant', data.intro || '欢迎！请描述症状。');
+  hasLLM = !!data.hasLLM;
+
+  const lp = $('llm-pill');
+  lp.className = 'pill' + (hasLLM ? ' ok' : '');
+  $('llm-text').textContent = hasLLM ? 'AI 解释已开启' : '仅规则辨证';
+  lp.title = hasLLM ? '已配置大模型，会生成完整病情解释' : '未配置 LLM_KEY，只能做条文规则辨证';
+
+  if (data.intro) addAssistantText(data.intro);
+  else addAssistantText('你好！请描述病人的症状。');
+
+  // 空状态：给几个可直接点的例子
+  const ex = document.createElement('div');
+  ex.className = 'bubble';
+  ex.style.cssText = 'background:transparent;border:none;padding:2px 0 0;max-width:100%';
+  const label = document.createElement('div');
+  label.className = 'small';
+  label.style.marginBottom = '8px';
+  label.textContent = '不知道怎么说？点一个试试：';
+  const wrap = document.createElement('div');
+  wrap.className = 'examples';
+  ['发烧、怕冷、不出汗、全身酸痛',
+   '头晕、口苦、两胁胀、没胃口',
+   '拉肚子、肚子隐隐作痛、手脚凉',
+   '心里烦、睡不着、口干想喝凉的'
+  ].forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'example';
+    b.type = 'button';
+    b.textContent = t;
+    b.addEventListener('click', () => {
+      field.value = t;
+      field.focus();
+      ensureSendState();
+    });
+    wrap.appendChild(b);
+  });
+  ex.appendChild(label);
+  ex.appendChild(wrap);
+  rowAssistant(ex, false);
+
   if (data.question) showQuestion(data.question);
+  else hideQuestion();
+  scrollToBottom(false);
+  $('mode-tip').textContent = '可以一次说多个症状';
 }
 
-// 发送输入
+function applyInputResponse(r) {
+  if (r.error) { addAssistantText(r.error); return; }
+  if (r.undone) addHint('已撤回上一步');
+  if (r.note) addHint(r.note);
+  if (r.state) renderState(r.state);
+
+  const v = r.view || {};
+  if (v.finished) {
+    hideQuestion();
+    if (r.result) showResult(r.result);
+    else addAssistantText('辨证完成。');
+    return;
+  }
+  if (v.question) { showQuestion(v.question); return; }
+  // question === null：无法继续区分
+  hideQuestion();
+  if (r.result) showResult(r.result);
+  else addAssistantText('目前的信息还不足以唯一确定方剂。可以补充更多症状，或点「重新开始」。');
+}
+
 async function sendText(text) {
-  if (!text.trim()) return;
-  addMsg('user', text);
-  input.value = '';
+  const t = String(text || '').trim();
+  if (!t || busy) return;
+
+  rowUser(t);
+  field.value = '';
+  autoGrow();
+  ensureSendState();
   setBusy(true);
 
   if (finished) {
-    // 辨证完成 → 走 /api/chat 问大模型
-    const think = addThinking('大模型正在回答…');
+    const typing = addTyping('AI 正在回答…');
     try {
-      const r = await api('chat', { text, sid }, 'POST');
-      addMsg('assistant', (r.reply || '(无回复)'));
-    } catch(e) {
-      addMsg('assistant', '网络或服务器错误：' + e.message);
+      const r = await api('chat', { text: t, sid });
+      typing.remove();
+      addAssistantText(r.reply || '（没有返回内容）');
+    } catch (e) {
+      typing.remove();
+      addAssistantText('网络或服务出错：' + e.message);
     } finally {
-      think.remove(); setBusy(false);
+      setBusy(false);
     }
     return;
   }
 
-  // 诊断阶段：可能有大模型整理症状 / 生成解释，给明确提示
-  const think = addThinking('大模型正在整理症状，请稍候…');
+  const typing = addTyping(hasLLM ? 'AI 正在整理症状…' : '正在推演…');
   try {
-    const r = await api('input', { text, sid }, 'POST');
-    if (r.error) { addMsg('assistant', r.error); }
-    else {
-      if (r.view && r.view.finished) {
-        hideQuestion();
-        if (r.state) renderState(r.state);
-        if (r.result) showResult(r.result);
-      }
-      else if (r.view && r.view.question) {
-        if (r.state) renderState(r.state);
-        showQuestion(r.view.question);
-      }
-      else if (r.view && r.view.question === null) {
-        // 无更多问题但未交付（歧义/无候选）
-        if (r.note) addHint(r.note);
-        hideQuestion();
-      }
-      else if (r.undone) {
-        if (r.state) renderState(r.state);
-        if (r.view && r.view.question) showQuestion(r.view.question);
-        else hideQuestion();
-      }
-    }
-  } catch(e) {
-    addMsg('assistant', '网络或服务器错误：' + e.message);
+    const r = await api('input', { text: t, sid });
+    typing.remove();
+    applyInputResponse(r);
+  } catch (e) {
+    typing.remove();
+    addAssistantText('网络或服务出错：' + e.message);
   } finally {
-    think.remove(); setBusy(false);
+    setBusy(false);
   }
 }
 
-function setBusy(b){ sendBtn.disabled = b; }
+async function sendAnswer(v, label) {
+  rowUser(label);
+  setBusy(true);
+  const typing = addTyping('正在推演…');
+  try {
+    const r = await api('input', { text: v, sid });
+    typing.remove();
+    applyInputResponse(r);
+  } catch (e) {
+    typing.remove();
+    addAssistantText('网络或服务出错：' + e.message);
+  } finally {
+    setBusy(false);
+  }
+}
 
-// 三选按钮
-document.querySelectorAll('.qa-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const txt = btn.dataset.v==='1'?'1':(btn.dataset.v==='2'?'2':'3');
-    addMsg('user', btn.textContent);
-    setBusy(true);
-    const think = addThinking('正在判别辨证…');
-    api('input', { text: txt, sid }, 'POST').then(r => {
-      // 若需大模型生成解释，fetch 等待期间已提示
-      if (r.view && r.view.finished) { hideQuestion(); if(r.state)renderState(r.state); if(r.result)showResult(r.result); }
-      else if (r.view && r.view.question) { if(r.state)renderState(r.state); showQuestion(r.view.question); }
-      else { if(r.state)renderState(r.state); showQuestion(null); }
-    }).catch(e=>addMsg('assistant','出错: '+e.message))
-      .finally(()=>{ think.remove(); setBusy(false); });
-  });
+async function restartNew() {
+  if (busy) return;
+  setBusy(true);
+  try {
+    const data = await api('restart/' + sid, {}, 'GET');
+    thread.innerHTML = '';
+    lastStateKey = '';
+    finished = false;
+    currentCard = null;
+    addAssistantText(hasLLM ? '已重新开始。请描述病人的症状。' : '已重新开始。请描述症状（当前仅条文规则辨证）。');
+    if (data && data.question) showQuestion(data.question);
+    else hideQuestion();
+    field.placeholder = '用口语描述症状，例如：发烧、怕冷、有点咳嗽、不出汗';
+    scrollToBottom(false);
+  } catch (e) {
+    addAssistantText('重新开始失败：' + e.message);
+  } finally {
+    setBusy(false);
+  }
+}
+
+// ============================================================
+// 输入框行为
+// ============================================================
+function autoGrow() {
+  field.style.height = 'auto';
+  field.style.height = Math.min(132, Math.max(48, field.scrollHeight)) + 'px';
+}
+
+field.addEventListener('input', () => { autoGrow(); ensureSendState(); });
+field.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    sendText(field.value);
+  }
 });
+sendBtn.addEventListener('click', () => sendText(field.value));
 
-document.getElementById('btn-undo').addEventListener('click', () => {
-  sendText('撤回');
+// 键盘可达性：卡片出现时把焦点给第一个选项
+const origShowQuestion = showQuestion;
+
+// ============================================================
+// 启动
+// ============================================================
+startNew().catch(e => {
+  addAssistantText('初始化失败：' + e.message + '（请确认服务已启动）');
 });
-document.getElementById('btn-restart').addEventListener('click', restartNew);
-
-sendBtn.addEventListener('click', () => sendText(input.value));
-input.addEventListener('keydown', e => { if (e.key==='Enter') sendText(input.value); });
-
-startNew();
 </script>
 </body>
 </html>
