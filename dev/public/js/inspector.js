@@ -186,11 +186,17 @@ function provBottomHtml(node) {
     : ''
   return '<div style="border-top:1px solid var(--border);margin-top:10px;padding:10px 2px 2px">'
     + '<div style="color:var(--text-2);font-size:11.5px;margin-bottom:7px">条文溯源</div>'
-    + row('出处', p ? srcTag(p.sourceId) + ' ' + esc(p.label) : '<span style="color:var(--text-3)">未标注</span>')
-    + row('条文', refTxt)
+    + row('出处', p ? srcTag(p.sourceId) + ' ' + esc(p.label)
+      + (p.refs && p.refs.length ? ' <span style="color:var(--text-3)">· ' + esc(String(p.refs[0])) + '</span>' : '')
+      : '<span style="color:var(--text-3)">未标注</span>')
     + row('录入', '<span style="color:var(--text-2)">' + esc(p && p.by ? p.by : '—') + '</span>')
-    + noteHtml
-    + '<div style="color:var(--text-3);font-size:10.5px;margin-top:6px">备注与日志在平台画布（/canvas）里可编辑</div>'
+    + row('备注', '<textarea class="input" data-fk="prov-note" style="min-height:56px;resize:vertical"'
+      + ' placeholder="留一句：这条别人也遇到过、可以这样引用…">' + esc(p && p.note ? p.note : '') + '</textarea>'
+      + '<div style="display:flex;gap:6px;justify-content:flex-end;margin-top:5px;align-items:center">'
+      + '<span style="color:var(--text-3);font-size:10.5px;margin-right:auto">'
+      + esc(p && p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '') + '</span>'
+      + '<button class="btn" data-act="prov-note-clear">清空</button>'
+      + '<button class="btn btn-primary" data-act="prov-note-save">保存备注</button></div>')
     + '</div>'
 }
 
@@ -464,6 +470,30 @@ function bindNode(root, node) {
       toast('类型已改为「' + kindLabel(k) + '」；保存时服务端会把文件搬到 plugins/' + (S.dirs[k] || '') + '/ 下')
       draw()
     })
+  }
+
+  // 溯源备注（开发端本地写文件；平台画布由注入脚本接管，这里不会渲染）
+  const noteEl = root.querySelector('[data-fk="prov-note"]')
+  if (noteEl) {
+    const saveNote = async value => {
+      try {
+        const res = await fetch('/api/provenance/note', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: node.name, note: value })
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error || ('HTTP ' + res.status))
+        node.provenance = Object.assign({}, node.provenance, data.node || {})
+        toast(String(value || '').trim() ? '备注已保存' : '备注已清空', 'ok')
+        draw()
+      } catch (e) {
+        toast('保存失败：' + e.message, 'err', 7000)
+      }
+    }
+    const saveBtn = root.querySelector('[data-act="prov-note-save"]')
+    const clearBtn = root.querySelector('[data-act="prov-note-clear"]')
+    if (saveBtn) saveBtn.onclick = () => saveNote(noteEl.value)
+    if (clearBtn) clearBtn.onclick = () => saveNote('')
   }
 
   // 三个标签编辑器

@@ -233,6 +233,13 @@ function approveDraft(id, reviewer, note) {
     )
   }
 
+  // 改名要先把 provenance 迁移到新名字下，否则备注/出处会留在旧键上
+  for (const rn of (payload.renamed || [])) {
+    if (rn && rn.from && rn.to && rn.from !== rn.to) {
+      try { provenance.renameNodeInProvenance(rn.from, rn.to) } catch (e) { console.error('[review] provenance 改名迁移失败:', e.message) }
+    }
+  }
+
   // 同步「谁录入的」到文件侧 provenance.json —— 这样开发端（standalone）也能看到录入人，
   // 而不只是平台数据库里能查。已有出处的节点只补 by，不覆盖 source/refs。
   let provenanceResult = null

@@ -87,6 +87,43 @@ function attachTo(nodes, view) {
 }
 
 /**
+ * 节点改名时迁移出处与备注：nodes 的键、edges 里 owner / ref 都要跟着改。
+ * 不迁移就会出现「备注留在旧名字下、新名字一片空白」这种鬼问题。
+ */
+function renameNodeInProvenance(from, to, filePath) {
+  const target = filePath || FILE
+  let data
+  try { data = JSON.parse(fs.readFileSync(target, 'utf8')) } catch (_) { return { changed: false } }
+  let changed = false
+  data.nodes = data.nodes || {}
+  if (data.nodes[from] && from !== to) {
+    data.nodes[to] = data.nodes[from]
+    delete data.nodes[from]
+    changed = true
+  }
+  data.edges = data.edges || {}
+  const next = {}
+  for (const [key, rec] of Object.entries(data.edges)) {
+    const i = key.indexOf('|')
+    const owner = i >= 0 ? key.slice(0, i) : key
+    const tail = i >= 0 ? key.slice(i + 1) : ''
+    const dot = tail.lastIndexOf('.')
+    const ref = dot >= 0 ? tail.slice(0, dot) : tail
+    const pol = dot >= 0 ? tail.slice(dot + 1) : 'yes'
+    const nOwner = owner === from ? to : owner
+    const nRef = ref === from ? to : ref
+    if (nOwner !== owner || nRef !== ref) changed = true
+    next[nOwner + '|' + nRef + '.' + pol] = rec
+  }
+  data.edges = next
+  if (changed) {
+    data.generatedAt = new Date().toISOString()
+    fs.writeFileSync(target, JSON.stringify(data, null, 2) + '\n', 'utf8')
+  }
+  return { changed }
+}
+
+/**
  * 记录「谁录入的」——平台审核通过时调用。
  * entries: [{ name, by, note? }]，by 是医生的显示名（不要带 system: 前缀）
  *
@@ -179,4 +216,4 @@ function setEdgeNote(owner, ref, pol, note, by, filePath) {
   return data.edges[key] || null
 }
 
-module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo, setContributors, setNote, setEdgeNote }
+module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo, setContributors, setNote, setEdgeNote, renameNodeInProvenance }

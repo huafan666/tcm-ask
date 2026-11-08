@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-08T14:41:30.405Z",
+  "generatedAt": "2026-11-08T14:54:23.901Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1844,14 +1844,22 @@
       ],
       "by": "system:jinkui"
     },
-    "kanjiangui": {
+    "kanjian_gui": {
       "source": "manual",
       "label": "人工录入",
       "refs": [],
       "by": "张牛",
       "byAt": "2026-11-08",
-      "note": "门诊遇过两例：下利清谷手、足寒，用后汗出热退。先辨真寒假热，勿见厥即温。",
+      "note": "改名后的备注应该能保存住",
       "noteBy": "张明远",
+      "noteAt": "2026-11-08"
+    },
+    "feiqi_xu": {
+      "source": "manual",
+      "label": "人工录入",
+      "refs": [],
+      "note": "倪医师的书籍来源",
+      "noteBy": "张牛",
       "noteAt": "2026-11-08"
     }
   },

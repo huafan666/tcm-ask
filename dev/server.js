@@ -16,6 +16,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const graph = require('./lib/graph')
+const provenance = require('./lib/provenance')
 
 const HOST = '127.0.0.1'
 const PORT = Number(process.env.DEV_PORT || 3090)
@@ -176,6 +177,20 @@ const api = {
     let reload = null
     if (result.ok && body.reloadMain !== false) reload = await notifyMainReload()
     return Object.assign({}, result, { reload })
+  },
+
+  // 写节点/关系的备注（开发端本机调用；平台画布走 /api/provenance/note 的鉴权版本）
+  'POST /api/provenance/note': async (req, res, url, body) => {
+    const name = String((body && body.name) || '').trim()
+    if (!name) throw new Error('缺少节点名')
+    const g = graph.buildGraph()
+    if (!g.nodes.some(n => n.name === name)) throw new Error('节点不存在：' + name)
+    if (body.owner && body.ref) {
+      const rec = provenance.setEdgeNote(body.owner, body.ref, body.pol || 'yes', body.note, '开发端本机')
+      return { ok: true, scope: 'edge', edge: rec }
+    }
+    const rec = provenance.setNote(name, body.note, '开发端本机')
+    return { ok: true, scope: 'node', node: rec }
   },
 
   'POST /api/reload-main': async () => ({ ok: true, reload: await notifyMainReload() })

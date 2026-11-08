@@ -105,7 +105,6 @@ function renderInline(name) {
   let box = document.getElementById('tcm-prov-box')
   const def = nodeOf(name)
   const p = def && def.provenance
-  const refTxt = p && p.refs && p.refs.length ? String(p.refs[0]) : '（未标注具体条文）'
 
   if (!box) {
     box = document.createElement('div')
@@ -118,8 +117,7 @@ function renderInline(name) {
 
   box.innerHTML = `
     <div class="pb-title"><span>条文溯源</span><span id="tcm-pb-log" style="color:${T.accentText};cursor:pointer">查看日志 ›</span></div>
-    <div class="pb-row"><span class="pb-k">出处</span><span>${p ? chip(p.sourceId) + esc(p.label) : '<span class="muted">未标注</span>'}</span></div>
-    <div class="pb-row"><span class="pb-k">条文</span><span style="color:${T.text2}">${esc(refTxt)}</span></div>
+    <div class="pb-row"><span class="pb-k">出处</span><span>${p ? chip(p.sourceId) + esc(p.label) + (p.refs && p.refs.length ? ' <span style="color:' + T.text3 + '">· ' + esc(String(p.refs[0])) + '</span>' : '') : '<span class="muted">未标注</span>'}</span></div>
     <div class="pb-row"><span class="pb-k">录入</span><span style="color:${T.text2}">${esc(p && p.by ? p.by : '—')}</span></div>
     <div class="pb-row" style="align-items:start"><span class="pb-k">备注</span><span>
       <textarea id="tcm-note" placeholder="留一句：这条别人也遇到过、可以这样引用…">${esc(p && p.note ? p.note : '')}</textarea>
@@ -162,11 +160,26 @@ async function saveNote(name, note) {
     const data = await res.json()
     if (!res.ok) throw new Error(data.error || ('HTTP ' + res.status))
     cache.delete(name)
+    // 以服务端回执为准（而不是本地猜），顺带把备注人/时间刷新出来
+    const hist = await loadHistory(name, true).catch(() => null)
     const def = nodeOf(name)
-    if (def) def.provenance = Object.assign({}, def.provenance, { note: String(note || '').trim(), noteBy: '已保存' })
-    lastNode = null           // 强制下一轮重绘
+    if (def && hist && hist.provenance) def.provenance = hist.provenance
+    lastNode = null
     tick()
-  } catch (e) { window.alert('保存失败：' + e.message) }
+    toast(String(note || '').trim() ? '备注已保存' : '备注已清空')
+  } catch (e) {
+    window.alert('保存失败：' + e.message + (e.message.includes('权限') ? '' : '\n（写备注需要医生或管理员账号登录）'))
+  }
+}
+
+function toast(msg) {
+  const t = document.createElement('div')
+  t.textContent = msg
+  t.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:300;'
+    + 'padding:7px 16px;border-radius:999px;background:#14b8a6;color:#06231f;font-size:12.5px;'
+    + 'font-weight:700;box-shadow:0 8px 22px rgba(0,0,0,.4);font-family:inherit'
+  document.body.appendChild(t)
+  setTimeout(() => t.remove(), 2600)
 }
 
 /* ---------------- 日志弹窗（唯一保留的弹窗） ---------------- */

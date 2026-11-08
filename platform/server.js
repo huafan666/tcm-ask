@@ -469,6 +469,7 @@ add('POST', '/api/provenance/note', ctx => {
   const body = ctx.body || {}
   const name = String(body.name || '').trim()
   if (!name) throw new HttpError(400, '缺少节点名')
+  if (!registryState.registry[name]) throw new HttpError(404, '节点不存在：' + name + '（改名后请刷新画布）')
   const prov = require('../dev/lib/provenance')
   const scope = (body.owner && body.ref) ? 'edge' : 'node'
   const rec = scope === 'edge'
