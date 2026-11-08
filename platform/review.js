@@ -357,7 +357,14 @@ function edgesOf(nodeName) {
   return [...latest.values()]
 }
 
-/** 完整编辑历史（时间线）：谁、什么时候、改了哪些字段、审核人是谁、审核意见 */
+/** 备注变更日志：一次保存 = 一条日志 */
+function recordNoteChange({ nodeName, scope, owner, ref, pol, note, authorId }) {
+  q.run(
+    'INSERT INTO note_changes (node_name, scope, owner, ref, pol, note, author_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    String(nodeName), String(scope || 'node'), owner || null, ref || null, pol || null, String(note || ''), authorId, now())
+}
+
+/** 完整溯源 + 日志：出处、时间线（草稿/备注/关系 三条来源合并后按时间倒序） */
 function historyFor(nodeName) {
   const name = String(nodeName)
   const attrs = q.all(
@@ -373,29 +380,69 @@ function historyFor(nodeName) {
       ORDER BY a.id DESC`, name)
 
   const byDraft = new Map()
-  for (const r of attrs) {
-    if (!byDraft.has(r.draft_id)) {
-      byDraft.set(r.draft_id, {
-        draftId: r.draft_id,
-        title: r.title,
-        status: r.status,
-        author: { displayName: r.author, verified: !!r.author_verified },
-        reviewer: r.reviewer || null,
-        reviewNote: r.review_note || '',
-        submittedAt: r.submitted_at,
-        reviewedAt: r.reviewed_at,
-        fields: []
+  for (const row of attrs) {
+    if (!byDraft.has(row.draft_id)) {
+      byDraft.set(row.draft_id, {
+        draftId: row.draft_id, title: row.title, status: row.status,
+        author: { displayName: row.author, verified: !!row.author_verified },
+        reviewer: row.reviewer || null, reviewNote: row.review_note || '',
+        submittedAt: row.submitted_at, reviewedAt: row.reviewed_at, fields: []
       })
     }
-    const g = byDraft.get(r.draft_id)
-    if (!g.fields.includes(r.field)) g.fields.push(FIELD_LABEL[r.field] || r.field)
+    const g = byDraft.get(row.draft_id)
+    const label = FIELD_LABEL[row.field] || row.field
+    if (!g.fields.includes(label)) g.fields.push(label)
   }
+  const timeline = [...byDraft.values()]
+
+  const notes = q.all(
+    `SELECT n.*, u.display_name FROM note_changes n JOIN users u ON u.id = n.author_id
+      WHERE n.node_name = ? ORDER BY n.id DESC`, name)
+
+  // 合并成一条日志流（按时间倒序；草稿用审核时间，没审核就用提交时间）
+  const log = []
+  for (const t of timeline) {
+    log.push({
+      at: t.reviewedAt || t.submittedAt,
+      type: 'draft',
+      label: '条文修改',
+      text: '草稿 #' + t.draftId + ' · ' + t.status + ' · 改了：' + (t.fields.join('、') || '—'),
+      author: t.author.displayName,
+      verified: t.author.verified,
+      extra: [t.reviewer ? '审核 ' + t.reviewer : '', t.reviewNote || ''].filter(Boolean).join(' · ')
+    })
+  }
+  for (const n of notes) {
+    log.push({
+      at: n.created_at,
+      type: 'note',
+      label: n.scope === 'edge' ? '关系备注' : '备注',
+      text: n.note ? n.note : '（清空备注）',
+      author: n.display_name,
+      verified: false,
+      extra: n.scope === 'edge' ? (n.owner + ' → ' + n.ref + '.' + n.pol) : ''
+    })
+  }
+  for (const e of edgesOf(name)) {
+    log.push({
+      at: e.at,
+      type: 'edge',
+      label: e.action === 'add' ? '新增关系' : '删除关系',
+      text: e.owner + ' → ' + e.ref + '.' + e.pol,
+      author: e.author.displayName,
+      verified: e.author.verified,
+      extra: '草稿 #' + e.draftId
+    })
+  }
+  log.sort((a, b) => String(b.at || '').localeCompare(String(a.at || '')))
 
   return {
     node: name,
     provenance: provenance.ofNode(name),
-    timeline: [...byDraft.values()],
-    edges: edgesOf(name)
+    notes: notes.map(n => ({ note: n.note, scope: n.scope, author: n.display_name, at: n.created_at })),
+    timeline,
+    edges: edgesOf(name),
+    log
   }
 }
 
@@ -413,5 +460,6 @@ module.exports = {
   attributionMap,
   contributors,
   edgesOf,
-  historyFor
+  historyFor,
+  recordNoteChange
 }

@@ -470,12 +470,17 @@ add('POST', '/api/provenance/note', ctx => {
   const name = String(body.name || '').trim()
   if (!name) throw new HttpError(400, '缺少节点名')
   const prov = require('../dev/lib/provenance')
-  if (body.owner && body.ref) {
-    const rec = prov.setEdgeNote(body.owner, body.ref, body.pol || 'yes', body.note, user.display_name)
-    return { ok: true, scope: 'edge', edge: rec }
-  }
-  const rec = prov.setNote(name, body.note, user.display_name)
-  return { ok: true, scope: 'node', node: rec }
+  const scope = (body.owner && body.ref) ? 'edge' : 'node'
+  const rec = scope === 'edge'
+    ? prov.setEdgeNote(body.owner, body.ref, body.pol || 'yes', body.note, user.display_name)
+    : prov.setNote(name, body.note, user.display_name)
+  // 一次保存 = 一条日志（备注内容本身也进日志，便于回看谁什么时候改了什么）
+  review.recordNoteChange({
+    nodeName: name, scope,
+    owner: body.owner, ref: body.ref, pol: body.pol || 'yes',
+    note: String(body.note || '').trim(), authorId: user.id
+  })
+  return { ok: true, scope, node: scope === 'node' ? rec : null, edge: scope === 'edge' ? rec : null }
 })
 
 // ============================================================

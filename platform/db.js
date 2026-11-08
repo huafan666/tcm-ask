@@ -107,6 +107,20 @@ CREATE TABLE IF NOT EXISTS edge_changes (
 CREATE INDEX IF NOT EXISTS idx_edge_owner ON edge_changes(owner);
 CREATE INDEX IF NOT EXISTS idx_edge_ref ON edge_changes(ref);
 
+-- 备注变更日志：医生每次保存说明/备注都留一条，便于按时间回看（一次保存 = 一条日志）
+CREATE TABLE IF NOT EXISTS note_changes (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  node_name  TEXT    NOT NULL,
+  scope      TEXT    NOT NULL,   -- node | edge
+  owner      TEXT,
+  ref        TEXT,
+  pol        TEXT,
+  note       TEXT    NOT NULL,
+  author_id  INTEGER NOT NULL,
+  created_at TEXT    NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_note_node ON note_changes(node_name);
+
 CREATE TABLE IF NOT EXISTS posts (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id  INTEGER NOT NULL,

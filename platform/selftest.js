@@ -189,6 +189,12 @@ console.log('\n[4] 医生提交 → 管理员审核 → 落盘 + 归属')
     ok('历史接口返回时间线', hist.status === 200 && Array.isArray(hist.data.timeline), hist.data && Object.keys(hist.data))
     ok('历史里带审核人', (hist.data.timeline || []).some(t => t.reviewer === '平台管理员'), (hist.data.timeline || [])[0])
     ok('历史里带说明', !!(hist.data.provenance && hist.data.provenance.note), hist.data.provenance)
+    ok('说明带作者与时间', !!(hist.data.provenance.noteBy && hist.data.provenance.noteAt), hist.data.provenance)
+
+    // 一次保存 = 一条日志
+    const logItems = hist.data.log || []
+    ok('日志里记了这次备注', logItems.some(x => x.type === 'note' && /自测：这条别人也遇到过/.test(x.text)), logItems[0])
+    ok('日志按时间倒序', logItems.length < 2 || String(logItems[0].at) >= String(logItems[logItems.length - 1].at), logItems.map(x => x.at))
 
     const edges = await doctor.req('/api/attribution/edges/fengchi_tong')
     ok('关系接口可用', edges.status === 200 && Array.isArray(edges.data.items), edges.data)

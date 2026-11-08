@@ -49,7 +49,10 @@ function load() {
       dynasty: s.dynasty || '',
       refs: Array.isArray(rec.refs) ? rec.refs : (rec.ref ? [String(rec.ref)] : []),
       by: rec.by || '',
-      note: rec.note || ''
+      byAt: rec.byAt || '',
+      note: rec.note || '',
+      noteBy: rec.noteBy || '',
+      noteAt: rec.noteAt || ''
     }
   }
   const nodes = {}
