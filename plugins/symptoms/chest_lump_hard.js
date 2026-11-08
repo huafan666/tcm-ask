@@ -3,6 +3,7 @@ module.exports = {
   title: '胸中痞硬',
   kind: 'symptom',
   trigger(text) { return ['胸中痞硬', '胸口堵硬', '胸中闷硬', '气上冲咽喉'].some(k => text.includes(k)) },
-  negate(text) { return ['胸不堵'].some(k => text.includes(k)) }
+  negate(text) { return ['胸不堵'].some(k => text.includes(k)) },
+  ask: '是不是胸口堵得又硬又满，气还往上顶到嗓子？'
 }
 

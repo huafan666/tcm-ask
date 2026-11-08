@@ -21,8 +21,8 @@ tcm-ask/
 │  ├─ llmClient.js      # DeepSeek（OpenAI 兼容）HTTP 客户端
 │  ├─ wrap.js           # 三次调用：症状整理 / 结果解释 / 辨证后问答
 │  └─ structured.js     # 解析大模型输出的【肯定】/【否定】/【模糊】三态清单
-├─ plugins/             # ★ 条文数据：269 个插件
-│  ├─ symptoms/         #   症状 130（口语触发词 + 否定词 + 反问话术）
+├─ plugins/             # ★ 条文数据：262 个插件
+│  ├─ symptoms/         #   症状 123（口语触发词 + 否定词 + 反问话术）
 │  ├─ pulses/           #   脉象 7
 │  ├─ syndromes/        #   证候 19
 │  └─ formulas/         #   方剂 113（依赖条件 + 禁忌）
@@ -115,7 +115,7 @@ node dev/server.js    # 或双击 dev\启动开发端.bat
 ## 验证脚本
 
 ```powershell
-node dev\selftest.js        # 插件解析/改写地基：269 个文件「解析→原值回灌」字节级一致（571 项断言）
+node dev\selftest.js        # 插件解析/改写地基：262 个文件「解析→原值回灌」字节级一致（557 项断言）
 node dev\checkui.js         # 开发端前端静态体检：import/export、DOM id、资源引用
 node dev\uisimtest.js       # 开发端集成测试：DOM 仿真真跑渲染路径 + 载荷过服务端校验
 node dev\webui-contract.js  # 问诊界面接口契约：把页面发的每个请求走一遍，断言字段齐全（需先启动 server.js）

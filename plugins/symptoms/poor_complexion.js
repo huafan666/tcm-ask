@@ -4,5 +4,5 @@ module.exports = {
   kind: 'symptom',
   trigger(text) { return ['气色差', '面色不好', '面色萎黄', '脸色差', '面青', '面白无华', '没血色', '脸色苍白', '面色青灰', '气虚'].some(k => text.includes(k)) },
   negate(text) { return ['气色好', '面色红润', '有血色', '脸色不错'].some(k => text.includes(k)) },
-  ask: '气色是不是不好、脸色发白/发青/没血色？虚证的人往往气色差，这时不能用承气汤泻下伤身。'
+  ask: '是不是气色不好，脸色发白发青、没血色？'
 }

@@ -5,7 +5,7 @@ module.exports = {
   // 第177条: 伤寒脉结代，心动悸，炙甘草汤主之。
   // 心阴阳两虚(脉结代、心动悸)。核心=心动悸。
   needs: [
-    ['heart_palpitation.yes']
+    ['heart_palp.yes']
   ],
   contraindications: ['脉结代、心动悸(心阴阳两虚)', '益气养血通脉复脉', '脉结代心悸为主']
 }

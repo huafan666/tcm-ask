@@ -5,8 +5,8 @@ module.exports = {
   needs: [
     ['zhongqi_buzu.yes'],
     ['xiazhui.yes', 'tongjing.yes'],
-    ['xiazhui.yes', 'body_heavy.yes', 'heart_palpitation.yes', 'tongjing.yes'],
+    ['xiazhui.yes', 'body_heavy.yes', 'heart_palp.yes', 'tongjing.yes'],
     ['xiazhui.yes'],
-    ['xiazhui.yes', 'body_heavy.yes', 'heart_palpitation.yes']
+    ['xiazhui.yes', 'body_heavy.yes', 'heart_palp.yes']
   ]
 }

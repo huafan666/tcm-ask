@@ -11,7 +11,7 @@ module.exports = {
     // (2) 自汗 + 身重（津伤卫表不固、经气不运）
     ['sweat.yes', 'auto_sweat.yes', 'body_heavy.yes'],
     // (3) 多眠睡 + 鼻鼾（津伤神失所养、窍不利）
-    ['sweat.yes', 'sleepy.yes', 'snoring.yes'],
+    ['sweat.yes', 'sleepy.yes', 'dahan.yes'],
     // (4) 自汗 + 语言难出（津亏窍失津润）
     ['sweat.yes', 'auto_sweat.yes', 'speech_difficulty.yes'],
     // (5) 自汗 + 口渴 + 身重（津伤代表形态）

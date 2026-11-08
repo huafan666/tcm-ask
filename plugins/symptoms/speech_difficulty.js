@@ -3,5 +3,6 @@ module.exports = {
   title: '语言难出',
   kind: 'symptom',
   trigger(text) { return ['语言难出', '说话困难', '吐字难', '言语不清'].some(k => text.includes(k)) },
-  negate(text) { return ['说话流利', '能说话'].some(k => text.includes(k)) }
+  negate(text) { return ['说话流利', '能说话'].some(k => text.includes(k)) },
+  ask: '是不是想说话却说不出来、声音发不出？'
 }
