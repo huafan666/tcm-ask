@@ -93,6 +93,29 @@ function nodeOf(name) {
   try { return store && store.S && store.S.nodes ? store.S.nodes.get(name) : null } catch (_) { return null }
 }
 
+// 录入人头像徽标（与书徽标同尺寸、同风格；同一个人永远同色）
+const PERSON_COLORS = [
+  ['#14b8a6', '#06231f'], ['#38bdf8', '#082f49'], ['#a78bfa', '#2e1065'],
+  ['#fbbf24', '#422006'], ['#f472b6', '#500724'], ['#34d399', '#022c22']
+]
+function personColor(name) {
+  let h = 0
+  for (const ch of String(name || '')) h = (h * 31 + ch.codePointAt(0)) % 997
+  return PERSON_COLORS[h % PERSON_COLORS.length]
+}
+function personChip(name, verified) {
+  if (!name) return ''
+  const [bg, fg] = personColor(name)
+  const initial = String(name).trim().slice(0, 1).toUpperCase()
+  return '<span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle">'
+    + '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;'
+    + 'border-radius:50%;background:' + bg + ';color:' + fg + ';font-size:10px;font-weight:700;line-height:1">'
+    + esc(initial) + '</span>'
+    + '<span style="color:' + T.text + ';font-size:11.5px">' + esc(name) + '</span>'
+    + (verified ? '<span style="color:#38bdf8;font-size:10px">✓</span>' : '')
+    + '</span>'
+}
+
 function chip(srcId) {
   const t = SRC_TAG[srcId] || { text: '其它', color: T.text2, bg: 'rgba(255,255,255,.08)' }
   return `<span class="pb-chip" style="color:${t.color};background:${t.bg}">${esc(t.text)}</span>`
@@ -118,7 +141,9 @@ function renderInline(name) {
   box.innerHTML = `
     <div class="pb-title"><span>条文溯源</span><span id="tcm-pb-log" style="color:${T.accentText};cursor:pointer">查看日志 ›</span></div>
     <div class="pb-row"><span class="pb-k">出处</span><span>${p ? chip(p.sourceId) + esc(p.label) + (p.refs && p.refs.length ? ' <span style="color:' + T.text3 + '">· ' + esc(String(p.refs[0])) + '</span>' : '') : '<span class="muted">未标注</span>'}</span></div>
-    <div class="pb-row"><span class="pb-k">录入</span><span style="color:${T.text2}">${esc(p && p.by ? p.by : '—')}</span></div>
+    <div class="pb-row"><span class="pb-k">录入</span><span>${p && p.by && !String(p.by).startsWith('system:')
+      ? personChip(p.by, true)
+      : '<span style="color:' + T.text3 + '">' + (p && p.by ? '原典条文（非人工提交）' : '—') + '</span>'}</span></div>
     <div class="pb-row" style="align-items:start"><span class="pb-k">备注</span><span>
       <textarea id="tcm-note" placeholder="留一句：这条别人也遇到过、可以这样引用…">${esc(p && p.note ? p.note : '')}</textarea>
       <div class="pb-btns">

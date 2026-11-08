@@ -165,6 +165,29 @@ function nodeHtml(node, selCount) {
   return out.join('')
 }
 
+// 录入人头像徽标：圆形首字 + 名字，配色由名字哈希决定（同一个人永远同色）
+const PERSON_COLORS = [
+  ['#14b8a6', '#06231f'], ['#38bdf8', '#082f49'], ['#a78bfa', '#2e1065'],
+  ['#fbbf24', '#422006'], ['#f472b6', '#500724'], ['#34d399', '#022c22']
+]
+function personColor(name) {
+  let h = 0
+  for (const ch of String(name || '')) h = (h * 31 + ch.codePointAt(0)) % 997
+  return PERSON_COLORS[h % PERSON_COLORS.length]
+}
+function personChipHtml(name, verified) {
+  if (!name) return ''
+  const [bg, fg] = personColor(name)
+  const initial = String(name).trim().slice(0, 1).toUpperCase()
+  return '<span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle">'
+    + '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;'
+    + 'border-radius:50%;background:' + bg + ';color:' + fg + ';font-size:10px;font-weight:700;line-height:1">'
+    + esc(initial) + '</span>'
+    + '<span style="color:var(--text);font-size:11.5px">' + esc(name) + '</span>'
+    + (verified ? '<span style="color:#0074cc;font-size:10px">✓</span>' : '')
+    + '</span>'
+}
+
 // ------------------------------------------------------------
 // 条文溯源（只读，放在最底部；平台画布由注入脚本提供可编辑版 + 日志）
 // ------------------------------------------------------------
@@ -189,7 +212,9 @@ function provBottomHtml(node) {
     + row('出处', p ? srcTag(p.sourceId) + ' ' + esc(p.label)
       + (p.refs && p.refs.length ? ' <span style="color:var(--text-3)">· ' + esc(String(p.refs[0])) + '</span>' : '')
       : '<span style="color:var(--text-3)">未标注</span>')
-    + row('录入', '<span style="color:var(--text-2)">' + esc(p && p.by ? p.by : '—') + '</span>')
+    + row('录入', p && p.by && !String(p.by).startsWith('system:')
+      ? personChipHtml(p.by, true)
+      : '<span style="color:var(--text-3)">' + (p && p.by ? '原典条文（非人工提交）' : '—') + '</span>')
     + row('备注', '<textarea class="input" data-fk="prov-note" style="min-height:56px;resize:vertical"'
       + ' placeholder="留一句：这条别人也遇到过、可以这样引用…">' + esc(p && p.note ? p.note : '') + '</textarea>'
       + '<div style="display:flex;gap:6px;justify-content:flex-end;margin-top:5px;align-items:center">'
