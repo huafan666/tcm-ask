@@ -95,87 +95,18 @@ function wireHooks() {
 
   // ------------------------------------------------------------
   // 就地建节点（Blender 式）：双击空白 / 连线拖到空白
+  // 复用「新建节点」弹窗，种类在里面选，位置取鼠标落点
   // ------------------------------------------------------------
-  const KIND_MENU = [
-    { kind: 'symptom', label: '症状', color: '#38bdf8', dir: 'symptoms' },
-    { kind: 'pulse', label: '脉象', color: '#a78bfa', dir: 'pulses' },
-    { kind: 'summary', label: '证候', color: '#fbbf24', dir: 'syndromes' },
-    { kind: 'formula', label: '方剂', color: '#34d399', dir: 'formulas' }
-  ]
-  const KIND_TITLE = { symptom: '新症状', pulse: '新脉象', summary: '新证候', formula: '新方剂' }
-
-  function uniqueName(kind) {
-    const base = 'new_' + kind
-    if (!node(base)) return base
-    for (let i = 2; i < 999; i++) { if (!node(base + '_' + i)) return base + '_' + i }
-    return base + '_' + Date.now().toString(36)
-  }
-
-  /** 在画布坐标 world 处建一个空节点，选中它并把光标放进「中文标题」输入框 */
-  function createNodeAt(kind, world) {
-    const name = uniqueName(kind)
-    const spec = { name, title: KIND_TITLE[kind] || '新节点', kind }
-    const n = addNode(spec)
-    S.layout.nodes[name] = { x: world.x, y: world.y }
-    S.layoutDirty = true
-    S.sel = new Set([name])
-    render(); renderList(); refreshRight()
-    const input = document.querySelector('#tab-inspect input[data-fk="title"]')
-    if (input) { input.focus(); input.select() }
-    toast('已建「' + n.title + '」，直接改名字 / 加关键词，保存时才会入库', 'ok', 6000)
-    return n
-  }
-
-  /** 光标处弹出四种节点类型的小菜单 */
-  function showKindPicker(clientX, clientY, onPick) {
-    const old = document.querySelector('#kind-picker')
-    if (old) old.remove()
-    const menu = document.createElement('div')
-    menu.id = 'kind-picker'
-    menu.style.cssText = 'position:fixed;z-index:120;background:#151b23;border:1px solid rgba(255,255,255,.14);'
-      + 'border-radius:9px;box-shadow:0 12px 30px rgba(0,0,0,.5);padding:5px;display:grid;gap:2px;min-width:112px;'
-      + 'font-family:inherit'
-    menu.innerHTML = KIND_MENU.map(k =>
-      '<button data-kind="' + k.kind + '" style="display:flex;align-items:center;gap:7px;padding:6px 10px;'
-      + 'border:0;background:none;color:#e6edf5;font-size:12.5px;text-align:left;border-radius:6px;cursor:pointer">'
-      + '<span style="width:7px;height:7px;border-radius:50%;background:' + k.color + '"></span>' + k.label + '</button>'
-    ).join('')
-    const x = Math.min(clientX, window.innerWidth - 130)
-    const y = Math.min(clientY, window.innerHeight - 170)
-    menu.style.left = x + 'px'
-    menu.style.top = y + 'px'
-    document.body.appendChild(menu)
-    const close = () => { menu.remove(); document.removeEventListener('mousedown', outside, true) }
-    const outside = e => { if (!menu.contains(e.target)) close() }
-    setTimeout(() => document.addEventListener('mousedown', outside, true), 0)
-    menu.querySelectorAll('[data-kind]').forEach(btn => {
-      btn.onmouseenter = () => { btn.style.background = 'rgba(20,184,166,.14)' }
-      btn.onmouseleave = () => { btn.style.background = 'none' }
-      btn.onclick = () => { const k = btn.dataset.kind; close(); onPick(k) }
-    })
-  }
-
-  // 双击空白处 → 选类型 → 就地建节点
   hooks.onCreateAt = (world, clientX, clientY) => {
-    showKindPicker(clientX, clientY, kind => createNodeAt(kind, world))
+    showNewNodeDialog({ world })
   }
 
-  // 从节点的输出圆点拖到空白处松开 → 按分层推断类型，就地新建并自动连上
   hooks.onLinkEmptyDrop = (from, world, pol, clientX, clientY) => {
     const src = node(from)
     if (!src) return
     const guess = (src.kind === 'symptom' || src.kind === 'pulse') ? 'summary'
-      : (src.kind === 'summary' ? 'formula' : null)
-    const finish = kind => {
-      const n = createNodeAt(kind, world)
-      const paths = n.needs.length || 1
-      addCondition(n.name, from, pol, paths - 1)
-      S.sel = new Set([n.name])
-      render(); renderList(); refreshRight()
-      toast('已新建「' + n.title + '」并连上：' + (src.title || from) + (pol === 'no' ? '（非）' : '') + ' → ' + n.title, 'ok', 7000)
-    }
-    if (guess) finish(guess)
-    else showKindPicker(clientX || window.innerWidth / 2, clientY || window.innerHeight / 2, finish)
+      : (src.kind === 'summary' ? 'formula' : 'symptom')
+    showNewNodeDialog({ world, from, pol, kind: guess })
   }
 
   hooks.onLinkDrop = (from, to, pol) => {
@@ -582,14 +513,21 @@ async function doShowSource(name) {
 // 新建节点
 // ------------------------------------------------------------
 
-function showNewNodeDialog() {
+function showNewNodeDialog(opts) {
+  const o = opts || {}
+  const fromNode = o.from ? node(o.from) : null
+  const linkNote = fromNode
+    ? `<div class="modal-note" style="border-left-color:#14b8a6">
+        创建后会立刻连上：<b>${esc(fromNode.title || o.from)}</b> ${o.pol === 'no' ? '（非）' : ''} → 新节点
+       </div>`
+    : ''
   openModal({
-    title: '新建节点',
+    title: o.world ? '新建节点（就地）' : '新建节点',
     width: 'min(680px,94vw)',
     body: `<div class="modal-note">
       新建的是<b>插件文件</b>：保存时会写入 <code>plugins/&lt;目录&gt;/&lt;name&gt;.js</code>。
       输入层节点（症状/脉象）靠「触发关键词」被病人描述激活；推论层节点（证候/方剂）靠「依赖条件」成立。
-    </div>
+    </div>${linkNote}
     <div class="form-row"><div class="form-label">类型</div>
       <select class="select" id="nn-kind">
         <option value="symptom">症状（输入层，病人能直接说出来的）</option>
@@ -636,11 +574,18 @@ function showNewNodeDialog() {
           }
           S.sel = new Set()
           addNode(spec)
+          if (o.world) S.layout.nodes[name] = { x: Math.round(o.world.x), y: Math.round(o.world.y) }
+          if (fromNode) addCondition(name, o.from, o.pol || 'yes', 0)
           c()
           S.sel = new Set([name])
+          S.layoutDirty = true
           render(); renderList(); refreshRight()
-          centerOn(name)
-          toast(`已创建 ${title}（还没保存）`, 'ok')
+          if (!o.world) centerOn(name)
+          if (fromNode) {
+            toast(`已创建 ${title} 并连上：${fromNode.title || o.from}${o.pol === 'no' ? '（非）' : ''} → ${title}`, 'ok', 7000)
+          } else {
+            toast(`已创建 ${title}（还没保存）`, 'ok')
+          }
         }
       }
     ]
@@ -648,6 +593,7 @@ function showNewNodeDialog() {
 
   // 类型联动：显示/隐藏字段
   const kindSel = document.querySelector('#nn-kind')
+  if (o.kind) kindSel.value = o.kind
   const sync = () => {
     const k = kindSel.value
     const leaf = k === 'symptom' || k === 'pulse'

@@ -14,6 +14,7 @@ import {
   addPath, removePath, addCondition, removeCondition, moveCondition, setPolarity
 } from './store.js'
 import { getSource } from './api.js'
+import { hooks } from './canvas.js'
 import { esc, toast, openModal, confirmDialog, promptDialog, showSourceDialog } from './ui.js'
 
 // ------------------------------------------------------------
@@ -148,7 +149,6 @@ function nodeHtml(node, selCount) {
       + '<br>可以用「查看源码」看磁盘上的真实内容（只读）。</div>')
   }
   out.push(basicHtml(node, ro))
-  out.push(provenanceHtml(node))
   if (node.isLeaf) {
     out.push(tagGroupHtml(node, 'trigger', '触发关键词', ro,
       '病人说的话命中任一关键词即判为「有」。输入层节点靠这里被病人说话命中。'))
@@ -160,55 +160,37 @@ function nodeHtml(node, selCount) {
   out.push(tagGroupHtml(node, 'contraindications', '禁忌', ro,
     '成立的方剂/证候会把禁忌汇总给病人看。'))
   out.push(depGroupHtml(node))
+  if (!window.__tcmPlatform) out.push(provBottomHtml(node))
   out.push('</div>')
   return out.join('')
 }
 
 // ------------------------------------------------------------
-// 条文来源（只读）：这条条文出自哪本书哪一条，谁提供的
-//   伤寒论 = 青绿，金匮要略 = 琥珀，其余来源 = 淡紫；一眼能分开
+// 条文溯源（只读，放在最底部；平台画布由注入脚本提供可编辑版 + 日志）
 // ------------------------------------------------------------
-const PROV_STYLE = {
-  shanghanlun: { border: 'rgba(94,234,212,.35)', bg: 'rgba(94,234,212,.08)', label: '#5eead4', tag: '伤寒' },
-  jinkui: { border: 'rgba(251,191,36,.35)', bg: 'rgba(251,191,36,.08)', label: '#fcd34d', tag: '金匮' }
-}
-const PROV_FALLBACK = { border: 'rgba(167,139,250,.35)', bg: 'rgba(167,139,250,.08)', label: '#c4b5fd', tag: '其它' }
-
-function provenanceHtml(node) {
+function provBottomHtml(node) {
   const p = node.provenance
-  if (!p) {
-    return '<div class="prov-box" style="border-color:rgba(148,163,184,.35);background:rgba(148,163,184,.08)">'
-      + '<span class="prov-label" style="color:#cbd5e1">条文来源：未标注</span>'
-      + '<span class="prov-note">在 plugins/provenance.json 里补一条即可</span></div>'
+  const srcTag = (id) => {
+    const map = { shanghanlun: ['伤寒', '#5eead4', 'rgba(20,184,166,.16)'], jinkui: ['金匮', '#fbbf24', 'rgba(251,191,36,.16)'], manual: ['人工', '#c4b5fd', 'rgba(167,139,250,.16)'] }
+    const m = map[id] || ['其它', 'var(--text-2)', 'rgba(255,255,255,.08)']
+    return '<span style="padding:0 5px;border-radius:5px;font-size:10px;font-weight:700;line-height:16px;color:' + m[1] + ';background:' + m[2] + '">' + m[0] + '</span>'
   }
-  const st = PROV_STYLE[p.sourceId] || PROV_FALLBACK
-  // refs 里可能同时有「第35条」和「篇名 · 条文首句」两种写法，分别拼
-  const refs = p.refs || []
-  const numeric = refs.filter(r => /^第?\d+条?$/.test(r) || /^\d+$/.test(r))
-  const textual = refs.filter(r => !numeric.includes(r))
-  const refTxt = [
-    numeric.length ? '第 ' + numeric.map(r => r.replace(/^第|条$/g, '')).join('、') + ' 条' : '',
-    textual.join('；')
-  ].filter(Boolean).join(' · ') || '（未标注具体条文）'
-  const whoTxt = [p.author, p.dynasty].filter(Boolean).join(' · ')
-  const isSystem = p.by && p.by.startsWith('system:')
-  const byTxt = isSystem
-    ? '原典条文（非人工提交）'
-    : (p.by ? '录入：' + p.by + '（经管理员审核）' : '')
-  // 自定义说明：让后来编辑的人知道「这条别人也遇到过、可以这样引用」
-  const noteTxt = p.note
-    ? '<div class="prov-note-box">' + esc(p.note)
-      + '<div class="prov-note-by">' + esc(p.noteBy ? '—— ' + p.noteBy + (p.noteAt ? ' · ' + p.noteAt : '') : '') + '</div></div>'
+  const row = (k, v) => '<div style="display:grid;grid-template-columns:52px 1fr;gap:6px;padding:2px 0;font-size:11.5px;line-height:1.6">'
+    + '<span style="color:var(--text-3)">' + k + '</span><span>' + v + '</span></div>'
+  const refTxt = p && p.refs && p.refs.length ? esc(String(p.refs[0])) : '<span style="color:var(--text-3)">（未标注具体条文）</span>'
+  const noteHtml = p && p.note
+    ? '<div style="margin-top:5px;padding:6px 8px;border-left:2px solid rgba(148,163,184,.5);background:rgba(148,163,184,.08);'
+      + 'border-radius:0 6px 6px 0;white-space:pre-wrap;color:var(--text);font-size:11.5px;line-height:1.55">' + esc(p.note)
+      + '<div style="color:var(--text-2);font-size:10.5px;margin-top:3px">'
+      + esc(p.noteBy ? '—— ' + p.noteBy + (p.noteAt ? ' · ' + p.noteAt : '') : '') + '</div></div>'
     : ''
-  return '<div class="prov-box" style="border-color:' + st.border + ';background:' + st.bg + '">'
-    + '<span class="prov-label" style="color:' + st.label + '">'
-    + '<span class="prov-tag" style="background:' + st.bg + ';color:' + st.label + ';border:1px solid ' + st.border + '">' + esc(st.tag) + '</span>'
-    + esc(p.label || '已标注来源') + '</span>'
-    + '<span class="prov-ref">' + esc(refTxt) + '</span>'
-    + '<span class="prov-ref" style="opacity:.75">《' + esc(p.title || '') + '》</span>'
-    + (whoTxt ? '<span class="prov-note">' + esc(whoTxt) + '</span>' : '')
-    + (byTxt ? '<span class="prov-note">' + esc(byTxt) + '</span>' : '')
-    + noteTxt
+  return '<div style="border-top:1px solid var(--border);margin-top:10px;padding:10px 2px 2px">'
+    + '<div style="color:var(--text-2);font-size:11.5px;margin-bottom:7px">条文溯源</div>'
+    + row('出处', p ? srcTag(p.sourceId) + ' ' + esc(p.label) : '<span style="color:var(--text-3)">未标注</span>')
+    + row('条文', refTxt)
+    + row('录入', '<span style="color:var(--text-2)">' + esc(p && p.by ? p.by : '—') + '</span>')
+    + noteHtml
+    + '<div style="color:var(--text-3);font-size:10.5px;margin-top:6px">备注与日志在平台画布（/canvas）里可编辑</div>'
     + '</div>'
 }
 
@@ -242,6 +224,11 @@ function basicHtml(node, ro) {
     + '<div class="field"><div class="field-label">中文标题</div>'
     + '<input class="input" data-fk="title" value="' + esc(node.title || '') + '" placeholder="例如：发热"'
     + (ro ? ' disabled' : '') + '></div>'
+    + '<div class="field"><div class="field-label">英文名（name，也是文件名）</div>'
+    + '<input class="input mono" data-fk="name" value="' + esc(node.name || '') + '"'
+    + ' placeholder="小写字母/数字/下划线，字母开头"'
+    + (ro ? ' disabled' : '') + '>'
+    + '<div class="hint">改名会同步改写所有引用它的 needs；保存时才真正落盘（文件名与目录一起变）</div></div>'
     + '<div class="field"><div class="field-label">类型</div>'
     + '<select class="select" data-fk="kind"' + (ro ? ' disabled' : '') + '>' + opts + '</select>'
     + '<div class="hint">改类型会在保存时把文件搬到对应目录（症状→symptoms、脉象→pulses、证候→syndromes、方剂→formulas），这一步由服务端完成。</div>'
@@ -427,6 +414,36 @@ function bindNode(root, node) {
       update(node.name, { title: titleEl.value })
       draw()
     })
+  }
+
+  // 英文名：回车或失焦时改名（renameNode 会同步改写所有引用）
+  const nameEl = root.querySelector('[data-fk="name"]')
+  if (nameEl && !ro) {
+    const commit = () => {
+      const want = nameEl.value.trim()
+      if (want === node.name) return
+      if (!/^[a-z][a-z0-9_]*$/.test(want)) {
+        toast('英文名不合法：小写字母开头，只能含小写字母、数字、下划线', 'warn', 6000)
+        nameEl.value = node.name
+        return
+      }
+      if (S.nodes.has(want)) {
+        toast('已存在同名节点：' + want, 'warn', 6000)
+        nameEl.value = node.name
+        return
+      }
+      const oldName = node.name
+      if (renameNode(oldName, want)) {
+        S.sel = new Set([want])
+        toast('已改名为 ' + want + '（引用已同步，保存时落盘）', 'ok', 6000)
+        if (hooks.onSelect) hooks.onSelect([...S.sel])
+        draw()
+      } else {
+        nameEl.value = oldName
+      }
+    }
+    nameEl.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); nameEl.blur() } })
+    nameEl.addEventListener('blur', commit)
   }
 
   // 反问话术：change 时写入

@@ -77,6 +77,8 @@ style.textContent = `
 `
 document.head.appendChild(style)
 
+window.__tcmPlatform = true   // 告诉检视器：溯源由本脚本渲染，别重复画一份
+
 let store = null
 try {
   store = await import('/canvas/js/store.js')
