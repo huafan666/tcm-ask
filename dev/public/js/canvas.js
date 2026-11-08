@@ -18,10 +18,12 @@ let raf = null
 let visible = new Set()
 
 export const hooks = {
-  onSelect: null,      // (name) => void
-  onLinkDrop: null,    // (fromName, toName, pol) => void
-  onContext: null,     // (name, clientX, clientY) => void
-  onEdgeSelect: null   // (edge) => void
+  onSelect: null,          // (names) => void
+  onLinkDrop: null,        // (fromName, toName, pol) => void
+  onLinkEmptyDrop: null,   // (fromName, worldPos, pol) => void  拖到空白处松开
+  onCreateAt: null,        // (worldPos, clientX, clientY) => void  双击空白处
+  onContext: null,         // (name, clientX, clientY) => void
+  onEdgeSelect: null       // (edge) => void
 }
 
 // ------------------------------------------------------------
@@ -549,12 +551,20 @@ export function initCanvas() {
       return
     }
 
-    // 空白处 → 框选
-    mode = 'marquee'
-    const w = screenToWorld(e.clientX, e.clientY)
-    start = { wx: w.x, wy: w.y, cx: e.clientX, cy: e.clientY }
-    marqueeEl.setAttribute('visibility', 'visible')
-    if (!e.shiftKey) { S.sel = new Set(); S.selEdge = null; if (hooks.onSelect) hooks.onSelect([]) }
+    // 空白处：默认平移画布；按住 Shift 才框选
+    const w0 = screenToWorld(e.clientX, e.clientY)
+    if (e.shiftKey) {
+      mode = 'marquee'
+      start = { wx: w0.x, wy: w0.y, cx: e.clientX, cy: e.clientY }
+      marqueeEl.setAttribute('visibility', 'visible')
+      render()
+      return
+    }
+    mode = 'pan'
+    start = { x: e.clientX, y: e.clientY, vx: S.view.x, vy: S.view.y }
+    svg.style.cursor = 'grabbing'
+    S.sel = new Set(); S.selEdge = null
+    if (hooks.onSelect) hooks.onSelect([])
     render()
   })
 
@@ -616,6 +626,11 @@ export function initCanvas() {
       const target = gnode ? gnode.dataset.name : null
       if (target && target !== linkFrom && hooks.onLinkDrop) {
         hooks.onLinkDrop(linkFrom, target, e.altKey ? 'no' : 'yes')
+      } else if (!target && linkFrom && hooks.onLinkEmptyDrop) {
+        // 拖到空白处松开：在那里新建节点并自动连上
+        const w = screenToWorld(e.clientX, e.clientY)
+        hooks.onLinkEmptyDrop(linkFrom, { x: Math.round(w.x), y: Math.round(w.y) },
+          e.altKey ? 'no' : 'yes', e.clientX, e.clientY)
       }
       linkPath = null
       linkFrom = null
@@ -643,7 +658,13 @@ export function initCanvas() {
 
   svg.addEventListener('dblclick', e => {
     const gnode = e.target.closest && e.target.closest('.gnode')
-    if (gnode) { centerOn(gnode.dataset.name); zoomBy(1.15) }
+    if (gnode) { centerOn(gnode.dataset.name); zoomBy(1.15); return }
+    if (e.target.closest && e.target.closest('.port')) return
+    if (hooks.onCreateAt) {
+      const w = screenToWorld(e.clientX, e.clientY)
+      hooks.onCreateAt({ x: Math.round(w.x), y: Math.round(w.y) }, e.clientX, e.clientY)
+      e.preventDefault()
+    }
   })
 
   svg.addEventListener('contextmenu', e => {
