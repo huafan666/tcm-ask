@@ -129,6 +129,8 @@ node platform\server.js    # 或双击 platform\启动平台.bat
 - **管理端**：`/review` 逐行 diff 审草稿，通过后自动写盘 + 引擎热重载，并登记**字段级归属**
   （哪个节点的 `trigger`/`ask`/`needs` 是谁提供的，画布右下角实时可见）
 - **社区**：`/community` 帖子 / 评论 / 点赞，医生带「✓ 已认证医生」徽标
+- **每人一套 API Key**：`/settings` 里每个账号填自己的 DeepSeek key——AES-256-GCM 加密存库、
+  接口只回掩码、账号之间互不可见；没配的账号走纯规则辨证，不会借用别人的 key
 
 演示账号：`admin/admin123`、`doctor/doctor123`、`doctor2/doctor123`（待开通）、`patient/patient123`。
 详见 [`platform/README.md`](platform/README.md)。数据在 `platform/data/`（SQLite，已 gitignore）。

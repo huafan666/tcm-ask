@@ -5,13 +5,22 @@
 //   3) freeChat           自由对话：结束诊断后，只解释、不推理诊断
 // 全部用最便宜的 deepseek-chat，做最轻的打包。
 
-const { llmConfig, chatCompletion } = require('./llmClient')
+const { llmConfig, configFrom, chatCompletion } = require('./llmClient')
 
-let cfgCache = null
-function getCfg() { if (!cfgCache) cfgCache = llmConfig(); return cfgCache }
+// llm 参数三种取值：
+//   · 省略(undefined) → 用环境变量 LLM_KEY（命令行版 / 独立 server.js 的老行为）
+//   · {apiKey, baseUrl, model} → 用这套配置（平台里每个账号自己的 key）
+//   · false → 明确「不用大模型」，直接返回降级结果，绝不偷偷回退到环境变量
+function getCfg(llm) {
+  if (llm === false) return null
+  if (llm && llm.apiKey) return configFrom(llm)
+  const env = llmConfig()
+  return env.key ? env : null
+}
 
-async function summarizeSymptoms(raw, symptomList = []) {
-  const cfg = getCfg()
+async function summarizeSymptoms(raw, symptomList = [], llm) {
+  const cfg = getCfg(llm)
+  if (!cfg) return raw          // 没有可用 key：原文直接喂给规则引擎
   const pool = symptomList.length
     ? '\n以下是系统已知的症状清单(只许从这里面选，不要自造症状名)：\n' +
       symptomList.map(s => '· ' + s).join('\n')
@@ -35,8 +44,9 @@ ${pool}
   }
 }
 
-async function explainResult(resultText) {
-  const cfg = getCfg()
+async function explainResult(resultText, llm) {
+  const cfg = getCfg(llm)
+  if (!cfg) return resultText    // 没有可用 key：直接用规则引擎的原文
   const sys = `你是中医师，负责把一次辨证的结果解释给病人听。
 你会收到引擎推演出的状态(哪些证/方成立、哪些症状为否、有哪些注意事项/禁忌)。
 
@@ -67,8 +77,9 @@ async function explainResult(resultText) {
   }
 }
 
-async function freeChat(history, userLine) {
-  const cfg = getCfg()
+async function freeChat(history, userLine, llm) {
+  const cfg = getCfg(llm)
+  if (!cfg) return '（当前账号还没有配置大模型 API Key，去「设置 → API 配置」填一个自己的 key 就能继续对话）'
   const sys = `你是中医知识助手。之前已经完成过一次辨证(结果里已经给出结论和方剂)。
 你现在的任务是【解释与答疑】，不是【重新推理诊断】。
 

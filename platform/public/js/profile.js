@@ -141,6 +141,17 @@ if (user.role === 'doctor' || user.role === 'admin') {
 // ---------------- 右侧栏 ----------------
 $('#aside').innerHTML = `
   <div class="card">
+    <h3 style="margin-bottom:10px">大模型 API</h3>
+    <div class="small muted" style="line-height:1.9">
+      ${shell.llm && shell.llm.source === 'user'
+        ? `正在用你自己的 Key <span class="mono">${esc(shell.llm.keyMask)}</span>`
+        : shell.llm && shell.llm.source === 'server'
+          ? '正在用服务器默认 Key'
+          : '还没配置 · 问诊只有规则辨证，没有 AI 解释'}
+    </div>
+    <a class="btn btn-sm btn-primary" href="/settings" style="margin-top:10px">去配置</a>
+  </div>
+  <div class="card">
     <h3 style="margin-bottom:10px">账号</h3>
     <div class="small muted" style="line-height:1.9">
       用户名：<span class="mono">${esc(user.username)}</span><br>

@@ -97,6 +97,7 @@ const I = {
   doctor: '<path d="M12 3v4M10 5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 9h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 12v5M9.5 14.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
   review: '<path d="M5 4h11l3 3v13H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
   me: '<circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 20c.8-3.6 3.8-5.5 7.5-5.5s6.7 1.9 7.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  gear: '<circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.3 13.6a7.7 7.7 0 0 0 0-3.2l1.6-1.1-1.8-3.1-1.9.7a7.7 7.7 0 0 0-2.7-1.6L14.1 3.4h-3.6l-.4 1.9a7.7 7.7 0 0 0-2.7 1.6l-1.9-.7-1.8 3.1 1.6 1.1a7.7 7.7 0 0 0 0 3.2l-1.6 1.1 1.8 3.1 1.9-.7a7.7 7.7 0 0 0 2.7 1.6l.4 1.9h3.6l.4-1.9a7.7 7.7 0 0 0 2.7-1.6l1.9.7 1.8-3.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
   heart: '<path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
   comment: '<path d="M20 12a7.5 7.5 0 0 1-11.3 6.6L5 20l1.4-3.7A7.5 7.5 0 1 1 20 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
   plus: '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
@@ -123,6 +124,7 @@ function navItems(user) {
     items.push({ key: 'review', href: '/review', label: '审核台', ico: 'review' })
   }
   items.push({ key: 'me', href: user ? '/me' : '/login', label: user ? '我的' : '登录', ico: 'me' })
+  if (user) items.push({ key: 'settings', href: '/settings', label: '设置', ico: 'gear' })
   return items
 }
 
@@ -185,7 +187,7 @@ export async function bootShell(activeKey, opts = {}) {
     if (cta) cta.onclick = () => { location.href = '/consult' }
   }
 
-  return { user, stats: me.stats || {} }
+  return { user, stats: me.stats || {}, llm: me.llm || null }
 }
 
 export function logout() {

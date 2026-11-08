@@ -23,6 +23,7 @@ const db = require('./db')
 const auth = require('./auth')
 const review = require('./review')
 const community = require('./community')
+const llmconfig = require('./llmconfig')
 const { ConsultStore, historyOf, historyDetail } = require('./consult')
 
 const ROOT = path.join(__dirname, '..')
@@ -160,6 +161,7 @@ const PAGE_MAP = {
   '/community': 'community.html',
   '/doctor': 'doctor.html',
   '/review': 'review.html',
+  '/settings': 'settings.html',
   '/me': 'profile.html'
 }
 
@@ -184,12 +186,19 @@ add('POST', '/api/auth/logout', ctx => {
   return { ok: true }
 })
 
-add('GET', '/api/auth/me', ctx => ({
-  user: ctx.user ? auth.publicUser(ctx.user) : null,
-  stats: Object.assign(pluginStats(), {
-    pendingDrafts: ctx.user && ctx.user.role === 'admin' ? review.pendingCount() : 0
-  })
-}))
+add('GET', '/api/auth/me', ctx => {
+  const user = ctx.user ? auth.publicUser(ctx.user) : null
+  const llm = ctx.user
+    ? (c => ({ configured: c.configured, enabled: c.enabled, source: c.source, keyMask: c.keyMask }))(llmconfig.get(ctx.user.id))
+    : null
+  return {
+    user,
+    llm,
+    stats: Object.assign(pluginStats(), {
+      pendingDrafts: ctx.user && ctx.user.role === 'admin' ? review.pendingCount() : 0
+    })
+  }
+})
 
 add('POST', '/api/auth/profile', ctx => {
   const user = auth.requireUser(ctx.req)
@@ -202,9 +211,44 @@ add('POST', '/api/auth/profile', ctx => {
 })
 
 // ============================================================
-// 二、问诊（接口与原 server.js 完全一致，问诊前端一行未改）
+// 一·五、每个账号自己的大模型 API 配置（默认 DeepSeek）
+//   · 明文 key 只在内存里，库里存 AES-256-GCM 密文
+//   · 接口只回掩码，任何人都读不到别人的 key
+//   · 没配的人走纯规则辨证，不会偷用别人的 key
 // ============================================================
 
+add('GET', '/api/llm/config', ctx => {
+  const user = auth.requireUser(ctx.req)
+  return { ok: true, config: llmconfig.get(user.id) }
+})
+
+add('POST', '/api/llm/config', ctx => {
+  const user = auth.requireUser(ctx.req)
+  return { ok: true, config: llmconfig.save(user.id, ctx.body || {}) }
+})
+
+add('DELETE', '/api/llm/config', ctx => {
+  const user = auth.requireUser(ctx.req)
+  return { ok: true, config: llmconfig.clear(user.id) }
+})
+
+// 测试连通性：可以测「还没保存的 key」，也可以测已保存的那把
+add('POST', '/api/llm/test', async ctx => {
+  const user = auth.requireUser(ctx.req)
+  const body = ctx.body || {}
+  let cfg = { apiKey: body.apiKey, baseUrl: body.baseUrl, model: body.model }
+  if (!String(cfg.apiKey || '').trim()) {
+    const saved = llmconfig.resolve(user.id)
+    if (!saved || !saved.apiKey) throw new HttpError(400, '先填一个 API Key 再测试')
+    cfg = saved
+  }
+  const result = await llmconfig.test(cfg)
+  return Object.assign({ ok: false }, result)
+})
+
+// ============================================================
+// 二、问诊（接口与原 server.js 完全一致，问诊前端一行未改）
+// ============================================================
 function introMessage(hasLLM) {
   return hasLLM
     ? '你好！我是中医辨证助手。请描述病人的症状（口语即可），例如：发烧、怕冷、有点咳嗽、不出汗。我会边问边帮你辨证。'

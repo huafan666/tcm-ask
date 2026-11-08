@@ -36,6 +36,12 @@ export const api = {
   logout: () => req('/api/auth/logout', { method: 'POST', body: {} }),
   updateProfile: body => req('/api/auth/profile', { method: 'POST', body }),
 
+  // 每个账号自己的大模型 API 配置
+  llmConfig: () => req('/api/llm/config'),
+  llmSave: body => req('/api/llm/config', { method: 'POST', body }),
+  llmClear: () => req('/api/llm/config', { method: 'DELETE', body: {} }),
+  llmTest: body => req('/api/llm/test', { method: 'POST', body }),
+
   // 首页 / 统计
   home: () => req('/api/home'),
   contributors: () => req('/api/attribution/contributors'),

@@ -28,10 +28,10 @@ node platform/server.js     # 起服务 → http://127.0.0.1:3095
 | `/doctor` | 医生、管理员 | 条文工作台：进画布、看自己的提交与审核结果、我提供过的条文 |
 | `/canvas` | 医生、管理员 | **就是 `dev/public` 那套画布**，注入了一层平台壳 |
 | `/review` | 管理员 | 审核台：待审草稿逐行 diff、通过/驳回、医生账号开通、贡献榜 |
+| `/settings` | 登录用户 | 设置：**自己的一套大模型 API 配置**（DeepSeek key / Base URL / 模型 / 开关 / 测试连接） |
 | `/me` | 登录用户 | 我的：资料、辨证记录、帖子、条文贡献 |
 
 ## 四条主线怎么串起来的
-
 ### 1. 患者端：问诊模块搬进患者界面
 
 `platform/server.js` 原样实现了 `web/index.html` 调用的那几个接口
@@ -75,22 +75,50 @@ node_name | field(title/trigger/negate/ask/needs/contraindications/node) | autho
 帖子 + 评论 + 点赞，医生带 `✓ 已认证医生` 徽标（管理员在审核台打认证）。
 读开放、写要登录。
 
+### 5. 每个账号自己的大模型 API（默认 DeepSeek）
+
+`/settings` 里每个登录用户填**自己的** key，互不相干：
+
+```
+浏览器 → POST /api/llm/config {apiKey, baseUrl, model, enabled}
+       → secretstore.encrypt()  AES-256-GCM
+       → user_api_keys 表（一个 user_id 一行，存密文）
+
+问诊时 → llmconfig.resolve(userId)
+       → {apiKey, baseUrl, model}  → new Session(registry, { llm })
+       → 没有就返回 false → Session 明确不用大模型（纯规则辨证）
+```
+
+要点：
+
+- **明文永远不出服务器**：所有接口只回掩码 `sk-abc••••wxyz`，管理员也看不到；
+- **绝对隔离**：A 账号配了 key，B 账号的问诊不会用到它（`/api/new` 返回的 `hasLLM` 按账号算）；
+- **不偷偷借用**：没配 key 的账号（含未登录访客）走纯规则辨证——问题照问、结论照出，只是没有 AI 解释；
+- 主密钥在 `platform/data/master.key`（首次自动生成，gitignore），也可以用环境变量
+  `PLATFORM_SECRET`（64 位十六进制）指定；换掉主密钥后旧密文解不开，会提示用户重填；
+- 想让服务器 `.env` 的 key 给没配的人兜底：启动时加 `PLATFORM_ALLOW_ENV_LLM=1`（默认关闭）。
+
+改动落在 `llm/` 和 `core/session.js` 上是向后兼容的：`Session` 的 `opts.llm` 不传时
+（命令行 `run-mvp.js`、独立 `server.js`）仍然读环境变量，行为一点没变。
+
 ## 目录
 
 ```
 platform/
-├─ server.js          # 一个进程：静态页面 + 问诊 API + 画布 API + 审核 + 社区
-├─ db.js              # node:sqlite 建库建表（users/sessions/consults/drafts/attributions/posts/comments/likes）
+├─ server.js          # 一个进程：静态页面 + 问诊 API + 画布 API + 审核 + 社区 + API 配置
+├─ db.js              # node:sqlite 建库建表（users/sessions/user_api_keys/consults/drafts/attributions/posts/comments/likes）
 ├─ auth.js            # scrypt 口令 + HttpOnly Cookie 会话 + 角色/状态
+├─ secretstore.js     # AES-256-GCM：加密用户自己的 API Key（主密钥在本机）
+├─ llmconfig.js       # 每个账号一套 LLM 配置：保存 / 掩码 / 解析 / 连通性测试
 ├─ consult.js         # 问诊会话（复用 core/session.js）+ 结论存档
 ├─ review.js          # 草稿提交 / diff / 通过落盘 / 字段级归属
 ├─ community.js       # 帖子 / 评论 / 点赞
 ├─ seed.js            # 演示数据
-├─ selftest.js        # 端到端自测（57 项断言，需先起服务）
+├─ selftest.js        # 端到端自测（89 项断言，需先起服务）
 ├─ checkui.js         # 前端静态体检（import / 资源 / DOM id / 接口覆盖 / 画布注入）
 └─ public/            # 前端（原生 ES module，无构建）
    ├─ css/app.css     # 浅色 Instagram 风设计系统
-   └─ js/             # api / shell / home / auth / consult / community / doctor / review / profile / canvas-bridge
+   └─ js/             # api / shell / home / auth / consult / community / doctor / review / settings / profile / canvas-bridge
 ```
 
 ## 验证
@@ -98,7 +126,7 @@ platform/
 ```powershell
 node platform\checkui.js     # 静态体检（0 错误）
 node platform\server.js      # 另开一个窗口
-node platform\selftest.js    # 端到端：账号 → 问诊 → 提交 → 审核落盘 → 归属 → 社区（57 通过）
+node platform\selftest.js    # 端到端：账号 → 问诊 → 提交 → 审核落盘 → 归属 → 社区 → API 配置隔离（89 通过）
 ```
 
 `selftest.js` 每轮会用一个临时触发词提交、审核、再还原，可重复执行。
@@ -112,6 +140,8 @@ node platform\selftest.js    # 端到端：账号 → 问诊 → 提交 → 审�
 
 - 只监听 `127.0.0.1`，没有 HTTPS、没有 CSRF token、没有限流、没有邮件找回密码；
 - 口令用 scrypt 加盐存储，会话是 HttpOnly Cookie，但**没有做更细的权限模型**；
+- 用户的 API Key 在库里是 AES-256-GCM 密文，但**传输走 HTTP 明文**——本机 demo 无所谓，
+  真上线必须上 HTTPS，否则 key 在网线上是裸的；
 - 问诊模块用 iframe 嵌入（保留原页面一行未改的代价），不是同页组件；
 - SQLite 单文件在 `platform/data/`（已 `.gitignore`），删掉就等于清空平台数据。
 

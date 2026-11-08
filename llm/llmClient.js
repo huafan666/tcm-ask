@@ -13,6 +13,17 @@ function llmConfig() {
   }
 }
 
+// 显式给一套配置（平台里每个账号用自己的 key 时走这里，不读环境变量）
+function configFrom({ apiKey, baseUrl, model, path: p, maxTokens }) {
+  return {
+    key: String(apiKey || ''),
+    baseURL: (baseUrl || 'https://api.deepseek.com').replace(/\/+$/, ''),
+    model: model || 'deepseek-chat',
+    path: p || '/chat/completions',
+    max_tokens: maxTokens || 2000,
+  }
+}
+
 async function chatCompletion(cfg, messages, jsonMode = false) {
   const body = { model: cfg.model, messages, max_tokens: cfg.max_tokens }
   if (jsonMode) body.response_format = { type: 'json_object' }
@@ -32,4 +43,4 @@ async function chatCompletion(cfg, messages, jsonMode = false) {
   return msg.content || ''
 }
 
-module.exports = { llmConfig, chatCompletion }
+module.exports = { llmConfig, configFrom, chatCompletion }

@@ -14,6 +14,19 @@ if (user) {
 $('#aside').innerHTML = `
   <div class="card">
     <div class="spread" style="margin-bottom:10px">
+      <h3>AI 解释</h3>
+      <a class="tiny dim" href="/settings">设置</a>
+    </div>
+    <div class="small muted" style="line-height:1.9">
+      ${shell.llm && shell.llm.source === 'user'
+        ? `正在用你自己的 Key <span class="mono">${esc(shell.llm.keyMask)}</span>`
+        : shell.llm && shell.llm.source === 'server'
+          ? '正在用服务器默认 Key'
+          : '还没配置 Key：问诊照常出结论，但没有 AI 解释。'}
+    </div>
+  </div>
+  <div class="card">
+    <div class="spread" style="margin-bottom:10px">
       <h3>我的辨证记录</h3>
       ${user ? '<button class="btn btn-sm" id="btn-refresh">刷新</button>' : ''}
     </div>

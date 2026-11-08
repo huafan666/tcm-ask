@@ -226,9 +226,62 @@ console.log('\n[7] 首页聚合')
   ok('首页带我的记录', h.data.myConsults.length >= 1, h.data.myConsults.length)
 }
 
-console.log('\n[8] 静态页面')
+console.log('\n[8] 每个账号自己的大模型 API 配置')
 {
-  for (const [path, needle] of [['/', '辨证社区'], ['/login', '演示账号'], ['/consult', 'consult-app'], ['/community', '社区讨论'], ['/doctor', '条文工作台'], ['/review', '审核台'], ['/me', '我的'], ['/p/css/app.css', '--grad']]) {
+  const FAKE = 'sk-selftest' + Date.now().toString(36)
+  const { q } = await import('./db.js')
+
+  const anonCfg = await anon.req('/api/llm/config')
+  ok('未登录不能读写 API 配置（401）', anonCfg.status === 401, anonCfg.data)
+
+  const d0 = await doctor.req('/api/llm/config')
+  ok('医生初始未配置', d0.data.config.configured === false, d0.data.config)
+  ok('未配置时不返回任何 key 片段', (d0.data.config.keyMask || '') === '', d0.data.config.keyMask)
+
+  const bad = await doctor.req('/api/llm/config', { method: 'POST', body: { apiKey: FAKE, baseUrl: 'api.deepseek.com' } })
+  ok('Base URL 缺 http(s) 被拒（400）', bad.status === 400, bad.data)
+
+  const saved = await doctor.req('/api/llm/config', { method: 'POST', body: { apiKey: FAKE, baseUrl: 'https://api.deepseek.com', model: 'deepseek-chat', enabled: true } })
+  ok('医生保存自己的 Key 成功', saved.data.ok === true && saved.data.config.configured === true, saved.data.config)
+  ok('返回的是掩码不是明文', saved.data.config.keyMask.includes('••••') && !JSON.stringify(saved.data).includes(FAKE), saved.data.config.keyMask)
+  ok('掩码保留后四位', saved.data.config.keyMask.endsWith(FAKE.slice(-4)), saved.data.config.keyMask)
+  ok('当前生效来源=我的 key', saved.data.config.source === 'user', saved.data.config.source)
+
+  const raw = q.get('SELECT key_cipher FROM user_api_keys WHERE user_id = (SELECT id FROM users WHERE username = ?)', 'doctor')
+  ok('库里存的是密文，不含明文', !!raw && raw.key_cipher.startsWith('v1.') && !raw.key_cipher.includes(FAKE), raw && raw.key_cipher.slice(0, 24))
+
+  const p0 = await patient.req('/api/llm/config')
+  ok('患者的配置和医生的完全隔离', p0.data.config.configured === false && (p0.data.config.keyMask || '') === '', p0.data.config)
+
+  const meDoc = await doctor.req('/api/auth/me')
+  const mePat = await patient.req('/api/auth/me')
+  ok('医生 me 显示用我的 key', meDoc.data.llm && meDoc.data.llm.source === 'user', meDoc.data.llm)
+  ok('患者 me 仍是无 key', mePat.data.llm && mePat.data.llm.configured === false, mePat.data.llm)
+
+  const newDoc = await doctor.req('/api/new')
+  const newPat = await patient.req('/api/new')
+  ok('医生新会话 hasLLM=true（用他自己的 key）', newDoc.data.hasLLM === true, newDoc.data.hasLLM)
+  ok('患者新会话 hasLLM=false（不会偷用别人的 key）', newPat.data.hasLLM === false, newPat.data.hasLLM)
+
+  const t1 = await patient.req('/api/llm/test', { method: 'POST', body: {} })
+  ok('没 key 的人测试连接被拒（400）', t1.status === 400, t1.data)
+
+  const t2 = await doctor.req('/api/llm/test', { method: 'POST', body: { apiKey: FAKE, baseUrl: 'http://127.0.0.1:9' } })
+  ok('连通性测试能优雅失败（返回错误而不是 500）', t2.status === 200 && t2.data.ok === false && !!t2.data.error, t2.data)
+
+  const off = await doctor.req('/api/llm/config', { method: 'POST', body: { enabled: false } })
+  ok('可以只关开关、保留 key', off.data.config.enabled === false && off.data.config.configured === true, off.data.config)
+  ok('关掉后不再生效', off.data.config.source !== 'user', off.data.config.source)
+
+  const cleared = await doctor.req('/api/llm/config', { method: 'DELETE' })
+  ok('删除配置成功', cleared.data.config.configured === false, cleared.data.config)
+  const newDoc2 = await doctor.req('/api/new')
+  ok('删除后 hasLLM 回到 false', newDoc2.data.hasLLM === false, newDoc2.data.hasLLM)
+}
+
+console.log('\n[9] 静态页面')
+{
+  for (const [path, needle] of [['/', '辨证社区'], ['/login', '演示账号'], ['/consult', 'consult-app'], ['/community', '社区讨论'], ['/doctor', '条文工作台'], ['/review', '审核台'], ['/settings', '设置'], ['/me', '我的'], ['/p/css/app.css', '--grad']]) {
     const r = await anon.req(path)
     ok(`GET ${path} 可访问`, r.status === 200 && r.text.includes(needle), { status: r.status })
   }

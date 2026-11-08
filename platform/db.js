@@ -45,6 +45,18 @@ CREATE TABLE IF NOT EXISTS sessions (
   expires_at TEXT NOT NULL
 );
 
+-- 每个账号自己的大模型 API 配置（明文 key 不落库，这里只存 AES-256-GCM 密文）
+CREATE TABLE IF NOT EXISTS user_api_keys (
+  user_id    INTEGER PRIMARY KEY,
+  provider   TEXT    NOT NULL DEFAULT 'deepseek',
+  base_url   TEXT    NOT NULL,
+  model      TEXT    NOT NULL,
+  key_cipher TEXT    NOT NULL,
+  enabled    INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT    NOT NULL,
+  updated_at TEXT    NOT NULL
+);
+
 -- 一次完成的问诊（患者档案）
 CREATE TABLE IF NOT EXISTS consults (
   id          TEXT PRIMARY KEY,

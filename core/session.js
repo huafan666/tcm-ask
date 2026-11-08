@@ -12,6 +12,9 @@ class Session {
   constructor(registry, opts = {}) {
     this.registry = registry
     this.opts = opts
+    // 大模型配置：undefined=用环境变量（CLI/独立服务的老行为）；
+    // 对象={apiKey,baseUrl,model}=用这套（云平台按账号隔离）；false=明确不用大模型
+    this.llm = opts.llm
     this.engine = new Engine(registry)
     this.asker = new Asker(this.engine)
     this.snapshotStack = []
@@ -151,7 +154,7 @@ class Session {
       const pool = Object.values(this.registry)
         .filter(p => p.kind === 'symptom')
         .map(p => p.title)
-      structured = await summarizeSymptoms(text, pool)
+      structured = await summarizeSymptoms(text, pool, this.llm)
     } catch (_) {}
     // 判断是不是 LLM 输出的三态标记格式；是则按行解析，否则退回原文 feed
     const llmStructured = typeof structured === 'string' && /【肯定】|【否定】|【模糊】/.test(structured)
@@ -167,7 +170,7 @@ class Session {
     const resultText = this.stateText()
     let explanation = resultText
     try {
-      explanation = await explainResult(resultText)
+      explanation = await explainResult(resultText, this.llm)
     } catch (_) {}
     // 提取已成立的方剂名供前端展示
     const yesFormulas = Object.entries(this.engine.state)
@@ -189,7 +192,7 @@ class Session {
   async chat(text) {
     try {
       this.chatHistory.push({ role: 'user', content: text })
-      const reply = await freeChat(this.chatHistory, text)
+      const reply = await freeChat(this.chatHistory, text, this.llm)
       this.chatHistory.push({ role: 'assistant', content: reply })
       return { reply }
     } catch (_) {
@@ -211,6 +214,8 @@ class Session {
   }
 
   hasLLM() {
+    if (this.llm === false) return false
+    if (this.llm && this.llm.apiKey) return true
     return !!process.env.LLM_KEY
   }
 }
