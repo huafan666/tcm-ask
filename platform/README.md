@@ -136,6 +136,19 @@ node platform\selftest.js    # 端到端：账号 → 问诊 → 提交 → 审�
 > 存成 UTF-8 的话 `cmd.exe` 会按 GBK 解析：中文全变乱码，连 `cd /d "%~dp0.."` 那行都会一起坏掉，
 > 结果就是在 `platform\` 里找 `platform\seed.js`。
 
+### 双击启动时的三种情况
+
+| 情况 | bat 的行为 |
+|---|---|
+| 端口 3095 空闲 | 正常起服务（首次会自动 `seed.js`），关闭黑窗口即停止 |
+| 端口 3095 已被占用 | **不再报“启动失败”**，而是提示「平台已经在运行」并直接打开浏览器，退出码 0 |
+| 没装 node | 提示去 nodejs.org 装 Node 24（平台要用内置 `node:sqlite`） |
+
+端口被占用的判断是 `netstat -ano | findstr :3095 | findstr LISTENING`；
+想换端口就 `set PLATFORM_PORT=3096` 再双击（bat 会跟着用这个端口做检测和提示）。
+
+如果确实要重启：先关掉原来那个黑窗口（或任务管理器结束那个 `node.exe`），再双击一次。
+
 ## 这是 demo，不是生产环境
 
 - 只监听 `127.0.0.1`，没有 HTTPS、没有 CSRF token、没有限流、没有邮件找回密码；

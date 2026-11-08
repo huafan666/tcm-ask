@@ -611,7 +611,12 @@ const server = http.createServer(async (req, res) => {
 
 server.on('error', e => {
   if (e.code === 'EADDRINUSE') {
-    console.error(`\n端口 ${PORT} 已被占用。换个端口： $env:PLATFORM_PORT=3096; node platform/server.js\n`)
+    console.error('')
+    console.error(`  端口 ${PORT} 已经被占用了 —— 多半是平台已经启动过一次（那个黑窗口还开着）。`)
+    console.error(`  · 直接用就行：  http://${HOST}:${PORT}`)
+    console.error(`  · 要重启：      先关掉原来那个窗口，再启动`)
+    console.error(`  · 或换个端口：  $env:PLATFORM_PORT=3096; node platform/server.js`)
+    console.error('')
     process.exit(1)
   }
   throw e
