@@ -1,22 +1,47 @@
 @echo off
-chcp 65001 >nul
-title ä¸­åŒ»è¾¨è¯åŠ©æ‰‹ Â· äº‘å¹³å°ï¼ˆæœ¬åœ°å¤šç”¨æˆ· demoï¼‰
+title ÖĞÒ½±æÖ¤ÖúÊÖ ¡¤ ÔÆÆ½Ì¨
 cd /d "%~dp0.."
 
+REM Æ½Ì¨ÓÃµ½ Node 24 ÄÚÖÃµÄ node:sqlite£¬ĞèÒªÏµÍ³ node
 where node >nul 2>nul
-if errorlevel 1 (
-  echo.
-  echo æ²¡æ‰¾åˆ° nodeï¼Œè¯·å…ˆå®‰è£… Node.js 18+ï¼ˆæœ¬é¡¹ç›®ç”¨ Node 24 å†…ç½®çš„ node:sqliteï¼‰
-  echo.
-  pause
-  exit /b 1
-)
+if errorlevel 1 goto nonode
 
-if not exist "platform\data\platform.db" (
-  echo é¦–æ¬¡è¿è¡Œï¼Œæ­£åœ¨åˆå§‹åŒ–æ¼”ç¤ºæ•°æ®...
-  node platform\seed.js
-  echo.
-)
+if exist "platform\data\platform.db" goto seeded
+echo.
+echo   Ê×´ÎÔËĞĞ£¬ÕıÔÚ³õÊ¼»¯ÑİÊ¾Êı¾İ...
+chcp 65001 >nul
+node platform\seed.js
+chcp 936 >nul
+echo.
+:seeded
 
+echo.
+echo   ÕıÔÚÆô¶¯ÔÆÆ½Ì¨...
+echo   µØÖ·£ºhttp://127.0.0.1:3095
+echo   ÑİÊ¾ÕËºÅ£ºadmin/admin123  doctor/doctor123  patient/patient123
+echo   ¹Ø±Õ±¾´°¿Ú¼´Í£Ö¹·şÎñ¡£
+echo.
+
+chcp 65001 >nul
 node platform\server.js
+set RC=%errorlevel%
+chcp 936 >nul
+if not "%RC%"=="0" goto failed
+echo.
+echo   Æ½Ì¨ÒÑÍË³ö¡£
 pause
+exit /b 0
+
+:nonode
+echo.
+echo   Ã»ÕÒµ½ node£¬ÇëÏÈ°²×° Node.js 24£¨±¾ÏîÄ¿ÓÃ Node ÄÚÖÃµÄ node:sqlite£©¡£
+echo   ÏÂÔØ£ºhttps://nodejs.org/
+pause
+exit /b 1
+
+:failed
+echo.
+echo   Æô¶¯Ê§°Ü£¨ÍË³öÂë %RC%£©¡£
+echo   ¿ÉÊÖ¶¯ÔËĞĞ£ºnode platform\server.js
+pause
+exit /b %RC%

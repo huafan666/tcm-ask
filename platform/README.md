@@ -102,6 +102,11 @@ node platform\selftest.js    # 端到端：账号 → 问诊 → 提交 → 审�
 ```
 
 `selftest.js` 每轮会用一个临时触发词提交、审核、再还原，可重复执行。
+它会往本地库里留下测试账号 / 草稿 / 帖子；想要干净的演示数据，删掉 `platform/data/` 再跑一次 `seed.js` 即可。
+
+> **改 `启动平台.bat` 请存成 GBK + CRLF**（和根目录的 `start.bat` 一致）。
+> 存成 UTF-8 的话 `cmd.exe` 会按 GBK 解析：中文全变乱码，连 `cd /d "%~dp0.."` 那行都会一起坏掉，
+> 结果就是在 `platform\` 里找 `platform\seed.js`。
 
 ## 这是 demo，不是生产环境
 
