@@ -194,6 +194,21 @@ export function logout() {
   api.logout().then(() => { location.href = '/' }).catch(() => { location.href = '/' })
 }
 
+/** 更新左侧导航「审核台」上的待处理红点（0 就去掉，不用刷新页面） */
+export function setPendingBadge(n) {
+  const link = document.querySelector('.nav-item[href="/review"]')
+  if (!link) return
+  let badge = link.querySelector('.nav-badge')
+  const count = Number(n) || 0
+  if (!count) { if (badge) badge.remove(); return }
+  if (!badge) {
+    badge = document.createElement('span')
+    badge.className = 'nav-badge'
+    link.appendChild(badge)
+  }
+  badge.textContent = String(count)
+}
+
 export function pendingBadge(n) {
   return n ? `<span class="badge badge-pending">待审 ${n}</span>` : ''
 }

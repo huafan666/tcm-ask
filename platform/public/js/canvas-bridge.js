@@ -46,7 +46,7 @@ style.textContent = `
 #tcm-prov-box .pb-k,#tcm-note-box .pb-k{color:${T.text3}}
 #tcm-prov-box .pb-chip,#tcm-note-box .pb-chip{padding:0 5px;border-radius:5px;font-size:10px;
   font-weight:700;line-height:16px}
-#tcm-prov-box textarea,#tcm-note-box textarea{width:100%;box-sizing:border-box;min-height:60px;resize:vertical;
+#tcm-prov-box textarea,#tcm-note-box textarea{width:100%;box-sizing:border-box;resize:vertical;
   padding:7px 9px;background:${T.input};color:${T.text};border:1px solid ${T.borderStrong};border-radius:7px;
   font-family:inherit;font-size:12px;line-height:1.55}
 #tcm-prov-box textarea:focus,#tcm-note-box textarea:focus{outline:none;border-color:${T.accent};
@@ -156,12 +156,18 @@ function renderInline(name) {
     noteBox.innerHTML = `
       <div class="pb-title"><span>备注</span><span style="color:${T.text3};font-size:10.5px">${esc(p && p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '即时生效，不用审核')}</span></div>
       <div class="pb-row" style="grid-template-columns:1fr;align-items:start"><span>
-        <textarea id="tcm-note" placeholder="给后来编辑的人留一句：这条别人遇到过、出自哪本书哪一页、可以怎么引用…">${esc(p && p.note ? p.note : '')}</textarea>
+        <textarea id="tcm-note" rows="1" style="min-height:34px;height:34px" placeholder="留一句：这条别人遇到过、可以怎么引用…">${esc(p && p.note ? p.note : '')}</textarea>
         <div class="pb-btns">
           <button data-pb="clear">清空</button>
           <button class="primary" data-pb="save">保存备注</button>
         </div>
       </span></div>`
+    const ta2 = noteBox.querySelector('#tcm-note')
+    if (ta2) {
+      const grow = () => { ta2.style.height = 'auto'; ta2.style.height = Math.min(ta2.scrollHeight, 140) + 'px' }
+      ta2.addEventListener('input', grow)
+      setTimeout(grow, 0)
+    }
     const saveBtn = noteBox.querySelector('[data-pb="save"]')
     if (saveBtn) saveBtn.onclick = () => saveNote(name, noteBox.querySelector('#tcm-note').value)
     const clearBtn = noteBox.querySelector('[data-pb="clear"]')

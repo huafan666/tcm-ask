@@ -176,7 +176,7 @@ function noteFieldHtml(node, ro) {
     + '<span class="hint">' + esc(p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '即时生效，不用审核') + '</span></div>'
     + '<div class="field">'
     + '<div class="field-label">给后来编辑的人留一句：这条别人遇到过、出自哪本书哪一页、可以怎么引用</div>'
-    + '<textarea class="input" data-fk="prov-note" style="min-height:64px;resize:vertical"'
+    + '<textarea class="input" data-fk="prov-note" rows="1" style="min-height:34px;height:34px;resize:vertical;overflow:auto"'
     + (ro ? ' disabled' : '')
     + ' placeholder="例如：2019 年门诊两例，下利清谷+手足寒，用后汗出热退（《伤寒论》第 314 条旁注）">'
     + esc(p.note || '') + '</textarea>'
@@ -529,6 +529,12 @@ function bindNode(root, node) {
         toast('保存失败：' + e.message, 'err', 7000)
       }
     }
+    const autoGrow = () => {
+      noteEl.style.height = 'auto'
+      noteEl.style.height = Math.min(noteEl.scrollHeight, 140) + 'px'
+    }
+    noteEl.addEventListener('input', autoGrow)
+    setTimeout(autoGrow, 0)
     const saveBtn = root.querySelector('[data-act="prov-note-save"]')
     const clearBtn = root.querySelector('[data-act="prov-note-clear"]')
     if (saveBtn) saveBtn.onclick = () => saveNote(noteEl.value)

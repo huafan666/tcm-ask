@@ -35,13 +35,9 @@ async function boot() {
     renderList()
     renderTotals()
     refreshRight()
+    updateDirtyBadge()
   })
-  on('dirty', n => {
-    const b = document.getElementById('dirty-count')
-    if (b) { b.textContent = n; b.style.color = n ? '#fbbf24' : '' }
-    const btn = document.getElementById('btn-save')
-    if (btn) btn.classList.toggle('btn-primary', n > 0)
-  })
+  on('dirty', n => updateDirtyBadge(n))
   on('sim-updated', () => {
     render()
     if (activeTab === 'sim') renderRightPanel()
@@ -51,6 +47,26 @@ async function boot() {
   await reload()
   pollStatus()
   setInterval(pollStatus, 5000)
+}
+
+/** 刷新「保存」按钮上的改动数量：每次重新取元素，不依赖缓存的引用 */
+function updateDirtyBadge(n) {
+  const count = (typeof n === 'number') ? n : dirtyNames().length
+  const b = document.getElementById('dirty-count')
+  if (b) {
+    b.textContent = String(count)
+    b.style.color = count ? '#fbbf24' : ''
+    b.style.opacity = count ? '1' : '.6'
+  }
+  const btn = document.getElementById('btn-save')
+  if (btn) {
+    btn.classList.toggle('btn-primary', count > 0)
+    btn.title = count
+      ? ('预览并写回：当前有 ' + count + ' 个节点改动（Ctrl+S）')
+      : '没有待保存的改动（Ctrl+S）'
+  }
+  const st = document.getElementById('status-left')
+  if (st && count) st.textContent = '有 ' + count + ' 个节点改动未保存'
 }
 
 async function reload() {

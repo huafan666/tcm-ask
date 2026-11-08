@@ -1,7 +1,7 @@
 // platform/public/js/review.js
 // 管理员审核台：草稿 diff → 通过/驳回；医生账号开通；贡献榜
 import { api } from './api.js'
-import { bootShell, esc, timeAgo, avatar, roleBadge, toast, modal, $, $$ } from './shell.js'
+import { bootShell, esc, timeAgo, avatar, roleBadge, toast, modal, $, $$, setPendingBadge } from './shell.js'
 
 await bootShell('review', { requireRole: ['admin'] })
 
@@ -16,6 +16,7 @@ async function load() {
   state.drafts = d.items
   state.doctors = o.doctors
   state.board = c.items
+  setPendingBadge(state.drafts.length)   // 审核后红点立刻变，不用刷新
   render()
 }
 

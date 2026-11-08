@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-08T15:12:20.134Z",
+  "generatedAt": "2026-11-08T15:20:26.107Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1868,9 +1868,11 @@
       "source": "manual",
       "label": "人工录入",
       "refs": [],
-      "note": "我自己的头很大",
-      "noteBy": "平台管理员",
-      "noteAt": "2026-11-08"
+      "note": "1  我自己的头很大，所以吃饭呢",
+      "noteBy": "王牛",
+      "noteAt": "2026-11-08",
+      "by": "王牛",
+      "byAt": "2026-11-08"
     },
     "chifan": {
       "source": "manual",
@@ -1878,6 +1880,18 @@
       "refs": [],
       "note": "我自己的头大，吃饭就好了",
       "noteBy": "平台管理员",
+      "noteAt": "2026-11-08",
+      "by": "王牛",
+      "byAt": "2026-11-08"
+    },
+    "touxiao": {
+      "source": "manual",
+      "label": "人工录入",
+      "refs": [],
+      "by": "王牛",
+      "byAt": "2026-11-08",
+      "note": "王牛的内容呢\n\n在这里呢，备注",
+      "noteBy": "王牛",
       "noteAt": "2026-11-08"
     }
   },
