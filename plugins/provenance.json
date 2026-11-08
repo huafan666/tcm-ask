@@ -11,6 +11,16 @@
       "textFile": "data/texts/伤寒论-gutenberg.txt",
       "textSource": "Project Gutenberg eBook #24272（清代通行本转录）",
       "note": "条文出处以插件注释里的「第X条」为准；书序按宋本通行编号"
+    },
+    "jinkui": {
+      "label": "金匮要略原方",
+      "title": "金匮要略",
+      "fullTitle": "伤寒杂病论 · 杂病部分",
+      "author": "张仲景",
+      "dynasty": "东汉",
+      "textFile": "data/texts/金匮要略-wikisource.wikitext",
+      "textSource": "zh.wikisource pageid 25028（繁体原文，已按 data/texts/繁简对照.json 转简体）",
+      "note": "引用用「篇名 + 条文首句」，可直接检索；不冒充教材条号"
     }
   },
   "nodes": {
@@ -1751,6 +1761,22 @@
         "223"
       ],
       "by": "system:shanghanlun"
+    },
+    "gang_jing": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳病，发热无汗，反恶寒者，名曰刚痉"
+      ],
+      "by": "system:jinkui"
+    },
+    "rou_jing": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳病，发热汗出，而不恶寒，名曰柔痉"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
