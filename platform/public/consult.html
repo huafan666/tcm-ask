@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>问诊 · 辨证社区</title>
+<link rel="stylesheet" href="/p/css/app.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="col-main">
+    <div class="spread" style="margin-bottom:12px">
+      <div>
+        <h2 style="font-size:19px">辨证问诊</h2>
+        <div class="tiny dim">口语描述症状 → 引擎边问边辨证 → 方剂 / 禁忌 / 通俗解释</div>
+      </div>
+      <button class="btn btn-sm" id="btn-restart-app">重开一次</button>
+    </div>
+
+    <div class="consult-frame" id="frame-slot">
+      <iframe id="consult-iframe" src="/consult-app" title="辨证问诊"></iframe>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="tiny dim" style="line-height:1.9">
+        · 问诊模块与命令行版共用同一套三态推理引擎（262 条结构化条文），本页只是外面套了账号与存档。<br>
+        · 结论会保存到「我的辨证记录」（需登录）。<br>
+        · 结果仅供学习参考，<b>不能替代执业医师</b>。
+      </div>
+    </div>
+  </main>
+
+  <aside class="col-aside" id="aside"></aside>
+</div>
+<script type="module" src="/p/js/consult.js"></script>
+</body>
+</html>

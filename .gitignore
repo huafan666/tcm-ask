@@ -15,6 +15,12 @@ dist/
 dev/.backups/
 plugins/.layout.json
 
+# ===== 云平台本地数据（账号/草稿/社区都在这个 SQLite 里，不入库）=====
+platform/data/
+platform/*.db
+platform/*.db-wal
+platform/*.db-shm
+
 # ===== 依赖与日志 =====
 node_modules/
 package-lock.json

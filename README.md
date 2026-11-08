@@ -27,6 +27,7 @@ tcm-ask/
 │  ├─ syndromes/        #   证候 19
 │  └─ formulas/         #   方剂 113（依赖条件 + 禁忌）
 ├─ web/index.html       # 问诊前端（单页，原生 JS）
+├─ platform/            # ★ 云平台（本地多用户 demo）：患者端 + 医生录条文 + 审核 + 社区
 ├─ dev/                 # ★ 开发端：可视化插件画布（不进入发布包）
 └─ data/                # 伤寒论原文资料（代码不读取，仅备查）
 ```
@@ -112,6 +113,26 @@ node dev/server.js    # 或双击 dev\启动开发端.bat
 
 输出 `dist\`（含便携 `node.exe`，对方双击 `启动中医辨证.bat` 即可，无需装 Node）。`dist/` 不进版本库。
 
+### 5) 云平台（患者端 + 医生录条文 + 审核 + 社区）
+
+```powershell
+node platform\seed.js      # 首次：建演示账号 / 帖子 / 待审草稿
+node platform\server.js    # 或双击 platform\启动平台.bat
+```
+
+打开 http://127.0.0.1:3095 —— 浅色 Instagram 风的平台首页，核心功能前置：
+
+- **患者端**：`/consult` 把上面那个问诊模块整块嵌进患者界面（`web/index.html` 一行未改），
+  结论自动进「我的辨证记录」
+- **医生端**：`/doctor` → `/canvas` 就是 `dev` 那套可视化画布；画布上点「保存」＝**提交审核**，
+  不直接改盘
+- **管理端**：`/review` 逐行 diff 审草稿，通过后自动写盘 + 引擎热重载，并登记**字段级归属**
+  （哪个节点的 `trigger`/`ask`/`needs` 是谁提供的，画布右下角实时可见）
+- **社区**：`/community` 帖子 / 评论 / 点赞，医生带「✓ 已认证医生」徽标
+
+演示账号：`admin/admin123`、`doctor/doctor123`、`doctor2/doctor123`（待开通）、`patient/patient123`。
+详见 [`platform/README.md`](platform/README.md)。数据在 `platform/data/`（SQLite，已 gitignore）。
+
 ## 验证脚本
 
 ```powershell
@@ -120,6 +141,8 @@ node dev\checkui.js         # 开发端前端静态体检：import/export、DOM 
 node dev\uisimtest.js       # 开发端集成测试：DOM 仿真真跑渲染路径 + 载荷过服务端校验
 node dev\webui-contract.js  # 问诊界面接口契约：把页面发的每个请求走一遍，断言字段齐全（需先启动 server.js）
 node dev\webui-render-test.js # 问诊界面渲染：直接执行页面脚本，验证对话流/竖排选项/结论卡片
+node platform\checkui.js    # 云平台前端静态体检：import/资源/DOM id/接口覆盖/画布注入
+node platform\selftest.js   # 云平台端到端：账号→问诊→医生提交→审核落盘→归属→社区（需先起 platform\server.js）
 ```
 
 另有引擎回归测试：`test-mvp.js`、`test-yangming.js`、`test-jueyin.js`、`test-taiyin-shaoyin.js`、`test-undo.js`、`test-asker.js`、`test-hotreload.js`。

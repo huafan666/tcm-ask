@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录 · 辨证社区</title>
+<link rel="stylesheet" href="/p/css/app.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="brand-mark"></span>
+      <div style="text-align:center">
+        <div style="font-weight:800;font-size:18px">辨证社区</div>
+        <div class="tiny dim">中医辨证助手 · 云平台</div>
+      </div>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-mode="login">登录</button>
+      <button class="auth-tab" data-mode="register">注册</button>
+    </div>
+
+    <form id="form" class="stack">
+      <div class="field">
+        <label class="label">用户名</label>
+        <input class="input" id="username" autocomplete="username" placeholder="小写字母/数字/下划线">
+      </div>
+      <div class="field" id="display-field" style="display:none">
+        <label class="label">显示名</label>
+        <input class="input" id="displayName" placeholder="别人看到的名字，例如「张医生」">
+      </div>
+      <div class="field">
+        <label class="label">密码</label>
+        <input class="input" id="password" type="password" autocomplete="current-password" placeholder="至少 6 位">
+      </div>
+      <div class="field" id="role-field" style="display:none">
+        <label class="label">我是</label>
+        <select class="select" id="role">
+          <option value="patient">患者 / 家属</option>
+          <option value="doctor">中医医生（需管理员开通）</option>
+        </select>
+      </div>
+      <div class="field" id="specialty-field" style="display:none">
+        <label class="label">科室 / 专长</label>
+        <input class="input" id="specialty" placeholder="例如：伤寒论、脾胃病">
+      </div>
+      <button class="btn btn-primary btn-lg" id="submit" type="submit">登录</button>
+      <div class="hint" id="msg"></div>
+    </form>
+
+    <div class="auth-foot">
+      演示账号：<code>patient / patient123</code> · <code>doctor / doctor123</code> · <code>admin / admin123</code>
+    </div>
+  </div>
+</div>
+<script type="module" src="/p/js/auth.js"></script>
+</body>
+</html>

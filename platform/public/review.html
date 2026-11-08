@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审核台 · 辨证社区</title>
+<link rel="stylesheet" href="/p/css/app.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="col-main">
+    <div class="spread" style="margin-bottom:12px">
+      <div>
+        <h2 style="font-size:19px">审核台</h2>
+        <div class="tiny dim">医生提交的条文草稿 · 逐行 diff 后放行</div>
+      </div>
+      <button class="btn btn-sm" id="btn-reload">刷新</button>
+    </div>
+
+    <div class="row-wrap" style="margin-bottom:12px" id="tabs">
+      <button class="tag active" data-tab="drafts">待审草稿 <span id="n-drafts"></span></button>
+      <button class="tag" data-tab="doctors">医生账号 <span id="n-doctors"></span></button>
+      <button class="tag" data-tab="board">贡献榜</button>
+    </div>
+
+    <div id="panel-drafts"></div>
+    <div id="panel-doctors" class="hidden"></div>
+    <div id="panel-board" class="hidden"></div>
+  </main>
+
+  <aside class="col-aside" id="aside"></aside>
+</div>
+<script type="module" src="/p/js/review.js"></script>
+</body>
+</html>

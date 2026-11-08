@@ -640,6 +640,13 @@ async function doSave() {
               openModal({ title: '写入后复核发现问题', body: `<div class="err">${(res.errors || []).map(e => esc(e)).join('<br>')}</div>`, buttons: [{ label: '关闭', onClick: c => c() }] })
               return
             }
+            // 平台（云平台）模式下医生提交的是草稿：不落盘、等管理员审核
+            if (res.submitted) {
+              const meta = res.meta || {}
+              toast(`已提交审核：草稿 #${res.draftId}（${meta.fileCount || 0} 个文件 / ${meta.changedLines || 0} 行改动）`, 'ok', 9000)
+              toast('管理员通过后才会写入条文库', 'warn', 9000)
+              return
+            }
             S.layoutDirty = false
             const n = res.written ? res.written.length : 0
             toast(`已写回 ${n} 个文件`, 'ok')
