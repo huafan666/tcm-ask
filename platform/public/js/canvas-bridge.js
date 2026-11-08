@@ -37,22 +37,27 @@ const SRC_TAG = {
 
 const style = document.createElement('style')
 style.textContent = `
-#tcm-prov-box{border-top:1px solid ${T.border};margin-top:10px;padding:10px 2px 2px;font-family:inherit;font-size:12px;color:${T.text}}
-#tcm-prov-box .pb-title{display:flex;align-items:center;justify-content:space-between;
+#tcm-prov-box,#tcm-note-box{border-top:1px solid ${T.border};margin-top:10px;padding:10px 2px 2px;
+  font-family:inherit;font-size:12px;color:${T.text}}
+#tcm-prov-box .pb-title,#tcm-note-box .pb-title{display:flex;align-items:center;justify-content:space-between;
   color:${T.text2};font-size:11.5px;margin-bottom:7px;letter-spacing:.02em}
-#tcm-prov-box .pb-row{display:grid;grid-template-columns:52px 1fr;gap:6px;align-items:start;padding:2px 0;font-size:11.5px;line-height:1.6}
-#tcm-prov-box .pb-k{color:${T.text3}}
-#tcm-prov-box .pb-chip{padding:0 5px;border-radius:5px;font-size:10px;font-weight:700;line-height:16px}
-#tcm-prov-box textarea{width:100%;box-sizing:border-box;min-height:60px;resize:vertical;padding:7px 9px;
-  background:${T.input};color:${T.text};border:1px solid ${T.borderStrong};border-radius:7px;
+#tcm-prov-box .pb-row,#tcm-note-box .pb-row{display:grid;grid-template-columns:52px 1fr;gap:6px;
+  align-items:start;padding:2px 0;font-size:11.5px;line-height:1.6}
+#tcm-prov-box .pb-k,#tcm-note-box .pb-k{color:${T.text3}}
+#tcm-prov-box .pb-chip,#tcm-note-box .pb-chip{padding:0 5px;border-radius:5px;font-size:10px;
+  font-weight:700;line-height:16px}
+#tcm-prov-box textarea,#tcm-note-box textarea{width:100%;box-sizing:border-box;min-height:60px;resize:vertical;
+  padding:7px 9px;background:${T.input};color:${T.text};border:1px solid ${T.borderStrong};border-radius:7px;
   font-family:inherit;font-size:12px;line-height:1.55}
-#tcm-prov-box textarea:focus{outline:none;border-color:${T.accent};box-shadow:0 0 0 2px ${T.accentSoft}}
-#tcm-prov-box .pb-btns{display:flex;gap:6px;justify-content:flex-end;margin-top:6px;align-items:center}
-#tcm-prov-box button{padding:4px 11px;border-radius:6px;border:1px solid ${T.borderStrong};
+#tcm-prov-box textarea:focus,#tcm-note-box textarea:focus{outline:none;border-color:${T.accent};
+  box-shadow:0 0 0 2px ${T.accentSoft}}
+#tcm-prov-box .pb-btns,#tcm-note-box .pb-btns{display:flex;gap:6px;justify-content:flex-end;margin-top:6px;align-items:center}
+#tcm-prov-box button,#tcm-note-box button{padding:4px 11px;border-radius:6px;border:1px solid ${T.borderStrong};
   background:${T.card};color:${T.text};font-size:11.5px;cursor:pointer;font-family:inherit}
-#tcm-prov-box button:hover{background:${T.accentSoft};border-color:${T.accent}}
-#tcm-prov-box button.primary{background:${T.accent};border-color:${T.accent};color:#06231f;font-weight:700}
-#tcm-prov-box .pb-saved{color:${T.text3};font-size:10.5px;margin-right:auto}
+#tcm-prov-box button:hover,#tcm-note-box button:hover{background:${T.accentSoft};border-color:${T.accent}}
+#tcm-prov-box button.primary,#tcm-note-box button.primary{background:${T.accent};border-color:${T.accent};
+  color:#06231f;font-weight:700}
+#tcm-prov-box .pb-saved,#tcm-note-box .pb-saved{color:${T.text3};font-size:10.5px;margin-right:auto}
 
 .tcm-modal{position:fixed;inset:0;z-index:200;background:rgba(4,8,12,.66);
   display:flex;align-items:center;justify-content:center;padding:20px}
@@ -125,46 +130,59 @@ function chip(srcId) {
 function renderInline(name) {
   const host = document.getElementById('tab-inspect')
   if (!host) return
-  let box = document.getElementById('tcm-prov-box')
   const def = nodeOf(name)
   const p = def && def.provenance
 
-  if (!box) {
-    box = document.createElement('div')
-    box.id = 'tcm-prov-box'
-    host.appendChild(box)
+  // 备注块（独立、在上，写进去立即生效，不走审核）
+  let noteBox = document.getElementById('tcm-note-box')
+  if (!noteBox) {
+    noteBox = document.createElement('div')
+    noteBox.id = 'tcm-note-box'
+    host.appendChild(noteBox)
   }
-  // 备注编辑中就不要重绘，免得把用户正在输的内容冲掉
-  const ta = box.querySelector('#tcm-note')
-  if (ta && document.activeElement === ta) return
+  // 溯源块（在下，只读信息 + 日志入口）
+  let provBox = document.getElementById('tcm-prov-box')
+  if (!provBox) {
+    provBox = document.createElement('div')
+    provBox.id = 'tcm-prov-box'
+    host.appendChild(provBox)
+  }
+  // 保证顺序：备注在上、溯源在下
+  if (noteBox.nextElementSibling !== provBox) provBox.parentNode.insertBefore(noteBox, provBox)
 
-  box.innerHTML = `
+  // 备注正在输入就不重绘，免得冲掉内容
+  const ta = noteBox.querySelector('#tcm-note')
+  if (!(ta && document.activeElement === ta)) {
+    noteBox.innerHTML = `
+      <div class="pb-title"><span>备注</span><span style="color:${T.text3};font-size:10.5px">${esc(p && p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '即时生效，不用审核')}</span></div>
+      <div class="pb-row" style="grid-template-columns:1fr;align-items:start"><span>
+        <textarea id="tcm-note" placeholder="给后来编辑的人留一句：这条别人遇到过、出自哪本书哪一页、可以怎么引用…">${esc(p && p.note ? p.note : '')}</textarea>
+        <div class="pb-btns">
+          <button data-pb="clear">清空</button>
+          <button class="primary" data-pb="save">保存备注</button>
+        </div>
+      </span></div>`
+    const saveBtn = noteBox.querySelector('[data-pb="save"]')
+    if (saveBtn) saveBtn.onclick = () => saveNote(name, noteBox.querySelector('#tcm-note').value)
+    const clearBtn = noteBox.querySelector('[data-pb="clear"]')
+    if (clearBtn) clearBtn.onclick = () => saveNote(name, '')
+  }
+
+  // 溯源块
+  provBox.innerHTML = `
     <div class="pb-title"><span>条文溯源</span><span id="tcm-pb-log" style="color:${T.accentText};cursor:pointer">查看日志 ›</span></div>
     <div class="pb-row"><span class="pb-k">出处</span><span>${p ? chip(p.sourceId) + esc(p.label) + (p.refs && p.refs.length ? ' <span style="color:' + T.text3 + '">· ' + esc(String(p.refs[0])) + '</span>' : '') : '<span class="muted">未标注</span>'}</span></div>
     <div class="pb-row"><span class="pb-k">录入</span><span>${p && p.by && !String(p.by).startsWith('system:')
       ? personChip(p.by, true)
-      : '<span style="color:' + T.text3 + '">' + (p && p.by ? '原典条文（非人工提交）' : '—') + '</span>'}</span></div>
-    <div class="pb-row" style="align-items:start"><span class="pb-k">备注</span><span>
-      <textarea id="tcm-note" placeholder="留一句：这条别人也遇到过、可以这样引用…">${esc(p && p.note ? p.note : '')}</textarea>
-      <div class="pb-btns">
-        <span class="pb-saved">${esc(p && p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '')}</span>
-        <button data-pb="clear">清空</button>
-        <button class="primary" data-pb="save">保存备注</button>
-      </div>
-    </span></div>`
-
-  const logBtn = box.querySelector('#tcm-pb-log')
+      : '<span style="color:' + T.text3 + '">' + (p && p.by ? '原典条文（非人工提交）' : '—') + '</span>'}</span></div>`
+  const logBtn = provBox.querySelector('#tcm-pb-log')
   if (logBtn) logBtn.onclick = () => openLog(name)
-  const saveBtn = box.querySelector('[data-pb="save"]')
-  if (saveBtn) saveBtn.onclick = () => saveNote(name, box.querySelector('#tcm-note').value)
-  const clearBtn = box.querySelector('[data-pb="clear"]')
-  if (clearBtn) clearBtn.onclick = () => saveNote(name, '')
 }
 
 function ensureInline(name) {
   const host = document.getElementById('tab-inspect')
   if (!host) return
-  if (!host.querySelector('#tcm-prov-box')) renderInline(name)
+  if (!host.querySelector('#tcm-prov-box') || !host.querySelector('#tcm-note-box')) renderInline(name)
 }
 
 async function loadHistory(name, force) {
@@ -252,8 +270,10 @@ function tick() {
   const name = sel.length ? sel[0] : null
   if (!name) {
     lastNode = null
-    const box = document.getElementById('tcm-prov-box')
-    if (box) box.remove()
+    for (const id of ['tcm-prov-box', 'tcm-note-box']) {
+      const box = document.getElementById(id)
+      if (box) box.remove()
+    }
     return
   }
   if (name === lastNode) { ensureInline(name); return }

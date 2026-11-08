@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-08T15:01:30.688Z",
+  "generatedAt": "2026-11-08T15:12:20.134Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1850,7 +1850,7 @@
       "refs": [],
       "by": "张牛",
       "byAt": "2026-11-08",
-      "note": "改名后的备注应该能保存住",
+      "note": "备注即时生效测试",
       "noteBy": "张明远",
       "noteAt": "2026-11-08"
     },
@@ -1860,6 +1860,24 @@
       "refs": [],
       "note": "倪医师的书籍来源",
       "noteBy": "张牛",
+      "noteAt": "2026-11-08",
+      "by": "张牛",
+      "byAt": "2026-11-08"
+    },
+    "touda": {
+      "source": "manual",
+      "label": "人工录入",
+      "refs": [],
+      "note": "我自己的头很大",
+      "noteBy": "平台管理员",
+      "noteAt": "2026-11-08"
+    },
+    "chifan": {
+      "source": "manual",
+      "label": "人工录入",
+      "refs": [],
+      "note": "我自己的头大，吃饭就好了",
+      "noteBy": "平台管理员",
       "noteAt": "2026-11-08"
     }
   },

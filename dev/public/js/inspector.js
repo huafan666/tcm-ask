@@ -160,9 +160,30 @@ function nodeHtml(node, selCount) {
   out.push(tagGroupHtml(node, 'contraindications', '禁忌', ro,
     '成立的方剂/证候会把禁忌汇总给病人看。'))
   out.push(depGroupHtml(node))
-  if (!window.__tcmPlatform) out.push(provBottomHtml(node))
+  if (!window.__tcmPlatform) {
+    out.push(noteFieldHtml(node, ro))
+    out.push(provBottomHtml(node))
+  }
   out.push('</div>')
   return out.join('')
+}
+
+// 备注：独立一块，放在「条文溯源」之上。写进去立即生效，不需要审核
+function noteFieldHtml(node, ro) {
+  const p = node.provenance || {}
+  return '<div class="field-group">'
+    + '<div class="field-group-head"><span>备注</span>'
+    + '<span class="hint">' + esc(p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '即时生效，不用审核') + '</span></div>'
+    + '<div class="field">'
+    + '<div class="field-label">给后来编辑的人留一句：这条别人遇到过、出自哪本书哪一页、可以怎么引用</div>'
+    + '<textarea class="input" data-fk="prov-note" style="min-height:64px;resize:vertical"'
+    + (ro ? ' disabled' : '')
+    + ' placeholder="例如：2019 年门诊两例，下利清谷+手足寒，用后汗出热退（《伤寒论》第 314 条旁注）">'
+    + esc(p.note || '') + '</textarea>'
+    + '<div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px">'
+    + '<button class="btn btn-sm" data-act="prov-note-clear"' + (ro ? ' disabled' : '') + '>清空</button>'
+    + '<button class="btn btn-sm btn-primary" data-act="prov-note-save"' + (ro ? ' disabled' : '') + '>保存备注</button>'
+    + '</div></div></div>'
 }
 
 // 录入人头像徽标：圆形首字 + 名字，配色由名字哈希决定（同一个人永远同色）
@@ -215,13 +236,6 @@ function provBottomHtml(node) {
     + row('录入', p && p.by && !String(p.by).startsWith('system:')
       ? personChipHtml(p.by, true)
       : '<span style="color:var(--text-3)">' + (p && p.by ? '原典条文（非人工提交）' : '—') + '</span>')
-    + row('备注', '<textarea class="input" data-fk="prov-note" style="min-height:56px;resize:vertical"'
-      + ' placeholder="留一句：这条别人也遇到过、可以这样引用…">' + esc(p && p.note ? p.note : '') + '</textarea>'
-      + '<div style="display:flex;gap:6px;justify-content:flex-end;margin-top:5px;align-items:center">'
-      + '<span style="color:var(--text-3);font-size:10.5px;margin-right:auto">'
-      + esc(p && p.noteBy ? '上次：' + p.noteBy + ' · ' + (p.noteAt || '') : '') + '</span>'
-      + '<button class="btn" data-act="prov-note-clear">清空</button>'
-      + '<button class="btn btn-primary" data-act="prov-note-save">保存备注</button></div>')
     + '</div>'
 }
 
