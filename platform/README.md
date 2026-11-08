@@ -70,7 +70,27 @@ node_name | field(title/trigger/negate/ask/needs/contraindications/node) | autho
 - **医生工作台 / 我的**：列出「我提供过的条文」及具体字段；
 - **首页侧栏 / 审核台**：条文贡献榜（多少条条文、多少字段）。
 
-### 4. 社区
+### 4. 病历链路的两层留痕
+
+**录入侧（每次提交都留档）**：医生在画布上点保存 → 草稿表 `drafts.payload` 原样存下整份载荷，
+包含 `created / updated / deleted / renamed`（`needs` 就是节点之间的关系，一条不改）。
+审核通过时再按字段拆成 `attributions` 行（谁 · 哪个节点 · 哪个字段 · 哪份草稿 · 何时），
+同时把「谁录入的」写进 `plugins/provenance.json` 的 `by` —— 所以开发端也能看到录入人。
+
+**诊断侧（结论后附触发链条）**：`platform/chain.js` 把引擎「为什么得出这个结论」摊开：
+
+```
+GET /api/consult/chain?sid=…
+{ chain: {
+    targets: [{ name, title, kind, pathIndex, pathTotal, path:[{name,title,pol,state,satisfied}] }],
+    nodes:   { <节点>: { provenance:{sourceId,label,refs,by}, contributors:[{fieldLabel,displayName}] } } } }
+```
+
+方剂排在证候前面、最多 8 条。问诊页（`web/index.html`，一行未改）由 `consult-bridge.js` 注入：
+包一层 `fetch` 观察 `/api/input` 的 `result`，一收敛就在右下角弹「触发链条 · 谁录入的」面板——
+每条三元组列出具**体条件、是否满足、出自哪本书哪一条、谁录入的**。
+
+### 5. 社区
 
 帖子 + 评论 + 点赞，医生带 `✓ 已认证医生` 徽标（管理员在审核台打认证）。
 读开放、写要登录。

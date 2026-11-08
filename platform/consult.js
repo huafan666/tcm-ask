@@ -11,6 +11,7 @@
 const { Session } = require('../core/session')
 const { q, now } = require('./db')
 const llmconfig = require('./llmconfig')
+const { buildChain } = require('./chain')
 
 const TTL_MS = 2 * 3600 * 1000     // 2 小时没动静就回收
 const MAX_SESSIONS = 500
@@ -97,6 +98,16 @@ class ConsultStore {
     rec.saved = true
     const formulas = (result.formulas || []).map(f => f.title)
     const summary = formulas.length ? formulas.slice(0, 4).join(' / ') : '未收敛到具体方剂'
+
+    // 触发链条：命中的三元组 + 每个节点的出处与录入人（结论出来后给病人看）
+    let chain = null
+    try {
+      chain = buildChain(rec.session.engine, rec.session.registry)
+      rec.chain = chain
+    } catch (e) {
+      console.error('[consult] 链条生成失败:', e.message)
+    }
+
     try {
       q.run(
         `INSERT OR REPLACE INTO consults (id, user_id, input_text, summary, result_json, created_at)
@@ -105,7 +116,8 @@ class ConsultStore {
           formulas: result.formulas || [],
           explanation: result.explanation || '',
           contraindications: result.contraindications || [],
-          state: result.state || []
+          state: result.state || [],
+          chain
         }), now()
       )
     } catch (e) {
@@ -149,6 +161,7 @@ function historyDetail(id, userId) {
     summary: r.summary,
     createdAt: r.created_at,
     formulas: parsed.formulas || [],
+    chain: parsed.chain || null,
     explanation: parsed.explanation || '',
     contraindications: parsed.contraindications || [],
     state: parsed.state || []

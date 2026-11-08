@@ -81,6 +81,18 @@ let sid = ''
   }
   ok('问诊能收敛出结论', !!(last.data.result && last.data.result.explanation), last.data && Object.keys(last.data))
 
+  // 结论后要能拿到「触发链条」，且每个节点带出处与录入人
+  const ch = await patient.req('/api/consult/chain?sid=' + sid)
+  ok('结论后能取到触发链条', ch.status === 200 && ch.data.chain && Array.isArray(ch.data.chain.targets), ch.data)
+  if (ch.status === 200) {
+    const t0 = ch.data.chain.targets[0]
+    ok('链条带命中的三元组条件', !!t0 && Array.isArray(t0.path) && t0.path.length > 0, t0)
+    ok('链条条件都是满足状态', !!t0 && t0.path.every(c => c.satisfied === true), t0 && t0.path.map(c => c.state))
+    const someNode = Object.values(ch.data.chain.nodes || {})[0]
+    ok('链条节点带出处（书/条）', !!someNode && !!someNode.provenance && !!someNode.provenance.label, someNode)
+    ok('链条节点带录入人字段', !!someNode && 'by' in someNode.provenance, someNode && someNode.provenance)
+  }
+
   const h = await patient.req('/api/consult/history')
   ok('结论已存档到我的记录', h.data.items.length >= 1, h.data)
   ok('存档里有辨证倾向摘要', !!h.data.items[0].summary, h.data.items[0])

@@ -313,6 +313,24 @@ add('GET', '/api/consult/history/:id', ctx => {
   return { item }
 })
 
+// 辨证结束后的「触发链条」：命中的三元组 + 每个节点的出处与录入人
+add('GET', '/api/consult/chain', ctx => {
+  const sid = ctx.query.get('sid') || ''
+  const rec = sid ? consultStore.get(sid) : null
+  if (rec && rec.chain) return { chain: rec.chain, from: 'session' }
+  const user = ctx.user                      // 会话已回收：从最近一条存档取
+  if (user) {
+    const last = db.q.get('SELECT result_json FROM consults WHERE user_id = ? ORDER BY created_at DESC LIMIT 1', user.id)
+    if (last) {
+      try {
+        const parsed = JSON.parse(last.result_json)
+        if (parsed.chain) return { chain: parsed.chain, from: 'history' }
+      } catch (_) {}
+    }
+  }
+  throw new HttpError(404, '还没有已完成的辨证')
+})
+
 // ============================================================
 // 三、条文画布（dev 那套 API，医生/管理员可用）
 // ============================================================
@@ -568,9 +586,15 @@ const server = http.createServer(async (req, res) => {
 
     if (method !== 'GET' && method !== 'HEAD') return sendText(res, '方法不允许', 405)
 
-    // ---- 问诊模块（原始 web/index.html，一行未改）----
+    // ---- 问诊模块（原始 web/index.html，一行未改；只注入一个桥脚本，用来在结论后附「触发链条」）----
     if (pathname === '/consult-app' || pathname === '/consult-app/') {
-      return sendFile(res, path.join(WEB_DIR, 'index.html'))
+      try {
+        let html = fs.readFileSync(path.join(WEB_DIR, 'index.html'), 'utf8')
+        html = html.replace('</body>', '<script type="module" src="/p/js/consult-bridge.js"></script>\n</body>')
+        return sendText(res, html, 200, MIME['.html'])
+      } catch (e) {
+        return sendText(res, '问诊页面读取失败: ' + e.message, 500)
+      }
     }
 
     // ---- 条文画布（dev/public，注入平台脚本）----
