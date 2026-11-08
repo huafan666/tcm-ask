@@ -100,11 +100,28 @@ console.log('\n[3] 条文画布权限')
   const docGraph = await doctor.req('/api/graph')
   ok('医生能读条文图', docGraph.status === 200 && docGraph.data.nodes.length > 200, docGraph.data && docGraph.data.stats)
 
-  const canvasAnon = await anon.req('/canvas')
-  ok('/canvas 未登录跳登录页', canvasAnon.status === 302 && /\/login/.test(canvasAnon.headers.get('location') || ''), canvasAnon.status)
+  const canvasAnon = await anon.req('/canvas/')
+  ok('/canvas/ 未登录跳登录页', canvasAnon.status === 302 && /\/login/.test(canvasAnon.headers.get('location') || ''), canvasAnon.status)
 
-  const canvasDoc = await doctor.req('/canvas')
-  ok('/canvas 医生可打开且注入了归属脚本', canvasDoc.status === 200 && canvasDoc.text.includes('canvas-bridge.js'), canvasDoc.status)
+  // 画布页面用 ./style.css、./js/app.js 这种相对路径，必须落在 /canvas/ 目录下才算对
+  const noSlash = await doctor.req('/canvas')
+  ok('/canvas（不带斜杠）重定向到 /canvas/',
+    noSlash.status === 302 && noSlash.headers.get('location') === '/canvas/', { status: noSlash.status, loc: noSlash.headers.get('location') })
+
+  const canvasDoc = await doctor.req('/canvas/')
+  ok('/canvas/ 医生可打开且注入了归属脚本',
+    canvasDoc.status === 200 && canvasDoc.text.includes('canvas-bridge.js') && canvasDoc.text.includes('./js/app.js'), canvasDoc.status)
+
+  const css = await doctor.req('/canvas/style.css')
+  ok('画布样式表 /canvas/style.css 可达', css.status === 200 && css.text.includes('--'), css.status)
+  const appJs = await doctor.req('/canvas/js/app.js')
+  ok('画布脚本 /canvas/js/app.js 可达', appJs.status === 200 && appJs.text.includes('import'), appJs.status)
+  for (const m of ['store', 'panels', 'inspector', 'canvas', 'layout', 'ui', 'api']) {
+    const r = await doctor.req('/canvas/js/' + m + '.js')
+    ok(`画布依赖 /canvas/js/${m}.js 可达`, r.status === 200 && r.text.length > 200, r.status)
+  }
+  const bridge = await doctor.req('/p/js/canvas-bridge.js')
+  ok('归属注入脚本 /p/js/canvas-bridge.js 可达', bridge.status === 200 && bridge.text.includes('/canvas/js/store.js'), bridge.status)
 }
 
 console.log('\n[4] 医生提交 → 管理员审核 → 落盘 + 归属')

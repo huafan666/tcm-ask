@@ -30,7 +30,7 @@ $('#canvas-slot').innerHTML = `
           不会直接改磁盘；管理员在审核台看过逐行 diff 才会落盘。
         </div>
       </div>
-      <a class="btn btn-grad" href="/canvas" target="_blank" rel="noopener" ${pending ? 'style="pointer-events:none;opacity:.5"' : ''}>打开画布</a>
+      <a class="btn btn-grad" href="/canvas/" target="_blank" rel="noopener" ${pending ? 'style="pointer-events:none;opacity:.5"' : ''}>打开画布</a>
     </div>
     <div class="hr"></div>
     <div class="row-wrap">

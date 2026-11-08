@@ -530,10 +530,17 @@ const server = http.createServer(async (req, res) => {
     }
 
     // ---- 条文画布（dev/public，注入平台脚本）----
+    // 注意：画布页面里用的是 ./style.css、./js/app.js 这种相对路径，
+    // 所以必须以「带斜杠的目录地址」访问；/canvas 不带斜杠时浏览器会解析成
+    // /style.css、/js/app.js → 404 → 页面只剩裸 HTML，按钮全部点不动。
     if (pathname === '/canvas' || pathname.startsWith('/canvas/')) {
       const user = auth.userFromReq(req)
       if (!user || (user.role !== 'doctor' && user.role !== 'admin')) {
         res.writeHead(302, { Location: '/login?next=/doctor' })
+        return res.end()
+      }
+      if (pathname === '/canvas') {
+        res.writeHead(302, { Location: '/canvas/' + (url.search || '') })
         return res.end()
       }
       return serveCanvas(res, pathname)
