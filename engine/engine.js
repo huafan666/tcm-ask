@@ -16,6 +16,78 @@
 //
 // 传播：当一个对象的 yes/no 变化，重新求值所有它的依赖者，直到稳定。
 
+// 医案里极常见的阴性表述（「无汗」「没有腹泻」「不渴」「未见发热」「否认腹痛」）。
+// 以前只有 negate() 里手写过的词才认得，于是「无腹泻」会把 diarrhea 判成 yes，
+// 进而误点亮葛根汤/小青龙汤这类依赖下利的方子。这里在引擎层统一兜一层否定前缀。
+const NEG_CUE_END = /(否认|未见|无明显|没有|无|沒|没|未|不|非)$/
+const NEG_CUE_NEAR = /(否认|未见|无明显|没有)[^，。；,.;、:：\n]{0,4}$/
+
+function negatedBefore(text, index) {
+  const w = text.slice(Math.max(0, index - 6), index)
+  if (!w) return false
+  if (NEG_CUE_END.test(w)) return true
+  return NEG_CUE_NEAR.test(w)
+}
+
+// 从插件 trigger / negate 函数源码里抠出关键词（和 dev/lib/graph.js 的抠法一致）
+const kwCache = new WeakMap()
+function keywordsOf(def, which = 'trigger') {
+  if (!def || typeof def[which] !== 'function') return []
+  const cacheKey = which
+  if (!kwCache.has(def)) kwCache.set(def, {})
+  const box = kwCache.get(def)
+  if (box[cacheKey]) return box[cacheKey]
+  const out = []
+  const src = def[which].toString()
+  const m = src.match(/\[([\s\S]*?)\]/)
+  if (m) for (const q of m[1].matchAll(/'([^']*)'|"([^"]*)"/g)) out.push(q[1] || q[2])
+  box[cacheKey] = out
+  return out
+}
+
+/**
+ * negate() 命中了才算「明确没有」。
+ * 但 negate 词自己也可能是被否定的：「没有汗」里的「有汗」是 no_sweat 的否定词，
+ * 这里不能因为字面上有「有汗」就判「有汗」。所以逐次命中都过一遍否定前缀检查。
+ */
+function negateHit(def, text) {
+  if (typeof def.negate !== 'function' || !def.negate(text)) return false
+  const kws = keywordsOf(def, 'negate')
+  if (!kws.length) return true
+  for (const kw of kws) {
+    if (!kw) continue
+    let i = text.indexOf(kw)
+    while (i !== -1) {
+      if (!negatedBefore(text, i)) return true
+      i = text.indexOf(kw, i + Math.max(1, kw.length))
+    }
+  }
+  return kws.length === 0
+}
+
+/** trigger 命中了，但要看它是被肯定还是被否定：'positive' | 'negated' */
+function polarityOf(def, text) {
+  const kws = keywordsOf(def)
+  const positives = []
+  const negRanges = []
+  for (const kw of kws) {
+    if (!kw) continue
+    let i = text.indexOf(kw)
+    while (i !== -1) {
+      const end = i + kw.length
+      if (negatedBefore(text, i)) negRanges.push([i, end])
+      else positives.push([i, end])
+      i = text.indexOf(kw, i + Math.max(1, kw.length))
+    }
+  }
+  // 「无气喘」里「气喘」被否定、但更短的「喘」也会命中——被否定的区间盖住的一律不算阳性
+  const covered = ([s, e]) => negRanges.some(([ns, ne]) => ns <= s && e <= ne)
+  if (positives.some(r => !covered(r))) return 'positive'
+  if (negRanges.length) return 'negated'
+  if (positives.length) return 'positive'
+  return 'positive'   // 关键词没抠出来（非标准写法）→ 维持老行为
+}
+
 class Engine {
   constructor(registry) {
     this.registry = registry
@@ -51,14 +123,18 @@ class Engine {
   // 喂入一条病人话，返回本轮状态变化的对象名集合
   feed(utterance) {
     const changed = new Set()
+    const text = String(utterance === undefined || utterance === null ? '' : utterance)
     // 先直接喂入 trigger/negate
     for (const name of Object.keys(this.registry)) {
       const def = this.registry[name]
-      if (typeof def.negate === 'function' && def.negate(utterance)) {
+      if (negateHit(def, text)) {
         this.set(name, 'no', changed)
-      } else if (typeof def.trigger === 'function' && def.trigger(utterance)) {
-        this.set(name, 'yes', changed)
+        continue
       }
+      if (typeof def.trigger !== 'function' || !def.trigger(text)) continue
+      // trigger 命中还要看前面有没有「无 / 没有 / 不 / 未见 / 否认」这类否定词
+      if (polarityOf(def, text) === 'negated') this.set(name, 'no', changed)
+      else this.set(name, 'yes', changed)
     }
     // 再传播 needs
     this.propagate(changed)

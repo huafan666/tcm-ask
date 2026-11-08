@@ -5,6 +5,7 @@ module.exports = {
   needs: [
     ['tili_cha.yes'],
     ['zugengtong.yes'],
-    ['shuangtuiwuli.yes']
+    ['shuangtuiwuli.yes'],
+    ['frequent_urination.yes']
   ]
 }

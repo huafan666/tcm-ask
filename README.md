@@ -147,7 +147,18 @@ node platform\checkui.js    # 云平台前端静态体检：import/资源/DOM id
 node platform\selftest.js   # 云平台端到端：账号→问诊→医生提交→审核落盘→归属→社区（需先起 platform\server.js）
 ```
 
-另有引擎回归测试：`test-mvp.js`、`test-yangming.js`、`test-jueyin.js`、`test-taiyin-shaoyin.js`、`test-undo.js`、`test-asker.js`、`test-hotreload.js`。
+另有引擎回归测试：`test-mvp.js`、`test-yangming.js`、`test-jueyin.js`、`test-taiyin-shaoyin.js`、`test-undo.js`、`test-asker.js`、`test-hotreload.js`、`test-negate.js`（阴性表述不被误判，30 项）。
+
+### 整理条文用的小工具
+
+```powershell
+node run-case.js "患者王某，男，35岁。恶寒发热，全身疼痛，无汗，咳嗽，无腹泻，脉浮紧。"
+node run-case.js "无汗，怕冷，口不渴" -f mahuang_tang   # 只看某个方剂的三元组逐条判定
+```
+
+把一段医案直接喂进引擎，打印：命中 yes / 明确 no / 候选方剂数 / 下一个反问 / 目标方剂每条三元组的满足情况。
+配合 [`skills/tcm-case-triples/SKILL.md`](skills/tcm-case-triples/SKILL.md) 使用——那份 skill 规定了
+「医案 → 结构化 → 三元组 → 真实节点名 → 提交载荷」的完整流程与自检清单。
 
 ## 安全提示
 
