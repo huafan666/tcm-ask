@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-08T12:34:51.647Z",
+  "generatedAt": "2026-11-08T13:46:17.726Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -21,6 +21,13 @@
       "textFile": "data/texts/金匮要略-wikisource.wikitext",
       "textSource": "zh.wikisource pageid 25028（繁体原文，已按 data/texts/繁简对照.json 转简体）",
       "note": "引用用「篇名 + 条文首句」，可直接检索；不冒充教材条号"
+    },
+    "manual": {
+      "label": "人工录入",
+      "title": "医生录入",
+      "author": "",
+      "dynasty": "",
+      "note": "非原典条文，由认证医生在画布上录入、管理员审核通过"
     }
   },
   "nodes": {
@@ -274,7 +281,8 @@
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
-      "by": "system:shanghanlun"
+      "by": "张明远",
+      "byAt": "2026-11-08"
     },
     "fever": {
       "source": "shanghanlun",

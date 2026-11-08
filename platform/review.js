@@ -9,6 +9,7 @@
 // ============================================================
 
 const graph = require('../dev/lib/graph')
+const provenance = require('../dev/lib/provenance')
 const { q, now } = require('./db')
 const { HttpError } = require('./auth')
 
@@ -188,6 +189,19 @@ function approveDraft(id, reviewer, note) {
       it.name, it.field, row.author_id, row.id, stamp
     )
   }
+
+  // 同步「谁录入的」到文件侧 provenance.json —— 这样开发端（standalone）也能看到录入人，
+  // 而不只是平台数据库里能查。已有出处的节点只补 by，不覆盖 source/refs。
+  let provenanceResult = null
+  try {
+    const author = q.get('SELECT display_name FROM users WHERE id = ?', row.author_id)
+    const names = [...new Set(items.filter(i => i.field !== 'node' || true).map(i => i.name))]
+    if (author && names.length) {
+      provenanceResult = provenance.setContributors(names.map(name => ({ name, by: author.display_name })))
+    }
+  } catch (e) {
+    provenanceResult = { error: e.message }
+  }
   q.run(
     `UPDATE drafts SET status = 'approved', reviewer_id = ?, review_note = ?, reviewed_at = ? WHERE id = ?`,
     reviewer.id, String(note || ''), stamp, row.id
@@ -198,7 +212,8 @@ function approveDraft(id, reviewer, note) {
     backups: result.backups,
     backupDir: result.backupDir,
     verify: result.verify,
-    attributionCount: items.length
+    attributionCount: items.length,
+    provenance: provenanceResult
   }
 }
 

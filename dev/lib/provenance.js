@@ -83,4 +83,49 @@ function attachTo(nodes, view) {
   return nodes.map(n => Object.assign(n, { provenance: v.nodes[n.name] || null }))
 }
 
-module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo }
+/**
+ * 记录「谁录入的」——平台审核通过时调用。
+ * entries: [{ name, by, note? }]，by 是医生的显示名（不要带 system: 前缀）
+ *
+ * 规则：
+ *   · 节点已有出处（伤寒论/金匮要略…）→ 只补/更新 by，不动 source 与 refs
+ *   · 节点还没有出处（医生自己新建的）→ 建一条 source:'manual'、label:'人工录入'
+ */
+function setContributors(entries, filePath) {
+  const target = filePath || FILE
+  let raw
+  try { raw = JSON.parse(fs.readFileSync(target, 'utf8')) } catch (_) { raw = null }
+  const data = raw || { version: 1, generatedAt: new Date().toISOString(), sources: {}, nodes: {}, edges: {} }
+  data.sources = data.sources || {}
+  data.nodes = data.nodes || {}
+  data.sources.manual = data.sources.manual || {
+    label: '人工录入',
+    title: '医生录入',
+    author: '',
+    dynasty: '',
+    note: '非原典条文，由认证医生在画布上录入、管理员审核通过'
+  }
+
+  const stamp = new Date().toISOString().slice(0, 10)
+  let changed = 0
+  for (const e of entries || []) {
+    if (!e || !e.name || !e.by) continue
+    const cur = data.nodes[e.name]
+    if (cur) {
+      if (cur.by === e.by) continue
+      cur.by = e.by
+      cur.byAt = stamp
+      if (e.note) cur.note = e.note
+    } else {
+      data.nodes[e.name] = { source: 'manual', label: '人工录入', refs: [], by: e.by, byAt: stamp }
+      if (e.note) data.nodes[e.name].note = e.note
+    }
+    changed++
+  }
+  if (!changed) return { changed: 0, file: target }
+  data.generatedAt = new Date().toISOString()
+  fs.writeFileSync(target, JSON.stringify(data, null, 2) + '\n', 'utf8')
+  return { changed, file: target }
+}
+
+module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo, setContributors }

@@ -191,9 +191,10 @@ function provenanceHtml(node) {
     textual.join('；')
   ].filter(Boolean).join(' · ') || '（未标注具体条文）'
   const whoTxt = [p.author, p.dynasty].filter(Boolean).join(' · ')
-  const byTxt = p.by && p.by.startsWith('system:')
+  const isSystem = p.by && p.by.startsWith('system:')
+  const byTxt = isSystem
     ? '原典条文（非人工提交）'
-    : (p.by ? '提供者：' + p.by : '')
+    : (p.by ? '录入：' + p.by + '（经管理员审核）' : '')
   return '<div class="prov-box" style="border-color:' + st.border + ';background:' + st.bg + '">'
     + '<span class="prov-label" style="color:' + st.label + '">'
     + '<span class="prov-tag" style="background:' + st.bg + ';color:' + st.label + ';border:1px solid ' + st.border + '">' + esc(st.tag) + '</span>'

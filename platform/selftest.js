@@ -156,6 +156,18 @@ console.log('\n[4] 医生提交 → 管理员审核 → 落盘 + 归属')
   ok('审核通过并落盘', ap.data.ok === true && (ap.data.written || []).length >= 1, ap.data)
   ok('登记了字段级归属', ap.data.attributionCount >= 1, ap.data.attributionCount)
 
+  // 审核通过要同时把「谁录入的」写进文件侧 provenance.json（不只是数据库里能查）
+  {
+    const { readFileSync } = await import('node:fs')
+    let prov = null
+    for (const p of ['plugins/provenance.json', '../plugins/provenance.json']) {
+      try { prov = JSON.parse(readFileSync(p, 'utf8')); break } catch (_) {}
+    }
+    const rec = prov && prov.nodes ? prov.nodes.fengchi_tong : null
+    ok('provenance 记录了录入人', !!rec && rec.by === '张明远', rec)
+    ok('provenance 保留了原典出处', !!rec && rec.source === 'shanghanlun', rec && rec.source)
+  }
+
   const attr = await admin.req('/api/attribution/node/fengchi_tong')
   const trig = attr.data.items.find(i => i.field === 'trigger')
   ok('归属能查到 trigger 字段的提供者', !!trig && trig.author.displayName === '张明远', attr.data.items)
