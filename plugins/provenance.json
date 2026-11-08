@@ -1,0 +1,1757 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-08T12:34:51.647Z",
+  "sources": {
+    "shanghanlun": {
+      "label": "伤寒论原方",
+      "title": "伤寒论",
+      "fullTitle": "伤寒杂病论 · 伤寒部分",
+      "author": "张仲景",
+      "dynasty": "东汉",
+      "textFile": "data/texts/伤寒论-gutenberg.txt",
+      "textSource": "Project Gutenberg eBook #24272（清代通行本转录）",
+      "note": "条文出处以插件注释里的「第X条」为准；书序按宋本通行编号"
+    }
+  },
+  "nodes": {
+    "abdominal_fullness": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "abdominal_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "alternating_cold_heat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "auto_sweat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "baifa": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "belching": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "belch_food_smell": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "below_palp": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "ben_tun": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "blood_pus_stool": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "body_ache_stiff": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "body_heavy": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "body_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "body_shaking": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "borborygmus": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "burning": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "buyun": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chest_blockage": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chest_fullness": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chest_lump_hard": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chongji": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chronic_diarrhea": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chuan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "clear_grain_diarrhea": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "cold_aversion": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "cold_drink_desire": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "cold_extremities": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "constipation": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "cough": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "dahan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "dark_urine": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "day_agitated_night_calm": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "delirium": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "diarrhea": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "dizziness": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "duomeng": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "duzijiaotonghuocitong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "easy_urination": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "epigastric_fullness": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "epigastric_lump_soft": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "er_ming": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fengchi_tong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fever": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "flatus": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "frequent_urination": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fubulentong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "full_epigastric_hard_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "gaihua_zhongkuai": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "guoming_hongzhong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "heart_palp": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "houlongjinsuo": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "hungry": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "hypochondriac_fullness": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "inner_cold_outer_heat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "jaundice": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "jingzixishao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "joint_pain_rigid": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "kouchibuqing": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "leak_sweat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "left_abdomen_press_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "left_leigu_suan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "limb_spasm": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "lower_abdominal_lump": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "low_appetite": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "manic": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "mild_cold": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "neck_stiff_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "no_sweat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "poor_complexion": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "press_only_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "qingdubianmi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "qi_surge": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "restless": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "round_worm_vomit": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "rufangzhongkuai": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "severe_abdominal_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "severe_thirst": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shaoyang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shaoyin": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shouhan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shuangtuiwuli": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shuangzu_re": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shuimianbuhao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "skin_yang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "sleepy": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "speech_difficulty": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "sweat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tenesmus": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "thirsty": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "throat_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "throat_ulcer": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tidal_fever": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tili_cha": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tongjing": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "true_cold_false_heat": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "true_heat_false_cold": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tunyankunnan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tuofa": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tu_nongxue": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "urination_difficulty": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vex_insomnia": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vex_like_vomit": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vomiting": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vomit_on_food": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vomit_on_intake": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "vomit_saliva": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wei_suan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wei_tong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wind_aversion": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wocanminxian": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaobian_dilou": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaobian_fuli": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiazhui": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xigaiyixialeng": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yaguan_tong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yangming": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yanjing_duoleishui": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yaosuan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yaotuisuankun": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yuejingjianshao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zijue_shenre": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zugengtong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zuolei_tong": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "bounding_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "floating_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "hasty_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "rapid_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "slow_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tight_pulse": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "yin_yang_floating": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fei_guore": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "ganjingbuzu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "ganqi_bushu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "ganxuebuzu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "no_transmission": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "4"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "piyangbuzheng": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shangjiaoshire": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shenjingbuzu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shenjingxuexu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shenxuebuzu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shenyangxu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shuishengmu_danmubushou": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "solar_cold": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "3"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "solar_windstrike": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "still_sun": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "taiyang_disease": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "1"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "warm_disease": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wind_warm_disease": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zhongqi_buzu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "baihu_jia_renshen": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "26"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "baihu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "176"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "baishao_dangguishen": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "baitong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "314",
+        "315"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "baitouweng_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "371",
+        "373"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "banxia_xiexin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "buguzhi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "bushen": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "bushenjinxue": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chaihu_guizhi_ganjiang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "147"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "chaihu_guizhi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "146"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "chaihu_jia_longgumuli_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "107"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "chaihu_yujing": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "chishizhi_yuyuliang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "159"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "dachaihu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "103"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "dachengqi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "dahuang_houpu_zhishi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "dahuang_huanglian_xiexin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "154"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "danggui_sini_jia_wuzhuyu_shengjiang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "352"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "danggui_sini_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "351"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "daqinglong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "38"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "daxianxiong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "daxianxiong_wan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "131"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "didang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "didang_wan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "126"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "fen_xiao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fuling_gancao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "73",
+        "356"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "fuling_guizhi_gancao_zao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "65"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "fuling_sini_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "69"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "fupengzi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fuzi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "305"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "fuzi_xiexin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "155"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "gancao_fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "175"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "gancao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "311"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "gancao_xiexin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "158"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "ganjiang_fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "61"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "ganjiang_huangqin_huanglian_renshen_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "359"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "gegen_jia_banxia": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "33"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "gegen_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "31",
+        "32"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guadi_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "166"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhifulingwan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_chaomaiya": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "174"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_gancao_longgumuli_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "118"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_gancao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "64"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jiagui_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "117"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jiahoupo_xingren": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jia_dahuang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "279"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jia_fuzi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "20"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jia_gegen": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "14"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_jia_shaoyao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "279"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_qu_gui_jia_fuling": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "28"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_qu_shaoyao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "21"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_qu_shaoyao_jia_fuzi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "22"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_renshen_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "163"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "guizhi_xinjia_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "62"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "houpo_shengjiang_banxia_gangcao_renshen": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "66"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "houpu": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "huanglian_ajiao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "303"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "huanglian_huangqing": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "huanglian_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "173"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "huangqin_jia_banxia_shengjiang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "172"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "huangqin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "172"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "huangqi_dangsheng_shengma": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "huangtu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "jiegeng_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "311"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "jiuni_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "112"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "kujiu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "312"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "lianqiao_yinhua_jinjie": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "linggui_shugan_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "67"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "mahuang_liangqiao_chixiaodou_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "262"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "mahuang_lianqiao_chixiaodou_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "mahuang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "35"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "maxing_shigan_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "63"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "maziren_wan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "247"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "muli": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "muli_walengzi": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "nothing": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "qugui_jia_baizhu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "174"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "shaoyao_gancao_fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "68"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "shengjiang_xiexin_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "157"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "shigao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "shizao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "152"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "shudihuang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "sini_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "318"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "sini_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "91"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "sini_xiaobaisan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "141"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "taohe_chengqi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "106"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "taohua_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "tiaowei_chengqi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "105"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "tongmai_sini_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "317"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "wenha_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "141"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "wuling_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "wumei_wan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "338"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "wuzhuyu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaochaihu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "101"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "xiaochengqi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaojianzhong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaoqinglong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "xiaoxianxiong_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "138"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "xuanfu_daizhe_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "161"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "yinchenhao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zhenwu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "82"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhigancao": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [],
+      "by": "system:shanghanlun"
+    },
+    "zhigancao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "177"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhizi_bopi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "261"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhizi_chi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "76",
+        "77",
+        "78"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhizi_ganjiang_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "80"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhizi_houpo_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "79"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhufu_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "310"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "zhuling_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "223"
+      ],
+      "by": "system:shanghanlun"
+    }
+  },
+  "edges": {}
+}

@@ -1636,3 +1636,14 @@ rect.minimap-view,svg .minimap-view{
 .statusbar span{font-variant-numeric:tabular-nums}
 .statusbar .mono{font-family:var(--font-mono)}
 .status-spacer{flex:1}
+
+/* ---- 条文来源（开发端只读展示：谁提供了这条条文）---- */
+.prov-box{
+  border:1px solid rgba(94,234,212,.28);
+  background:rgba(94,234,212,.07);
+  border-radius:8px;padding:8px 10px;margin:6px 0 2px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.prov-box .prov-label{color:#5eead4;font-weight:600;font-size:12px}
+.prov-box .prov-ref{color:var(--text);font-size:12px}
+.prov-box .prov-note{color:var(--text-2);font-size:11px}

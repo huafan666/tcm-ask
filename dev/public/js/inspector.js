@@ -148,6 +148,7 @@ function nodeHtml(node, selCount) {
       + '<br>可以用「查看源码」看磁盘上的真实内容（只读）。</div>')
   }
   out.push(basicHtml(node, ro))
+  out.push(provenanceHtml(node))
   if (node.isLeaf) {
     out.push(tagGroupHtml(node, 'trigger', '触发关键词', ro,
       '病人说的话命中任一关键词即判为「有」。输入层节点靠这里被病人说话命中。'))
@@ -161,6 +162,31 @@ function nodeHtml(node, selCount) {
   out.push(depGroupHtml(node))
   out.push('</div>')
   return out.join('')
+}
+
+// ------------------------------------------------------------
+// 条文来源（只读）：这条条文是谁提供的
+// ------------------------------------------------------------
+function provenanceHtml(node) {
+  const p = node.provenance
+  if (!p) {
+    return '<div class="prov-box" style="border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.07)">'
+      + '<span class="prov-label" style="color:#fcd34d">条文来源：未标注</span>'
+      + '<span class="prov-note">在 plugins/provenance.json 里补一条即可</span></div>'
+  }
+  const refTxt = p.refs && p.refs.length
+    ? '《' + (p.title || p.label) + '》第 ' + p.refs.join('、') + ' 条'
+    : '《' + (p.title || p.label) + '》（未标注具体条号）'
+  const whoTxt = [p.author, p.dynasty].filter(Boolean).join(' · ')
+  const byTxt = p.by && p.by.startsWith('system:')
+    ? '原典条文（非人工提交）'
+    : (p.by ? '提供者：' + p.by : '')
+  return '<div class="prov-box">'
+    + '<span class="prov-label">' + esc(p.label || '已标注来源') + '</span>'
+    + '<span class="prov-ref">' + esc(refTxt) + '</span>'
+    + (whoTxt ? '<span class="prov-note">' + esc(whoTxt) + '</span>' : '')
+    + (byTxt ? '<span class="prov-note">' + esc(byTxt) + '</span>' : '')
+    + '</div>'
 }
 
 function headHtml(node, selCount) {

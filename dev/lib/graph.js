@@ -29,6 +29,7 @@ const LAYOUT_FILE = path.join(PLUGINS, '.layout.json')
 const BACKUP_DIR = path.join(__dirname, '..', '.backups')
 
 const P = require('./parse')
+const provenance = require('./provenance')
 const { loadAll } = require(path.join(ROOT, 'core/loader'))
 const { Engine } = require(path.join(ROOT, 'engine/engine'))
 const { Asker } = require(path.join(ROOT, 'engine/asker'))
@@ -123,6 +124,11 @@ function buildGraph() {
     })
   }
 
+  // ---- 条文来源（谁提供了这个节点）----
+  const provView = provenance.load()
+  provenance.attachTo(nodes, provView)
+  const provAnnotated = nodes.filter(n => n.provenance).length
+
   // ---- 统计与结构检查（只报告，不改数据）----
   const byName = {}
   nodes.forEach(n => { byName[n.name] = n })
@@ -167,6 +173,13 @@ function buildGraph() {
       needNodes: nodes.filter(n => n.needs.length).length,
       leaves: leaves.length,
       orphans, dangling, selfContra, selfRef,
+      provenance: {
+        file: rel(provenance.FILE),
+        annotated: provAnnotated,
+        unannotated: nodes.length - provAnnotated,
+        withRefs: nodes.filter(n => n.provenance && n.provenance.refs.length).length,
+        sources: Object.keys(provView.sources || {})
+      },
       orNodesList: nodes.filter(n => n.needs.length > 1).map(n => n.name),
       pluginsDir: PLUGINS.replace(/\\/g, '/'),
       root: ROOT.replace(/\\/g, '/'),

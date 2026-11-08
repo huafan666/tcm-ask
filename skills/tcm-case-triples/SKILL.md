@@ -178,7 +178,41 @@ module.exports = {
 【发现】这次整理暴露的数据问题（松路径、缺节点、舌脉未参与…）
 ```
 
-## 8. 范例（已用真实引擎验证）
+## 8. 条文来源标注（provenance）
+
+每个节点的出处记在 `plugins/provenance.json`（随仓库版本化），开发端检视器和平台画布右下角都会显示。
+
+```json
+{ "sources": { "shanghanlun": { "label": "伤寒论原方", "author": "张仲景", "dynasty": "东汉" } },
+  "nodes":   { "mahuang_tang": { "source": "shanghanlun", "refs": ["35"], "by": "system:shanghanlun" } } }
+```
+
+- 批量标注现有条文：`node tools/annotate-shanghanlun.js --write`（条号从插件注释「第X条」自动提取）
+- 新增条文时**必须**同时补一条 provenance，否则开发端显示「条文来源：未标注」
+- 两层归属互补：provenance 管「出自哪本书哪一条」，平台的 `attributions` 表管「是谁改的哪个字段」
+
+## 9. 整理《金匮要略》（或任何整本书）
+
+**逐条过、逐条审**，绝不批量静默入库。
+
+```powershell
+node tools\jingui-extract.js             # 概览：25 篇 / 824 条
+node tools\jingui-extract.js --chapter 2 # 第二篇逐条列表（id + 原文）
+node tools\jingui-extract.js --write     # 写 data/texts/金匮要略-条文.json（繁体原文 + 简体对照）
+```
+
+三条硬约束：
+
+1. **必须先繁转简**：wikisource 原文繁体，引擎 trigger 全简体，「發熱/無汗/惡寒」一个字都命中不了。
+   对照表 `data/texts/繁简对照.json`；脚本会列出「简体语料里没出现过的字」，确认是繁体就补进去。
+2. **编号**：`篇号.条序`（2.11 = 第二篇第 11 条），provenance 的 source 用 `jinkui` 与 `shanghanlun` 区分。
+3. **审核闸门**：提案先写 `data/review/金匮要略-批N.md`（原文/简体/结构化/三元组/节点映射/待建清单/待决问题），
+   **用户确认前不得写入 plugins/**。每批 3~5 条。
+
+优先做「有方之条」；病机/禁忌条（如「發汗太多，因致痙」）单独归类，不当三元组处理。
+篇 23~25（雜療方/禽獸魚蟲禁忌/果實菜穀禁忌，约 276 行）基本是食物禁忌清单，默认跳过。
+
+## 10. 范例（已用真实引擎验证）
 
 输入：
 

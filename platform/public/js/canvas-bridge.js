@@ -68,11 +68,34 @@ async function show(name) {
 function paint(name, items) {
   const bodyEl = document.getElementById('tcm-attr-body')
   if (lastNode !== name) return
+
+  // 经典原文出处（plugins/provenance.json）：伤寒论原方 / 金匮要略原方 …
+  let provHtml = ''
+  try {
+    const def = store && store.S && store.S.nodes ? store.S.nodes.get(name) : null
+    const p = def && def.provenance
+    if (p) {
+      const refs = (p.refs && p.refs.length) ? ' 第 ' + p.refs.join('、') + ' 条' : ''
+      provHtml = `<div class="tcm-attr-row" style="border-top:0;padding-bottom:6px">
+        <span class="tcm-attr-field">原文出处</span>
+        <span style="flex:1;min-width:0">
+          <span class="tcm-attr-who" style="color:#0a7c5a">${esc(p.label)}</span>
+          <span class="tcm-attr-at">${esc((p.title || '') + refs)}</span>
+        </span>
+      </div>`
+    } else {
+      provHtml = `<div class="tcm-attr-row" style="border-top:0;padding-bottom:6px">
+        <span class="tcm-attr-field">原文出处</span>
+        <span style="flex:1;color:#8b98a5">未标注（可在 plugins/provenance.json 补）</span>
+      </div>`
+    }
+  } catch (_) {}
+
   if (!items.length) {
-    bodyEl.innerHTML = '<div class="tcm-attr-empty">这个节点还没有通过审核的条文贡献记录（医生提交并通过审核后会出现）。</div>'
+    bodyEl.innerHTML = provHtml + '<div class="tcm-attr-empty">人工贡献：还没有通过审核的记录（医生提交并审核通过后出现在这里）。</div>'
     return
   }
-  bodyEl.innerHTML = items.map(it => `
+  bodyEl.innerHTML = provHtml + items.map(it => `
     <div class="tcm-attr-row">
       <span class="tcm-attr-field">${esc(it.fieldLabel)}</span>
       <span style="flex:1;min-width:0">
