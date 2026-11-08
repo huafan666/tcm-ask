@@ -195,6 +195,11 @@ function provenanceHtml(node) {
   const byTxt = isSystem
     ? '原典条文（非人工提交）'
     : (p.by ? '录入：' + p.by + '（经管理员审核）' : '')
+  // 自定义说明：让后来编辑的人知道「这条别人也遇到过、可以这样引用」
+  const noteTxt = p.note
+    ? '<div class="prov-note-box">' + esc(p.note)
+      + '<div class="prov-note-by">' + esc(p.noteBy ? '—— ' + p.noteBy + (p.noteAt ? ' · ' + p.noteAt : '') : '') + '</div></div>'
+    : ''
   return '<div class="prov-box" style="border-color:' + st.border + ';background:' + st.bg + '">'
     + '<span class="prov-label" style="color:' + st.label + '">'
     + '<span class="prov-tag" style="background:' + st.bg + ';color:' + st.label + ';border:1px solid ' + st.border + '">' + esc(st.tag) + '</span>'
@@ -203,6 +208,7 @@ function provenanceHtml(node) {
     + '<span class="prov-ref" style="opacity:.75">《' + esc(p.title || '') + '》</span>'
     + (whoTxt ? '<span class="prov-note">' + esc(whoTxt) + '</span>' : '')
     + (byTxt ? '<span class="prov-note">' + esc(byTxt) + '</span>' : '')
+    + noteTxt
     + '</div>'
 }
 

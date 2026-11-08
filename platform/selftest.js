@@ -180,6 +180,24 @@ console.log('\n[4] 医生提交 → 管理员审核 → 落盘 + 归属')
     ok('provenance 保留了原典出处', !!rec && rec.source === 'shanghanlun', rec && rec.source)
   }
 
+  // 溯源三件套：自定义说明 / 编辑历史 / 关系（边）
+  {
+    const note = await doctor.req('/api/provenance/note', { method: 'POST', body: { name: 'fengchi_tong', note: '自测：这条别人也遇到过' } })
+    ok('可以给节点写自定义说明', note.status === 200 && note.data.ok === true, note.data)
+
+    const hist = await doctor.req('/api/attribution/history/fengchi_tong')
+    ok('历史接口返回时间线', hist.status === 200 && Array.isArray(hist.data.timeline), hist.data && Object.keys(hist.data))
+    ok('历史里带审核人', (hist.data.timeline || []).some(t => t.reviewer === '平台管理员'), (hist.data.timeline || [])[0])
+    ok('历史里带说明', !!(hist.data.provenance && hist.data.provenance.note), hist.data.provenance)
+
+    const edges = await doctor.req('/api/attribution/edges/fengchi_tong')
+    ok('关系接口可用', edges.status === 200 && Array.isArray(edges.data.items), edges.data)
+
+    // 清掉自测说明，别污染数据
+    const clear = await doctor.req('/api/provenance/note', { method: 'POST', body: { name: 'fengchi_tong', note: '' } })
+    ok('说明可以清空', clear.status === 200 && clear.data.ok === true, clear.data)
+  }
+
   const attr = await admin.req('/api/attribution/node/fengchi_tong')
   const trig = attr.data.items.find(i => i.field === 'trigger')
   ok('归属能查到 trigger 字段的提供者', !!trig && trig.author.displayName === '张明远', attr.data.items)

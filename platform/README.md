@@ -70,6 +70,34 @@ node_name | field(title/trigger/negate/ask/needs/contraindications/node) | autho
 - **医生工作台 / 我的**：列出「我提供过的条文」及具体字段；
 - **首页侧栏 / 审核台**：条文贡献榜（多少条条文、多少字段）。
 
+### 3.5 溯源三件套：说明 / 历史 / 关系
+
+这套系统只有两种东西——**节点**和**关系**。溯源必须两样都覆盖，否则关系就是黑盒。
+
+| 层 | 存哪 | 看得到什么 |
+|---|---|---|
+| 节点出处 | `plugins/provenance.json` 的 `nodes[name]` | 出自哪本书哪一条（伤寒/金匮）、谁录入、**自定义说明**（note + noteBy + noteAt） |
+| 关系出处 | `plugins/provenance.json` 的 `edges['owner\|ref.pol']` | 这条条件「别人也见过」的说明 |
+| 关系留痕 | 数据库 `edge_changes` | 每条边的增删：谁、哪份草稿、什么时候（审核通过时按 needs 前后 diff 算出） |
+| 编辑历史 | 数据库 `attributions` + `drafts` | 时间线：谁提交、改了哪些字段、谁审核、审核意见、时间 |
+
+接口（都需要医生/管理员）：
+
+```powershell
+GET  /api/attribution/history/<节点>     # 出处 + 时间线 + 关系
+GET  /api/attribution/edges/<节点>        # 每条关系是谁连的
+POST /api/provenance/note                 # {name, note} 或 {owner, ref, pol, note}
+```
+
+UI：
+- **平台画布**（`/canvas`）右下角面板：出处 + 说明 + 「改说明」「编辑历史」两个按钮，
+  历史弹层里能看到草稿号、改了哪些字段、审核人、审核意见、以及每条关系是谁连的
+- **开发端**（`dev/server.js`）：检视器的「条文来源」块会显示说明（只读；开发端没有数据库，
+  没有审核历史，要看历史去平台画布）
+
+**为什么要这么细**：用户的原话是「让每个贡献者都可以看到这个来自哪里、哪一部分」——
+只记到节点级，等于关系（三元组）没法引用、没法追责；只留在数据库里，开发端又看不到。
+
 ### 4. 病历链路的两层留痕
 
 **录入侧（每次提交都留档）**：医生在画布上点保存 → 草稿表 `drafts.payload` 原样存下整份载荷，

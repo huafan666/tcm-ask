@@ -10,6 +10,7 @@
 
 const graph = require('../dev/lib/graph')
 const provenance = require('../dev/lib/provenance')
+const P = require('../dev/lib/parse')
 const { q, now } = require('./db')
 const { HttpError } = require('./auth')
 
@@ -169,13 +170,55 @@ function getDraft(id, user) {
   return dto
 }
 
+/** 把一份载荷里的 needs 变化 diff 成「边」的增删：这套系统只有节点和关系，关系不能是黑盒 */
+function diffEdges(payload) {
+  const sig = paths => {
+    const s = new Set()
+    for (const p of (paths || [])) for (const c of p) s.add((c && c.ref ? c.ref : String(c).split('.')[0]) + '.' +
+      (c && c.pol ? c.pol : (String(c).endsWith('.no') ? 'no' : 'yes')))
+    return s
+  }
+  const readNeeds = name => {
+    try {
+      const src = graph.readSource(name)
+      if (!src || !src.ok) return []
+      const m = P.scanPluginSource(src.source)
+      return m.ok ? m.model.needs : []
+    } catch (_) { return [] }
+  }
+  const rows = []
+  const push = (owner, cond, action) => {
+    const i = cond.lastIndexOf('.')
+    rows.push({ owner, ref: cond.slice(0, i), pol: cond.slice(i + 1), action })
+  }
+  for (const u of payload.updated || []) {
+    if (!u || !u.name || !('needs' in u)) continue
+    const before = sig(readNeeds(u.name))
+    const after = sig(u.needs)
+    for (const c of after) if (!before.has(c)) push(u.name, c, 'add')
+    for (const c of before) if (!after.has(c)) push(u.name, c, 'remove')
+  }
+  for (const c of payload.created || []) {
+    if (!c || !c.name) continue
+    for (const cond of sig(c.needs)) push(c.name, cond, 'add')
+  }
+  for (const d of payload.deleted || []) {
+    const name = typeof d === 'string' ? d : d && d.name
+    if (!name) continue
+    for (const cond of sig(readNeeds(name))) push(name, cond, 'remove')
+  }
+  return rows
+}
+
 /** 审核通过：真正写盘 + 登记字段级归属 */
+
 function approveDraft(id, reviewer, note) {
   const row = q.get('SELECT * FROM drafts WHERE id = ?', Number(id))
   if (!row) throw new HttpError(404, '草稿不存在')
   if (row.status !== 'pending') throw new HttpError(409, `该草稿已经是「${row.status}」状态`)
   const payload = JSON.parse(row.payload)
 
+  const edgeRows = diffEdges(payload)      // 落盘前先算出关系增删
   const result = graph.applySave(payload)     // 带备份 + 落盘后编译复核
   if (!result.ok) {
     return { ok: false, errors: result.errors || ['落盘失败'], written: result.written || [] }
@@ -202,6 +245,12 @@ function approveDraft(id, reviewer, note) {
   } catch (e) {
     provenanceResult = { error: e.message }
   }
+  // 关系级留痕：每条边的增删都记下是谁、哪份草稿
+  for (const e of edgeRows) {
+    q.run('INSERT INTO edge_changes (draft_id, owner, ref, pol, action, author_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      row.id, e.owner, e.ref, e.pol, e.action, row.author_id, stamp)
+  }
+
   q.run(
     `UPDATE drafts SET status = 'approved', reviewer_id = ?, review_note = ?, reviewed_at = ? WHERE id = ?`,
     reviewer.id, String(note || ''), stamp, row.id
@@ -287,9 +336,73 @@ function contributors() {
       ORDER BY fields DESC, nodes DESC`)
 }
 
+/** 某个节点当前所有关系（边）的「谁加的」——取每条边最近一次 add 的记录 */
+function edgesOf(nodeName) {
+  const rows = q.all(
+    `SELECT e.owner, e.ref, e.pol, e.action, e.created_at, u.display_name, u.verified, e.draft_id
+       FROM edge_changes e JOIN users u ON u.id = e.author_id
+      WHERE e.owner = ? OR e.ref = ?
+      ORDER BY e.id DESC`, String(nodeName), String(nodeName))
+  const latest = new Map()
+  for (const r of rows) {
+    const key = r.owner + '|' + r.ref + '.' + r.pol
+    if (latest.has(key)) continue
+    latest.set(key, {
+      owner: r.owner, ref: r.ref, pol: r.pol, action: r.action,
+      draftId: r.draft_id, at: r.created_at,
+      author: { displayName: r.display_name, verified: !!r.verified },
+      note: (provenance.ofEdge(r.owner, r.ref, r.pol) || {}).note || ''
+    })
+  }
+  return [...latest.values()]
+}
+
+/** 完整编辑历史（时间线）：谁、什么时候、改了哪些字段、审核人是谁、审核意见 */
+function historyFor(nodeName) {
+  const name = String(nodeName)
+  const attrs = q.all(
+    `SELECT a.field, d.id AS draft_id, d.title, d.status, d.review_note,
+            d.created_at AS submitted_at, d.reviewed_at,
+            au.display_name AS author, au.verified AS author_verified,
+            rv.display_name AS reviewer
+       FROM attributions a
+       JOIN drafts d ON d.id = a.draft_id
+       JOIN users au ON au.id = a.author_id
+       LEFT JOIN users rv ON rv.id = d.reviewer_id
+      WHERE a.node_name = ?
+      ORDER BY a.id DESC`, name)
+
+  const byDraft = new Map()
+  for (const r of attrs) {
+    if (!byDraft.has(r.draft_id)) {
+      byDraft.set(r.draft_id, {
+        draftId: r.draft_id,
+        title: r.title,
+        status: r.status,
+        author: { displayName: r.author, verified: !!r.author_verified },
+        reviewer: r.reviewer || null,
+        reviewNote: r.review_note || '',
+        submittedAt: r.submitted_at,
+        reviewedAt: r.reviewed_at,
+        fields: []
+      })
+    }
+    const g = byDraft.get(r.draft_id)
+    if (!g.fields.includes(r.field)) g.fields.push(FIELD_LABEL[r.field] || r.field)
+  }
+
+  return {
+    node: name,
+    provenance: provenance.ofNode(name),
+    timeline: [...byDraft.values()],
+    edges: edgesOf(name)
+  }
+}
+
 module.exports = {
   FIELD_LABEL,
   touchedItems,
+  diffEdges,
   submitDraft,
   listDrafts,
   getDraft,
@@ -298,5 +411,7 @@ module.exports = {
   pendingCount,
   attributionOf,
   attributionMap,
-  contributors
+  contributors,
+  edgesOf,
+  historyFor
 }

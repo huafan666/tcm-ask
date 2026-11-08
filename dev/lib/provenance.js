@@ -128,4 +128,52 @@ function setContributors(entries, filePath) {
   return { changed, file: target }
 }
 
-module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo, setContributors }
+/**
+ * 自由说明：让后来编辑的人知道「这条别人也遇到过、可以这样引用」。
+ * 与系统生成的 note 共用一个字段，但会记下是谁写的、什么时候。
+ */
+function setNote(name, note, by, filePath) {
+  const target = filePath || FILE
+  let data
+  try { data = JSON.parse(fs.readFileSync(target, 'utf8')) } catch (_) { data = null }
+  if (!data) data = { version: 1, generatedAt: new Date().toISOString(), sources: {}, nodes: {}, edges: {} }
+  data.nodes = data.nodes || {}
+  const cur = data.nodes[name] || { source: 'manual', label: '人工录入', refs: [] }
+  const text = String(note || '').trim()
+  if (!text) {
+    delete cur.note
+    delete cur.noteBy
+    delete cur.noteAt
+  } else {
+    cur.note = text.slice(0, 500)
+    cur.noteBy = by || ''
+    cur.noteAt = new Date().toISOString().slice(0, 10)
+  }
+  data.nodes[name] = cur
+  data.generatedAt = new Date().toISOString()
+  fs.writeFileSync(target, JSON.stringify(data, null, 2) + '\n', 'utf8')
+  return cur
+}
+
+/** 关系级说明：key = 'owner|ref.pol'，让「这条链条别人也见过」能留下话 */
+function setEdgeNote(owner, ref, pol, note, by, filePath) {
+  const target = filePath || FILE
+  let data
+  try { data = JSON.parse(fs.readFileSync(target, 'utf8')) } catch (_) { data = null }
+  if (!data) data = { version: 1, generatedAt: new Date().toISOString(), sources: {}, nodes: {}, edges: {} }
+  data.edges = data.edges || {}
+  const key = owner + '|' + ref + '.' + (pol || 'yes')
+  const cur = data.edges[key] || {}
+  const text = String(note || '').trim()
+  if (!text) { delete data.edges[key] } else {
+    cur.note = text.slice(0, 500)
+    cur.noteBy = by || ''
+    cur.noteAt = new Date().toISOString().slice(0, 10)
+    data.edges[key] = cur
+  }
+  data.generatedAt = new Date().toISOString()
+  fs.writeFileSync(target, JSON.stringify(data, null, 2) + '\n', 'utf8')
+  return data.edges[key] || null
+}
+
+module.exports = { FILE, load, emptyOf, ofNode, ofEdge, attachTo, setContributors, setNote, setEdgeNote }

@@ -92,6 +92,21 @@ CREATE TABLE IF NOT EXISTS attributions (
 );
 CREATE INDEX IF NOT EXISTS idx_attr_node ON attributions(node_name);
 
+-- 关系级留痕：needs 里每一条依赖关系（边）的增删，是谁、哪份草稿
+-- 这套系统只有「节点」和「关系」两种东西，只记节点等于关系是黑盒
+CREATE TABLE IF NOT EXISTS edge_changes (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  draft_id   INTEGER NOT NULL,
+  owner      TEXT    NOT NULL,   -- 关系所属节点（谁 needs 谁）
+  ref        TEXT    NOT NULL,   -- 被依赖的节点
+  pol        TEXT    NOT NULL,   -- yes | no
+  action     TEXT    NOT NULL,   -- add | remove
+  author_id  INTEGER NOT NULL,
+  created_at TEXT    NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_edge_owner ON edge_changes(owner);
+CREATE INDEX IF NOT EXISTS idx_edge_ref ON edge_changes(ref);
+
 CREATE TABLE IF NOT EXISTS posts (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id  INTEGER NOT NULL,

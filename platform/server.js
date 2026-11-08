@@ -451,6 +451,33 @@ add('GET', '/api/attribution/node/:name', ctx => {
 
 add('GET', '/api/attribution/contributors', () => ({ items: review.contributors() }))
 
+// 节点/关系的完整溯源：谁加的、谁改的、什么时候、审核意见
+add('GET', '/api/attribution/history/:node', ctx => {
+  auth.requireDoctor(ctx.req)
+  return review.historyFor(ctx.params.node)
+})
+
+// 每条关系（边）是谁连的
+add('GET', '/api/attribution/edges/:node', ctx => {
+  auth.requireDoctor(ctx.req)
+  return { node: ctx.params.node, items: review.edgesOf(ctx.params.node) }
+})
+
+// 自定义说明（节点级 / 关系级）：让别人知道「这条别人也遇到过，可以这样引用」
+add('POST', '/api/provenance/note', ctx => {
+  const user = auth.requireDoctor(ctx.req)
+  const body = ctx.body || {}
+  const name = String(body.name || '').trim()
+  if (!name) throw new HttpError(400, '缺少节点名')
+  const prov = require('../dev/lib/provenance')
+  if (body.owner && body.ref) {
+    const rec = prov.setEdgeNote(body.owner, body.ref, body.pol || 'yes', body.note, user.display_name)
+    return { ok: true, scope: 'edge', edge: rec }
+  }
+  const rec = prov.setNote(name, body.note, user.display_name)
+  return { ok: true, scope: 'node', node: rec }
+})
+
 // ============================================================
 // 六、社区
 // ============================================================
