@@ -82,6 +82,8 @@ export function loadGraph(data) {
       ask: n.ask || '',
       needs: clone(n.needs || []),
       contraindications: clone(n.contraindications || []),
+      // 条文来源（plugins/provenance.json）：谁提供了这条条文。只读展示，不参与保存
+      provenance: n.provenance || null,
       modes: n.modes,
       renamedFrom: null,
       needsBaseline: null,

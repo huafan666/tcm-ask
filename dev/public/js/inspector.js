@@ -165,25 +165,41 @@ function nodeHtml(node, selCount) {
 }
 
 // ------------------------------------------------------------
-// 条文来源（只读）：这条条文是谁提供的
+// 条文来源（只读）：这条条文出自哪本书哪一条，谁提供的
+//   伤寒论 = 青绿，金匮要略 = 琥珀，其余来源 = 淡紫；一眼能分开
 // ------------------------------------------------------------
+const PROV_STYLE = {
+  shanghanlun: { border: 'rgba(94,234,212,.35)', bg: 'rgba(94,234,212,.08)', label: '#5eead4', tag: '伤寒' },
+  jinkui: { border: 'rgba(251,191,36,.35)', bg: 'rgba(251,191,36,.08)', label: '#fcd34d', tag: '金匮' }
+}
+const PROV_FALLBACK = { border: 'rgba(167,139,250,.35)', bg: 'rgba(167,139,250,.08)', label: '#c4b5fd', tag: '其它' }
+
 function provenanceHtml(node) {
   const p = node.provenance
   if (!p) {
-    return '<div class="prov-box" style="border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.07)">'
-      + '<span class="prov-label" style="color:#fcd34d">条文来源：未标注</span>'
+    return '<div class="prov-box" style="border-color:rgba(148,163,184,.35);background:rgba(148,163,184,.08)">'
+      + '<span class="prov-label" style="color:#cbd5e1">条文来源：未标注</span>'
       + '<span class="prov-note">在 plugins/provenance.json 里补一条即可</span></div>'
   }
-  const refTxt = p.refs && p.refs.length
-    ? '《' + (p.title || p.label) + '》第 ' + p.refs.join('、') + ' 条'
-    : '《' + (p.title || p.label) + '》（未标注具体条号）'
+  const st = PROV_STYLE[p.sourceId] || PROV_FALLBACK
+  // refs 里可能同时有「第35条」和「篇名 · 条文首句」两种写法，分别拼
+  const refs = p.refs || []
+  const numeric = refs.filter(r => /^第?\d+条?$/.test(r) || /^\d+$/.test(r))
+  const textual = refs.filter(r => !numeric.includes(r))
+  const refTxt = [
+    numeric.length ? '第 ' + numeric.map(r => r.replace(/^第|条$/g, '')).join('、') + ' 条' : '',
+    textual.join('；')
+  ].filter(Boolean).join(' · ') || '（未标注具体条文）'
   const whoTxt = [p.author, p.dynasty].filter(Boolean).join(' · ')
   const byTxt = p.by && p.by.startsWith('system:')
     ? '原典条文（非人工提交）'
     : (p.by ? '提供者：' + p.by : '')
-  return '<div class="prov-box">'
-    + '<span class="prov-label">' + esc(p.label || '已标注来源') + '</span>'
+  return '<div class="prov-box" style="border-color:' + st.border + ';background:' + st.bg + '">'
+    + '<span class="prov-label" style="color:' + st.label + '">'
+    + '<span class="prov-tag" style="background:' + st.bg + ';color:' + st.label + ';border:1px solid ' + st.border + '">' + esc(st.tag) + '</span>'
+    + esc(p.label || '已标注来源') + '</span>'
     + '<span class="prov-ref">' + esc(refTxt) + '</span>'
+    + '<span class="prov-ref" style="opacity:.75">《' + esc(p.title || '') + '》</span>'
     + (whoTxt ? '<span class="prov-note">' + esc(whoTxt) + '</span>' : '')
     + (byTxt ? '<span class="prov-note">' + esc(byTxt) + '</span>' : '')
     + '</div>'

@@ -1038,7 +1038,8 @@
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
-      "by": "system:shanghanlun"
+      "by": "system:shanghanlun",
+      "note": "另见金匮要略·痉湿暍病脉证并治第二：痉病胸满口噤、卧不著席、脚挛急、齘齿"
     },
     "dahuang_houpu_zhishi": {
       "source": "shanghanlun",
@@ -1220,7 +1221,8 @@
         "31",
         "32"
       ],
-      "by": "system:shanghanlun"
+      "by": "system:shanghanlun",
+      "note": "另见金匮要略·痉湿暍病脉证并治第二：无汗而小便反少、气上冲胸、口噤不得语，欲作刚痉"
     },
     "guadi_san": {
       "source": "shanghanlun",
@@ -1823,6 +1825,14 @@
       "label": "金匮要略原方",
       "refs": [
         "金匮要略·痉湿暍病脉证并治第二 · 病者身热足寒，颈项强急，恶寒，时头热，面赤，目赤，独头动摇，卒口噤，背反张者，痉病也"
+      ],
+      "by": "system:jinkui"
+    },
+    "gualou_guizhi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳病，其证备，身体强，几几然，脉反沉迟，此为痉，栝蒌桂枝汤主之"
       ],
       "by": "system:jinkui"
     }

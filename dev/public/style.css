@@ -1647,3 +1647,5 @@ rect.minimap-view,svg .minimap-view{
 .prov-box .prov-label{color:#5eead4;font-weight:600;font-size:12px}
 .prov-box .prov-ref{color:var(--text);font-size:12px}
 .prov-box .prov-note{color:var(--text-2);font-size:11px}
+.prov-box .prov-label{display:flex;align-items:center;gap:6px}
+.prov-tag{padding:0 5px;border-radius:5px;font-size:10px;font-weight:700;line-height:15px}

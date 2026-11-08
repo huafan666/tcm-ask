@@ -9,8 +9,10 @@ module.exports = {
     ['neck_stiff_pain.yes', 'no_sweat.yes', 'severe_thirst.no'],
     ['neck_stiff_pain.yes', 'no_sweat.yes', 'wind_aversion.yes', 'severe_thirst.no'],
     // 32条: 太阳阳明合病下利(须有表证无汗)
-    ['diarrhea.yes', 'no_sweat.yes']
+    ['diarrhea.yes', 'no_sweat.yes'],
+    // 金匮2.12: 欲作刚痉(无汗+口噤不得语+气上冲胸)
+    ['no_sweat.yes', 'kou_jin.yes', 'qi_surge.yes']
   ],
-  contraindications: ['表实无汗而项背强者主之', '太阳阳明合病下利亦主之', '与桂枝加葛根区别在有无汗出', '服药取微汗']
+  contraindications: ['表实无汗而项背强者主之', '太阳阳明合病下利亦主之', '与桂枝加葛根区别在有无汗出', '服药取微汗', '金匮要略·痉湿暍病脉证并治第二：太阳病无汗而小便反少，气上冲胸，口噤不得语，欲作刚痉，葛根汤主之']
 }
 
