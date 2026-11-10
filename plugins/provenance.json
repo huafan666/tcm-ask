@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T01:05:34.543Z",
+  "generatedAt": "2026-11-10T01:09:00.942Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1933,6 +1933,54 @@
       "label": "金匮要略原方",
       "refs": [
         "金匮要略·痉湿暍病脉证并治第二 · 风湿，脉浮身重，汗出恶风者，防己黄耆汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "body_aches_heavy": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也，一物瓜蒂汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "mahuang_jia_zhu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 湿家身烦疼，可与麻黄加术汤发其汗为宜，慎不可以火攻之"
+      ],
+      "by": "system:jinkui"
+    },
+    "maxing_yigan_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 病者一身尽疼，发热，日晡所剧者，名风湿……可与麻黄杏仁薏苡甘草汤"
+      ],
+      "by": "system:jinkui"
+    },
+    "yiwu_guadi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳中暍，身热疼重，而脉微弱……一物瓜蒂汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shi_bi": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳病，关节疼痛而烦……此名湿痹……但当利其小便"
+      ],
+      "by": "system:jinkui"
+    },
+    "ye_bing": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 太阳中热者，暍是也……白虎加人参汤主之"
       ],
       "by": "system:jinkui"
     }
