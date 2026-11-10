@@ -6,7 +6,8 @@ module.exports = {
   // 第356条: 伤寒厥而心下悸者宜先治水，当服茯苓甘草汤。
   // 水停中焦，心下悸+不渴。核心=心下悸+不渴。
   needs: [
-    ['heart_palp.yes', 'thirsty.no']
+    ['heart_palp.yes', 'thirsty.no'],
+    ['sweat.yes', 'thirsty.no', 'epigastric_fullness.yes']
   ],
   contraindications: ['汗出而不渴/厥而心下悸(水停中焦)', '心悸+不渴为水饮', '与五苓散区别在不渴']
 }

@@ -5012,6 +5012,38 @@
         "397"
       ],
       "by": "system:shanghanlun-batch1"
+    },
+    "gegen_huangqin_huanglian_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "34"
+      ],
+      "by": "system:shanghanlun-batch2"
+    },
+    "mahuang_xixin_fuzi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "301"
+      ],
+      "by": "system:shanghanlun-batch2"
+    },
+    "sini_jia_renshen_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "385"
+      ],
+      "by": "system:shanghanlun-batch2"
+    },
+    "zhishi_zhizi_chi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "393"
+      ],
+      "by": "system:shanghanlun-batch2"
     }
   },
   "edges": {}

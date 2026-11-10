@@ -28,7 +28,9 @@ console.log('\n[1] 大承气: 纯热+身体好+便秘+不放屁+左腹按痛 →
   e.setDirect('flatus', 'no')
   e.setDirect('left_abdomen_press_pain', 'yes')
   check('大承气汤成立', e.state['dachengqi_tang'] === 'yes', `实际=${e.state['dachengqi_tang']}`)
-  check('小承气未成立(不放屁)', e.state['xiaochengqi_tang'] === 'no', `实际=${e.state['xiaochengqi_tang']}`)
+  // 「不放屁」只否定掉小承气的一条路径；它还有 213/214 条那两条（多汗/潮热+谵语）没被问到，
+  // 所以这里只能断言「没成立」，断言 'no' 会是 OR 语义下不成立的强结论。
+  check('小承气未成立(不放屁)', e.state['xiaochengqi_tang'] !== 'yes', `实际=${e.state['xiaochengqi_tang']}`)
 }
 
 console.log('\n[2] 大承气: 佐证只命中潮热(无按痛不屁) → 仍成立')
@@ -87,7 +89,9 @@ console.log('\n[4] 小承气: 纯热+大便硬+放屁 → 小承气成立, 大�
     ['kou_jin', 'no'], ['chest_fullness', 'no'], ['limb_spasm', 'no'],
     ['abdominal_fullness', 'no'], ['severe_abdominal_pain', 'no'],
     ['diarrhea', 'no'], ['epigastric_lump_soft', 'no'],
-    ['postpartum', 'no'], ['lochia_retention', 'no']]) e2.setDirect(n, v)
+    ['postpartum', 'no'], ['lochia_retention', 'no'],
+    // 208 条那条路径（手足濈然汗出 + 大便硬 + 不恶寒）也要一并关掉
+    ['shouhan', 'no']]) e2.setDirect(n, v)
   check('所有路径都被阻断 → 大承气判否', e2.state['dachengqi_tang'] === 'no', `实际=${e2.state['dachengqi_tang']}`)
 }
 

@@ -84,7 +84,9 @@ function findFormula(name) {
     if (t.startsWith(k) || k.startsWith(t) || t.endsWith(k) || k.endsWith(t)) {
       const d = Math.abs(t.length - k.length)
       const minLen = Math.min(t.length, k.length)
-      if (d <= 4 && minLen >= 3 && (!best || d < best.d)) best = { id, d }
+      // minLen 必须 ≥5：否则「葛根黄芩黄连汤」会被后缀匹配到「黄连汤」、
+      // 「柴胡汤」会被匹配到「大柴胡汤」，把真正的缺方藏起来。
+      if (d <= 4 && minLen >= 5 && (!best || d < best.d)) best = { id, d }
     }
   }
   return best ? best.id : null

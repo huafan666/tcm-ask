@@ -6,7 +6,9 @@ module.exports = {
   // 里虚寒(下利清谷)救里。核心=下利清谷。
   needs: [
     ['clear_grain_diarrhea.yes', 'cold_drink_desire.no'],
-    ['vomiting.yes', 'xiaobian_fuli.yes', 'cold_extremities.yes']
+    ['vomiting.yes', 'xiaobian_fuli.yes', 'cold_extremities.yes'],
+    ['vomiting.yes', 'diarrhea.yes', 'cold_extremities.yes', 'sweat.yes'],
+    ['clear_grain_diarrhea.yes', 'diarrhea.yes', 'sweat.yes']
   ],
   contraindications: ['下利清谷(里虚寒)急当救里', '回阳救逆', '表里同病先救里', '这里如果是小便有问题的类型，是由于中焦的寒湿太多导致热量无法下达下焦，导致小便控制不住自己就流出']
 }

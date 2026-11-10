@@ -13,18 +13,19 @@ module.exports = {
     ['cold_drink_desire.yes', 'cold_aversion.no', 'constipation.yes', 'poor_complexion.no', 'flatus.no'],
     ['kou_jin.yes', 'chest_fullness.yes', 'limb_spasm.yes', 'cold_drink_desire.yes'],
     // 金匮 10.13：腹满不减，减不足言，当须下之，宜大承气汤（腹满持续不消＝里实壅结）
-    ['abdominal_fullness.yes', 'severe_abdominal_pain.yes']
-  ,
+    ['abdominal_fullness.yes', 'severe_abdominal_pain.yes'],
     // 金匮 17.39：下利，三部脉皆平，按之心下坚者，急下之，宜大承气汤
-    ['diarrhea.yes','epigastric_lump_soft.yes'],
+    ['diarrhea.yes', 'epigastric_lump_soft.yes'],
     // 金匮 21.3/21.7：病解能食七八日更发热此为胃实；产后七八日少腹坚痛恶露不尽、不大便烦躁发热，宜大承气汤
-    ['postpartum.yes','constipation.yes','delirium.yes'],
-    ['postpartum.yes','lochia_retention.yes','fever.yes'],
+    ['postpartum.yes', 'constipation.yes', 'delirium.yes'],
+    ['postpartum.yes', 'lochia_retention.yes', 'fever.yes'],
     // 伤寒 182/208：阳明外证「身热、汗自出、不恶寒反恶热」是阳明病的入门三证；
     // 在这个基础上大便不通（不大便六七日），就是阳明腑实、可以议下。
     // 不加这条路径的话，「发热 + 出汗 + 便秘 + 不恶寒 + 气色不差」这种最典型的
     // 阳明腑实反而进不了候选——因为它凑不齐喜冷饮/潮热/谵语/按痛这些佐证。
-    ['fever.yes', 'sweat.yes', 'constipation.yes', 'cold_aversion.no', 'poor_complexion.no']
+    ['fever.yes', 'sweat.yes', 'constipation.yes', 'cold_aversion.no', 'poor_complexion.no'],
+    // 伤寒 208：手足濈然汗出者，此大便已硬也，大承气汤主之
+    ['shouhan.yes', 'constipation.yes', 'cold_aversion.no']
   ],
   contraindications: ['纯热证才可用(喜冷饮+不恶寒)+身体好(气色不差)', '虚证/气色差/喜热饮者禁用(泻下伤身)', '佐证: 潮热/譫语/左腹按痛/不放屁任一', '峻下热结(大黄芒硝枳朴)', '得下餘勿服', '金匮要略·痉湿暍病脉证并治第二：痉为病，胸满口噤，卧不著席，脚挛急，必齘齿，可与大承气汤']
 }

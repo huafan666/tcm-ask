@@ -8,7 +8,11 @@ module.exports = {
   needs: [
     ['cold_drink_desire.yes', 'cold_aversion.no', 'constipation.yes', 'flatus.yes'],
     // 金匮第十七篇 呕吐哕下利 对应条文
-    ['diarrhea.yes','delirium.yes']
+    ['diarrhea.yes', 'delirium.yes'],
+    // 213条：其人多汗，以津液外出，胃中燥，大便必硬，硬则谵语，小承气汤主之
+    ['sweat.yes', 'constipation.yes', 'delirium.yes'],
+    // 214条：谵语，发潮热。与大承气的分立原文靠脉（脉滑而疾 / 脉迟），无脉可凭时两者都留候选
+    ['delirium.yes', 'tidal_fever.yes']
   ],
   contraindications: ['纯热证才可用(喜冷饮+不恶寒)', '虚证/气色差/喜热饮者禁用', '放屁气能通→大便在小肠,轻下和胃', '譫语止勿再服']
 }
