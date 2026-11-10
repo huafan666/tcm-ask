@@ -85,6 +85,7 @@ function render(s) {
     children: s.children,
     order: s.order,
     isSystem: true,
+    rep: s.rep,           // 闸门答「有」时直接点亮的代表症状（见 data/symptom-relations.js 注释）
     contraindications: [
       '【系统闸门】第 ' + s.order + ' 问（十问歌顺序）：只做「这一个系统有没有问题」的粗筛，不参与证候/方剂推理',
       '答「没有」⇒ 本系统下所有症状一次性判否，后面永不再问（这是用户要的「排除掉的就不要问了」）',

@@ -19,7 +19,12 @@ module.exports = {
     ['diarrhea.yes','epigastric_lump_soft.yes'],
     // 金匮 21.3/21.7：病解能食七八日更发热此为胃实；产后七八日少腹坚痛恶露不尽、不大便烦躁发热，宜大承气汤
     ['postpartum.yes','constipation.yes','delirium.yes'],
-    ['postpartum.yes','lochia_retention.yes','fever.yes']
+    ['postpartum.yes','lochia_retention.yes','fever.yes'],
+    // 伤寒 182/208：阳明外证「身热、汗自出、不恶寒反恶热」是阳明病的入门三证；
+    // 在这个基础上大便不通（不大便六七日），就是阳明腑实、可以议下。
+    // 不加这条路径的话，「发热 + 出汗 + 便秘 + 不恶寒 + 气色不差」这种最典型的
+    // 阳明腑实反而进不了候选——因为它凑不齐喜冷饮/潮热/谵语/按痛这些佐证。
+    ['fever.yes', 'sweat.yes', 'constipation.yes', 'cold_aversion.no', 'poor_complexion.no']
   ],
   contraindications: ['纯热证才可用(喜冷饮+不恶寒)+身体好(气色不差)', '虚证/气色差/喜热饮者禁用(泻下伤身)', '佐证: 潮热/譫语/左腹按痛/不放屁任一', '峻下热结(大黄芒硝枳朴)', '得下餘勿服', '金匮要略·痉湿暍病脉证并治第二：痉为病，胸满口噤，卧不著席，脚挛急，必齘齿，可与大承气汤']
 }

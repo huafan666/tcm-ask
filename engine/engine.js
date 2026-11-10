@@ -16,6 +16,9 @@
 //
 // 传播：当一个对象的 yes/no 变化，重新求值所有它的依赖者，直到稳定。
 
+// 症状之间的关系约束（互斥 / 上下位），见 data/symptom-relations.js
+const { MUTEX, SPECIALIZE, PARENT_OF } = require('../data/symptom-relations')
+
 // 医案里极常见的阴性表述（「无汗」「没有腹泻」「不渴」「未见发热」「否认腹痛」）。
 // 以前只有 negate() 里手写过的词才认得，于是「无腹泻」会把 diarrhea 判成 yes，
 // 进而误点亮葛根汤/小青龙汤这类依赖下利的方子。这里在引擎层统一兜一层否定前缀。
@@ -92,6 +95,11 @@ class Engine {
   constructor(registry) {
     this.registry = registry
     this.state = {}
+    // 关系约束（互斥 / 上位下位），由 data/symptom-relations.js 提供
+    this.mutex = MUTEX || []
+    this.specialize = SPECIALIZE || {}
+    // 下位 → 上位 的反查表，问诊器用它做「先问上位」
+    this.parentOf = PARENT_OF || {}
     // dependents[name] = 依赖 name 的所有对象（含 needs 全展开）
     this.dependents = {}
     for (const name of Object.keys(registry)) {
@@ -146,7 +154,8 @@ class Engine {
         this.set(name, 'yes', changed)
       }
     }
-    // 再传播 needs + 症状组汇入
+    // 关系约束（互斥 / 上下位）→ 再传播 needs + 症状组汇入
+    this.applyRelations(changed)
     this.propagate(changed)
     return Array.from(changed)
   }
@@ -166,8 +175,61 @@ class Engine {
         }
       }
     }
+    // 关系约束（互斥 / 上下位）会连锁：便秘 yes → 下利 no → 鸭溏 no
+    this.applyRelations(changed)
     this.propagate(changed)
     return Array.from(changed)
+  }
+
+  /**
+   * 应用「症状关系约束」——用户 2026-02 提的三条规矩，落到引擎里就这两句：
+   *
+   *   SPECIALIZE（上位 → 下位）
+   *     下位 = yes ⇒ 上位 = yes      「说了便脓血，那就是大便带血」
+   *     上位 = no  ⇒ 下位全 = no     「都没有便血了，就不必再问是不是脓血」
+   *
+   *   MUTEX（互斥）
+   *     A = yes ⇒ B = no             「有汗答是，无汗就是否」
+   *                                  「便秘答是，下利就是否」
+   *
+   * 反复应用直到稳定，因为约束会连锁：
+   *   便秘 yes → 下利 no → 久利/下利清谷/鸭溏/气利 全 no
+   *
+   * 注意方向：先把「下位 yes 抬上位」做完，再压「上位 no 压下来」。
+   * 反过来的话，一个已经答了「便脓血 = 是」的病人，会被「便血 = 否」压成矛盾。
+   */
+  applyRelations(changed) {
+    const mutex = this.mutex || []
+    const spec = this.specialize || {}
+    let guard = 0
+    while (guard++ < 200) {
+      let any = false
+
+      // ① 下位成立 ⇒ 上位必然成立
+      for (const parent of Object.keys(spec)) {
+        if (this.state[parent] === 'yes') continue
+        if (spec[parent].some(k => this.state[k] === 'yes')) {
+          this.set(parent, 'yes', changed)
+          any = true
+        }
+      }
+
+      // ② 上位不成立 ⇒ 下位一律不成立
+      for (const parent of Object.keys(spec)) {
+        if (this.state[parent] !== 'no') continue
+        for (const k of spec[parent]) {
+          if (this.state[k] !== 'no') { this.set(k, 'no', changed); any = true }
+        }
+      }
+
+      // ③ 互斥
+      for (const [a, b] of mutex) {
+        if (this.state[a] === 'yes' && this.state[b] !== 'no') { this.set(b, 'no', changed); any = true }
+        if (this.state[b] === 'yes' && this.state[a] !== 'no') { this.set(a, 'no', changed); any = true }
+      }
+
+      if (!any) break
+    }
   }
 
   set(name, val, changed) {

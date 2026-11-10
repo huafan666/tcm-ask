@@ -423,6 +423,7 @@ function modelFromScan(text, fields) {
     title: str('title'),
     kind: str('kind'),
     ask: str('ask'),
+    rep: str('rep'),
     children,
     needs: paths === null ? [] : paths,
     contraindications: contra,
@@ -824,6 +825,9 @@ function generatePluginSource(model) {
   // 系统闸门（十问歌顺序）：问诊时按 order 从小到大逐系统粗筛
   if (typeof model.order === 'number') out.push('  order: ' + model.order + ',')
   if (model.isSystem) out.push('  isSystem: true,')
+  // rep：系统闸门答「有」时要直接点亮的代表症状。
+  // 闸门问的就是这个症状的笼统说法，答了「有」再单独问一遍是废话。
+  if (model.rep) out.push('  rep: ' + litString(model.rep) + ',')
   const needs = (model.needs || []).filter(p => p && p.length)
   if (needs.length) out.push('  needs: ' + needsLiteral(needs) + ',')
   const contra = model.contraindications || []

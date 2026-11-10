@@ -404,17 +404,26 @@ const GROUPS = [
     notIncluded: '这是状态不是异常；孕吐、恶露等另有专门症状'
   },
   {
-    name: 'head_body_pain_any',
-    title: '头颈身肢疼痛',
+    name: 'head_pain_any',
+    title: '头部疼痛（头、颈）',
     dimension: '部位',
-    // 为什么单独建：pain_any 是「全部位疼痛」，含胸腹的痛。
-    // 系统层要按身体区域划分，「头身」不能把腹痛算进去，所以这里只收头颈身肢的痛。
-    ask: '是不是头、颈、身上或者手脚有关节疼痛？',
-    trigger: ['头痛', '头疼', '项痛', '颈痛', '身上痛', '身痛', '关节痛', '腰腿痛', '足跟痛'],
-    children: ['headache', 'neck_stiff_pain', 'body_pain', 'body_ache_stiff',
-      'joint_pain_rigid', 'joint_pain_severe', 'migratory_pain', 'yaguan_tong',
-      'fengchi_tong', 'zugengtong'],
-    notIncluded: '胸腹部的痛（归胸腹系统）、腰酸（酸不是痛，归 lowback_any）'
+    // 为什么从 head_body_pain_any 拆出来：
+    // 病人问诊时「头」和「身子」是两件不相干的事，塞进一个闸门问句就问不出口。
+    // 拆成「头面」和「身体四肢」两个系统，每个闸门问题都能用是/否回答。
+    ask: '是不是头或脖子疼——头痛、偏头痛、脖子发紧发痛？',
+    trigger: ['头痛', '头疼', '项痛', '颈痛', '头胀痛'],
+    children: ['headache', 'neck_stiff_pain', 'fengchi_tong'],
+    notIncluded: '头晕（是晕不是痛，归 dizziness_any）、身上的痛（归 body_pain_any）'
+  },
+  {
+    name: 'body_pain_any',
+    title: '身体四肢疼痛（头颈以下）',
+    dimension: '部位',
+    ask: '是不是身上、关节或者手脚疼？',
+    trigger: ['身上痛', '身痛', '浑身痛', '关节痛', '腰腿痛', '足跟痛'],
+    children: ['body_pain', 'body_ache_stiff', 'joint_pain_rigid', 'joint_pain_severe',
+      'migratory_pain', 'yaguan_tong', 'zugengtong'],
+    notIncluded: '头痛/颈痛（归 head_pain_any）、胸腹痛（归胸腹系统）、腰酸（酸不是痛，归 lowback_any）'
   }
 ]
 

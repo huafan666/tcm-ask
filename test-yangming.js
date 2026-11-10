@@ -76,7 +76,33 @@ console.log('\n[4] 小承气: 纯热+大便硬+放屁 → 小承气成立, 大�
   e.setDirect('constipation', 'yes')
   e.setDirect('flatus', 'yes')
   check('小承气汤成立', e.state['xiaochengqi_tang'] === 'yes', `实际=${e.state['xiaochengqi_tang']}`)
-  check('大承气未成立(放屁)', e.state['dachengqi_tang'] === 'no', `实际=${e.state['dachengqi_tang']}`)
+  // 注意：needs 的多条路径是 OR，只否掉「不放屁」那一条推不出整方不成立。
+  // 要判 no 必须所有路径都被阻断，所以这里先断言「没有成立」。
+  check('大承气未成立(放屁)', e.state['dachengqi_tang'] !== 'yes', `实际=${e.state['dachengqi_tang']}`)
+  // 要判 no 必须「所有路径都被阻断」（OR 语义）。把剩下的路径一条条关掉才算数。
+  const e2 = makeEngine()
+  for (const [n, v] of [['cold_drink_desire', 'yes'], ['cold_aversion', 'no'], ['constipation', 'yes'],
+    ['flatus', 'yes'], ['fever', 'no'], ['sweat', 'no'],
+    ['poor_complexion', 'no'], ['tidal_fever', 'no'], ['delirium', 'no'], ['left_abdomen_press_pain', 'no'],
+    ['kou_jin', 'no'], ['chest_fullness', 'no'], ['limb_spasm', 'no'],
+    ['abdominal_fullness', 'no'], ['severe_abdominal_pain', 'no'],
+    ['diarrhea', 'no'], ['epigastric_lump_soft', 'no'],
+    ['postpartum', 'no'], ['lochia_retention', 'no']]) e2.setDirect(n, v)
+  check('所有路径都被阻断 → 大承气判否', e2.state['dachengqi_tang'] === 'no', `实际=${e2.state['dachengqi_tang']}`)
+}
+
+console.log('\n[4b] 阳明外证: 身热+汗自出+不恶寒+大便不通+气色不差 → 大承气成立')
+{
+  // 伤寒 182/208：阳明病外证 = 身热、汗自出、不恶寒反恶热；
+  // 配上不大便就是阳明腑实、可议下。以前凑不齐喜冷饮/潮热/谵语/按痛，
+  // 这种最典型的阳明腑实反而进不了候选，会漏方。
+  const e = makeEngine()
+  e.setDirect('fever', 'yes')
+  e.setDirect('sweat', 'yes')
+  e.setDirect('cold_aversion', 'no')
+  e.setDirect('constipation', 'yes')
+  e.setDirect('poor_complexion', 'no')
+  check('大承气汤成立(阳明外证)', e.state['dachengqi_tang'] === 'yes', `实际=${e.state['dachengqi_tang']}`)
 }
 
 console.log('\n[5] 虚证(气色差+喜热饮+恶寒) → 承气系均不成立(避免泻下伤身)')
@@ -119,7 +145,7 @@ console.log('\n[9] 麻黄连翘赤小豆: 身黄+无汗 → 成立')
   const e = makeEngine()
   e.setDirect('jaundice', 'yes')
   e.setDirect('no_sweat', 'yes')
-  check('麻黄连翘赤小豆汤成立', e.state['mahuang_liangqiao_chixiaodou_tang'] === 'yes', `实际=${e.state['mahuang_liangqiao_chixiaodou_tang']}`)
+  check('麻黄连翘赤小豆汤成立', e.state['mahuang_lianqiao_chixiaodou_tang'] === 'yes', `实际=${e.state['mahuang_lianqiao_chixiaodou_tang']}`)
 }
 
 console.log('\n[10] 吴茱萸汤: 食谷欲呕 → 成立')

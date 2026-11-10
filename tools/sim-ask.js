@@ -83,6 +83,9 @@ for (let i = 0; i < MAX; i++) {
     asker.groupAskedCount += 1
     if (ans === 'yes') asker.focusGroup(q.leaf)
   }
+  // 和 core/session.js 保持一致：系统闸门答「有」要记下来（会追问几个关键子症状，
+  // 并按 data/symptom-systems.js 的 rep 直接点亮代表症状）
+  if (q.isSystem && ans === 'yes') asker.markGateYes(q.leaf)
   if (ans === 'no') asker.markAsked(q.leaf)
   log.push({ q: q.title, group: !!q.isGroup, ans })
 

@@ -3,7 +3,7 @@ module.exports = {
   title: '寒热（怕冷、发热）',
   kind: 'symptom_group',
   // 系统闸门（十问歌第 1 问）
-  ask: '先说寒热——有没有怕冷、发热，或者一阵冷一阵热？',
+  ask: '是不是有怕冷、发热，或者一阵冷一阵热？',
   children: ['cold_aversion', 'wind_aversion', 'mild_cold', 'back_cold_patch', 'genital_cold', 'lower_back_cold', 'lower_leg_cold', 'xigaiyixialeng', 'lower_abdomen_cold_fan', 'heart_cold_weak', 'chill_predominant', 'cold_extremities', 'fever', 'tidal_fever', 'alternating_cold_heat', 'zijue_shenre', 'burning', 'heat_only_no_chill', 'periodic_chill_fever', 'hand_foot_hot', 'shuangzu_re', 'heart_hot', 'pseudo_cold_heat'],
   order: 1,
   isSystem: true,

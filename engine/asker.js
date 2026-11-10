@@ -29,9 +29,47 @@ class Asker {
     this._gateYes = new Set()
   }
 
-  /** 系统闸门被答「有」时调用：记下来，稍后追问几个关键子症状 */
+  /**
+   * 系统闸门被答「有」时调用：记下来，稍后追问几个关键子症状。
+   *
+   * 另外把该系统的「代表症状」直接点亮——用户说过：
+   *   「出汗的问题同一个就可以了」
+   * 闸门问的就是「是不是身上会出汗」，病人答「有」，
+   * 就没必要再拿「是不是身上有汗」（sweat）重问一遍；
+   * 反过来「是不是完全不出汗」（no_sweat）也已经被互斥约束判成否了。
+   */
   markGateYes(sysName) {
-    if (this.registry[sysName] && this.registry[sysName].isSystem) this._gateYes.add(sysName)
+    const d = this.registry[sysName]
+    if (!d || !d.isSystem) return
+    this._gateYes.add(sysName)
+    const rep = d.rep
+    if (rep && this.registry[rep] && this.engine.state[rep] === 'unknown') {
+      this.engine.setDirect(rep, 'yes')
+    }
+  }
+
+  /* ---------------- 「先上位、后下位」 ---------------- */
+  /** 这个症状是哪个更笼统症状的更具体一种？（查 SPECIALIZE 反查表） */
+  parentOf(leaf) {
+    const map = this.engine.parentOf || {}
+    return map[leaf] || null
+  }
+
+  /**
+   * 上位还没定的时候，必须先问上位。
+   * 用户原话：「先判断是不是便秘，再判断确实有便秘的情况下，是不是轻度，
+   *            这样问比较合适」
+   * 否则会出现「一上来就问轻度便秘，病人还没答有没有便秘」的荒谬顺序。
+   * 返回应该改问的上位名；不需要改则返回 null。
+   */
+  promoteToParent(leaf) {
+    const p = this.parentOf(leaf)
+    if (!p) return null
+    const d = this.registry[p]
+    if (!d || d.kind !== 'symptom') return null
+    if (this.engine.state[p] !== 'unknown') return null   // 已确定 yes/no → 不用再问
+    if (this.asked.has(p)) return null                    // 已经问过但病人说不好 → 不再逼问
+    return p
   }
 
   // 标记某个叶子已问过(用户答"不知道"→unknown)，下次不再问同一个
@@ -45,6 +83,7 @@ class Asker {
     this.focus.clear()
     this._focusAsked.clear()
     this._sysDetailAsked.clear()
+    this._gateYes.clear()
   }
 
   /** 病人对某一组答「是」：锁定该区域，后续优先在该组的子症状里细化 */
@@ -249,7 +288,9 @@ class Asker {
       if (!kids.length) continue
       // 只问「最多候选方会用到」的几个，别把整个系统翻一遍
       kids.sort((a, b) => (count[b] || 0) - (count[a] || 0))
-      const pick = kids.find(c => (count[c] || 0) > 0) || kids[0]
+      let pick = kids.find(c => (count[c] || 0) > 0) || kids[0]
+      // 先上位、后下位：要问「轻度便秘」之前，先确认有没有便秘
+      pick = this.promoteToParent(pick) || pick
       this._sysDetailAsked.set(s.name, done + 1)
       return { sys: s, mode: 'detail', kid: pick }
     }
@@ -330,20 +371,24 @@ class Asker {
       for (const g of this.focus) {
         const askedHere = this._focusAsked.get(g) || 0
         if (askedHere >= cap) continue
-        for (const c of this.childrenOf(g)) {
-          if (this.engine.state[c] !== 'unknown') continue
-          if (this.asked.has(c)) continue
-          // 细化用的子症状**不要求**被某个方剂直接需要（count 可能是 0）——
-          // 例如「入睡困难/容易醒/睡眠浅」目前没有方剂直接引用，
-          // 但病人说了「睡眠不好」就必须先问清是哪一种，否则初筛等于没做。
-          const def = this.registry[c]
-          this._focusAsked.set(g, askedHere + 1)
-          return {
-            leaf: c, isGroup: false, inFocus: true,
-            title: def.title,
-            phrase: (def.ask && def.ask.length) ? def.ask : def.title,
-            count: count[c] || 0, total: cands.length
-          }
+        // 细化顺序也按区分度排：先问最能分开候选方的那个子症状，
+        // 而不是照 children 里的书写顺序从第一个问到最后一个。
+        const kids = this.childrenOf(g)
+          .filter(c => this.engine.state[c] === 'unknown' && !this.asked.has(c))
+          .sort((a, b) => (count[b] || 0) - (count[a] || 0))
+        if (!kids.length) continue
+        // 先上位、后下位：要问「轻度便秘」之前，先确认有没有便秘
+        const c = this.promoteToParent(kids[0]) || kids[0]
+        // 细化用的子症状**不要求**被某个方剂直接需要（count 可能是 0）——
+        // 例如「入睡困难/容易醒/睡眠浅」目前没有方剂直接引用，
+        // 但病人说了「睡眠不好」就必须先问清是哪一种，否则初筛等于没做。
+        const def = this.registry[c]
+        this._focusAsked.set(g, askedHere + 1)
+        return {
+          leaf: c, isGroup: false, inFocus: true,
+          title: def.title,
+          phrase: (def.ask && def.ask.length) ? def.ask : def.title,
+          count: count[c] || 0, total: cands.length
         }
       }
       // 区域内已经没有能问的了 → 解除锁定，回到全局
@@ -372,7 +417,10 @@ class Asker {
     }
 
     // ---- 第二层：具体症状 ----
-    const leaf = unknownLeaves[0]
+    // 先上位、后下位：如果最该问的这个症状还挂着没定的上位，就先问上位
+    //（用户：先判断是不是便秘，再判断是不是轻度）
+    let leaf = unknownLeaves[0]
+    leaf = this.promoteToParent(leaf) || leaf
     const def = this.registry[leaf]
     return {
       leaf,
@@ -380,7 +428,7 @@ class Asker {
       title: def.title,
       // 多角度描述：优先用插件自带 ask 口语描述，否则用 title
       phrase: (def.ask && def.ask.length) ? def.ask : def.title,
-      count: count[leaf],
+      count: count[leaf] || 0,
       total: cands.length
     }
   }

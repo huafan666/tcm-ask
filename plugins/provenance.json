@@ -4799,7 +4799,7 @@
     },
     "sys_diet": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 4 问）",
+      "label": "问诊系统层（十问歌第 5 问）",
       "refs": [
         "维度分组：appetite_any、thirst_any、taste_any"
       ],
@@ -4807,7 +4807,7 @@
     },
     "sys_chest_abdomen": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 5 问）",
+      "label": "问诊系统层（十问歌第 6 问）",
       "refs": [
         "维度分组：hypochondrium_any、abdomen_any、palpitation_any、vomit_any、belch_any、mass_any"
       ],
@@ -4815,7 +4815,7 @@
     },
     "sys_bowel": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 6 问）",
+      "label": "问诊系统层（十问歌第 7 问）",
       "refs": [
         "维度分组：stool_any、diarrhea_any"
       ],
@@ -4823,7 +4823,7 @@
     },
     "sys_urine": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 7 问）",
+      "label": "问诊系统层（十问歌第 8 问）",
       "refs": [
         "维度分组：urination_any"
       ],
@@ -4831,7 +4831,7 @@
     },
     "sys_resp": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 8 问）",
+      "label": "问诊系统层（十问歌第 9 问）",
       "refs": [
         "维度分组：cough_any、dyspnea_any、mouth_throat_any"
       ],
@@ -4839,7 +4839,7 @@
     },
     "sys_sleep": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 9 问）",
+      "label": "问诊系统层（十问歌第 10 问）",
       "refs": [
         "维度分组：sleep_any"
       ],
@@ -4847,7 +4847,7 @@
     },
     "sys_mental": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 10 问）",
+      "label": "问诊系统层（十问歌第 11 问）",
       "refs": [
         "维度分组：mental_any"
       ],
@@ -4855,7 +4855,7 @@
     },
     "sys_skin_water": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 11 问）",
+      "label": "问诊系统层（十问歌第 12 问）",
       "refs": [
         "维度分组：skin_any、edema_any"
       ],
@@ -4863,9 +4863,41 @@
     },
     "sys_gyneco": {
       "source": "system",
-      "label": "问诊系统层（十问歌第 12 问）",
+      "label": "问诊系统层（十问歌第 13 问）",
       "refs": [
         "维度分组：gyneco_any、reproductive_state_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "head_pain_any": {
+      "source": "group",
+      "label": "症状筛选组（部位维度）",
+      "refs": [
+        "汇集：headache、neck_stiff_pain、fengchi_tong"
+      ],
+      "by": "system:symptom-group"
+    },
+    "body_pain_any": {
+      "source": "group",
+      "label": "症状筛选组（部位维度）",
+      "refs": [
+        "汇集：body_pain、body_ache_stiff、joint_pain_rigid、joint_pain_severe、migratory_pain、yaguan_tong、zugengtong"
+      ],
+      "by": "system:symptom-group"
+    },
+    "sys_head": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 3 问）",
+      "refs": [
+        "维度分组：head_pain_any、dizziness_any、eye_any、complexion_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_body": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 4 问）",
+      "refs": [
+        "维度分组：body_pain_any、limb_any、lowback_any、energy_any、emaciation_any、spasm_any"
       ],
       "by": "system:symptom-system"
     }
