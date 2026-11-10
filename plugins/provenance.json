@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T01:09:00.942Z",
+  "generatedAt": "2026-11-10T01:13:27.197Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1981,6 +1981,110 @@
       "label": "金匮要略原方",
       "refs": [
         "金匮要略·痉湿暍病脉证并治第二 · 太阳中热者，暍是也……白虎加人参汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "appetite_fluctuating": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "意欲食复不能食……欲饮食，或有美时，或有不用闻食臭时。"
+      ],
+      "by": "system:jinkui"
+    },
+    "listless_mute": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "常默默。"
+      ],
+      "by": "system:jinkui"
+    },
+    "restless_lying": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "欲卧不能卧。"
+      ],
+      "by": "system:jinkui"
+    },
+    "cannot_walk": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "欲行不能行。"
+      ],
+      "by": "system:jinkui"
+    },
+    "pseudo_cold_heat": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "如寒无寒，如热无热。"
+      ],
+      "by": "system:jinkui"
+    },
+    "bitter_taste": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "口苦，小便赤。"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_bing": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病者，百脉一宗，悉致其病也"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_dihuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病，不经吐、下、发汗，病形如初者，百合地黄汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_zhimu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病发汗后者，百合知母汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "huashi_daizhe_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病下之后者，滑石代赭汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_jizi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病，吐之后者，用后方主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_xifang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病一月不解，变成渴者，百合洗方主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihe_huashi_san": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病变发热者，百合滑石散主之"
       ],
       "by": "system:jinkui"
     }
