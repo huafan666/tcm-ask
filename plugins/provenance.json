@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-08T15:23:27.591Z",
+  "generatedAt": "2026-11-10T01:05:34.543Z",
   "sources": {
     "shanghanlun": {
       "label": "伤寒论原方",
@@ -1903,6 +1903,38 @@
       "note": "服了",
       "noteBy": "平台管理员",
       "noteAt": "2026-11-08"
+    },
+    "press_pain_aggravated": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "风湿相搏，骨节疼烦掣痛，不得屈伸，近之则痛剧。"
+      ],
+      "by": "system:jinkui"
+    },
+    "short_breath": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "风湿相搏，骨节疼烦掣痛，不得屈伸，近之则痛剧，汗出短气。"
+      ],
+      "by": "system:jinkui"
+    },
+    "mild_edema": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "风湿相搏……汗出短气，小便不利，恶风不欲去衣，或身微肿者，甘草附子汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "fangji_huangqi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·痉湿暍病脉证并治第二 · 风湿，脉浮身重，汗出恶风者，防己黄耆汤主之"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
