@@ -4900,6 +4900,118 @@
         "维度分组：body_pain_any、limb_any、lowback_any、energy_any、emaciation_any、spasm_any"
       ],
       "by": "system:symptom-system"
+    },
+    "guizhi_mahuang_geban_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "23"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "guizhi_er_mahuang_yi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "25"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "guizhi_er_yuebi_yi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "27"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "zhizi_gancao_chi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "76"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "zhizi_shengjiang_chi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "76"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "chaihu_jia_mangxiao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "104"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "banxia_san_ji_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "313"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "baitong_jia_zhudanzhi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "315"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "mahuang_shengma_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "357"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "lizhong_wan": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "386"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "tongmai_sini_jia_zhudanzhi_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "390"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "shaokun_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "392"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "muli_zexie_san": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "395"
+      ],
+      "by": "system:shanghanlun-batch1"
+    },
+    "zhuye_shigao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "397"
+      ],
+      "by": "system:shanghanlun-batch1"
     }
   },
   "edges": {}
