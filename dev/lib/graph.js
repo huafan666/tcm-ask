@@ -107,12 +107,14 @@ function buildGraph() {
       kind: def.kind,
       dir: def.dir,
       file: def.file,
-      isLeaf: def.kind === 'symptom' || def.kind === 'pulse',
+      isLeaf: def.kind === 'symptom' || def.kind === 'symptom_group' || def.kind === 'pulse',
       hasTrigger: typeof def.trigger === 'function',
       hasNeeds: !!(def.needs && def.needs.length),
       ask: model ? model.ask : (def.ask || null),
       trigger: model ? model.meta.triggerKws : [],
       negate: model ? model.meta.negateKws : [],
+      // 症状筛选组：汇集的子症状名列表（只做粗筛）
+      children: model ? (model.children || []) : (Array.isArray(def.children) ? def.children : []),
       needs: model ? model.needs : normalizeNeedsOf(def.needs),
       contraindications: model ? model.contraindications : (def.contraindications || []),
       modes: model

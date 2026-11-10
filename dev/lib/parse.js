@@ -408,17 +408,29 @@ function modelFromScan(text, fields) {
     } catch (_) { contra = [] }
   }
 
+  // 症状筛选组：children 是它汇集的子症状名列表（仅粗筛用，不进 needs）
+  const childrenRaw = get('children')
+  let children = []
+  if (childrenRaw) {
+    try {
+      const v = parseLiteral(childrenRaw)
+      children = Array.isArray(v) ? v.map(String) : [String(v)]
+    } catch (_) { children = [] }
+  }
+
   return {
     name: str('name'),
     title: str('title'),
     kind: str('kind'),
     ask: str('ask'),
+    children,
     needs: paths === null ? [] : paths,
     contraindications: contra,
     meta: {
       has: {
         name: !!fields.name, title: !!fields.title, kind: !!fields.kind,
         trigger: !!fields.trigger, negate: !!fields.negate, ask: !!fields.ask,
+        children: !!fields.children,
         needs: !!fields.needs, contraindications: !!fields.contraindications
       },
       triggerMode: !triggerRaw ? 'none' : (triggerKws ? 'keywords' : 'custom'),
@@ -777,7 +789,11 @@ function removeMember(text, key) {
 // 八、新插件文件生成
 // ------------------------------------------------------------
 
-const DIR_OF_KIND = { symptom: 'symptoms', pulse: 'pulses', summary: 'syndromes', formula: 'formulas' }
+// 症状筛选组（上位节点）和症状同放在 symptoms/ 目录，靠 kind 区分
+const DIR_OF_KIND = {
+  symptom: 'symptoms', symptom_group: 'symptoms', pulse: 'pulses',
+  summary: 'syndromes', formula: 'formulas'
+}
 const KIND_OF_DIR = { symptoms: 'symptom', pulses: 'pulse', syndromes: 'summary', formulas: 'formula' }
 
 function generatePluginSource(model) {
@@ -788,13 +804,18 @@ function generatePluginSource(model) {
   out.push('  title: ' + litString(model.title) + ',')
   if (kind !== 'symptom' || model.forceKind) out.push('  kind: ' + litString(kind) + ',')
 
-  const isLeaf = kind === 'symptom' || kind === 'pulse'
+  const isLeaf = kind === 'symptom' || kind === 'pulse' || kind === 'symptom_group'
   if (isLeaf) {
     const kws = model.trigger || []
     if (kws.length) out.push('  ' + methodMember('trigger', kws) + ',')
     const neg = model.negate || []
     if (neg.length) out.push('  ' + methodMember('negate', neg) + ',')
     if (model.ask) out.push('  ask: ' + litString(model.ask) + ',')
+  }
+  // 症状筛选组：声明它汇集哪些子症状。只用于粗筛，不参与 needs 推理
+  if (kind === 'symptom_group') {
+    const kids = model.children || []
+    if (kids.length) out.push('  children: ' + litArray(kids) + ',')
   }
   const needs = (model.needs || []).filter(p => p && p.length)
   if (needs.length) out.push('  needs: ' + needsLiteral(needs) + ',')

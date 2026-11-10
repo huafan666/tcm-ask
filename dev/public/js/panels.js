@@ -33,7 +33,7 @@ const ui = {
   dontKnow: new Set()    // 强制答「不知道」的节点
 }
 
-const KIND_LABEL = { symptom: '症状', pulse: '脉象', summary: '证候', formula: '方剂' }
+const KIND_LABEL = { symptom: '症状', symptom_group: '症状筛选', pulse: '脉象', summary: '证候', formula: '方剂' }
 const CIRCLED = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫']
 
 function kindLabel(kind) { return KIND_LABEL[kind] || '未知' }

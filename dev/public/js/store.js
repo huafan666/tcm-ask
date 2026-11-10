@@ -80,6 +80,8 @@ export function loadGraph(data) {
       trigger: clone(n.trigger || []),
       negate: clone(n.negate || []),
       ask: n.ask || '',
+      // 症状筛选组：它汇集哪些子症状（只做粗筛，不参与 needs 推理）
+      children: clone(n.children || []),
       needs: clone(n.needs || []),
       contraindications: clone(n.contraindications || []),
       // 条文来源（plugins/provenance.json）：谁提供了这条条文。只读展示，不参与保存
@@ -236,7 +238,7 @@ export function mkNode(spec) {
     kind: spec.kind,
     dir: S.dirs[spec.kind] || 'symptoms',
     file: name + '.js',
-    isLeaf: spec.kind === 'symptom' || spec.kind === 'pulse',
+    isLeaf: spec.kind === 'symptom' || spec.kind === 'symptom_group' || spec.kind === 'pulse',
     editable: true,
     readOnlyReason: null,
     fileHash: null,
@@ -260,7 +262,7 @@ export function addNode(spec) {
   S.nodes.set(n.name, n)
   S.order.push(n.name)
   S.created.add(n.name)
-  const col = { symptom: 0, pulse: 0, summary: 1, formula: 2 }[n.kind] || 0
+  const col = { symptom_group: -1, symptom: 0, pulse: 0, summary: 1, formula: 2 }[n.kind] ?? 0
   if (!S.layout.nodes[n.name]) S.layout.nodes[n.name] = { x: 80 + col * 360, y: 80 + Object.keys(S.layout.nodes).length * 10 }
   S.sel = new Set([n.name])
   recomputeDirty()

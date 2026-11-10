@@ -12,8 +12,8 @@ import * as panels from './panels.js'
 import { toast, openModal, confirmDialog, promptDialog, showSourceDialog, esc, el } from './ui.js'
 import { autoLayout, nodeSize } from './layout.js'
 
-const KIND_LABEL = { symptom: '症状', pulse: '脉象', summary: '证候', formula: '方剂' }
-const KIND_ORDER = ['symptom', 'pulse', 'summary', 'formula']
+const KIND_LABEL = { symptom: '症状', symptom_group: '症状筛选', pulse: '脉象', summary: '证候', formula: '方剂' }
+const KIND_ORDER = ['symptom_group', 'symptom', 'pulse', 'summary', 'formula']
 let activeTab = 'inspect'
 
 // ------------------------------------------------------------
@@ -242,6 +242,7 @@ function renderTotals() {
   host.innerHTML = `
     <span class="mono">共 ${st.total || 0}</span>
     <span class="mono">症状 ${(st.byKind && st.byKind.symptom) || 0}</span>
+        <span class="mono">症状筛选 ${(st.byKind && st.byKind.symptom_group) || 0}</span>
     <span class="mono">脉象 ${(st.byKind && st.byKind.pulse) || 0}</span>
     <span class="mono">证候 ${(st.byKind && st.byKind.summary) || 0}</span>
     <span class="mono">方剂 ${(st.byKind && st.byKind.formula) || 0}</span>
@@ -583,7 +584,7 @@ function showNewNodeDialog(opts) {
             ask: body.querySelector('#nn-ask').value.trim(),
             contraindications: split(body.querySelector('#nn-contra').value)
           }
-          const isLeaf = kind === 'symptom' || kind === 'pulse'
+          const isLeaf = kind === 'symptom' || kind === 'symptom_group' || kind === 'pulse'
           if (isLeaf && !spec.trigger.length) {
             // 允许，但提醒
             toast('注意：没有触发关键词的症状只能靠反问确认', 'warn')

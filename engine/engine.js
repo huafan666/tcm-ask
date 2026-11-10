@@ -120,6 +120,11 @@ class Engine {
     }
   }
 
+  /** 症状筛选组（上位节点）：只做粗筛，不参与 needs 推理 */
+  isGroup(def) {
+    return !!def && def.kind === 'symptom_group'
+  }
+
   // 喂入一条病人话，返回本轮状态变化的对象名集合
   feed(utterance) {
     const changed = new Set()
@@ -127,16 +132,21 @@ class Engine {
     // 先直接喂入 trigger/negate
     for (const name of Object.keys(this.registry)) {
       const def = this.registry[name]
-      if (negateHit(def, text)) {
+      const group = this.isGroup(def)
+      // 症状组永不被判 no：只否定了某个子类，不等于否定了整个大类
+      if (!group && negateHit(def, text)) {
         this.set(name, 'no', changed)
         continue
       }
       if (typeof def.trigger !== 'function' || !def.trigger(text)) continue
       // trigger 命中还要看前面有没有「无 / 没有 / 不 / 未见 / 否认」这类否定词
-      if (polarityOf(def, text) === 'negated') this.set(name, 'no', changed)
-      else this.set(name, 'yes', changed)
+      if (polarityOf(def, text) === 'negated') {
+        if (!group) this.set(name, 'no', changed)
+      } else {
+        this.set(name, 'yes', changed)
+      }
     }
-    // 再传播 needs
+    // 再传播 needs + 症状组汇入
     this.propagate(changed)
     return Array.from(changed)
   }
@@ -200,7 +210,7 @@ class Engine {
   }
 
   propagate(changed) {
-    // 重新遍历所有 needs 对象，直到没有变化
+    // 重新遍历所有 needs 对象 + 症状组汇入，直到没有变化
     let guard = 0
     while (guard++ < 1000) {
       let any = false
@@ -210,6 +220,20 @@ class Engine {
         const prev = this.state[name]
         this.evalOne(name)
         if (this.state[name] !== prev) {
+          any = true
+          if (changed) changed.add(name)
+        }
+      }
+      // 症状组汇入：任一子症状为 yes ⇒ 组为 yes。
+      // 子症状为 no **不影响**组——只否定了一个子类，不等于否定整个大类；
+      // 组也不会因此变 no，永远只有 yes / unknown 两态。
+      for (const name of Object.keys(this.registry)) {
+        const def = this.registry[name]
+        if (!this.isGroup(def)) continue
+        if (!Array.isArray(def.children) || def.children.length === 0) continue
+        if (this.state[name] === 'yes') continue
+        if (def.children.some(c => this.state[c] === 'yes')) {
+          this.state[name] = 'yes'
           any = true
           if (changed) changed.add(name)
         }

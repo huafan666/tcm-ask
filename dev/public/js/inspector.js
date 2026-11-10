@@ -25,8 +25,8 @@ let host = null        // 上次传入的容器
 let mode = 'node'      // 'node' | 'edge'
 let edgeRef = null     // 正在编辑的连线 {from,to,path,cond}
 
-const KIND_LABEL = { symptom: '症状', pulse: '脉象', summary: '证候', formula: '方剂' }
-const KIND_ORDER = ['symptom', 'pulse', 'summary', 'formula']
+const KIND_LABEL = { symptom: '症状', symptom_group: '症状筛选', pulse: '脉象', summary: '证候', formula: '方剂' }
+const KIND_ORDER = ['symptom_group', 'symptom', 'pulse', 'summary', 'formula']
 const CIRCLED = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫']
 
 function kindLabel(kind) { return KIND_LABEL[kind] || '未知' }
@@ -505,7 +505,7 @@ function bindNode(root, node) {
   if (kindEl && !ro) {
     kindEl.addEventListener('change', () => {
       const k = kindEl.value
-      update(node.name, { kind: k, isLeaf: (k === 'symptom' || k === 'pulse') })
+      update(node.name, { kind: k, isLeaf: (k === 'symptom' || k === 'symptom_group' || k === 'pulse') })
       toast('类型已改为「' + kindLabel(k) + '」；保存时服务端会把文件搬到 plugins/' + (S.dirs[k] || '') + '/ 下')
       draw()
     })

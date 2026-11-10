@@ -46,6 +46,7 @@
 
   /* --- 节点种类（核心语义，四色区分度优先） --- */
   --k-symptom:#38bdf8;       /* 症状 · 青蓝 */
+  --k-symptom-group:#fb7185; /* 症状筛选组 · 玫红（上位粗筛层，不参与推理） */
   --k-pulse:#a78bfa;         /* 脉象 · 紫 */
   --k-summary:#fbbf24;       /* 证候 · 琥珀 */
   --k-formula:#34d399;       /* 方剂 · 绿 */
@@ -314,6 +315,7 @@ kbd{
   flex:none;
 }
 .kind-tag.kind-symptom,.kind-symptom>.kind-tag{background:rgba(56,189,248,.16);color:var(--k-symptom)}
+.kind-tag.kind-symptom-group,.kind-symptom-group>.kind-tag{background:rgba(251,113,133,.18);color:var(--k-symptom-group)}
 .kind-tag.kind-pulse,.kind-pulse>.kind-tag{background:rgba(167,139,250,.16);color:var(--k-pulse)}
 .kind-tag.kind-summary,.kind-summary>.kind-tag{background:rgba(251,191,36,.16);color:var(--k-summary)}
 .kind-tag.kind-formula,.kind-formula>.kind-tag{background:rgba(52,211,153,.16);color:var(--k-formula)}
@@ -587,6 +589,7 @@ kbd{
 }
 /* 圆点按种类上色 */
 .node-item.kind-symptom .dot,.dot.kind-symptom{background:var(--k-symptom)}
+.node-item.kind-symptom-group .dot,.dot.kind-symptom-group{background:var(--k-symptom-group)}
 .node-item.kind-pulse .dot,.dot.kind-pulse{background:var(--k-pulse)}
 .node-item.kind-summary .dot,.dot.kind-summary{background:var(--k-summary)}
 .node-item.kind-formula .dot,.dot.kind-formula{background:var(--k-formula)}
@@ -636,6 +639,7 @@ kbd{
 .node-accent{rx:2}
 /* 左侧 4px 色条取种类色 */
 .kind-symptom .node-accent,.node-accent.kind-symptom{fill:var(--k-symptom)}
+.kind-symptom-group .node-accent,.node-accent.kind-symptom-group{fill:var(--k-symptom-group)}
 .kind-pulse .node-accent,.node-accent.kind-pulse{fill:var(--k-pulse)}
 .kind-summary .node-accent,.node-accent.kind-summary{fill:var(--k-summary)}
 .kind-formula .node-accent,.node-accent.kind-formula{fill:var(--k-formula)}
@@ -949,6 +953,7 @@ circle.dirty-dot{
 
 .mm-node{fill:var(--s-unknown);rx:1}
 .mm-node.kind-symptom,.kind-symptom .mm-node,.kind-symptom>.mm-node{fill:var(--k-symptom)}
+.mm-node.kind-symptom-group,.kind-symptom-group .mm-node,.kind-symptom-group>.mm-node{fill:var(--k-symptom-group)}
 .mm-node.kind-pulse,.kind-pulse .mm-node,.kind-pulse>.mm-node{fill:var(--k-pulse)}
 .mm-node.kind-summary,.kind-summary .mm-node,.kind-summary>.mm-node{fill:var(--k-summary)}
 .mm-node.kind-formula,.kind-formula .mm-node,.kind-formula>.mm-node{fill:var(--k-formula)}
