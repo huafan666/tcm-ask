@@ -2827,6 +2827,150 @@
         "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 肺胀，咳而上气，烦躁而喘，脉浮者，心下有水，小青龙加石膏汤主之"
       ],
       "by": "system:jinkui"
+    },
+    "bentun_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·奔豚气病脉证并治第八 · 奔豚气上冲胸，腹痛，往来寒热，奔豚汤主之 · 奔豚汤方（甘草、芎藭、当归、半夏、黄芩、生葛、芍药、生姜、甘李根白皮）"
+      ],
+      "by": "system:jinkui"
+    },
+    "chest_back_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九：胸痹之病，喘息咳唾，胸背痛，短气。"
+      ],
+      "by": "system:jinkui"
+    },
+    "heart_pain_radiate": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九：心痛彻背，背痛彻心（疼痛前后穿透，程度剧烈）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "heart_hanging_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九：心中痞，诸逆，心悬痛。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hypochondriac_rush": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九：胸满，胁下逆抢心（气从胁下向上冲逆，撞到心口）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiong_bi": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹之病，喘息咳唾，胸背痛，短气"
+      ],
+      "by": "system:jinkui"
+    },
+    "xin_tong": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 心痛彻背，背痛彻心，乌头赤石脂丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "gualou_xiebai_baijiu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 栝蒌薤白白酒汤方（栝蒌实一枚捣、薤白半斤、白酒七升）"
+      ],
+      "by": "system:jinkui"
+    },
+    "gualou_xiebai_banxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹不得卧，心痛彻背者，栝蒌薤白半夏汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhishi_xiebai_guizhi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹心中痞气，气结在胸，胸满，胁下逆抢心，枳实薤白桂枝汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "renshen_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹心中痞气……人参汤亦主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "fuling_xingren_gancao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "juzhi_jiang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹，胸中气塞，短气……橘枳姜汤亦主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "yiyi_fuzi_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 胸痹缓急者，薏苡附子散主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_shengjiang_zhishi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 心中痞，诸逆，心悬痛，桂枝生姜枳实汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "wutou_chishizhi_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 心痛彻背，背痛彻心，乌头赤石脂丸主之 · 乌头一分炮、附子半两炮、蜀椒一两、干姜一两、赤石脂一两，蜜丸如梧子大"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiutong_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九 · 九痛丸：治九种心痛（附子三两、生狼牙一两、巴豆一两、人参、干姜、吴茱萸各一两，蜜丸）"
+      ],
+      "by": "system:jinkui"
+    },
+    "chest_qi_stuffiness": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·胸痹心痛短气病脉证并治第九：胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之；橘枳姜汤亦主之。"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
