@@ -3180,6 +3180,126 @@
         "金匮要略·五脏风寒积聚病脉证并治第十一 · 甘姜苓术汤方（甘草、白术各二两，干姜、茯苓各四两）"
       ],
       "by": "system:jinkui"
+    },
+    "cough_pleuritic_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二：饮后水流在胁下，咳唾引痛，谓之悬饮。"
+      ],
+      "by": "system:jinkui"
+    },
+    "back_cold_patch": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二：夫心下有留饮，其人背寒冷如手大。"
+      ],
+      "by": "system:jinkui"
+    },
+    "tearing_eyes": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二：膈上病痰，满喘咳吐，发则寒热……目泣自出。"
+      ],
+      "by": "system:jinkui"
+    },
+    "tan_yin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 其人素盛今瘦，水走肠间，沥沥有声，谓之痰饮"
+      ],
+      "by": "system:jinkui"
+    },
+    "xuan_yin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 饮后水流在胁下，咳唾引痛，谓之悬饮"
+      ],
+      "by": "system:jinkui"
+    },
+    "yi_yin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 饮水流行，归于四肢，当汗出而不汗出，身体疼重，谓之溢饮"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhi_yin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 咳逆倚息，气短不得卧，其形如肿，谓之支饮"
+      ],
+      "by": "system:jinkui"
+    },
+    "gansui_banxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 病者脉伏，其人欲自利，利反快，虽利，心下续坚满，此为留饮欲去故也，甘遂半夏汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "mufangji_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 膈间支饮，其人喘满，心下痞坚，面色黧黑……木防己汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "mufangji_qu_shigao_jia_fuling_mangxiao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 实者三日复发，后与不愈者，宜木防己汤去石膏加茯苓芒硝汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zexie_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 心下有支饮，其人苦冒眩，泽泻汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "houpo_dahuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 支饮胸满者，厚朴大黄汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiaobanxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 呕家本渴，渴者为欲解，今反不渴，心下有支饮故也，小半夏汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiaobanxia_jia_fuling_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 卒呕吐，心下痞，膈间有水，眩悸者，小半夏加茯苓汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "jijiao_lili_huang_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·痰饮咳嗽病脉证并治第十二 · 腹满，口舌干燥，此肠间有水气，己椒苈黄丸主之"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}

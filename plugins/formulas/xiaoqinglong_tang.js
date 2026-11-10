@@ -7,7 +7,9 @@ module.exports = {
   needs: [
     ['vomiting.yes', 'cough.yes'],
     ['vomiting.yes', 'cough.yes', 'thirsty.no'],
-    ['cough.yes', 'no_sweat.yes']
+    ['cough.yes', 'no_sweat.yes'],
+    // 金匮 12.24：病溢饮者……小青龙汤亦主之
+    ['yi_yin.yes']
   ],
   contraindications: ['心下有水气(水饮)为主', '干呕+咳，平时不爱喝水(不渴)', '发热或可不热', '水饮化热后渴则寒去欲解']
 }
