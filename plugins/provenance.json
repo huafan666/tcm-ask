@@ -812,12 +812,6 @@
       "refs": [],
       "by": "system:shanghanlun"
     },
-    "ganqi_bushu": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
     "ganxuebuzu": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
@@ -830,24 +824,6 @@
       "refs": [
         "4"
       ],
-      "by": "system:shanghanlun"
-    },
-    "piyangbuzheng": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "shangjiaoshire": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "shenjingbuzu": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
       "by": "system:shanghanlun"
     },
     "shenjingxuexu": {
@@ -2230,6 +2206,38 @@
         "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 阴毒之为病……升麻鳖甲汤去雄黄、蜀椒主之"
       ],
       "by": "system:jinkui"
+    },
+    "face_blue": {
+      "source": "manual",
+      "label": "面色辨证（青赤黄白黑）",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：阴毒之为病，面目青。"
+      ],
+      "by": "system:batch5-fix"
+    },
+    "face_pale": {
+      "source": "manual",
+      "label": "面色辨证（青赤黄白黑）",
+      "refs": [
+        "面色白：虚寒、血少、阳气不足时脸色发白无血色。"
+      ],
+      "by": "system:batch5-fix"
+    },
+    "face_yellow": {
+      "source": "manual",
+      "label": "面色辨证（青赤黄白黑）",
+      "refs": [
+        "面色黄：脾虚湿困、血虚时面色发黄发暗（萎黄），与黄疸的「身目俱黄」不同。"
+      ],
+      "by": "system:batch5-fix"
+    },
+    "face_black": {
+      "source": "manual",
+      "label": "面色辨证（青赤黄白黑）",
+      "refs": [
+        "面色黑：肾虚、瘀血、水饮时面色黧黑、暗沉。"
+      ],
+      "by": "system:batch5-fix"
     }
   },
   "edges": {}

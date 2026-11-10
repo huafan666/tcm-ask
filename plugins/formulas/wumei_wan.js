@@ -7,7 +7,6 @@ module.exports = {
   needs: [
     ['round_worm_vomit.yes', 'restless.yes'],
     ['chronic_diarrhea.yes'],
-    ['shangjiaoshire.yes'],
     ['chongji.yes']
   ],
   contraindications: ['吐蚘(蛔厥)+时烦/得食而呕又烦', '又主久利(慢性)', '安蛔止痛(乌梅黄连黄柏等)', '禁生冷滑物臭食']

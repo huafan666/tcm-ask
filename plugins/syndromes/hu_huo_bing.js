@@ -6,8 +6,9 @@ module.exports = {
   needs: [
     ['eyes_cannot_close.yes', 'sleepy.yes'],
     ['throat_ulcer.yes', 'voice_hoarse.yes'],
-    ['genital_ulcer.yes', 'anal_ulcer.yes'],
+    ['sleepy.yes', 'eyes_cannot_close.yes', 'low_appetite.yes', 'genital_ulcer.yes'],
+    ['sleepy.yes', 'eyes_cannot_close.yes', 'low_appetite.yes', 'anal_ulcer.yes'],
     ['face_color_fluctuating.yes', 'eyes_cannot_close.yes']
   ],
-  contraindications: ['狐惑病的样子很像外感伤寒（发热、没劲、不想吃饭），但又不是伤寒，查不出外感的原因', '最典型的是「想睡却闭不上眼」——很困、眼皮合不上，睡也睡不踏实', '再有就是黏膜溃烂：烂在喉咙叫「蜮」（会声音嘶哑），烂在前后阴叫「狐」（原文叫蚀于阴为狐）', '整个病程里脸色会忽红、忽黑、忽白地变来变去', '病机是湿热虫毒蕴结，不是单纯虚证，别一味补', '主方甘草泻心汤；烂在下身用苦参汤外洗，烂在肛门用雄黄熏']
+  contraindications: ['狐惑病的样子很像外感伤寒（发热、没劲、不想吃饭），但又不是伤寒，查不出外感的原因', '最典型的是「想睡却闭不上眼」——很困、眼皮合不上，睡也睡不踏实', '再有就是黏膜溃烂：烂在喉咙叫「蜮」（会声音嘶哑），烂在前后阴叫「狐」（原文叫蚀于阴为狐）', '整个病程里脸色会忽红、忽黑、忽白地变来变去', '病机是湿热虫毒蕴结，不是单纯虚证，别一味补', '主方甘草泻心汤；烂在下身用苦参汤外洗，烂在肛门用雄黄熏', '蚀于前阴叫「狐」，蚀于肛门叫「蜮/惑」—— 前后阴只要有一处溃烂，配上前面那几个症状就成立，不需要两处都烂']
 }
