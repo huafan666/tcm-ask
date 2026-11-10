@@ -1399,11 +1399,12 @@
     },
     "jiegeng_tang": {
       "source": "shanghanlun",
-      "label": "伤寒论原方",
+      "label": "伤寒论第311条 + 金匮要略第七篇",
       "refs": [
-        "311"
+        "伤寒论·第311条：少阴病二三日，咽痛者，可与甘草汤；不差者，与桔梗汤",
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：咳而胸满，振寒脉数，咽干不渴，时出浊唾腥臭，久久吐脓如米粥者，为肺痈，桔梗汤主之"
       ],
-      "by": "system:shanghanlun"
+      "by": "system:jinkui"
     },
     "jiuni_tang": {
       "source": "shanghanlun",
@@ -2672,6 +2673,158 @@
       "label": "金匮要略原文",
       "refs": [
         "金匮要略·血痹虚劳病脉证并治第六 · 五劳虚极羸瘦，腹满不能饮食……内有干血，肌肤甲错，两目黯黑，缓中补虚，大黄䗪虫丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "qi_upward_cough": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：咳而上气……咳逆上气……大逆上气（肺气不降，反向上冲逆）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "throat_rales": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：咳而上气，喉中水鸡声，射干麻黄汤主之（痰阻气道发出的哮鸣音）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "saliva_spit": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：肺痿吐涎沫而不咳者……多涎唾（吐清稀的涎沫）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "foul_pus_sputum": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：时出浊唾腥臭，久久吐脓如米粥者，为肺痈。"
+      ],
+      "by": "system:jinkui"
+    },
+    "orthopnea": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：咳逆上气，时时吐浊，但坐不得眠；肺痈，喘不得卧。"
+      ],
+      "by": "system:jinkui"
+    },
+    "eye_bulging": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：咳而上气，此为肺胀，其人喘，目如脱状。"
+      ],
+      "by": "system:jinkui"
+    },
+    "urine_incontinence": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七：肺痿吐涎沫而不咳者……必遗尿，小便数（上虚不能制下）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "fei_wei": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 热在上焦者，因咳为肺痿……肺痿吐涎沫而不咳者，其人不渴，必遗尿"
+      ],
+      "by": "system:jinkui"
+    },
+    "fei_yong": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 咳而胸满，振寒脉数，咽干不渴，时出浊唾腥臭，久久吐脓如米粥者，为肺痈"
+      ],
+      "by": "system:jinkui"
+    },
+    "fei_zhang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 上气喘而躁者，属肺胀……咳而上气，此为肺胀，其人喘，目如脱状"
+      ],
+      "by": "system:jinkui"
+    },
+    "gancao_ganjiang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 此为肺中冷，必眩，多涎唾，甘草干姜汤以温之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shegan_mahuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 咳而上气，喉中水鸡声，射干麻黄汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zaojia_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 咳逆上气，时时吐浊，但坐不得眠，皂荚丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "houpo_mahuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 咳而脉浮者，厚朴麻黄汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zeqi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 脉沉者，泽漆汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "maimendong_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 大逆上气，咽喉不利，止逆下气者，麦门冬汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "tingli_dazao_xiefei_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 肺痈，喘不得卧，葶苈大枣泻肺汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "yuebi_jia_banxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 咳而上气，此为肺胀，其人喘，目如脱状，脉浮大者，越婢加半夏汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiaoqinglong_jia_shigao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·肺痿肺痈咳嗽上气病脉证并治第七 · 肺胀，咳而上气，烦躁而喘，脉浮者，心下有水，小青龙加石膏汤主之"
       ],
       "by": "system:jinkui"
     }
