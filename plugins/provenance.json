@@ -2238,6 +2238,118 @@
         "面色黑：肾虚、瘀血、水饮时面色黧黑、暗沉。"
       ],
       "by": "system:batch5-fix"
+    },
+    "periodic_chill_fever": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：病疟以月，一日发……（疟疾发作有定时）"
+      ],
+      "by": "system:jinkui"
+    },
+    "heat_only_no_chill": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：身无寒但热（温疟）；但热不寒者，邪气内藏于心（瘅疟）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "chill_predominant": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：疟多寒者，名曰牝疟。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hand_foot_hot": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：手足热而欲呕（瘅疟）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hypochondriac_mass": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：此结为症瘕，名曰疟母（疟久不愈，胁下结成痞块）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "weight_loss": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四：令人消铄脱肉（瘅疟日久，肌肉消瘦）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "dan_nue": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 阴气孤绝，阳气独发……名曰瘅疟"
+      ],
+      "by": "system:jinkui"
+    },
+    "wen_nue": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 温疟者，其脉如平，身无寒但热，骨节疼烦，时呕"
+      ],
+      "by": "system:jinkui"
+    },
+    "pin_nue": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 疟多寒者，名曰牝疟"
+      ],
+      "by": "system:jinkui"
+    },
+    "nue_mu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 此结为症瘕，名曰疟母，急治之"
+      ],
+      "by": "system:jinkui"
+    },
+    "biejia_jian_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 鳖甲煎丸方（二十三味，为末，取锻灶下灰、清酒浸灰，煮鳖甲如胶漆，绞汁和药为丸）"
+      ],
+      "by": "system:jinkui"
+    },
+    "baihu_jia_guizhi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 白虎加桂枝汤方（知母六两、甘草炙二两、石膏一斤、粳米二合、桂枝三两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "shuqi_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疟病脉证并治第四 · 蜀漆散方（蜀漆洗去腥、云母烧二日夜、龙骨等分，杵为散）"
+      ],
+      "by": "system:jinkui"
+    },
+    "gualou_muli_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病证并治第三 · 百合病，渴不差者，用后方主之 · 栝楼牡蛎散方（栝楼根、牡蛎等分，为细末，饮服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
