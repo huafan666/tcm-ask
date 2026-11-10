@@ -3300,6 +3300,94 @@
         "金匮要略·痰饮咳嗽病脉证并治第十二 · 腹满，口舌干燥，此肠间有水气，己椒苈黄丸主之"
       ],
       "by": "system:jinkui"
+    },
+    "polyuria": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三：男子消渴，小便反多，以饮一斗，小便一斗。"
+      ],
+      "by": "system:jinkui"
+    },
+    "polyphagia": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三：趺阳脉数，胃中有热，即消谷引食（吃得多、消化快、很快又饿）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "urine_gravel": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三：淋之为病，小便如粟状（尿中排出砂粒样物）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "water_reflux": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三：渴欲饮水，水入则吐者，名曰水逆。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hematuria": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三：小便不利，蒲灰散主之；滑石白鱼散……（金匮 11.19 亦言「热在下焦者，则尿血」）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiao_ke": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 男子消渴，小便反多，以饮一斗，小便一斗，肾气丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "lin_bing": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 淋之为病，小便如粟状，小腹弦急，痛引脐中"
+      ],
+      "by": "system:jinkui"
+    },
+    "gualou_qumai_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 小便不利者，有水气，其人若渴，栝蒌瞿麦丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "puhui_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 小便不利，蒲灰散主之（蒲灰七分、滑石三分，杵为散，饮服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "huashi_baiyu_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 滑石白鱼散（滑石二分、乱发二分烧、白鱼二分，杵为散，饮服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "fuling_rongyan_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·消渴小便不利淋病脉证并治第十三 · 茯苓戎盐汤（茯苓半斤、白术二两、戎盐弹丸大一枚）"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
