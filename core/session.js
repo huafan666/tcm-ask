@@ -62,6 +62,17 @@ class Session {
       const st = s === 'yes' ? '  ✓ yes' : '  ✗ no '
       lines.push(`${st} ${this.engine.registry[name].title} (${name})`)
     }
+    // 还「没被排除、但也没被确认」的候选方。
+    // 不写出来的话，大模型只能看到 confirmed 的那几个，
+    // 会误以为「没提到的就是没有」，解释里就容易漏掉真正该考虑的方。
+    const cands = this.asker.candidates()
+    if (cands.length) {
+      lines.push(`仍未被排除的候选方（${cands.length} 个，条件尚未问齐，不代表可用）:`)
+      for (const n of cands.slice(0, 30)) {
+        lines.push(`   ? ${this.engine.registry[n].title} (${n})`)
+      }
+      if (cands.length > 30) lines.push(`   …… 还有 ${cands.length - 30} 个`)
+    }
     const contra = this.engine.contraindications()
     if (contra.length) {
       lines.push('注意事项/禁忌:')
@@ -192,9 +203,18 @@ class Session {
       explanation = await explainResult(resultText, this.llm)
     } catch (_) {}
     // 提取已成立的方剂名供前端展示
-    const yesFormulas = Object.entries(this.engine.state)
+    let yesFormulas = Object.entries(this.engine.state)
       .filter(([n, s]) => s === 'yes' && this.registry[n] && this.registry[n].kind === 'formula')
       .map(([n]) => ({ name: n, title: this.registry[n].title }))
+    // 一个方都没「确认成立」，但候选只剩一个时——那就是它。
+    // 以前这里会显示「未收敛到具体方剂」，可实际已经只剩一个候选，
+    // 只是最后几个确认条件没来得及问（候选≤1 就收敛了）。
+    if (!yesFormulas.length) {
+      const cands = this.asker.candidates()
+      if (cands.length === 1) {
+        yesFormulas = [{ name: cands[0], title: this.registry[cands[0]].title, soleCandidate: true }]
+      }
+    }
     const contra = this.engine.contraindications()
     this.result = {
       formulas: yesFormulas,

@@ -126,7 +126,7 @@ const GROUPS = [
       'press_only_pain', 'press_pain_aggravated', 'severe_abdominal_pain',
       'throat_pain', 'tongjing', 'wei_tong', 'yaguan_tong', 'body_pain',
       'body_ache_stiff', 'cough_pleuritic_pain', 'zuolei_tong', 'zugengtong',
-      'danjieshidianyatong', 'migratory_pain'
+      'danjieshidianyatong', 'migratory_pain', 'lower_back_pain'
     ],
     notIncluded: '腰酸/肋酸（酸不是痛）、肚子拘急发紧（紧不是痛）、麻木、酸困'
   },
@@ -205,7 +205,9 @@ const GROUPS = [
     children: ['cold_aversion', 'wind_aversion', 'mild_cold', 'back_cold_patch',
       'genital_cold', 'lower_back_cold', 'lower_leg_cold', 'xigaiyixialeng',
       'lower_abdomen_cold_fan', 'heart_cold_weak', 'chill_predominant',
-      'cold_extremities'],
+      'cold_extremities',
+      // 关节怕冷、遇冷加重（寒痹），属于「冷」这一问
+      'joint_cold_aggravated'],
     notIncluded: '恶风（怕风与怕冷不同，但都记在这里便于粗筛）；喜冷饮（那是饮食偏好）'
   },
   {
@@ -342,7 +344,7 @@ const GROUPS = [
     trigger: ['手脚', '胳膊', '腿', '肢体', '半身', '站不稳', '走不动'],
     children: ['hemiplegia', 'one_arm_weak', 'limb_numbness', 'limb_heavy_powerless',
       'shuangtuiwuli', 'cannot_walk', 'unsteady_stance',
-      'finger_arm_swelling_tremor', 'bei_fan_zhang', 'joint_swelling',
+      'finger_arm_swelling_tremor', 'bei_fan_zhang', 'joint_swelling', 'joint_red_hot',
       'yaguan_tong', 'jiao_qi_pain'],
     notIncluded: '抽筋痉挛（另归 spasm_any）、手足发冷/发热（归感觉类）、关节疼痛'
   },
@@ -389,10 +391,10 @@ const GROUPS = [
     name: 'lowback_any',
     title: '腰腿不适',
     dimension: '部位',
-    ask: '是不是腰或者腰腿这一带不舒服——酸、困、发凉？',
+    ask: '是不是腰或者腰腿这一带不舒服——酸、痛、困、发凉？',
     trigger: ['腰', '腿酸', '腰腿'],
-    children: ['yaosuan', 'yaotuisuankun', 'lower_back_cold'],
-    notIncluded: '腰痛如刺（痛归 pain_any）、小腿发凉（可另归 cold_any）'
+    children: ['yaosuan', 'yaotuisuankun', 'lower_back_cold', 'lower_back_pain'],
+    notIncluded: '腿脚本身的疼痛（归 limb_any）、腰以下的水肿（归水肿）'
   },
   {
     name: 'reproductive_state_any',
@@ -420,9 +422,11 @@ const GROUPS = [
     title: '身体四肢疼痛（头颈以下）',
     dimension: '部位',
     ask: '是不是身上、关节或者手脚疼？',
-    trigger: ['身上痛', '身痛', '浑身痛', '关节痛', '腰腿痛', '足跟痛'],
+    trigger: ['身上痛', '身痛', '浑身痛', '关节痛', '腰腿痛', '足跟痛', '腰痛'],
     children: ['body_pain', 'body_ache_stiff', 'joint_pain_rigid', 'joint_pain_severe',
-      'migratory_pain', 'yaguan_tong', 'zugengtong'],
+      'migratory_pain', 'yaguan_tong', 'zugengtong', 'lower_back_pain',
+      // 关节痛的寒热鉴别：又红又烫 / 怕冷遇寒加重
+      'joint_red_hot', 'joint_cold_aggravated'],
     notIncluded: '头痛/颈痛（归 head_pain_any）、胸腹痛（归胸腹系统）、腰酸（酸不是痛，归 lowback_any）'
   }
 ]

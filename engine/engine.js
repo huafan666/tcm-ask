@@ -16,8 +16,8 @@
 //
 // 传播：当一个对象的 yes/no 变化，重新求值所有它的依赖者，直到稳定。
 
-// 症状之间的关系约束（互斥 / 上下位），见 data/symptom-relations.js
-const { MUTEX, SPECIALIZE, PARENT_OF } = require('../data/symptom-relations')
+// 症状之间的关系约束（互补 / 互斥 / 上下位），见 data/symptom-relations.js
+const { MUTEX, COMPLEMENT, SPECIALIZE, PARENT_OF } = require('../data/symptom-relations')
 
 // 医案里极常见的阴性表述（「无汗」「没有腹泻」「不渴」「未见发热」「否认腹痛」）。
 // 以前只有 negate() 里手写过的词才认得，于是「无腹泻」会把 diarrhea 判成 yes，
@@ -95,7 +95,8 @@ class Engine {
   constructor(registry) {
     this.registry = registry
     this.state = {}
-    // 关系约束（互斥 / 上位下位），由 data/symptom-relations.js 提供
+    // 关系约束（互补 / 互斥 / 上位下位），由 data/symptom-relations.js 提供
+    this.complement = COMPLEMENT || []
     this.mutex = MUTEX || []
     this.specialize = SPECIALIZE || {}
     // 下位 → 上位 的反查表，问诊器用它做「先问上位」
@@ -189,8 +190,12 @@ class Engine {
    *     上位 = no  ⇒ 下位全 = no     「都没有便血了，就不必再问是不是脓血」
    *
    *   MUTEX（互斥）
-   *     A = yes ⇒ B = no             「有汗答是，无汗就是否」
-   *                                  「便秘答是，下利就是否」
+   *     A = yes ⇒ B = no             「便秘答是，下利就是否」
+   *
+   *   COMPLEMENT（互补 / 正好相反）
+   *     A = yes ⇒ B = no
+   *     A = no  ⇒ B = yes            「没有出汗」就是「无汗」
+   *     （B 对 A 同理）
    *
    * 反复应用直到稳定，因为约束会连锁：
    *   便秘 yes → 下利 no → 久利/下利清谷/鸭溏/气利 全 no
@@ -200,6 +205,7 @@ class Engine {
    */
   applyRelations(changed) {
     const mutex = this.mutex || []
+    const comp = this.complement || []
     const spec = this.specialize || {}
     let guard = 0
     while (guard++ < 200) {
@@ -226,6 +232,14 @@ class Engine {
       for (const [a, b] of mutex) {
         if (this.state[a] === 'yes' && this.state[b] !== 'no') { this.set(b, 'no', changed); any = true }
         if (this.state[b] === 'yes' && this.state[a] !== 'no') { this.set(a, 'no', changed); any = true }
+      }
+
+      // ④ 互补（正好相反）：正反两面互相定义，no 也要能翻成对面的 yes
+      for (const [a, b] of comp) {
+        if (this.state[a] === 'yes' && this.state[b] !== 'no') { this.set(b, 'no', changed); any = true }
+        if (this.state[b] === 'yes' && this.state[a] !== 'no') { this.set(a, 'no', changed); any = true }
+        if (this.state[a] === 'no' && this.state[b] !== 'yes') { this.set(b, 'yes', changed); any = true }
+        if (this.state[b] === 'no' && this.state[a] !== 'yes') { this.set(a, 'yes', changed); any = true }
       }
 
       if (!any) break
@@ -272,16 +286,19 @@ class Engine {
       // 这条路径没成立；看它是否被某个条件明确否定
       if (!results.some(r => r === false)) allPathsBlocked = false
     }
-    if (anyPathOk) {
-      if (this.state[name] !== 'yes') this.state[name] = 'yes'
-    } else if (allPathsBlocked) {
-      // 语义：needs 的多条路径是 **OR**（任一路径成立即成立）。
-      // 因此必须「所有路径都被阻断」才能判 no ——
-      // 只否定其中一条路径，推不出整个节点不成立（¬(A∨B) 才等价于 ¬A∧¬B）。
-      // 旧实现「任一路径被阻断就判 no」是错的，会把「病人符合第1条路径、
-      // 但第2条路径恰被问到并否定」的方剂/证候整块误杀。
-      if (this.state[name] !== 'no') this.state[name] = 'no'
-    }
+    // 语义：needs 的多条路径是 **OR**（任一路径成立即成立）。
+    // 因此必须「所有路径都被阻断」才能判 no ——
+    // 只否定其中一条路径，推不出整个节点不成立（¬(A∨B) 才等价于 ¬A∧¬B）。
+    // 旧实现「任一路径被阻断就判 no」是错的，会把「病人符合第1条路径、
+    // 但第2条路径恰被问到并否定」的方剂/证候整块误杀。
+    //
+    // 三态可回退（这条也是实跑逼出来的）：
+    // 中间某一步可能把某个症状暂时置成 no，稍后又被关系约束翻回来
+    //（例：出汗闸门答「否」→ 先把 no_sweat 置 no → 麻黄汤三条路径全断 → 判 no；
+    //  紧接着「互补」约束把 no_sweat 翻回 yes，可麻黄汤已经卡在 no 上回不来了）。
+    // 所以这里必须允许 no → unknown 回退，否则节点会被一个瞬时状态永久判死。
+    const next = anyPathOk ? 'yes' : (allPathsBlocked ? 'no' : 'unknown')
+    if (this.state[name] !== next) this.state[name] = next
   }
 
   propagate(changed) {

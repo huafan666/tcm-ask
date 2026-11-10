@@ -83,10 +83,35 @@ const CASES = [
     unknown: ['head_sweat_only', 'waist_split_sweat', 'shouhan']
   },
   {
+    // 互补（COMPLEMENT）：出汗是二分的，正面为「否」就等于反面「是」。
+    // 这一条是实跑里发现的：病人答「出汗有没有异常 = 没有」，
+    // 以前会把 no_sweat 也置成否，于是麻黄汤/大青龙/葛根汤全部出局。
+    name: '有汗「否」⇒ 无汗「是」（互补，不是单纯互斥）',
+    set: [['sweat', 'no']],
+    yes: ['no_sweat'], no: ['sweat']
+  },
+  {
+    name: '无汗「否」⇒ 有汗「是」（互补的另一半）',
+    set: [['no_sweat', 'no']],
+    yes: ['sweat'], no: ['no_sweat']
+  },
+  {
+    name: '出汗闸门答「否」⇒ 无汗「是」，且麻黄汤不再被误杀',
+    // 这一步在引擎里会先「组否 ⇒ 子全否」把 no_sweat 暂时置否，
+    // 再被互补约束翻回「是」——所以还顺便验证了 evalOne 能从 no 回退到 unknown。
+    set: [['sys_sweat', 'no'], ['cold_aversion', 'yes'], ['severe_thirst', 'no']],
+    yes: ['no_sweat', 'mahuang_tang']
+  },
+  {
     name: '便秘「是」⇒ 下利及久利/清谷/鸭溏/气利「否」',
     set: [['constipation', 'yes']],
     yes: ['constipation'],
     no: ['diarrhea', 'chronic_diarrhea', 'clear_grain_diarrhea', 'duck_stool', 'qi_li']
+  },
+  {
+    name: '关节红肿发热（热痹）⇒ 关节怕冷（寒痹）「否」',
+    set: [['joint_red_hot', 'yes']],
+    yes: ['joint_red_hot'], no: ['joint_cold_aggravated']
   },
   {
     name: '下利「是」⇒ 便秘「否」',

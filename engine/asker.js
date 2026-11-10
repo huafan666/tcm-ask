@@ -162,17 +162,33 @@ class Asker {
     return true
   }
 
-  // 收集该方需要的所有底层症状（从 needs 各级展开）。排除脉象(kind:'pulse')
-  requiredLeaves(name) {
+  /**
+   * 收集该方需要的所有底层症状（从 needs 各级展开）。排除脉象(kind:'pulse')
+   *
+   * 关键：needs 里经常挂的是**证候**（百合病、梅核气、虚劳、温疟……），
+   * 证候自己没有 trigger，问诊问不出来。以前这里遇到没有 trigger 的节点就 `continue`，
+   * 于是「方剂 → 证候 → 症状」这条链只问了第一层：证候永远定不下来，
+   * 靠它判的方剂就永远赖在候选里出不去（实测一个麻黄汤证最后还剩 8 个候选，
+   * 里面 6 个都是这种「单挂一个证候」的方）。
+   * 现在钻进去，把证候底下的症状也当作可问的。
+   */
+  requiredLeaves(name, depth = 0, seen = new Set()) {
     const def = this.registry[name]
     const leaves = new Set()
-    if (!def.needs) return leaves
+    if (!def || !def.needs || !def.needs.length) return leaves
+    if (depth > 4) return leaves
     const paths = this.engine.normalizeNeeds(def.needs)
     for (const path of paths) {
       for (const cond of path) {
         const dep = this.engine.splitRef(cond)[0]
         const d = this.registry[dep]
-        if (d && d.trigger && d.kind !== 'pulse') leaves.add(dep)   // 是底层症状且非脉象
+        if (!d) continue
+        if (d.kind === 'pulse') continue
+        // 底层症状：病人能直接回答
+        if (typeof d.trigger === 'function') { leaves.add(dep); continue }
+        // 派生节点（证候/组合）：继续往里挖它的症状
+        if (seen.has(dep)) continue
+        for (const x of this.requiredLeaves(dep, depth + 1, new Set(seen).add(dep))) leaves.add(x)
       }
     }
     return leaves

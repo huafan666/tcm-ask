@@ -4513,7 +4513,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：abdominal_pain、abdominal_cramp_after_birth、chest_back_pain、circumumbilical_pain、duzijiaotonghuocitong、epigastric_pressing_pain、fengchi_tong、full_epigastric_hard_pain、heart_bind_pain、heart_hanging_pain、heart_pain_radiate、hypochondriac_side_pain、jiao_qi_pain、joint_pain_rigid、joint_pain_severe、left_abdomen_press_pain、lower_abdomen_swelling_pain、lower_abdominal_lump、neck_stiff_pain、press_only_pain、press_pain_aggravated、severe_abdominal_pain、throat_pain、tongjing、wei_tong、yaguan_tong、body_pain、body_ache_stiff、cough_pleuritic_pain、zuolei_tong、zugengtong、danjieshidianyatong、migratory_pain"
+        "汇集：abdominal_pain、abdominal_cramp_after_birth、chest_back_pain、circumumbilical_pain、duzijiaotonghuocitong、epigastric_pressing_pain、fengchi_tong、full_epigastric_hard_pain、heart_bind_pain、heart_hanging_pain、heart_pain_radiate、hypochondriac_side_pain、jiao_qi_pain、joint_pain_rigid、joint_pain_severe、left_abdomen_press_pain、lower_abdomen_swelling_pain、lower_abdominal_lump、neck_stiff_pain、press_only_pain、press_pain_aggravated、severe_abdominal_pain、throat_pain、tongjing、wei_tong、yaguan_tong、body_pain、body_ache_stiff、cough_pleuritic_pain、zuolei_tong、zugengtong、danjieshidianyatong、migratory_pain、lower_back_pain"
       ],
       "by": "system:symptom-group"
     },
@@ -4561,7 +4561,7 @@
       "source": "group",
       "label": "症状筛选组（感觉维度）",
       "refs": [
-        "汇集：cold_aversion、wind_aversion、mild_cold、back_cold_patch、genital_cold、lower_back_cold、lower_leg_cold、xigaiyixialeng、lower_abdomen_cold_fan、heart_cold_weak、chill_predominant、cold_extremities"
+        "汇集：cold_aversion、wind_aversion、mild_cold、back_cold_patch、genital_cold、lower_back_cold、lower_leg_cold、xigaiyixialeng、lower_abdomen_cold_fan、heart_cold_weak、chill_predominant、cold_extremities、joint_cold_aggravated"
       ],
       "by": "system:symptom-group"
     },
@@ -4665,7 +4665,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：hemiplegia、one_arm_weak、limb_numbness、limb_heavy_powerless、shuangtuiwuli、cannot_walk、unsteady_stance、finger_arm_swelling_tremor、bei_fan_zhang、joint_swelling、yaguan_tong、jiao_qi_pain"
+        "汇集：hemiplegia、one_arm_weak、limb_numbness、limb_heavy_powerless、shuangtuiwuli、cannot_walk、unsteady_stance、finger_arm_swelling_tremor、bei_fan_zhang、joint_swelling、joint_red_hot、yaguan_tong、jiao_qi_pain"
       ],
       "by": "system:symptom-group"
     },
@@ -4705,7 +4705,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：yaosuan、yaotuisuankun、lower_back_cold"
+        "汇集：yaosuan、yaotuisuankun、lower_back_cold、lower_back_pain"
       ],
       "by": "system:symptom-group"
     },
@@ -4881,7 +4881,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：body_pain、body_ache_stiff、joint_pain_rigid、joint_pain_severe、migratory_pain、yaguan_tong、zugengtong"
+        "汇集：body_pain、body_ache_stiff、joint_pain_rigid、joint_pain_severe、migratory_pain、yaguan_tong、zugengtong、lower_back_pain、joint_red_hot、joint_cold_aggravated"
       ],
       "by": "system:symptom-group"
     },
