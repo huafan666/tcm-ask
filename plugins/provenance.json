@@ -338,12 +338,6 @@
       "refs": [],
       "by": "system:shanghanlun"
     },
-    "inner_cold_outer_heat": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
     "jaundice": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
@@ -482,18 +476,6 @@
       "refs": [],
       "by": "system:shanghanlun"
     },
-    "shaoyang": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "shaoyin": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
     "shouhan": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
@@ -579,18 +561,6 @@
       "by": "system:shanghanlun"
     },
     "tongjing": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "true_cold_false_heat": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "true_heat_false_cold": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
@@ -705,12 +675,6 @@
       "by": "system:shanghanlun"
     },
     "yaguan_tong": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "yangming": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
@@ -859,12 +823,6 @@
       "by": "system:shanghanlun"
     },
     "solar_windstrike": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "still_sun": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
