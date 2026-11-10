@@ -18,17 +18,7 @@ const FORCE = process.argv.includes('--force')
 const CH2 = '金匮要略·痉湿暍病脉证并治第二'
 
 // ---------- 新症状（原文关键要素，库里确实没有的）----------
-const NEW_SYMPTOMS = [
-  {
-    name: 'body_aches_heavy',
-    title: '身疼重',
-    kind: 'symptom',
-    comment: CH2 + '：太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也，一物瓜蒂汤主之。',
-    trigger: ['身疼重', '身体疼重', '又疼又沉', '疼而且沉'],
-    negate: ['不疼', '不沉'],
-    ask: '是不是身上又疼又沉重，像被水浸着一样？'
-  }
-]
+const NEW_SYMPTOMS = []   // 身疼重 已拆成 body_pain + body_heavy（见 tools/split-nodes.js）
 
 // ---------- 新方剂 ----------
 const NEW_FORMULAS = [
@@ -67,7 +57,7 @@ const NEW_FORMULAS = [
     title: '一物瓜蒂汤',
     kind: 'formula',
     comment: CH2 + '：太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也，一物瓜蒂汤主之。',
-    needs: [['fever.yes', 'body_aches_heavy.yes']],
+    needs: [['fever.yes', 'body_pain.yes', 'body_heavy.yes']],
     contraindications: [
       '暑令伤于冷水、水湿郁于肌表：身热而疼重',
       '与白虎加人参汤（暍病津伤）区别：本方是水湿在表、无大渴大汗',
@@ -181,7 +171,7 @@ if (WRITE) {
   fs.writeFileSync(PROV, JSON.stringify(prov, null, 2) + '\n', 'utf8')
   console.log('\n已写入：1 症状 + 3 方剂 + 2 证候 + provenance')
 } else {
-  for (const x of NEW_SYMPTOMS.concat(NEW_FORMULAS, NEW_SUMMARIES)) {
+  for (const x of [].concat(NEW_FORMULAS, NEW_SUMMARIES)) {
     const dir = x.kind === 'symptom' ? 'symptoms' : (x.kind === 'formula' ? 'formulas' : 'syndromes')
     console.log('\n=== plugins/' + dir + '/' + x.name + '.js ===')
     console.log(render(x))

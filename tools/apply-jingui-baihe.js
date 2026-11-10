@@ -29,15 +29,6 @@ const NEW_SYMPTOMS = [
     ask: '是不是想吃东西，可真到吃的时候又吃不下？胃口一会儿好一会儿坏。'
   },
   {
-    name: 'listless_mute',
-    title: '提不起劲、不想说话',
-    kind: 'symptom',
-    comment: CH3 + '：常默默。',
-    trigger: ['提不起劲', '不想说话', '不爱说话', '蔫蔫的', '愣愣的'],
-    negate: ['精神很好', '话很多'],
-    ask: '是不是整天提不起劲，不想说话，也不想动，就愣愣地待着？'
-  },
-  {
     name: 'restless_lying',
     title: '想躺躺不住',
     kind: 'symptom',
@@ -83,7 +74,7 @@ const SUMMARY = {
   comment: CH3 + '：百合病者，百脉一宗……意欲食复不能食，常默默，欲卧不能卧，欲行不能行，如寒无寒，如热无热，口苦，小便赤。',
   needs: [
     // 神志与饮食的"想做却做不了"是百合病最典型的一组
-    ['appetite_fluctuating.yes', 'listless_mute.yes'],
+    ['appetite_fluctuating.yes', 'low_energy.yes', 'mute_quiet.yes'],
     // 卧、行的"欲而不能"另一组
     ['restless_lying.yes', 'cannot_walk.yes'],
     // 似冷非冷似热非热 + 口苦 + 小便黄

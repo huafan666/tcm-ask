@@ -4,7 +4,7 @@ module.exports = {
   kind: 'summary',
   // 金匮要略·百合病狐惑阴阳毒病脉证并治第三：百合病者，百脉一宗……意欲食复不能食，常默默，欲卧不能卧，欲行不能行，如寒无寒，如热无热，口苦，小便赤。
   needs: [
-    ['appetite_fluctuating.yes', 'listless_mute.yes'],
+    ['appetite_fluctuating.yes', 'low_energy.yes', 'mute_quiet.yes'],
     ['restless_lying.yes', 'cannot_walk.yes'],
     ['pseudo_cold_heat.yes', 'bitter_taste.yes', 'dark_urine.yes']
   ],

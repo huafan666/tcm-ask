@@ -6,7 +6,8 @@ module.exports = {
   // 第77条: 烦热胸中窒；第78条: 身热不去心中结痛。虚烦+热扰胸膈。
   needs: [
     ['vex_insomnia.yes', 'cold_aversion.no', 'epigastric_fullness.no', 'press_only_pain.no'],
-    ['chest_blockage.yes', 'cold_aversion.no']
+    ['chest_stuffy.yes', 'cold_aversion.no'],
+    ['heart_bind_pain.yes', 'cold_aversion.no']
   ],
   contraindications: ['虚烦不得眠、心中懊恼', '胸中窒、心中结痛', '热扰胸膈(非实热)', '旧微溏者不可与之']
 }

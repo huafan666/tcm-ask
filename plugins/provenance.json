@@ -109,12 +109,6 @@
       "refs": [],
       "by": "system:shanghanlun"
     },
-    "body_shaking": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
     "borborygmus": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
@@ -128,12 +122,6 @@
       "by": "system:shanghanlun"
     },
     "buyun": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
-    "chest_blockage": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [],
@@ -1936,14 +1924,6 @@
       ],
       "by": "system:jinkui"
     },
-    "body_aches_heavy": {
-      "source": "jinkui",
-      "label": "金匮要略原方",
-      "refs": [
-        "太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也，一物瓜蒂汤主之。"
-      ],
-      "by": "system:jinkui"
-    },
     "mahuang_jia_zhu_tang": {
       "source": "jinkui",
       "label": "金匮要略原方",
@@ -1989,14 +1969,6 @@
       "label": "金匮要略原方",
       "refs": [
         "意欲食复不能食……欲饮食，或有美时，或有不用闻食臭时。"
-      ],
-      "by": "system:jinkui"
-    },
-    "listless_mute": {
-      "source": "jinkui",
-      "label": "金匮要略原方",
-      "refs": [
-        "常默默。"
       ],
       "by": "system:jinkui"
     },
@@ -2085,6 +2057,54 @@
       "label": "金匮要略原方",
       "refs": [
         "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 百合病变发热者，百合滑石散主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "chest_stuffy": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "伤寒论·第77条：发汗若下之而烦热，胸中窒者，栀子豉汤主之。"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "heart_bind_pain": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "伤寒论·第78条：伤寒五六日，大下之后，身热不去，心中结痛者，未欲解也，栀子豉汤主之。"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "muscle_twitching": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "伤寒论·第82条：太阳病发汗，汗出不解，其人仍发热，心下悸，头眩，身瞤动，振振欲擗地者，真武汤主之。"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "unsteady_stance": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "伤寒论·第82条：……身瞤动，振振欲擗地者，真武汤主之。"
+      ],
+      "by": "system:shanghanlun"
+    },
+    "low_energy": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病：意欲食复不能食，常默默……欲行不能行。"
+      ],
+      "by": "system:jinkui"
+    },
+    "mute_quiet": {
+      "source": "jinkui",
+      "label": "金匮要略原方",
+      "refs": [
+        "金匮要略·百合病：常默默。"
       ],
       "by": "system:jinkui"
     }
