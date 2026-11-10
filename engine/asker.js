@@ -19,6 +19,9 @@ class Asker {
     this.groupAskedCount = 0
     // 病人答「是」的筛选组 → 后续只在这个区域内细化，避免到处乱问
     this.focus = new Set()
+    // 每个聚焦组最多问几个细化问题（防止一组 20 多个子症状把病人问崩）
+    this.maxFocusQuestionsPerGroup = 6
+    this._focusAsked = new Map()
   }
 
   // 标记某个叶子已问过(用户答"不知道"→unknown)，下次不再问同一个
@@ -30,6 +33,7 @@ class Asker {
     this.asked.clear()
     this.groupAskedCount = 0
     this.focus.clear()
+    this._focusAsked.clear()
   }
 
   /** 病人对某一组答「是」：锁定该区域，后续优先在该组的子症状里细化 */
@@ -182,20 +186,50 @@ class Asker {
 
     const unknownSet = new Set(unknownLeaves)
 
+    // ---- 自动细化：某个筛选组已经成立、但它的子症状一个都没确定 ----
+    // 典型场景：病人说「睡眠不好」→ sleep_any 成立，但入睡困难/易醒/睡眠浅全都还不知道。
+    // 这时候必须先把睡眠往细里问，不能跑去问腹部、寒冷这些无关大类。
+    // 注意只在「一个子症状都没确定」时触发：若已确定某个子（如腹痛之于腹部组），
+    // 说明病人已经说具体了，不必再把整组翻一遍。
+    if (this.focus.size === 0) {
+      for (const [name, d] of Object.entries(this.registry)) {
+        if (d.kind !== 'symptom_group') continue
+        if (this.engine.state[name] !== 'yes') continue
+        if (this.asked.has(name)) continue
+        const kids = Array.isArray(d.children) ? d.children : []
+        // 只把「具体」的子症状算作已确定；笼统描述（vague，如「睡眠不好」）不算，
+        // 否则「睡眠不好」自己就把这条判断满足了，永远细化不下去。
+        const specific = kids.filter(k => !(this.registry[k] && this.registry[k].vague))
+        if (specific.some(k => this.engine.state[k] === 'yes')) continue   // 已经说具体了
+        // 用引擎状态判断，而不是 unknownSet ——
+        // unknownSet 只含「被某个候选方直接需要」的症状，而细化用的子症状
+        // （如入睡困难/容易醒/睡眠浅）目前没有方剂引用，不在里面。
+        if (specific.some(k => this.registry[k] && this.engine.state[k] === 'unknown' && !this.asked.has(k))) {
+          this.focus.add(name)
+        }
+      }
+    }
+
     // ---- 若已锁定区域：只在区域内的子症状里细化，不再问别的组 ----
     if (this.focus.size) {
-      const inFocus = new Set()
+      const cap = this.maxFocusQuestionsPerGroup || 6
       for (const g of this.focus) {
-        for (const c of this.childrenOf(g)) if (unknownSet.has(c)) inFocus.add(c)
-      }
-      if (inFocus.size) {
-        const leaf = unknownLeaves.find(lf => inFocus.has(lf))
-        const def = this.registry[leaf]
-        return {
-          leaf, isGroup: false, inFocus: true,
-          title: def.title,
-          phrase: (def.ask && def.ask.length) ? def.ask : def.title,
-          count: count[leaf], total: cands.length
+        const askedHere = this._focusAsked.get(g) || 0
+        if (askedHere >= cap) continue
+        for (const c of this.childrenOf(g)) {
+          if (this.engine.state[c] !== 'unknown') continue
+          if (this.asked.has(c)) continue
+          // 细化用的子症状**不要求**被某个方剂直接需要（count 可能是 0）——
+          // 例如「入睡困难/容易醒/睡眠浅」目前没有方剂直接引用，
+          // 但病人说了「睡眠不好」就必须先问清是哪一种，否则初筛等于没做。
+          const def = this.registry[c]
+          this._focusAsked.set(g, askedHere + 1)
+          return {
+            leaf: c, isGroup: false, inFocus: true,
+            title: def.title,
+            phrase: (def.ask && def.ask.length) ? def.ask : def.title,
+            count: count[c] || 0, total: cands.length
+          }
         }
       }
       // 区域内已经没有能问的了 → 解除锁定，回到全局

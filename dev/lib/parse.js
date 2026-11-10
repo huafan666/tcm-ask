@@ -817,6 +817,10 @@ function generatePluginSource(model) {
     const kids = model.children || []
     if (kids.length) out.push('  children: ' + litArray(kids) + ',')
   }
+  // vague：标记「笼统描述」类症状（如「睡眠不好」）。
+  // 它本身也是某个筛选组的子症状，但病人说了它只等于「往这个方向查」，
+  // 不等于说清了是哪种，所以问诊要往下细化而不是当已经确定。
+  if (model.vague) out.push('  vague: true,')
   const needs = (model.needs || []).filter(p => p && p.length)
   if (needs.length) out.push('  needs: ' + needsLiteral(needs) + ',')
   const contra = model.contraindications || []

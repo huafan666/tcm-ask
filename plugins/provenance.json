@@ -4732,6 +4732,30 @@
         "咯血：咳嗽出血，非呕血"
       ],
       "by": "system:fix"
+    },
+    "insomnia_onset": {
+      "source": "manual",
+      "label": "睡眠症状细化",
+      "refs": [
+        "躺下很久睡不着（入睡困难）。与「虚烦不得眠」区分：这里是单纯的入睡慢，不强调心里烦。"
+      ],
+      "by": "system:fix"
+    },
+    "frequent_waking": {
+      "source": "manual",
+      "label": "睡眠症状细化",
+      "refs": [
+        "能在睡着之后反复醒来（易醒）。与「入睡困难」区分：那个是睡不着，这个是睡不连续。"
+      ],
+      "by": "system:fix"
+    },
+    "light_sleep": {
+      "source": "manual",
+      "label": "睡眠症状细化",
+      "refs": [
+        "睡得浅、睡不实、有点动静就醒（睡眠深度不够）。"
+      ],
+      "by": "system:fix"
     }
   },
   "edges": {}
