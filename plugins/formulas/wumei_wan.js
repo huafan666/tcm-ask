@@ -7,7 +7,9 @@ module.exports = {
   needs: [
     ['round_worm_vomit.yes', 'restless.yes'],
     ['chronic_diarrhea.yes'],
-    ['chongji.yes']
+    ['chongji.yes'],
+    // 金匮 19.14：蚘厥者，乌梅丸主之（蛔厥：吐蛔、静而复时烦、得食而呕又烦）
+    ['round_worm_vomit.yes','restless.yes','vomiting.yes']
   ],
   contraindications: ['吐蚘(蛔厥)+时烦/得食而呕又烦', '又主久利(慢性)', '安蛔止痛(乌梅黄连黄柏等)', '禁生冷滑物臭食']
 }

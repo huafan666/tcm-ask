@@ -7,7 +7,9 @@ module.exports = {
   needs: [
     ['vex_insomnia.yes', 'cold_aversion.no', 'epigastric_fullness.no', 'press_only_pain.no'],
     ['chest_stuffy.yes', 'cold_aversion.no'],
-    ['heart_bind_pain.yes', 'cold_aversion.no']
+    ['heart_bind_pain.yes', 'cold_aversion.no'],
+    // 金匮第十七篇 呕吐哕下利 对应条文
+    ['diarrhea.yes','restless.yes','epigastric_lump_soft.yes']
   ],
   contraindications: ['虚烦不得眠、心中懊恼', '胸中窒、心中结痛', '热扰胸膈(非实热)', '旧微溏者不可与之']
 }

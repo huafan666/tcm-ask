@@ -7,7 +7,9 @@ module.exports = {
   // 与桃花汤(虚寒便脓血)区别: 本证为湿热实热,里急后重。
   needs: [
     ['diarrhea.yes', 'tenesmus.yes'],
-    ['diarrhea.yes', 'thirsty.yes']
+    ['diarrhea.yes', 'thirsty.yes'],
+    // 金匮第十七篇 呕吐哕下利 对应条文
+    ['diarrhea.yes','tenesmus.yes','fever.yes']
   ],
   contraindications: ['热利下重(湿热痢疾里急后重)', '清热燥湿止痢(白头翁黄连黄柏秦皮)', '虚寒下利(无热口渴)用桃花汤/四逆辈', '欲饮水者为有热']
 }

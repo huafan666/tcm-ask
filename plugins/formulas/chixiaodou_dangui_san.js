@@ -6,7 +6,10 @@ module.exports = {
   needs: [
     ['eyes_dark_rims.yes', 'sweat.yes'],
     ['eyes_dark_rims.yes', 'mu_chi.yes'],
-    ['eyes_dark_rims.yes', 'restless.yes', 'fever.no']
+    ['eyes_dark_rims.yes', 'restless.yes', 'fever.no'],
+    // 金匮 16.16：下血，先血后便，此近血也，赤小豆当归散主之
+    ['blood_before_stool.yes'],
+    ['stool_blood.yes','blood_before_stool.yes']
   ],
   contraindications: ['这是狐惑病发展成「化脓」的阶段：脉搏快却不发烧，人有点烦、老想躺着，还出汗', '眼睛先红得像鸽子眼，七八天后眼眶四周发黑——原文说这是脓已经形成了', '「若能食者」意思是胃口回来了，说明脓已成熟、可以排了', '赤小豆清热排脓、当归活血，是排脓生肌的思路（同方也用于肠痈、痔疮出血）', '判断脓成没成看两点：脉搏快却不发热（热都聚到一处去化脓了），人有点烦、老想躺着，还出汗', '眼睛的变化是标志：先红得像鸽子眼，七八天后眼眶四周发黑——见到发黑就是脓已经熟了']
 }

@@ -3692,6 +3692,414 @@
         "金匮要略·黄疸病脉证并治第十五 · 《千金》麻黄醇酒汤：治黄疸（麻黄三两，以美清酒五升，煮取二升半，顿服尽）"
       ],
       "by": "system:jinkui"
+    },
+    "epistaxis": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：衄家不可汗……心气不足，吐血、衄血，泻心汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hematemesis": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：夫酒客咳者，必致吐血……心气不足，吐血、衄血，泻心汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "stool_blood": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：下血，先便后血，此远血也……先血后便，此近血也。"
+      ],
+      "by": "system:jinkui"
+    },
+    "blood_after_stool": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：下血，先便后血，此远血也，黄土汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "blood_before_stool": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：下血，先血后便，此近血也，赤小豆当归散主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "thirst_rinse_only": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：病人胸满，唇痿舌青，口燥，但欲漱水不欲咽……为有瘀血。"
+      ],
+      "by": "system:jinkui"
+    },
+    "tongue_blue": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六：病人胸满，唇痿舌青……为有瘀血。"
+      ],
+      "by": "system:jinkui"
+    },
+    "jing_ji": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六 · 寸口脉动而弱，动即为惊，弱则为悸"
+      ],
+      "by": "system:jinkui"
+    },
+    "yu_xue": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六 · 病人胸满，唇痿舌青，口燥，但欲漱水不欲咽……为有瘀血"
+      ],
+      "by": "system:jinkui"
+    },
+    "banxia_mahuang_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六 · 心下悸者，半夏麻黄丸主之（半夏、麻黄等分，蜜丸小豆大）"
+      ],
+      "by": "system:jinkui"
+    },
+    "baiye_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六 · 吐血不止者，柏叶汤主之（柏叶、干姜各三两，艾三把，马通汁一升）"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiexin_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·惊悸吐衄下血胸满瘀血病脉证并治第十六 · 心气不足，吐血、衄血，泻心汤主之（大黄二两、黄连、黄芩各一两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "food_vomit_delayed": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七：脾伤则不磨，朝食暮吐，暮食朝吐，宿谷不化，名曰胃反。"
+      ],
+      "by": "system:jinkui"
+    },
+    "vomit_right_after_eating": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七：食已即吐者，大黄甘草汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "chest_indescribable": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七：病人胸中似喘不喘，似呕不呕，似哕不哕，彻心中愦愦然无奈者。"
+      ],
+      "by": "system:jinkui"
+    },
+    "qi_li": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七：气利，诃黎勒散主之（气利＝下利而矢气，大便随屁而出）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "wei_fan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 朝食暮吐，暮食朝吐，宿谷不化，名曰胃反"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhuling_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 呕吐而病在膈上，后思水者……思水者，猪苓散主之（猪苓、茯苓、白术各等分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "dabanxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 胃反呕吐者，大半夏汤主之（半夏二升、人参三两、白蜜一升）"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_gancao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 食已即吐者，大黄甘草汤主之（大黄四两、甘草一两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "fuling_zexie_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 胃反，吐而渴欲饮水者，茯苓泽泻汤主之（茯苓半斤、泽泻四两、甘草、桂枝各二两、白术三两、生姜四两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "wenha_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 吐后，渴欲得水而贪饮者，文蛤汤主之（文蛤五两、麻黄、甘草、生姜各三两、石膏五两、杏仁五十个、大枣十二枚）"
+      ],
+      "by": "system:jinkui"
+    },
+    "banxia_ganjiang_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 干呕，吐逆，吐涎沫，半夏干姜散主之（半夏、干姜等分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "shengjiang_banxia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 病人胸中似喘不喘，似呕不呕，似哕不哕，彻心中愦愦然无奈者，生姜半夏汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "jupi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 干呕、哕，若手足厥者，橘皮汤主之（橘皮四两、生姜半斤）"
+      ],
+      "by": "system:jinkui"
+    },
+    "jupi_zhuru_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 哕逆者，橘皮竹茹汤主之（橘皮二升、竹茹二升、大枣三十枚、生姜半斤、甘草五两、人参一两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "zishen_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 下利肺痛，紫参汤主之（紫参半斤、甘草三两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "heliie_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七 · 气利，诃黎勒散主之（诃梨勒十枚，煨，为散，粥饮和，顿服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "lower_abdomen_swelling_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八：肠痈者，少腹肿痞，按之即痛如淋，小便自调。"
+      ],
+      "by": "system:jinkui"
+    },
+    "wound_injury": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八：若身有疮，被刀斧所伤，亡血故也……病金疮，王不留行散主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "spreading_skin_sore": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八：浸淫疮，从口流向四肢者，可治；从四肢流来入口者，不可治。"
+      ],
+      "by": "system:jinkui"
+    },
+    "oozing_skin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八：浸淫疮（疮面渗水、蔓延）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "chang_yong": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 肠痈之为病，其身甲错，腹皮急，按之濡，如肿状……此为肠内有痈脓"
+      ],
+      "by": "system:jinkui"
+    },
+    "jin_chuang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 病金疮，王不留行散主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "jin_yin_chuang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 浸淫疮，从口流向四肢者，可治；从四肢流来入口者，不可治"
+      ],
+      "by": "system:jinkui"
+    },
+    "yiyi_fuzi_baijiang_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 薏苡附子败酱散（薏苡仁十分、附子二分、败酱五分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_mudan_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 大黄牡丹汤（大黄四两、牡丹一两、桃仁五十个、瓜子半升、芒硝三合）"
+      ],
+      "by": "system:jinkui"
+    },
+    "wangbuliuxing_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 王不留行散（王不留行十分、蒴藋细叶十分、桑东南根白皮十分、甘草十八分、川椒三分、黄芩二分、干姜二分、芍药二分、厚朴二分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "painong_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 排脓散方（枳实十六枚、芍药六分、桔梗一分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "huanglian_fen": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·疮痈肠痈浸淫病脉证并治第十八 · 浸淫疮，黄连粉主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "finger_arm_swelling_tremor": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九：病人常以手指臂肿动，此人身体瞤瞤者，藜芦甘草汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "limb_straight_spasm": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九：转筋之为病，其人臂脚直……转筋入腹者，鸡屎白散主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "testicle_alternating_swelling": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九：阴狐疝气者，偏有小大，时时上下，蜘蛛散主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "saliva_heart_pain_paroxysmal": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九：蚘虫之为病，令人吐涎，心痛，发作有时，毒药不止，甘草粉蜜汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhuan_jin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 转筋之为病，其人臂脚直"
+      ],
+      "by": "system:jinkui"
+    },
+    "yin_hu_shan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 阴狐疝气者，偏有小大，时时上下"
+      ],
+      "by": "system:jinkui"
+    },
+    "hui_chong": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 蚘虫之为病，令人吐涎，心痛，发作有时"
+      ],
+      "by": "system:jinkui"
+    },
+    "lilu_gancao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 病人常以手指臂肿动，此人身体瞤瞤者，藜芦甘草汤主之（方未见）"
+      ],
+      "by": "system:jinkui"
+    },
+    "jishibai_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 转筋入腹者，鸡屎白散主之（鸡屎白，为散，取方寸匕，以水六合和，温服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhizhu_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 蜘蛛散方（蜘蛛十四枚熬焦、桂枝半两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "gancao_fenmi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 甘草粉蜜汤方（甘草二两、粉一两重、蜜四两）"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
