@@ -2971,6 +2971,134 @@
         "金匮要略·胸痹心痛短气病脉证并治第九：胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之；橘枳姜汤亦主之。"
       ],
       "by": "system:jinkui"
+    },
+    "circumumbilical_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十：夫瘦人绕脐痛，必有风冷……寒疝绕脐痛。"
+      ],
+      "by": "system:jinkui"
+    },
+    "abdomen_bulging_mass": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十：上冲皮起，出见有头足（腹中寒气攻冲，肚皮鼓起可移动的块）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "cold_sweat": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十：寒疝绕脐痛，若发则白汗出（白汗＝冷汗、痛极而出）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hypochondriac_side_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十：胁下偏痛，发热，其脉紧弦，此寒也（偏于一侧的胁下痛）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "epigastric_pressing_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十：按之心下满痛者，此为实也（按之满痛是实证的标志）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "fu_man": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 病者腹满，按之不痛为虚，痛者为实，可下之"
+      ],
+      "by": "system:jinkui"
+    },
+    "han_shan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 腹痛，脉弦而紧……邪正相搏，即为寒疝"
+      ],
+      "by": "system:jinkui"
+    },
+    "houpo_qi_wu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 病腹满，发热十日，脉浮而数，饮食如故，厚朴七物汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "fuzi_jingmi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 腹中寒气，雷鸣切痛，胸胁逆满，呕吐，附子粳米汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "houpo_san_wu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 痛而闭者，厚朴三物汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dajianzhong_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 心胸中大寒痛，呕不能饮食，腹中满，上冲皮起，出见有头足，上下痛而不可触近，大建中汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_fuzi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 胁下偏痛，发热，其脉紧弦，此寒也，以温药下之，宜大黄附子汤"
+      ],
+      "by": "system:jinkui"
+    },
+    "chi_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 寒气厥逆，赤丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dawutou_jian": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 寒疝绕脐痛，若发则白汗出，手足厥冷，其脉沉紧者，大乌头煎主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dangui_shengjiang_yangrou_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 寒疝腹中痛，及胁痛里急者，当归生姜羊肉汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "wutou_guizhi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·腹满寒疝宿食病脉证并治第十 · 寒疝腹中痛，逆冷，手足不仁，若身疼痛，灸刺诸药不能治，抵当乌头桂枝汤主之"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
