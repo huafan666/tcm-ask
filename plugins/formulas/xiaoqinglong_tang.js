@@ -9,7 +9,9 @@ module.exports = {
     ['vomiting.yes', 'cough.yes', 'thirsty.no'],
     ['cough.yes', 'no_sweat.yes'],
     // 金匮 12.24：病溢饮者……小青龙汤亦主之
-    ['yi_yin.yes']
+    ['yi_yin.yes'],
+    // 金匮 22.7：妇人吐涎沫，医反下之，心下即痞，当先治其吐涎沫，小青龙汤主之
+    ['saliva_spit.yes','epigastric_lump_soft.yes']
   ],
   contraindications: ['心下有水气(水饮)为主', '干呕+咳，平时不爱喝水(不渴)', '发热或可不热', '水饮化热后渴则寒去欲解']
 }

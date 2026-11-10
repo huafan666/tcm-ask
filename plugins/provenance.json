@@ -1205,12 +1205,6 @@
       ],
       "by": "system:shanghanlun"
     },
-    "guizhifulingwan": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
-    },
     "guizhi_chaomaiya": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
@@ -4098,6 +4092,398 @@
       "label": "金匮要略原文",
       "refs": [
         "金匮要略·趺蹶手指臂肿转筋阴狐疝蚘虫病脉证并治第十九 · 甘草粉蜜汤方（甘草二两、粉一两重、蜜四两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "pregnancy": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十：妇人得平脉，阴脉小弱，其人渴，不能食，无寒热，名妊娠。"
+      ],
+      "by": "system:jinkui"
+    },
+    "pregnancy_vomit": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十：妊娠呕吐不止，干姜人参半夏丸主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "vaginal_bleeding": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十：妇人有漏下者，有半产后因续下血都不绝者，有妊娠下血者……漏下不止。"
+      ],
+      "by": "system:jinkui"
+    },
+    "lower_abdomen_cold_fan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十：妇人怀娠六七月……腹痛恶寒者，少腹如扇，所以然者，子脏开故也。"
+      ],
+      "by": "system:jinkui"
+    },
+    "abdominal_cramp_after_birth": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十：妇人怀妊，腹中㽲痛，当归芍药散主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "e_zu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 娠妊呕吐不止，干姜人参半夏丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "bao_zu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 假令妊娠腹中痛，为胞阻，胶艾汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "lou_xia": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 所以血不止者，其症不去故也"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_fuling_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 桂枝茯苓丸方（桂枝、茯苓、牡丹去心、桃仁去皮尖熬、芍药各等分，炼蜜丸如兔屎大）"
+      ],
+      "by": "system:jinkui"
+    },
+    "fuzi_tang_furen": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 少腹如扇，所以然者，子脏开故也，当以附子汤温其脏"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiaoai_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 芎归胶艾汤方（芎穷、阿胶、甘草各二两，艾叶、当归各三两，芍药四两，干地黄）"
+      ],
+      "by": "system:jinkui"
+    },
+    "danggui_shaoyao_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 当归芍药散方（当归三两、芍药一斤、茯苓四两、白术四两、泽泻半斤、芎藭半斤）"
+      ],
+      "by": "system:jinkui"
+    },
+    "ganjiang_renshen_banxia_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 干姜人参半夏丸方（干姜、人参各一两，半夏二两，生姜汁糊丸）"
+      ],
+      "by": "system:jinkui"
+    },
+    "danggui_beimu_kushen_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 当归贝母苦参丸方（当归、贝母、苦参各四两，蜜丸如小豆大）"
+      ],
+      "by": "system:jinkui"
+    },
+    "kuizi_fuling_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 葵子茯苓散方（葵子一斤、茯苓三两，杵为散，饮服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "danggui_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 当归散方（当归、黄芩、芍药、芎藭各一两，白术半斤）"
+      ],
+      "by": "system:jinkui"
+    },
+    "baizhu_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人妊娠病脉证并治第二十 · 白术散方（白术、芎穷、蜀椒三分去汗、牡蛎）"
+      ],
+      "by": "system:jinkui"
+    },
+    "postpartum": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一：新产妇人有三病，一者病痉，二者病郁冒，三者大便难。"
+      ],
+      "by": "system:jinkui"
+    },
+    "head_sweat_only": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一：产妇郁冒……但头汗出……以血虚下厥，孤阳上出，故头汗出。"
+      ],
+      "by": "system:jinkui"
+    },
+    "lochia_retention": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一：产后七八日，无太阳证，少腹坚痛，此恶露不尽。"
+      ],
+      "by": "system:jinkui"
+    },
+    "yu_mao": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 产妇郁冒……以血虚下厥，孤阳上出，故头汗出"
+      ],
+      "by": "system:jinkui"
+    },
+    "e_lu_bu_jin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 产后七八日，无太阳证，少腹坚痛，此恶露不尽"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhishi_shaoyao_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 产后腹痛，烦满不得卧，枳实芍药散主之（枳实、芍药等分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiayuxue_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 此为腹中有瘀血著脐下，宜下瘀血汤主之（大黄三两、桃仁二十枚、䗪虫二十枚）"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhuye_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 产后中风，发热，面正赤，喘而头痛，竹叶汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhupi_dawan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 妇人乳中虚，烦乱呕逆，安中益气，竹皮大丸主之（生竹茹二分、石膏二分、桂枝一分、甘草七分、白薇一分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "baitouweng_jia_gancao_ajiao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人产后病脉证治第二十一 · 产后下利虚极，白头翁加甘草阿胶汤主之（白头翁汤加甘草、阿胶各二两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "throat_lump_foreign": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：妇人咽中如有炙脔，半夏厚朴汤主之（炙脔＝烤熟的肉块）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "sad_cry_easily": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：妇人脏躁，喜悲伤欲哭，象如神灵所作，数欠伸，甘麦大枣汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "frequent_yawning": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：象如神灵所作，数欠伸（欠伸＝打哈欠、伸懒腰）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "vaginal_discharge": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：妇人经水闭不利，脏坚癖不止，中有干血，下白物，矾石丸主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "yin_chui": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：胃气下泄，阴吹而正暄，此谷气之实也，膏发煎导之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "amenorrhea": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：妇人经水闭不利……妇人经水不利下。"
+      ],
+      "by": "system:jinkui"
+    },
+    "vulvar_cold": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：蛇床子散方，温阴中坐药（阴中寒冷）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "blood_clot_dark": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二：妇人陷经，漏下黑不解（血色黑而久不止）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "re_ru_xue_shi": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 经水适断，此为热入血室，其血必结，故使如疟状，发作有时，小柴胡汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "mei_he_qi": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 妇人咽中如有炙脔，半夏厚朴汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zang_zao": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 妇人脏躁，喜悲伤欲哭，象如神灵所作，数欠伸"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhuan_bao": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 此名转胞，不得溺也。以胞系了戾，故致此病。但利小便则愈，宜肾气丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "banxia_houpo_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 半夏厚朴汤方（半夏一升、厚朴三两、茯苓四两、生姜五两、苏叶二两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "ganmai_dazao_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 甘麦大枣汤方（甘草三两、小麦一升、大枣十枚）"
+      ],
+      "by": "system:jinkui"
+    },
+    "wenjing_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 温经汤方（吴茱萸三两、当归、芎穷、芍药、人参、桂枝、阿胶、牡丹皮、生姜、甘草各二两、半夏半升、麦门冬一升）"
+      ],
+      "by": "system:jinkui"
+    },
+    "tuguagen_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 土瓜根散方（土瓜根、芍药、桂枝、䗪虫各三分）"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiaojiang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 妇人陷经，漏下黑不解，胶姜汤主之（方未见）"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_gansui_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 妇人少腹满如敦状，小便微难而不渴，生后者，此为水与血俱结血室也，大黄甘遂汤主之（大黄四两、甘遂二两、阿胶二两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "fanshi_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 矾石丸方（矾石三分烧、杏仁一分，炼蜜和丸枣核大，内脏中）"
+      ],
+      "by": "system:jinkui"
+    },
+    "honglanhua_jiu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 红蓝花酒方（红蓝花一两，以酒一大升煎减半，顿服一半）"
+      ],
+      "by": "system:jinkui"
+    },
+    "shechuangzi_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 蛇床子散方（蛇床子仁为末，以白粉少许和令相得如枣大，绵裹内之）"
+      ],
+      "by": "system:jinkui"
+    },
+    "langya_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·妇人杂病脉证并治第二十二 · 少阴脉滑而数者，阴中即生疮，阴中蚀疮烂者，狼牙汤洗之（狼牙三两）"
       ],
       "by": "system:jinkui"
     }

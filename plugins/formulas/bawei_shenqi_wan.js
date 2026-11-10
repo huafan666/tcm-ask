@@ -10,7 +10,9 @@ module.exports = {
     // 金匮 12.18：夫短气有微饮，当从小便去之……肾气丸亦主之
     ['short_breath.yes','yaosuan.yes'],
     // 金匮 13.4：男子消渴，小便反多，以饮一斗，小便一斗，肾气丸主之
-    ['thirsty.yes','polyuria.yes']
+    ['thirsty.yes','polyuria.yes'],
+    // 金匮 22.20：此名转胞，不得溺也……但利小便则愈，宜肾气丸主之
+    ['urination_difficulty.yes','low_appetite.no','orthopnea.yes']
   ],
   contraindications: ['治肾虚型的虚劳：腰酸腰痛、小肚子拘急、小便不顺畅', '八味＝六味地黄丸加桂枝（或肉桂）、附子——在滋补肾阴的基础上温阳化气', '治法是「少火生气」：用少量温药慢慢化生肾气，不是猛补阳', '小便不利而口渴、或夜尿多，都属于这个方向']
 }
