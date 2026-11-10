@@ -4657,7 +4657,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：throat_pain、throat_dry、throat_ulcer、throat_lump_foreign、houlongjinsuo、tunyankunnan、nose_dry、kou_jin、speech_difficulty、kouchibuqing、voice_hoarse、tongue_blue、epistaxis"
+        "汇集：throat_pain、throat_dry、throat_ulcer、throat_lump_foreign、houlongjinsuo、tunyankunnan、nose_dry、kou_jin、speech_difficulty、kouchibuqing、voice_hoarse、tongue_blue、mouth_dry、epistaxis"
       ],
       "by": "system:symptom-group"
     },

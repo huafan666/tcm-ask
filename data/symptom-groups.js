@@ -332,9 +332,12 @@ const GROUPS = [
     children: ['throat_pain', 'throat_dry', 'throat_ulcer', 'throat_lump_foreign',
       'houlongjinsuo', 'tunyankunnan', 'nose_dry', 'kou_jin', 'speech_difficulty',
       'kouchibuqing', 'voice_hoarse', 'tongue_blue',
+      // 口干舌燥（口腔/舌头本身没津液）——和「口渴」是两件事，
+      // 金匮 13.12 白虎加人参汤的抓手就在这里
+      'mouth_dry',
       // 流鼻血也归「口咽鼻」这一问（它不是独立系统，但必须能被粗筛管住）
       'epistaxis'],
-    notIncluded: '呕吐（是吐不是咽部）、口渴、打嗝'
+    notIncluded: '呕吐（是吐不是咽部）、口渴（是想喝水，归 thirst_any）、打嗝'
   },
   {
     name: 'limb_any',

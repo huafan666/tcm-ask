@@ -287,14 +287,22 @@ class Asker {
       return ta - tb || a.order - b.order
     })
 
-    // 1) 「答了有、但没具体说」的系统 → 追问几个关键子症状（最多 5 个）
-    //    如果这个系统是因为病人自己描述出来的（某个子症状已经 yes），就不再追问，
-    //    因为闸门问题本身就是复合问句（「大便干硬？稀溏？带血？还是正常？」），
-    //    病人一说就已经把细节给了。
+    // 1) 「这个系统有情况、但没具体说」的系统 → 追问几个关键子症状（最多 5 个）
+    //
+    //    两种情况都算「有情况」：
+    //      a) 病人对闸门答了「有」，但没说清是哪种；
+    //      b) **闸门根本没问**——因为病人自己先提到了某个子症状，系统被点亮后闸门就跳过了。
+    //    (b) 是实跑里发现的坑：糖尿病病人只说「口渴」，饮食系统的闸门就被跳过，
+    //    结果「多食易饥」（中消的核心症状）永远问不出来，一个饮食系统的细化问题都没问。
+    //    现在 (b) 也会进来追问，但上限还是 5 个，不会把整个系统翻一遍。
+    //    「闸门已经答过否」的系统是 no，上一行的判断会挡掉，不会追问。
     for (const s of ordered) {
-      if (!this._gateYes.has(s.name)) continue
       if (this.engine.state[s.name] !== 'yes') continue
-      const cap = this.maxSystemDetailPerSystem || 5
+      const fromGate = this._gateYes.has(s.name)
+      if (!fromGate && this.asked.has(s.name)) continue
+      // 闸门没问过的系统（病人自己先说了某个子症状）给更小的额度：
+      // 追问是为了不漏细节，但不能把整段时间都花在一个系统上。
+      const cap = fromGate ? (this.maxSystemDetailPerSystem || 5) : 2
       const done = this._sysDetailAsked.get(s.name) || 0
       if (done >= cap) continue
       const kids = (s.def.children || []).filter(c => {
@@ -302,6 +310,9 @@ class Asker {
         return d && d.kind === 'symptom' && this.engine.state[c] === 'unknown' && !this.asked.has(c)
       })
       if (!kids.length) continue
+      // 闸门没问过的系统：只问「还有候选方真的需要它」的症状，
+      // 否则就是纯浪费时间（实测会拉低整体收敛效率）。
+      if (!fromGate && !kids.some(c => (count[c] || 0) > 0)) continue
       // 只问「最多候选方会用到」的几个，别把整个系统翻一遍
       kids.sort((a, b) => (count[b] || 0) - (count[a] || 0))
       let pick = kids.find(c => (count[c] || 0) > 0) || kids[0]

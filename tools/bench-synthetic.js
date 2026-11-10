@@ -104,7 +104,20 @@ for (const target of formulas) {
   tested++
 
   const HAS = picked.has, NOT = picked.not
-  const truthOf = name => HAS.has(name) ? 'yes' : (NOT.has(name) ? 'no' : OTHERS)
+  // 用引擎的关系约束把这个「人工病人」补全，免得造出自相矛盾的病例。
+  // 例：白虎加人参汤那条路径只写了「大烦渴 + 不恶寒 + 口干舌燥」，
+  // 于是这个病人对「口渴」的问题会答「没有」——可「大烦渴」本身就蕴含「口渴」。
+  // 关系约束（data/symptom-relations.js）里 大烦渴 是 口渴 的下位，
+  // 所以补全之后「口渴」= 是，病例才自洽。
+  // 不补全的话，测出来的「丢失」是测法自己造出来的，不是知识库的毛病。
+  const TRUTH = new Engine(registry)
+  for (const x of HAS) TRUTH.setDirect(x, 'yes')
+  for (const x of NOT) TRUTH.setDirect(x, 'no')
+  const truthOf = name => {
+    const s = TRUTH.state[name]
+    if (s === 'yes' || s === 'no') return s
+    return OTHERS
+  }
 
   const e = new Engine(registry)
   const asker = new Asker(e)
