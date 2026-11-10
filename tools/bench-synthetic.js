@@ -116,15 +116,15 @@ for (const target of formulas) {
   e.feed(opening.replace(/^是不是/, '').replace(/[？?]$/, ''))
   // 注意：开场用的是反问话术转述，可能点不亮 —— 没关系，接下来靠问诊补
 
-  let qs = 0, groupQs = 0, unknownQs = 0
+  let qs = 0, groupQs = 0, unknownQs = 0, unique = false, exhausted = false
   const asked = []
-  let converged = false
+
 
   for (let i = 0; i < MAXQ; i++) {
     const cands = asker.candidates()
-    if (cands.length <= 1) { converged = true; break }
+    if (cands.length <= 1) { unique = true; break }
     const q = asker.nextQuestion()
-    if (!q) { converged = true; break }
+    if (!q) { exhausted = true; break }
 
     let ans
     if (q.isGroup) {
@@ -154,7 +154,7 @@ for (const target of formulas) {
     finalCount: finalCands.length,
     inCand: finalCands.includes(target),
     top1: finalCands.length === 1 && finalCands[0] === target,
-    converged, asked,
+    unique, exhausted, asked,
     finalCands: finalCands.slice(0, 8)
   })
 }
@@ -165,7 +165,8 @@ console.log('测了 ' + rows.length + ' 个方剂\n')
 const avgQ = rows.reduce((s, r) => s + r.qs, 0) / rows.length
 const inCand = rows.filter(r => r.inCand).length
 const top1 = rows.filter(r => r.top1).length
-const conv = rows.filter(r => r.converged).length
+const uniq = rows.filter(r => r.unique).length
+const exh = rows.filter(r => r.exhausted).length
 const avgGroup = rows.reduce((s, r) => s + r.groupQs, 0) / rows.length
 const avgUnknown = rows.reduce((s, r) => s + r.unknownQs, 0) / rows.length
 const avgFinal = rows.reduce((s, r) => s + r.finalCount, 0) / rows.length
@@ -175,7 +176,8 @@ console.log('平均问题数        : ' + avgQ.toFixed(1) + ' 问（粗筛 ' + a
 console.log('平均耗时          : ' + (avgQ * SEC_PER_Q).toFixed(1) + ' 秒（约 ' + (avgQ * SEC_PER_Q / 60).toFixed(1) + ' 分钟）')
 console.log('目标方仍在候选里  : ' + inCand + '/' + rows.length + ' = ' + (inCand / rows.length * 100).toFixed(1) + '%')
 console.log('收敛为唯一且正确  : ' + top1 + '/' + rows.length + ' = ' + (top1 / rows.length * 100).toFixed(1) + '%')
-console.log('已收敛（候选≤1）  : ' + conv + '/' + rows.length + ' = ' + (conv / rows.length * 100).toFixed(1) + '%')
+console.log('收敛到唯一候选    : ' + uniq + '/' + rows.length + ' = ' + (uniq / rows.length * 100).toFixed(1) + '%')
+console.log('问题问完仍未唯一  : ' + exh + '/' + rows.length + '（知识库本身分不开）')
 console.log('平均剩余候选方    : ' + avgFinal.toFixed(1) + ' 个')
 
 console.log('\n--- 逐方 ---')

@@ -21,7 +21,8 @@ const { registry } = loadAll(PLUGINS)
 const errors = []
 const warnings = []
 
-// 每个系统把自己的 groups 的 children 合并
+// 每个系统把自己的 groups 的 children 合并，再并上 extra（不进任何维度分组、
+// 但必须被这一问管住的症状，如「无汗」「恶心」「气上冲」）
 for (const s of SYSTEMS) {
   const kids = []
   for (const g of s.groups) {
@@ -29,6 +30,10 @@ for (const s of SYSTEMS) {
     if (!def) { errors.push(s.name + ' 引用了不存在的分组 ' + g); continue }
     if (def.kind !== 'symptom_group') { errors.push(s.name + ' 的成员 ' + g + ' 不是分组（kind=' + def.kind + '）'); continue }
     for (const c of (def.children || [])) if (!kids.includes(c)) kids.push(c)
+  }
+  for (const c of (s.extra || [])) {
+    if (!registry[c]) { errors.push(s.name + ' 的 extra 引用了不存在的症状 ' + c); continue }
+    if (!kids.includes(c)) kids.push(c)
   }
   s.children = kids
   if (!kids.length) errors.push(s.name + ' 没有任何子症状')

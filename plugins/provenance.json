@@ -4465,7 +4465,7 @@
       "source": "group",
       "label": "症状筛选组（动作维度）",
       "refs": [
-        "汇集：cough、qi_upward_cough"
+        "汇集：cough、qi_upward_cough、cough_pleuritic_pain、foul_pus_sputum、hemoptysis、throat_rales"
       ],
       "by": "system:symptom-group"
     },
@@ -4505,7 +4505,7 @@
       "source": "group",
       "label": "症状筛选组（物质维度）",
       "refs": [
-        "汇集：pitting_edema、mild_edema、eyelid_puffy、foot_swelling_drop、scrotal_edema"
+        "汇集：pitting_edema、mild_edema、eyelid_puffy、foot_swelling_drop、scrotal_edema、wocanminxian"
       ],
       "by": "system:symptom-group"
     },
@@ -4537,7 +4537,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：hypochondriac_fullness、hypochondriac_mass、hypochondriac_rush、hypochondriac_side_pain、zuolei_tong、left_leigu_suan、chest_fullness、chest_qi_stuffiness、chest_stuffy、chest_lump_hard、chest_indescribable、desire_to_press_chest、chest_back_pain、heart_bind_pain、heart_hanging_pain、heart_pain_radiate"
+        "汇集：hypochondriac_fullness、hypochondriac_mass、hypochondriac_rush、hypochondriac_side_pain、zuolei_tong、left_leigu_suan、chest_fullness、chest_qi_stuffiness、chest_stuffy、chest_lump_hard、chest_indescribable、desire_to_press_chest、chest_back_pain、heart_bind_pain、heart_hanging_pain、heart_pain_radiate、danjieshidianyatong"
       ],
       "by": "system:symptom-group"
     },
@@ -4545,7 +4545,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：abdominal_fullness、abdominal_pain、abdominal_tension、abdominal_cramp_after_birth、circumumbilical_pain、duzijiaotonghuocitong、severe_abdominal_pain、fubulentong、lower_abdomen_cramp、lower_abdomen_swelling_pain、lower_abdominal_lump、epigastric_fullness、epigastric_lump_soft、epigastric_mass_plate、epigastric_pressing_pain、press_only_pain、press_pain_aggravated、full_epigastric_hard_pain、abdomen_bulging_mass、left_abdomen_press_pain、borborygmus、flatus"
+        "汇集：abdominal_fullness、abdominal_pain、abdominal_tension、abdominal_cramp_after_birth、circumumbilical_pain、duzijiaotonghuocitong、severe_abdominal_pain、fubulentong、lower_abdomen_cramp、lower_abdomen_swelling_pain、lower_abdominal_lump、epigastric_fullness、epigastric_lump_soft、epigastric_mass_plate、epigastric_pressing_pain、press_only_pain、press_pain_aggravated、full_epigastric_hard_pain、abdomen_bulging_mass、left_abdomen_press_pain、borborygmus、flatus、chongji、wei_tong"
       ],
       "by": "system:symptom-group"
     },
@@ -4657,7 +4657,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：throat_pain、throat_dry、throat_ulcer、throat_lump_foreign、houlongjinsuo、tunyankunnan、nose_dry、kou_jin、speech_difficulty、kouchibuqing、voice_hoarse、tongue_blue"
+        "汇集：throat_pain、throat_dry、throat_ulcer、throat_lump_foreign、houlongjinsuo、tunyankunnan、nose_dry、kou_jin、speech_difficulty、kouchibuqing、voice_hoarse、tongue_blue、epistaxis"
       ],
       "by": "system:symptom-group"
     },
@@ -4665,7 +4665,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：hemiplegia、one_arm_weak、limb_numbness、limb_heavy_powerless、shuangtuiwuli、cannot_walk、unsteady_stance、finger_arm_swelling_tremor、bei_fan_zhang、joint_swelling、yaguan_tong"
+        "汇集：hemiplegia、one_arm_weak、limb_numbness、limb_heavy_powerless、shuangtuiwuli、cannot_walk、unsteady_stance、finger_arm_swelling_tremor、bei_fan_zhang、joint_swelling、yaguan_tong、jiao_qi_pain"
       ],
       "by": "system:symptom-group"
     },
@@ -4689,7 +4689,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：amenorrhea、yuejingjianshao、vaginal_bleeding、vaginal_discharge、vulvar_cold、yin_chui、buyun、genital_cold、genital_ulcer、semen_loss、dream_sex、testicle_alternating_swelling、jingzixishao、lochia_retention、tongjing、anal_ulcer"
+        "汇集：amenorrhea、yuejingjianshao、vaginal_bleeding、vaginal_discharge、vulvar_cold、yin_chui、buyun、genital_cold、genital_ulcer、semen_loss、dream_sex、testicle_alternating_swelling、jingzixishao、lochia_retention、tongjing、anal_ulcer、blood_clot_dark"
       ],
       "by": "system:symptom-group"
     },

@@ -53,7 +53,7 @@ const GROUPS = [
     dimension: '动作',
     ask: '是不是会咳嗽？',
     trigger: ['咳', '咳嗽', '干咳', '呛咳'],
-    children: ['cough', 'qi_upward_cough'],
+    children: ['cough', 'qi_upward_cough', 'cough_pleuritic_pain', 'foul_pus_sputum', 'hemoptysis', 'throat_rales'],
     notIncluded: '喘（呼吸急迫不是咳）、短气、喉咙痰鸣音'
   },
   {
@@ -105,7 +105,7 @@ const GROUPS = [
     dimension: '物质',
     ask: '是不是身上有肿——脸、眼睛、手脚或者下身肿起来？',
     trigger: ['肿', '浮肿', '水肿', '肿起', '发肿'],
-    children: ['pitting_edema', 'mild_edema', 'eyelid_puffy', 'foot_swelling_drop', 'scrotal_edema'],
+    children: ['pitting_edema', 'mild_edema', 'eyelid_puffy', 'foot_swelling_drop', 'scrotal_edema', 'wocanminxian'],
     notIncluded: '肿块/包块（那是长东西不是水肿）、关节肿大（是关节不是水肿）'
   },
 
@@ -164,7 +164,7 @@ const GROUPS = [
       'chest_indescribable', 'desire_to_press_chest',
       // 胸部疼痛类：原先只挂在 pain_any（全部位疼痛），会被算进「头身」系统，
       // 补进来才能归到「胸腹」
-      'chest_back_pain', 'heart_bind_pain', 'heart_hanging_pain', 'heart_pain_radiate'],
+      'chest_back_pain', 'heart_bind_pain', 'heart_hanging_pain', 'heart_pain_radiate', 'danjieshidianyatong'],
     notIncluded: '心口（心下）的痞满另算；乳房肿块、肺的问题'
   },
   {
@@ -180,7 +180,7 @@ const GROUPS = [
       'epigastric_fullness', 'epigastric_lump_soft', 'epigastric_mass_plate',
       'epigastric_pressing_pain', 'press_only_pain', 'press_pain_aggravated',
       'full_epigastric_hard_pain', 'abdomen_bulging_mass', 'left_abdomen_press_pain',
-      'borborygmus', 'flatus'],
+      'borborygmus', 'flatus', 'chongji', 'wei_tong'],
     notIncluded: '胸胁（位置更高）、腰、固定包块（位置不定，不归腹部）'
   },
 
@@ -329,7 +329,9 @@ const GROUPS = [
     trigger: ['咽', '喉', '嗓子', '口腔', '舌头', '鼻子', '说话'],
     children: ['throat_pain', 'throat_dry', 'throat_ulcer', 'throat_lump_foreign',
       'houlongjinsuo', 'tunyankunnan', 'nose_dry', 'kou_jin', 'speech_difficulty',
-      'kouchibuqing', 'voice_hoarse', 'tongue_blue'],
+      'kouchibuqing', 'voice_hoarse', 'tongue_blue',
+      // 流鼻血也归「口咽鼻」这一问（它不是独立系统，但必须能被粗筛管住）
+      'epistaxis'],
     notIncluded: '呕吐（是吐不是咽部）、口渴、打嗝'
   },
   {
@@ -341,7 +343,7 @@ const GROUPS = [
     children: ['hemiplegia', 'one_arm_weak', 'limb_numbness', 'limb_heavy_powerless',
       'shuangtuiwuli', 'cannot_walk', 'unsteady_stance',
       'finger_arm_swelling_tremor', 'bei_fan_zhang', 'joint_swelling',
-      'yaguan_tong'],
+      'yaguan_tong', 'jiao_qi_pain'],
     notIncluded: '抽筋痉挛（另归 spasm_any）、手足发冷/发热（归感觉类）、关节疼痛'
   },
   {
@@ -371,7 +373,7 @@ const GROUPS = [
     children: ['amenorrhea', 'yuejingjianshao', 'vaginal_bleeding', 'vaginal_discharge',
       'vulvar_cold', 'yin_chui', 'buyun', 'genital_cold', 'genital_ulcer',
       'semen_loss', 'dream_sex', 'testicle_alternating_swelling', 'jingzixishao',
-      'lochia_retention', 'tongjing', 'anal_ulcer'],
+      'lochia_retention', 'tongjing', 'anal_ulcer', 'blood_clot_dark'],
     notIncluded: '怀孕/产后的状态本身（是状态不是异常）；阴部水肿（归水肿）'
   },
   {

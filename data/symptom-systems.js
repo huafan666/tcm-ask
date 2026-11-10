@@ -22,33 +22,42 @@ const SYSTEMS = [
     name: 'sys_cold_heat', order: 1,
     title: '寒热（怕冷、发热）',
     ask: '先说寒热——有没有怕冷、发热，或者一阵冷一阵热？',
-    groups: ['cold_any', 'fever_any']
+    groups: ['cold_any', 'fever_any'],
+    // 似冷非冷似热非热属寒热范畴，但它不是具体的寒/热症状，
+    // 故意不进 cold_any/fever_any（否则那两组被污染），用 extra 让「寒热」这一问仍能管住它
+    extra: ['pseudo_cold_heat']
   },
   {
     name: 'sys_sweat', order: 2,
     title: '出汗（有没有、什么时候出）',
     ask: '出汗怎么样——是完全不出汗、还是稍一活动就出汗、还是睡着以后出汗？',
-    groups: ['sweat_any']
+    groups: ['sweat_any'],
+    extra: ['no_sweat']
   },
   {
     name: 'sys_head_body', order: 3,
     title: '头身（头痛、头晕、身上）',
     ask: '头和身子怎么样——头痛、头晕、身上酸重，或者手脚发麻无力、气色变差？',
     groups: ['complexion_any', 'eye_any', 'head_body_pain_any', 'limb_any', 'lowback_any',
-      'dizziness_any', 'energy_any', 'emaciation_any', 'spasm_any']
+      'dizziness_any', 'energy_any', 'emaciation_any', 'spasm_any'],
+    extra: ['er_ming']
   },
   {
     name: 'sys_diet', order: 4,
     title: '饮食（胃口、口渴、口味）',
     ask: '吃喝怎么样——胃口好不好？渴不渴、想喝热的还是凉的？嘴里发苦、发酸还是有异味？',
-    groups: ['appetite_any', 'thirst_any', 'taste_any']
+    groups: ['appetite_any', 'thirst_any', 'taste_any'],
+    // 口干只想漱口不想咽是瘀血特异表现，故意不进口渴族；喜冷饮是饮食偏好。
+    // 两者都属「饮食」这一问，用 extra 挂上，答「没有」时能一起判否。
+    extra: ['thirst_rinse_only', 'cold_drink_desire']
   },
   {
     name: 'sys_chest_abdomen', order: 5,
     title: '胸腹（胸闷、腹痛、呕吐）',
     ask: '胸口和肚子怎么样——胸闷心慌、肚子胀或痛、恶心想吐、打嗝嗳气、摸到包块？',
     groups: ['hypochondrium_any', 'abdomen_any', 'palpitation_any',
-      'vomit_any', 'belch_any', 'mass_any']
+      'vomit_any', 'belch_any', 'mass_any'],
+    extra: ['nausea', 'qi_surge', 'xiazhui']
   },
   {
     name: 'sys_bowel', order: 6,
