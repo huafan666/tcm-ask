@@ -9,23 +9,31 @@ const DONE = {
   2: ['2.1', '2.2', '2.3', '2.7', '2.11', '2.12', '2.13', '2.14', '2.15', '2.16', '2.17', '2.18',
     '2.19', '2.20', '2.21', '2.22', '2.23', '2.24', '2.25', '2.26', '2.27'],
   3: ['3.1', '3.2', '3.3', '3.4', '3.5', '3.6', '3.7', '3.8', '3.10', '3.11', '3.12', '3.13', '3.14', '3.15'],
-  4: ['4.2', '4.3', '4.4', '4.5']
+  4: ['4.2', '4.3', '4.4', '4.5'],
+  5: ['5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.10', '5.11', '5.13', '5.14', '5.15'],
+  6: ['6.1', '6.2', '6.4', '6.5', '6.6', '6.8', '6.9', '6.12', '6.14', '6.15', '6.16', '6.17', '6.18', '6.19']
 }
 const SKIP = {
   2: ['2.4', '2.5', '2.6', '2.8', '2.9', '2.10'],
   3: ['3.9'],
-  4: ['4.1']
+  4: ['4.1'],
+  5: ['5.8', '5.9', '5.12'],
+  6: ['6.3', '6.7', '6.10', '6.11', '6.13']
 }
+// 整篇跳过：杂疗方与食物禁忌三篇（用户决定）。内容是食物禁忌清单和杂方，
+// 没有「症状-证候-方剂」结构，整篇不落节点。详见 data/review/金匮要略-整篇跳过.md
+const SKIP_CHAPTERS = [23, 24, 25]
 
 const d = JSON.parse(fs.readFileSync(FILE, 'utf8'))
-let nDone = 0, nSkip = 0
 for (const ch of d.chapters) {
   const done = DONE[ch.chapterNo] || []
   const skip = SKIP[ch.chapterNo] || []
+  const wholeSkip = SKIP_CHAPTERS.includes(ch.chapterNo)
   for (const u of ch.units) {
     const short = u.id.replace('金匮', '')
-    if (done.includes(short)) { u.status = 'done'; nDone++ }
-    else if (skip.includes(short)) { u.status = 'skip'; nSkip++ }
+    if (wholeSkip) u.status = 'skip'
+    else if (done.includes(short)) u.status = 'done'
+    else if (skip.includes(short)) u.status = 'skip'
     else u.status = 'pending'
   }
 }

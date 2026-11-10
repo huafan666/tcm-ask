@@ -1627,9 +1627,13 @@
     },
     "xiaojianzhong_tang": {
       "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
-      "by": "system:shanghanlun"
+      "label": "伤寒论第100/102条 + 金匮要略第六篇",
+      "refs": [
+        "伤寒论·第100条：伤寒，阳脉涩，阴脉弦，法当腹中急痛，先与小建中汤",
+        "伤寒论·第102条：伤寒二三日，心中悸而烦者，小建中汤主之",
+        "金匮要略·血痹虚劳病脉证并治第六：虚劳里急，悸、衄，腹中痛，梦失精，四肢酸疼，手足烦热，咽干口燥，小建中汤主之"
+      ],
+      "by": "system:jinkui"
     },
     "xiaoqinglong_tang": {
       "source": "shanghanlun",
@@ -2348,6 +2352,326 @@
       "label": "金匮要略原文",
       "refs": [
         "金匮要略·百合病狐惑阴阳毒病证并治第三 · 百合病，渴不差者，用后方主之 · 栝楼牡蛎散方（栝楼根、牡蛎等分，为细末，饮服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "hemiplegia": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：夫风之为病，当半身不遂，或但臂不遂者，此为痹。"
+      ],
+      "by": "system:jinkui"
+    },
+    "one_arm_weak": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：或但臂不遂者，此为痹（只是单侧上肢不能动，属痹证范围，不是典型中风）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "limb_numbness": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：邪在于络，肌肤不仁。"
+      ],
+      "by": "system:jinkui"
+    },
+    "limb_heavy_powerless": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：邪在于经，即重不胜。"
+      ],
+      "by": "system:jinkui"
+    },
+    "joint_swelling": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：诸肢节疼痛，身体魁羸（关节肿大变形）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "foot_swelling_drop": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：脚肿如脱（两脚浮肿得厉害，沉重得像要脱掉）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "lower_leg_cold": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：身体羸瘦，独足肿大，黄汗出，胫冷。"
+      ],
+      "by": "system:jinkui"
+    },
+    "yellow_sweat": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：汗出入水中……历节黄汗出；身体羸瘦，独足肿大，黄汗出。"
+      ],
+      "by": "system:jinkui"
+    },
+    "skin_itch_hives": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：邪气中经，则身痒而瘾疹。"
+      ],
+      "by": "system:jinkui"
+    },
+    "self_talk_ceaseless": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：防己地黄汤治病如狂状，妄行，独语不休。"
+      ],
+      "by": "system:jinkui"
+    },
+    "aimless_walking": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：妄行（无目的地乱走、停不下来）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "epileptic_seizure": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：风引汤除热瘫痫（瘫痫：抽搐、癫痫样发作）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "heart_cold_weak": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：侯氏黑散治大风四肢烦重，心中恶寒不足者。"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiao_qi_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：乌头汤方，治脚气疼痛，不可屈伸。"
+      ],
+      "by": "system:jinkui"
+    },
+    "joint_pain_severe": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五：病历节不可屈伸，疼痛，乌头汤主之（乌头汤证以剧痛为主）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhong_feng": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 夫风之为病，当半身不遂……邪在于络，肌肤不仁；邪在于经，即重不胜"
+      ],
+      "by": "system:jinkui"
+    },
+    "li_jie_bing": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 诸肢节疼痛，身体魁羸，脚肿如脱……病历节不可屈伸，疼痛"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiao_qi_chong_xin": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 矾石汤治脚气冲心"
+      ],
+      "by": "system:jinkui"
+    },
+    "houshi_heisan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 侯氏黑散：治大风四肢烦重，心中恶寒不足者"
+      ],
+      "by": "system:jinkui"
+    },
+    "fengyin_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 风引汤：除热瘫痫"
+      ],
+      "by": "system:jinkui"
+    },
+    "fangji_dihuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 防己地黄汤：治病如狂状，妄行，独语不休，无寒热，其脉浮"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_shaoyao_zhimu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 诸肢节疼痛，身体魁羸，脚肿如脱，头眩短气，温温欲吐，桂枝芍药知母汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "wutou_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 病历节不可屈伸，疼痛，乌头汤主之 · 乌头汤方：治脚气疼痛，不可屈伸"
+      ],
+      "by": "system:jinkui"
+    },
+    "fanshi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·中风历节病脉证并治第五 · 矾石汤治脚气冲心（矾石二两，以浆水一斗五升，煎三五沸，浸脚良）"
+      ],
+      "by": "system:jinkui"
+    },
+    "semen_loss": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：夫失精家……男子失精……虚劳里急，悸、衄，腹中痛，梦失精。"
+      ],
+      "by": "system:jinkui"
+    },
+    "dream_sex": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：男子失精，女子梦交，桂枝加龙骨牡蛎汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "night_sweat": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：男子平人，脉虚弱细微者，喜盗汗也。"
+      ],
+      "by": "system:jinkui"
+    },
+    "genital_cold": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：夫失精家少腹弦急，阴头寒。"
+      ],
+      "by": "system:jinkui"
+    },
+    "lower_abdomen_cramp": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：夫失精家少腹弦急；虚劳腰痛，少腹拘急。"
+      ],
+      "by": "system:jinkui"
+    },
+    "abdominal_tension": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：虚劳里急……虚劳里急、诸不足。"
+      ],
+      "by": "system:jinkui"
+    },
+    "skin_scaly": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六：内有干血，肌肤甲错，两目黯黑。"
+      ],
+      "by": "system:jinkui"
+    },
+    "xue_bi": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 外证身体不仁，如风痹状，黄芪桂枝五物汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "xu_lao": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 夫男子平人，脉大为劳，极虚亦为劳"
+      ],
+      "by": "system:jinkui"
+    },
+    "huangqi_guizhi_wuwu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 黄芪桂枝五物汤方（黄芪三两、芍药三两、桂枝三两、生姜六两、大枣十二枚）"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_jia_longgumuli_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 桂枝加龙骨牡蛎汤方（桂枝汤加龙骨、牡蛎各三两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "huangqi_jianzhong_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 虚劳里急、诸不足，黄芪建中汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "bawei_shenqi_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 虚劳腰痛，少腹拘急，小便不利者，八味肾气丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shuyu_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 虚劳诸不足，风气百疾，薯蓣丸主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "suanzaoren_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 虚劳虚烦不得眠，酸枣仁汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_zhechong_wan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·血痹虚劳病脉证并治第六 · 五劳虚极羸瘦，腹满不能饮食……内有干血，肌肤甲错，两目黯黑，缓中补虚，大黄䗪虫丸主之"
       ],
       "by": "system:jinkui"
     }
