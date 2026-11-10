@@ -154,7 +154,18 @@ class Engine {
   // 直接设置某个对象的状态（供反问选择题用：是→yes / 否→no）
   setDirect(name, val) {
     const changed = new Set()
-    if (this.registry[name]) this.set(name, val, changed)
+    const def = this.registry[name]
+    if (def) {
+      this.set(name, val, changed)
+      // 症状筛选组被**明确否定** ⇒ 它的所有子症状都不成立。
+      // 这是析取否定的必然结果：¬(A∨B∨C) ⇒ ¬A ∧ ¬B ∧ ¬C，所以可以一次排除一大批。
+      // 反过来「组被肯定」**不能**推出哪个子成立，因此不向下传递（只记组本身 yes）。
+      if (val === 'no' && this.isGroup(def) && Array.isArray(def.children)) {
+        for (const c of def.children) {
+          if (this.registry[c]) this.set(c, 'no', changed)
+        }
+      }
+    }
     this.propagate(changed)
     return Array.from(changed)
   }

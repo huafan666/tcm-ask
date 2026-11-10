@@ -84,7 +84,11 @@ class Session {
       leaf: q.leaf,
       title: q.title,
       phrase: q.phrase,
-      candidates: candCount
+      candidates: candCount,
+      // isGroup=true 表示这是「症状筛选」粗筛问题（部位/大类），不是具体症状
+      isGroup: !!q.isGroup,
+      inFocus: !!q.inFocus,
+      covers: q.covers || null
     }
   }
   _nextQuestionView() {
@@ -120,7 +124,10 @@ class Session {
         const p = this.pendingQuestion
         if (lower === '1' || lower === '是' || lower === 'yes' || lower === '有') {
           this.engine.setDirect(p.leaf, 'yes')
+          // 对「症状筛选组」答是 → 锁定这个部位/大类，后续只在它内部细化
+          if (p.isGroup) this.asker.focusGroup(p.leaf)
         } else if (lower === '2' || lower === '否' || lower === 'no' || lower === '没有' || lower === '无') {
+          // 对组答否 → 引擎会把该组所有子症状一次性置为 no（析取否定）
           this.engine.setDirect(p.leaf, 'no')
         } else if (lower === '3' || lower === '不知道' || lower === '不清楚' || lower === '模糊' || lower === '也许') {
           this.asker.markAsked(p.leaf)
@@ -128,6 +135,12 @@ class Session {
           // 用户没按按钮而是描述 → 当作自由描述处理
           this.pendingQuestion = null
           await this._feedDesc(text)
+        }
+        // 粗筛问题记一次额度
+        if (p.isGroup && (lower === '1' || lower === '是' || lower === 'yes' || lower === '有' ||
+          lower === '2' || lower === '否' || lower === 'no' || lower === '没有' || lower === '无' ||
+          lower === '3' || lower === '不知道' || lower === '不清楚' || lower === '模糊' || lower === '也许')) {
+          this.asker.groupAskedCount += 1
         }
       } else {
         await this._feedDesc(text)

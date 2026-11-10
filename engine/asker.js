@@ -14,6 +14,11 @@ class Asker {
     this.engine = engine
     this.registry = engine.registry
     this.asked = new Set()   // 已问过(答"不知道")的叶子，跳过不再重复问
+    // 粗筛阶段最多先问几个「症状筛选组」（部位/大类）问题
+    this.maxGroupQuestions = 4
+    this.groupAskedCount = 0
+    // 病人答「是」的筛选组 → 后续只在这个区域内细化，避免到处乱问
+    this.focus = new Set()
   }
 
   // 标记某个叶子已问过(用户答"不知道"→unknown)，下次不再问同一个
@@ -23,6 +28,19 @@ class Asker {
 
   resetAsked() {
     this.asked.clear()
+    this.groupAskedCount = 0
+    this.focus.clear()
+  }
+
+  /** 病人对某一组答「是」：锁定该区域，后续优先在该组的子症状里细化 */
+  focusGroup(name) {
+    if (this.registry[name] && this.registry[name].kind === 'symptom_group') this.focus.add(name)
+  }
+
+  /** 一组下面的所有子症状（用于聚焦时限定范围） */
+  childrenOf(name) {
+    const d = this.registry[name]
+    return d && Array.isArray(d.children) ? d.children : []
   }
 
   // 该方是否依赖脉象（当前不做脉，这类方先放一边）
@@ -120,25 +138,101 @@ class Asker {
     return { cands, count }
   }
 
-  // 推荐下一个反问的底层症状（区分度最高，且自身当前是 unknown）
+  /**
+   * 一个底层症状属于哪些「症状筛选组」（可多归属）。
+   * 组按设计不进 needs，所以必须单独建这张反查表，反问才能看到上位层。
+   */
+  groupsContaining(leaf) {
+    const out = []
+    for (const [name, def] of Object.entries(this.registry)) {
+      if (def.kind !== 'symptom_group') continue
+      if (Array.isArray(def.children) && def.children.includes(leaf)) out.push(name)
+    }
+    return out
+  }
+
+  /**
+   * 组的区分度：该组下面**当前还在待问的**子症状各自区分度之和。
+   * 用途：当一组里有好几个子症状都要挨个问时，先问一次「你这个是不是呕吐/咽喉这类问题」，
+   * 病人答「不是」就能把这一整组候选一次性排掉。
+   */
+  groupCandidates(leafCount, unknownSet) {
+    const out = []
+    for (const [name, def] of Object.entries(this.registry)) {
+      if (def.kind !== 'symptom_group') continue
+      if (this.engine.state[name] !== 'unknown' || this.asked.has(name)) continue
+      const kids = Array.isArray(def.children) ? def.children : []
+      const live = kids.filter(k => unknownSet.has(k))
+      if (live.length < 2) continue                       // 只覆盖一个子症状时，直接问那个子更精确
+      const score = live.reduce((s, k) => s + (leafCount[k] || 0), 0)
+      if (score === 0) continue                           // 组背后没有候选方，不值得问
+      out.push({ name, score, live })
+    }
+    return out.sort((a, b) => b.score - a.score)
+  }
+
+  // 推荐下一个反问：先用「症状筛选组」做部位/大类粗筛，再落到具体症状
   nextQuestion() {
     const { cands, count } = this.leafDiscrimination()
     if (cands.length === 0) return null
-    const unknownLeaf = Object.keys(count)
+    const unknownLeaves = Object.keys(count)
       .filter(lf => this.engine.state[lf] === 'unknown' && !this.asked.has(lf))
       .sort((a, b) => (count[b] - count[a]))  // 区分度高者在前
-    if (unknownLeaf.length === 0) {
-      // 没有可问的叶子了，但还有其他候选 → 无法进一步区分（多解）
-      return null
+    if (unknownLeaves.length === 0) return null
+
+    const unknownSet = new Set(unknownLeaves)
+
+    // ---- 若已锁定区域：只在区域内的子症状里细化，不再问别的组 ----
+    if (this.focus.size) {
+      const inFocus = new Set()
+      for (const g of this.focus) {
+        for (const c of this.childrenOf(g)) if (unknownSet.has(c)) inFocus.add(c)
+      }
+      if (inFocus.size) {
+        const leaf = unknownLeaves.find(lf => inFocus.has(lf))
+        const def = this.registry[leaf]
+        return {
+          leaf, isGroup: false, inFocus: true,
+          title: def.title,
+          phrase: (def.ask && def.ask.length) ? def.ask : def.title,
+          count: count[leaf], total: cands.length
+        }
+      }
+      // 区域内已经没有能问的了 → 解除锁定，回到全局
+      this.focus.clear()
     }
-    const best = unknownLeaf[0]
-    const def = this.registry[best]
+
+    // ---- 第一层：症状筛选组（部位 / 大类）粗筛 ----
+    // 只在粗筛阶段、且这一组下面有 ≥2 个待问子症状、合计区分度不低于最强单个子症状时才问。
+    // 答「是」→ 锁定该区域继续细化；答「否」→ 整组子症状一次性排除。
+    if (this.groupAskedCount < this.maxGroupQuestions) {
+      const groups = this.groupCandidates(count, unknownSet)
+      const bestLeafCount = count[unknownLeaves[0]]
+      const best = groups.find(g => g.score >= bestLeafCount)
+      if (best) {
+        const def = this.registry[best.name]
+        return {
+          leaf: best.name,
+          isGroup: true,
+          title: def.title,
+          phrase: (def.ask && def.ask.length) ? def.ask : def.title,
+          count: best.score,
+          total: cands.length,
+          covers: best.live
+        }
+      }
+    }
+
+    // ---- 第二层：具体症状 ----
+    const leaf = unknownLeaves[0]
+    const def = this.registry[leaf]
     return {
-      leaf: best,
+      leaf,
+      isGroup: false,
       title: def.title,
       // 多角度描述：优先用插件自带 ask 口语描述，否则用 title
       phrase: (def.ask && def.ask.length) ? def.ask : def.title,
-      count: count[best],
+      count: count[leaf],
       total: cands.length
     }
   }
