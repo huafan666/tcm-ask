@@ -2,7 +2,7 @@ module.exports = {
   name: 'thirst_any',
   title: '口渴（想喝水）',
   kind: 'symptom_group',
-  // 症状筛选组（感觉）：口渴
+  // 症状筛选组（感觉）：口渴（想喝水）
   trigger(text) { return ['渴', '想喝水', '要喝水'].some(k => text.includes(k)) },
   ask: '是不是口渴、想喝水？',
   children: ['thirsty', 'severe_thirst'],

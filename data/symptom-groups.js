@@ -26,7 +26,10 @@ const GROUPS = [
     title: '呕吐（胃里的东西经口吐出来）',
     dimension: '动作',
     ask: '是不是会吐——把胃里的东西从嘴里吐出来？（不管吐的是水、食物、血还是别的）',
-    trigger: ['呕', '呕吐', '干呕', '反胃', '吐出来', '吐了', '想吐', '吐得'],
+    // trigger 只放**确定表示呕吐动作**的大类词。
+    // 刻意不含：「想吐」（那是恶心，见 nausea）、「吐出来」（「把痰吐出来」会误判）、
+    //          以及任何内容物词（吐血/吐涎沫/吐蛔）——内容物必须在具体症状里答。
+    trigger: ['呕', '呕吐', '干呕', '反胃', '吐了', '吐得'],
     children: [
       'vomiting', 'vomit_saliva', 'vomit_on_food', 'vomit_on_intake',
       'vomit_right_after_eating', 'food_vomit_delayed', 'water_reflux',
@@ -91,7 +94,9 @@ const GROUPS = [
     trigger: ['出血', '流血', '见血', '带血', '下血', '血不'],
     children: ['hematemesis', 'epistaxis', 'stool_blood', 'hematuria', 'blood_pus_stool',
       'vaginal_bleeding', 'blood_after_stool', 'blood_before_stool', 'tu_nongxue',
-      'lochia_retention', 'blood_clot_dark'],
+      'lochia_retention', 'blood_clot_dark',
+      // 咯血（咳出来的血）属出血，但**绝不进呕吐族**——吐血是呕出来的，咯血是咳出来的
+      'hemoptysis'],
     notIncluded: '月经不来/月经减少（那是没有血，不是出血）；血虚、贫血'
   },
   {
@@ -156,7 +161,10 @@ const GROUPS = [
     children: ['hypochondriac_fullness', 'hypochondriac_mass', 'hypochondriac_rush',
       'hypochondriac_side_pain', 'zuolei_tong', 'left_leigu_suan',
       'chest_fullness', 'chest_qi_stuffiness', 'chest_stuffy', 'chest_lump_hard',
-      'chest_indescribable', 'desire_to_press_chest'],
+      'chest_indescribable', 'desire_to_press_chest',
+      // 胸部疼痛类：原先只挂在 pain_any（全部位疼痛），会被算进「头身」系统，
+      // 补进来才能归到「胸腹」
+      'chest_back_pain', 'heart_bind_pain', 'heart_hanging_pain', 'heart_pain_radiate'],
     notIncluded: '心口（心下）的痞满另算；乳房肿块、肺的问题'
   },
   {
@@ -243,8 +251,12 @@ const GROUPS = [
     title: '睡眠异常',
     dimension: '状态',
     ask: '是不是睡觉有问题——睡不着、老想睡、多梦或者睡不好？',
-    trigger: ['睡', '失眠', '不眠', '眠', '多梦'],
-    children: ['shuimianbuhao', 'vex_insomnia', 'sleepy', 'duomeng', 'restless_lying', 'dahan'],
+    // 病人说「睡眠不好」只是笼统描述（vague），必须细化到下面几种具体类型。
+    // trigger 去掉了单字「睡」「眠」（太宽），改成语义明确的说法。
+    trigger: ['睡眠', '睡不好', '睡不着', '失眠', '不寐', '多梦', '嗜睡',
+      '老想睡', '入睡', '睡不实', '容易醒'],
+    children: ['shuimianbuhao', 'insomnia_onset', 'frequent_waking', 'light_sleep',
+      'vex_insomnia', 'sleepy', 'duomeng', 'restless_lying', 'dahan'],
     notIncluded: '烦躁（那是情绪）、昏睡不醒（神志问题）'
   },
   {
@@ -388,6 +400,19 @@ const GROUPS = [
     trigger: ['怀孕', '妊娠', '产后', '坐月子', '生完'],
     children: ['pregnancy', 'postpartum'],
     notIncluded: '这是状态不是异常；孕吐、恶露等另有专门症状'
+  },
+  {
+    name: 'head_body_pain_any',
+    title: '头颈身肢疼痛',
+    dimension: '部位',
+    // 为什么单独建：pain_any 是「全部位疼痛」，含胸腹的痛。
+    // 系统层要按身体区域划分，「头身」不能把腹痛算进去，所以这里只收头颈身肢的痛。
+    ask: '是不是头、颈、身上或者手脚有关节疼痛？',
+    trigger: ['头痛', '头疼', '项痛', '颈痛', '身上痛', '身痛', '关节痛', '腰腿痛', '足跟痛'],
+    children: ['headache', 'neck_stiff_pain', 'body_pain', 'body_ache_stiff',
+      'joint_pain_rigid', 'joint_pain_severe', 'migratory_pain', 'yaguan_tong',
+      'fengchi_tong', 'zugengtong'],
+    notIncluded: '胸腹部的痛（归胸腹系统）、腰酸（酸不是痛，归 lowback_any）'
   }
 ]
 

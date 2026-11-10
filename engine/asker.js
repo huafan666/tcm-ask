@@ -22,6 +22,16 @@ class Asker {
     // 每个聚焦组最多问几个细化问题（防止一组 20 多个子症状把病人问崩）
     this.maxFocusQuestionsPerGroup = 6
     this._focusAsked = new Map()
+    // 每个系统最多细化几个子症状（防止一个大系统把病人问崩）
+    this.maxSystemDetailPerSystem = 5
+    this._sysDetailAsked = new Map()
+    // 「闸门答了有、但病人没具体说是哪一种」的系统 → 需要追问
+    this._gateYes = new Set()
+  }
+
+  /** 系统闸门被答「有」时调用：记下来，稍后追问几个关键子症状 */
+  markGateYes(sysName) {
+    if (this.registry[sysName] && this.registry[sysName].isSystem) this._gateYes.add(sysName)
   }
 
   // 标记某个叶子已问过(用户答"不知道"→unknown)，下次不再问同一个
@@ -34,6 +44,7 @@ class Asker {
     this.groupAskedCount = 0
     this.focus.clear()
     this._focusAsked.clear()
+    this._sysDetailAsked.clear()
   }
 
   /** 病人对某一组答「是」：锁定该区域，后续优先在该组的子症状里细化 */
@@ -175,6 +186,84 @@ class Asker {
     return out.sort((a, b) => b.score - a.score)
   }
 
+  /* ============================================================
+   * 系统层（十问歌顺序）粗筛
+   * ------------------------------------------------------------
+   * 用户要求：尽早就该定位到关键的地方；例如大便问题一次性就问清楚，
+   *          排除掉的就不要再问了；必须统筹所有症状、按人的习惯方式粗筛。
+   *
+   * 所以问诊顺序不再只按「谁区分度高就问谁」（那样会在系统之间乱跳），而是：
+   *   1. 先问「某个系统有没有问题」（闸门问题，答是/否）
+   *   2. 答「没有」→ 该系统所有症状一次性判否，后面永不再问
+   *   3. 答「有」  → 进入该系统，把它里面的子症状一次问清，问完再走下一个
+   *   4. 系统之间的先后：病人已经提到的系统优先，其余按十问歌 order
+   * ============================================================ */
+
+  /** 所有系统节点，按 order 排序 */
+  systems() {
+    const list = []
+    for (const [name, d] of Object.entries(this.registry)) {
+      if (d.kind !== 'symptom_group' || !d.isSystem) continue
+      list.push({ name, def: d, order: typeof d.order === 'number' ? d.order : 999 })
+    }
+    return list.sort((a, b) => a.order - b.order)
+  }
+
+  /** 这个系统还值不值得问：里面至少有一个症状是当前候选方需要的，或已被点亮 */
+  systemRelevant(sys, count) {
+    const kids = Array.isArray(sys.def.children) ? sys.def.children : []
+    return kids.some(k => (count[k] || 0) > 0 || this.engine.state[k] === 'yes')
+  }
+
+  /**
+   * 选下一个系统问题。
+   *   { sys, mode:'gate' }         → 问这个系统有没有问题
+   *   { sys, mode:'detail', kid }  → 在系统内细化某个子症状
+   *   null                         → 系统层问完，交给后面的区分度逻辑
+   */
+  nextSystemQuestion(count) {
+    const all = this.systems()
+    if (!all.length) return null
+
+    // 已经提到过的系统（有子症状为 yes）排在前面
+    const touched = s => (s.def.children || []).some(k => this.engine.state[k] === 'yes')
+    const ordered = all.slice().sort((a, b) => {
+      const ta = touched(a) ? 0 : 1, tb = touched(b) ? 0 : 1
+      return ta - tb || a.order - b.order
+    })
+
+    // 1) 「答了有、但没具体说」的系统 → 追问几个关键子症状（最多 5 个）
+    //    如果这个系统是因为病人自己描述出来的（某个子症状已经 yes），就不再追问，
+    //    因为闸门问题本身就是复合问句（「大便干硬？稀溏？带血？还是正常？」），
+    //    病人一说就已经把细节给了。
+    for (const s of ordered) {
+      if (!this._gateYes.has(s.name)) continue
+      if (this.engine.state[s.name] !== 'yes') continue
+      const cap = this.maxSystemDetailPerSystem || 5
+      const done = this._sysDetailAsked.get(s.name) || 0
+      if (done >= cap) continue
+      const kids = (s.def.children || []).filter(c => {
+        const d = this.registry[c]
+        return d && d.kind === 'symptom' && this.engine.state[c] === 'unknown' && !this.asked.has(c)
+      })
+      if (!kids.length) continue
+      // 只问「最多候选方会用到」的几个，别把整个系统翻一遍
+      kids.sort((a, b) => (count[b] || 0) - (count[a] || 0))
+      const pick = kids.find(c => (count[c] || 0) > 0) || kids[0]
+      this._sysDetailAsked.set(s.name, done + 1)
+      return { sys: s, mode: 'detail', kid: pick }
+    }
+
+    // 2) 再问还没碰过的系统（闸门问题），按十问歌顺序
+    for (const s of ordered) {
+      if (this.engine.state[s.name] !== 'unknown') continue
+      if (this.asked.has(s.name)) continue
+      if (!this.systemRelevant(s, count)) continue          // 系统里的症状跟剩余候选方无关 → 跳过
+      return { sys: s, mode: 'gate' }
+    }
+    return null
+  }
+
   // 推荐下一个反问：先用「症状筛选组」做部位/大类粗筛，再落到具体症状
   nextQuestion() {
     const { cands, count } = this.leafDiscrimination()
@@ -185,6 +274,31 @@ class Asker {
     if (unknownLeaves.length === 0) return null
 
     const unknownSet = new Set(unknownLeaves)
+
+    // ---- 第 0 层：系统层（十问歌顺序）----
+    // 这是用户要求的核心：按人看病的习惯，一个系统一个系统过；
+    // 某个系统答「没有」就整块排除、永不再问；答「有」就把它一次问清。
+    const sysQ = this.nextSystemQuestion(count)
+    if (sysQ) {
+      const s = sysQ.sys
+      if (sysQ.mode === 'gate') {
+        return {
+          leaf: s.name, isGroup: true, isSystem: true, systemTitle: s.def.title,
+          title: s.def.title,
+          phrase: (s.def.ask && s.def.ask.length) ? s.def.ask : s.def.title,
+          count: Math.min(cands.length, (s.def.children || []).reduce((n, k) => n + (count[k] || 0), 0)),
+          total: cands.length,
+          covers: s.def.children || []
+        }
+      }
+      const d = this.registry[sysQ.kid]
+      return {
+        leaf: sysQ.kid, isGroup: false, inSystem: s.name, systemTitle: s.def.title,
+        title: d.title,
+        phrase: (d.ask && d.ask.length) ? d.ask : d.title,
+        count: count[sysQ.kid] || 0, total: cands.length
+      }
+    }
 
     // ---- 自动细化：某个筛选组已经成立、但它的子症状一个都没确定 ----
     // 典型场景：病人说「睡眠不好」→ sleep_any 成立，但入睡困难/易醒/睡眠浅全都还不知道。

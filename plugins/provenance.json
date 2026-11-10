@@ -4497,7 +4497,7 @@
       "source": "group",
       "label": "症状筛选组（物质维度）",
       "refs": [
-        "汇集：hematemesis、epistaxis、stool_blood、hematuria、blood_pus_stool、vaginal_bleeding、blood_after_stool、blood_before_stool、tu_nongxue、lochia_retention、blood_clot_dark"
+        "汇集：hematemesis、epistaxis、stool_blood、hematuria、blood_pus_stool、vaginal_bleeding、blood_after_stool、blood_before_stool、tu_nongxue、lochia_retention、blood_clot_dark、hemoptysis"
       ],
       "by": "system:symptom-group"
     },
@@ -4537,7 +4537,7 @@
       "source": "group",
       "label": "症状筛选组（部位维度）",
       "refs": [
-        "汇集：hypochondriac_fullness、hypochondriac_mass、hypochondriac_rush、hypochondriac_side_pain、zuolei_tong、left_leigu_suan、chest_fullness、chest_qi_stuffiness、chest_stuffy、chest_lump_hard、chest_indescribable、desire_to_press_chest"
+        "汇集：hypochondriac_fullness、hypochondriac_mass、hypochondriac_rush、hypochondriac_side_pain、zuolei_tong、left_leigu_suan、chest_fullness、chest_qi_stuffiness、chest_stuffy、chest_lump_hard、chest_indescribable、desire_to_press_chest、chest_back_pain、heart_bind_pain、heart_hanging_pain、heart_pain_radiate"
       ],
       "by": "system:symptom-group"
     },
@@ -4601,7 +4601,7 @@
       "source": "group",
       "label": "症状筛选组（状态维度）",
       "refs": [
-        "汇集：shuimianbuhao、vex_insomnia、sleepy、duomeng、restless_lying、dahan"
+        "汇集：shuimianbuhao、insomnia_onset、frequent_waking、light_sleep、vex_insomnia、sleepy、duomeng、restless_lying、dahan"
       ],
       "by": "system:symptom-group"
     },
@@ -4756,6 +4756,118 @@
         "睡得浅、睡不实、有点动静就醒（睡眠深度不够）。"
       ],
       "by": "system:fix"
+    },
+    "headache": {
+      "source": "jinkui",
+      "label": "金匮要略第十七篇 + 伤寒论各篇",
+      "refs": [
+        "金匮要略·呕吐哕下利病脉证并治第十七：干呕吐涎沫，头痛者，茱萸汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "head_body_pain_any": {
+      "source": "group",
+      "label": "症状筛选组（部位维度）",
+      "refs": [
+        "汇集：headache、neck_stiff_pain、body_pain、body_ache_stiff、joint_pain_rigid、joint_pain_severe、migratory_pain、yaguan_tong、fengchi_tong、zugengtong"
+      ],
+      "by": "system:symptom-group"
+    },
+    "sys_cold_heat": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 1 问）",
+      "refs": [
+        "维度分组：cold_any、fever_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_sweat": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 2 问）",
+      "refs": [
+        "维度分组：sweat_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_head_body": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 3 问）",
+      "refs": [
+        "维度分组：complexion_any、eye_any、head_body_pain_any、limb_any、lowback_any、dizziness_any、energy_any、emaciation_any、spasm_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_diet": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 4 问）",
+      "refs": [
+        "维度分组：appetite_any、thirst_any、taste_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_chest_abdomen": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 5 问）",
+      "refs": [
+        "维度分组：hypochondrium_any、abdomen_any、palpitation_any、vomit_any、belch_any、mass_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_bowel": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 6 问）",
+      "refs": [
+        "维度分组：stool_any、diarrhea_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_urine": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 7 问）",
+      "refs": [
+        "维度分组：urination_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_resp": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 8 问）",
+      "refs": [
+        "维度分组：cough_any、dyspnea_any、mouth_throat_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_sleep": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 9 问）",
+      "refs": [
+        "维度分组：sleep_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_mental": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 10 问）",
+      "refs": [
+        "维度分组：mental_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_skin_water": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 11 问）",
+      "refs": [
+        "维度分组：skin_any、edema_any"
+      ],
+      "by": "system:symptom-system"
+    },
+    "sys_gyneco": {
+      "source": "system",
+      "label": "问诊系统层（十问歌第 12 问）",
+      "refs": [
+        "维度分组：gyneco_any、reproductive_state_any"
+      ],
+      "by": "system:symptom-system"
     }
   },
   "edges": {}

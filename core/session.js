@@ -87,7 +87,11 @@ class Session {
       candidates: candCount,
       // isGroup=true 表示这是「症状筛选」粗筛问题（部位/大类），不是具体症状
       isGroup: !!q.isGroup,
+      // isSystem=true 表示这是十问歌顺序的「系统闸门」问题（寒热/汗/二便/睡眠…）
+      isSystem: !!q.isSystem,
+      systemTitle: q.systemTitle || null,
       inFocus: !!q.inFocus,
+      inSystem: q.inSystem || null,
       covers: q.covers || null
     }
   }
@@ -126,6 +130,8 @@ class Session {
           this.engine.setDirect(p.leaf, 'yes')
           // 对「症状筛选组」答是 → 锁定这个部位/大类，后续只在它内部细化
           if (p.isGroup) this.asker.focusGroup(p.leaf)
+          // 系统闸门答「有」但病人没具体说 → 记下来，稍后追问几个关键子症状
+          if (p.isSystem) this.asker.markGateYes(p.leaf)
         } else if (lower === '2' || lower === '否' || lower === 'no' || lower === '没有' || lower === '无') {
           // 对组答否 → 引擎会把该组所有子症状一次性置为 no（析取否定）
           this.engine.setDirect(p.leaf, 'no')

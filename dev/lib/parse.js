@@ -821,6 +821,9 @@ function generatePluginSource(model) {
   // 它本身也是某个筛选组的子症状，但病人说了它只等于「往这个方向查」，
   // 不等于说清了是哪种，所以问诊要往下细化而不是当已经确定。
   if (model.vague) out.push('  vague: true,')
+  // 系统闸门（十问歌顺序）：问诊时按 order 从小到大逐系统粗筛
+  if (typeof model.order === 'number') out.push('  order: ' + model.order + ',')
+  if (model.isSystem) out.push('  isSystem: true,')
   const needs = (model.needs || []).filter(p => p && p.length)
   if (needs.length) out.push('  needs: ' + needsLiteral(needs) + ',')
   const contra = model.contraindications || []

@@ -200,22 +200,24 @@ class Engine {
     const paths = this.normalizeNeeds(def.needs)
     // 每条路径：路径内 AND；任一路径满足 → 对象 yes
     let anyPathOk = false
-    let anyPathBlocked = false
+    let allPathsBlocked = true          // 只有**所有**路径都被明确阻断才判 no
     for (const path of paths) {
       const results = path.map(cond => this.evalCond(cond))
       if (results.every(r => r === true)) {
         anyPathOk = true
         break
       }
-      if (results.some(r => r === false)) {
-        anyPathBlocked = true
-      }
+      // 这条路径没成立；看它是否被某个条件明确否定
+      if (!results.some(r => r === false)) allPathsBlocked = false
     }
     if (anyPathOk) {
       if (this.state[name] !== 'yes') this.state[name] = 'yes'
-    } else if (anyPathBlocked) {
-      // 没有路径满足，但所有路径都被某条件明确阻断 → no；否则保持 unknown
-      // 简化：只要有一条路径被阻断就视为明确不成立
+    } else if (allPathsBlocked) {
+      // 语义：needs 的多条路径是 **OR**（任一路径成立即成立）。
+      // 因此必须「所有路径都被阻断」才能判 no ——
+      // 只否定其中一条路径，推不出整个节点不成立（¬(A∨B) 才等价于 ¬A∧¬B）。
+      // 旧实现「任一路径被阻断就判 no」是错的，会把「病人符合第1条路径、
+      // 但第2条路径恰被问到并否定」的方剂/证候整块误杀。
       if (this.state[name] !== 'no') this.state[name] = 'no'
     }
   }

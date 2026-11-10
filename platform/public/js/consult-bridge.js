@@ -105,33 +105,37 @@ async function fetchChain(sid) {
   } catch (_) {}
 }
 
-// ---- 粗筛提示：当前这一问是在做「部位 / 大类」筛选（而不是问具体症状）时，右上角提示一下。
-// 让病人明白「答不是就能一次排除一整类」，不会误以为问得莫名其妙。
-function screeningBadge(info) {
-  let el = document.getElementById('tcm-screening-badge')
-  if (!info) { if (el) el.remove(); return }
-  if (!el) {
-    el = document.createElement('div')
-    el.id = 'tcm-screening-badge'
-    el.style.cssText = 'position:fixed;top:12px;right:12px;z-index:99998;max-width:300px;' +
-      'background:rgba(251,113,133,.13);color:#be123c;border:1px solid rgba(251,113,133,.42);' +
-      'border-radius:10px;padding:7px 10px;font-size:11.5px;line-height:1.45;' +
-      'font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif'
-    document.body.appendChild(el)
-  }
-  el.textContent = info
-}
-
+// ---- 粗筛提示：不再右上角弹窗（用户说太突兀），改成**贴在聊天里那一问的气泡下面**一行小字 ----
+// 只在当前问题是「系统闸门 / 部位大类粗筛」时出现，并附上「答不是可以一次排除整类」的说明。
 function pickGroupQuestion(data) {
   if (!data) return ''
   const view = data.view || data
   const q = view && view.question
-  if (q && q.isGroup) {
-    const n = (q.covers && q.covers.length) || 0
-    const range = n ? '（覆盖 ' + n + ' 个具体症状）' : ''
-    return '按部位/大类先粗筛' + range + '：答「不是」可以一次排除一整类'
-  }
-  return ''
+  if (!q || !(q.isGroup || q.isSystem)) return ''
+  const n = (q.covers && q.covers.length) || 0
+  const range = n ? '（覆盖 ' + n + ' 个具体症状）' : ''
+  const label = q.isSystem ? ('按「' + (q.systemTitle || q.title) + '」这一整类先粗筛') : '按部位/大类先粗筛'
+  return '· ' + label + range + '，答「不是」可以一次排除一整类'
+}
+
+/** 把提示挂到最近一条助手气泡下面（不额外占一条消息、不浮在页面上） */
+function attachInlineHint(text) {
+  const thread = document.getElementById('thread')
+  if (!thread) return
+  // 先清掉旧的提示
+  thread.querySelectorAll('.tcm-inline-hint').forEach(el => el.remove())
+  if (!text) return
+  const rows = thread.querySelectorAll('.row.assistant')
+  if (!rows.length) return
+  const last = rows[rows.length - 1]
+  const bubble = last.querySelector('.bubble')
+  if (!bubble) return
+  const hint = document.createElement('div')
+  hint.className = 'tcm-inline-hint'
+  hint.style.cssText = 'margin-top:6px;padding-top:5px;border-top:1px dashed #e2e8f0;' +
+    'font-size:11px;line-height:1.5;color:#9aa7b4;font-family:inherit'
+  hint.textContent = text
+  bubble.appendChild(hint)
 }
 
 // ---- 包一层 fetch，盯 /api/input 的结论 ----
@@ -145,10 +149,16 @@ window.fetch = async function (...args) {
       try { sid = JSON.parse(args[1].body || '{}').sid || null } catch (_) {}
       if (sid) lastSid = sid
       const data = await res.clone().json()
-      try { screeningBadge(pickGroupQuestion(data && data.result ? data.result : data)) } catch (_) {}
+      const hint = pickGroupQuestion(data && data.result ? data.result : data)
+      // 页面自己的渲染在后面，延后一点点再挂提示
+      setTimeout(() => attachInlineHint(hint), 80)
       if (data && data.result) fetchChain(sid || lastSid)
     } else if (/\/api\/(consult\/new|restart)/.test(url)) {
-      try { screeningBadge(pickGroupQuestion(await res.clone().json())) } catch (_) {}
+      try {
+        const d = await res.clone().json()
+        const hint = pickGroupQuestion(d)
+        setTimeout(() => attachInlineHint(hint), 80)
+      } catch (_) {}
     }
   } catch (_) {}
   return res

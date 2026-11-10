@@ -45,7 +45,11 @@ for (const [id, d] of groups) {
     const m = /\[([\s\S]*?)\]/.exec(d.trigger.toString())
     if (m) for (const q of m[1].matchAll(/'([^']*)'|"([^"]*)"/g)) kws.push(q[1] || q[2])
   }
-  if (!kws.length) errors.push(id + ' 没有 trigger（至少放一个大类词，否则只能靠子症状汇入）')
+  if (!kws.length) {
+    // 系统闸门（kind:'symptom_group' + isSystem）故意没有 trigger：
+    // 它是靠问诊回答「这个系统有没有问题」来定，不靠病人文字触发。
+    if (!d.isSystem) errors.push(id + ' 没有 trigger（至少放一个大类词，否则只能靠子症状汇入）')
+  }
   for (const kw of kws) {
     for (const bad of FORBIDDEN_IN_TRIGGER) {
       if (kw.includes(bad)) errors.push(id + ' 的 trigger「' + kw + '」含禁止词「' + bad + '」')

@@ -59,7 +59,19 @@ console.log('\n=== 3. 医案整段：麻黄汤案 ===')
   check('小青龙汤=yes（「咳+无汗」路径本就偏松，属已知数据问题）', e.state.xiaoqinglong_tang === 'yes', e.state.xiaoqinglong_tang)
   check('无汗=yes', e.state.no_sweat === 'yes')
   check('汗出=no（汗出者忌桂枝汤/麻黄汤要散）', e.state.sweat === 'no')
-  check('桂枝汤被排除（无汗）', e.state.guizhi_tang === 'no', e.state.guizhi_tang)
+  // ⚠ 语义修正（2026-02）：
+  //   needs 的多条路径之间是 **OR**，所以「只否掉一部分路径」推不出整个方不成立。
+  //   桂枝汤除了「汗出」两条路径，还有「妊娠+呕吐+食少」「产后」等路径，
+  //   这些没被问到 → 正确结果是 unknown，不是 no。等问诊把妇科那边也问完才会变 no。
+  check('桂枝汤未被点亮（无汗否掉了汗出路径，但妊娠/产后路径未问 → unknown 而非 no）',
+    e.state.guizhi_tang !== 'yes', e.state.guizhi_tang)
+  // 只有**所有**路径都被明确阻断时，才判 no —— 这才是 or 语义的正确结果
+  {
+    const e2 = new Engine(registry)
+    e2.feed('没有汗，没有怀孕，不是产后')
+    check('桂枝汤所有路径都被否 → no（or 语义：¬(A∨B) 才等价于 ¬A∧¬B）',
+      e2.state.guizhi_tang === 'no', e2.state.guizhi_tang)
+  }
   check('脉浮紧 → 脉浮 yes / 脉紧 yes', e.state.floating_pulse === 'yes' && e.state.tight_pulse === 'yes',
     e.state.floating_pulse + '/' + e.state.tight_pulse)
 }
