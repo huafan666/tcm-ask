@@ -9,7 +9,9 @@ module.exports = {
     ['low_appetite.yes', 'epigastric_fullness.yes', 'restless.yes'],
     // 金匮 10.12：按之心下满痛者，此为实也，当下之，宜大柴胡汤
     ['epigastric_pressing_pain.yes', 'constipation.yes'],
-    ['epigastric_pressing_pain.yes', 'fever.yes']
+    ['epigastric_pressing_pain.yes', 'fever.yes'],
+    // 金匮 15.21：诸黄，腹痛而呕者，宜柴胡汤
+    ['jaundice.yes','abdominal_pain.yes','vomiting.yes']
   ],
   contraindications: ['少阳兼里实(呕不止心下急)', '和解兼泄里实', '心下急为里实之征']
 }

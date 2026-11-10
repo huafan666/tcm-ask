@@ -8,7 +8,9 @@ module.exports = {
     ['abdominal_fullness.yes', 'abdominal_pain.yes'],
     ['heart_palp.yes', 'restless.yes'],
     // 金匮 6.14：虚劳里急，悸、衄，腹中痛，梦失精，四肢酸疼，手足烦热，咽干口燥
-    ['xu_lao.yes', 'abdominal_tension.yes']
+    ['xu_lao.yes', 'abdominal_tension.yes'],
+    // 金匮 15.22：男子黄，小便自利，当与虚劳小建中汤
+    ['jaundice.yes','urination_difficulty.no','low_energy.yes']
   ],
   contraindications: ['虚寒腹痛、心中悸而烦', '温中补虚、缓急止痛', '呕家不可用(甜)', '单纯腹胀无痛宜厚朴生姜汤', '虚劳里急：肚子拘急 + 心悸 + 手足烦热']
 }

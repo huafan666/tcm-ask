@@ -3564,6 +3564,134 @@
         "金匮要略·水气病脉证并治第十四 · 心下坚，大如盘，边如旋盘，水饮所作，枳术汤主之（枳实七枚、白术二两）"
       ],
       "by": "system:jinkui"
+    },
+    "black_stool": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五：酒疸下之，久久为黑疸……大便正黑；女劳之病……大便必黑。"
+      ],
+      "by": "system:jinkui"
+    },
+    "forehead_dark": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五：黄家日晡所发热，而反恶寒，此为女劳得之……额上黑。"
+      ],
+      "by": "system:jinkui"
+    },
+    "nose_dry": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五：酒黄疸者……腹满欲吐，鼻燥。"
+      ],
+      "by": "system:jinkui"
+    },
+    "heart_hot": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五：夫病酒黄疸，必小便不利，其候心中热，足下热，是其证也。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hiccup": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五：黄疸病……不可除热，热除必哕。哕者，小半夏汤主之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "huang_dan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 然黄家所得，从湿得之"
+      ],
+      "by": "system:jinkui"
+    },
+    "gu_dan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 谷疸之为病，寒热不食，食即头眩，心胸不安，久久发黄为谷疸"
+      ],
+      "by": "system:jinkui"
+    },
+    "jiu_dan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 夫病酒黄疸，必小便不利，其候心中热，足下热，是其证也"
+      ],
+      "by": "system:jinkui"
+    },
+    "nv_lao_dan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 黄家日晡所发热，而反恶寒，此为女劳得之……此女劳之病，非水也"
+      ],
+      "by": "system:jinkui"
+    },
+    "hei_dan": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 酒疸下之，久久为黑疸，目青面黑，心中如啖蒜虀状，大便正黑"
+      ],
+      "by": "system:jinkui"
+    },
+    "xiaoshi_fanshi_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 硝石矾石散（硝石、矾石等分，为散，以大麦粥汁和服方寸匕，日三服）"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhizi_dahuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 酒黄疸，心中懊憹或热痛，栀子大黄汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhugao_fajian": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 诸黄，猪膏发煎主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "yinchen_wuling_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 黄疸病，茵陈五苓散主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "dahuang_xiaoshi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 黄疸腹满，小便不利而赤，自汗出，此为表和里实，当下之，宜大黄硝石汤"
+      ],
+      "by": "system:jinkui"
+    },
+    "mahuang_chunjiu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·黄疸病脉证并治第十五 · 《千金》麻黄醇酒汤：治黄疸（麻黄三两，以美清酒五升，煮取二升半，顿服尽）"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
