@@ -1462,11 +1462,12 @@
     },
     "maziren_wan": {
       "source": "shanghanlun",
-      "label": "伤寒论原方",
+      "label": "伤寒论第247条 + 金匮要略第十一篇",
       "refs": [
-        "247"
+        "伤寒论·第247条：趺阳脉浮而涩，浮则胃气强，涩则小便数，浮涩相搏，大便则硬，其脾为约，麻子仁丸主之",
+        "金匮要略·五脏风寒积聚病脉证并治第十一：趺阳脉浮而涩……大便则坚，其脾为约，麻子仁丸主之"
       ],
-      "by": "system:shanghanlun"
+      "by": "system:jinkui"
     },
     "muli": {
       "source": "shanghanlun",
@@ -3097,6 +3098,86 @@
       "label": "金匮要略原文",
       "refs": [
         "金匮要略·腹满寒疝宿食病脉证并治第十 · 寒疝腹中痛，逆冷，手足不仁，若身疼痛，灸刺诸药不能治，抵当乌头桂枝汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "desire_to_press_chest": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一：肝著，其人常欲蹈其胸上（蹈＝捶打踩踏，胸中气机不畅，捶打才舒服）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "lower_back_cold": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一：肾著之病……腰中冷，如坐水中……腰以下冷痛。"
+      ],
+      "by": "system:jinkui"
+    },
+    "fixed_mass": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一：积者，脏病也，终不移（积＝固定在一处不动）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "migratory_pain": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一：聚者，腑病也，发作有时，展转痛移（聚＝时发时止、痛点会转移）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "gan_zhu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 肝著，其人常欲蹈其胸上，先未苦时，但欲饮热，旋覆花汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shen_zhu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 肾著之病，其人身体重，腰中冷，如坐水中……腹重如带五千钱"
+      ],
+      "by": "system:jinkui"
+    },
+    "dian_kuang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 阴气衰者为癫，阳气衰者为狂"
+      ],
+      "by": "system:jinkui"
+    },
+    "ji_ju": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 积者，脏病也，终不移；聚者，腑病也，发作有时，展转痛移"
+      ],
+      "by": "system:jinkui"
+    },
+    "xuanfuhua_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 旋覆花汤方（旋覆花三两、葱十四茎、新绛少许）"
+      ],
+      "by": "system:jinkui"
+    },
+    "ganjiang_lingzhu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·五脏风寒积聚病脉证并治第十一 · 甘姜苓术汤方（甘草、白术各二两，干姜、茯苓各四两）"
       ],
       "by": "system:jinkui"
     }
