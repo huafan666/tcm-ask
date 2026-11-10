@@ -1180,11 +1180,12 @@
     },
     "gancao_xiexin_tang": {
       "source": "shanghanlun",
-      "label": "伤寒论原方",
+      "label": "伤寒论第158条 + 金匮要略第三篇",
       "refs": [
-        "158"
+        "伤寒论·第158条：伤寒中风，医反下之，其人下利日数十行，谷不化，腹中雷鸣，心下痞硬而满，干呕心烦不得安……甘草泻心汤主之",
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：蚀于上部则声喝，甘草泻心汤主之"
       ],
-      "by": "system:shanghanlun"
+      "by": "system:jinkui"
     },
     "ganjiang_fuzi_tang": {
       "source": "shanghanlun",
@@ -1458,18 +1459,12 @@
       ],
       "by": "system:shanghanlun"
     },
-    "mahuang_liangqiao_chixiaodou_tang": {
+    "mahuang_lianqiao_chixiaodou_tang": {
       "source": "shanghanlun",
       "label": "伤寒论原方",
       "refs": [
         "262"
       ],
-      "by": "system:shanghanlun"
-    },
-    "mahuang_lianqiao_chixiaodou_tang": {
-      "source": "shanghanlun",
-      "label": "伤寒论原方",
-      "refs": [],
       "by": "system:shanghanlun"
     },
     "mahuang_tang": {
@@ -2105,6 +2100,134 @@
       "label": "金匮要略原方",
       "refs": [
         "金匮要略·百合病：常默默。"
+      ],
+      "by": "system:jinkui"
+    },
+    "eyes_cannot_close": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：默默欲眠，目不得闭。"
+      ],
+      "by": "system:jinkui"
+    },
+    "voice_hoarse": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：蚀于上部则声喝（喝=声音嘶哑）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "genital_ulcer": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：蚀于阴为狐。"
+      ],
+      "by": "system:jinkui"
+    },
+    "anal_ulcer": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：蚀于肛者，雄黄熏之。"
+      ],
+      "by": "system:jinkui"
+    },
+    "face_color_fluctuating": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：其面目乍赤、乍黑、乍白。"
+      ],
+      "by": "system:jinkui"
+    },
+    "eyes_dark_rims": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：初得之三、四日，目赤如鸠眼；七、八日，目四眦黑。"
+      ],
+      "by": "system:jinkui"
+    },
+    "face_red_patches": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：阳毒之为病，面赤斑斑如锦纹。"
+      ],
+      "by": "system:jinkui"
+    },
+    "throat_dry": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三：蚀于下部则咽干。"
+      ],
+      "by": "system:jinkui"
+    },
+    "hu_huo_bing": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 狐蜮之为病，状如伤寒，默默欲眠，目不得闭"
+      ],
+      "by": "system:jinkui"
+    },
+    "yang_du": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 阳毒之为病，面赤斑斑如锦纹，咽喉痛，唾脓血"
+      ],
+      "by": "system:jinkui"
+    },
+    "yin_du": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 阴毒之为病，面目青，身痛如被杖，咽喉痛"
+      ],
+      "by": "system:jinkui"
+    },
+    "kushen_tang_xi": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 蚀于下部则咽干，苦参汤洗之"
+      ],
+      "by": "system:jinkui"
+    },
+    "xionghuang_xun": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 蚀于肛者，雄黄熏之"
+      ],
+      "by": "system:jinkui"
+    },
+    "chixiaodou_dangui_san": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 目赤如鸠眼；七、八日，目四眦黑。若能食者，脓已成也，赤小豆当归散主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shengma_biejia_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 阳毒之为病……升麻鳖甲汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "shengma_biejia_tang_qu": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·百合病狐惑阴阳毒病脉证并治第三 · 阴毒之为病……升麻鳖甲汤去雄黄、蜀椒主之"
       ],
       "by": "system:jinkui"
     }

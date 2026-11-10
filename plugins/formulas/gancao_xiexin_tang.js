@@ -6,7 +6,9 @@ module.exports = {
   // 心下痞硬满+下利谷不化+干呕心烦。
   needs: [
     ['epigastric_lump_soft.yes', 'clear_grain_diarrhea.yes'],
-    ['epigastric_lump_soft.yes', 'vomiting.yes', 'restless.yes']
+    ['epigastric_lump_soft.yes', 'vomiting.yes', 'restless.yes'],
+    // 金匮 3.10：狐惑病蚀于上部则声喝，甘草泻心汤主之
+    ['hu_huo_bing.yes', 'voice_hoarse.yes']
   ],
-  contraindications: ['心下痞硬满', '下利谷不化、腹中雷鸣', '干呕心烦', '补虚消痞止利']
+  contraindications: ['心下痞硬满', '下利谷不化、腹中雷鸣', '干呕心烦', '补虚消痞止利', '狐惑病蚀于喉、声音嘶哑']
 }
