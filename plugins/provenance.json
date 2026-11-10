@@ -3388,6 +3388,182 @@
         "金匮要略·消渴小便不利淋病脉证并治第十三 · 茯苓戎盐汤（茯苓半斤、白术二两、戎盐弹丸大一枚）"
       ],
       "by": "system:jinkui"
+    },
+    "pitting_edema": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：皮水……胕肿，按之没指……按其手足上，陷而不起者，风水。"
+      ],
+      "by": "system:jinkui"
+    },
+    "eyelid_puffy": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：视人之目窠上微拥，如蚕新卧起状……夫水病人，目下有卧蚕。"
+      ],
+      "by": "system:jinkui"
+    },
+    "duck_stool": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：肺水者，其身肿，小便难，时时鸭溏（鸭溏：水粪夹杂、稀而不爽）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "waist_split_sweat": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：又从腰以上必汗出，下无汗，腰髋弛痛。"
+      ],
+      "by": "system:jinkui"
+    },
+    "scrotal_edema": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：心水者……其人阴肿；肾水者……阴下湿如牛鼻上汗。"
+      ],
+      "by": "system:jinkui"
+    },
+    "epigastric_mass_plate": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四：心下坚，大如盘，边如旋杯（水饮结聚成块）。"
+      ],
+      "by": "system:jinkui"
+    },
+    "feng_shui": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 风水其脉自浮，外证骨节疼痛，恶风"
+      ],
+      "by": "system:jinkui"
+    },
+    "pi_shui": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 皮水其脉亦浮，外证胕肿，按之没指，不恶风，其腹如鼓，不渴，当发其汗"
+      ],
+      "by": "system:jinkui"
+    },
+    "zheng_shui": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 正水其脉沉迟，外证自喘"
+      ],
+      "by": "system:jinkui"
+    },
+    "shi_shui": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 石水其脉自沉，外证腹满不喘"
+      ],
+      "by": "system:jinkui"
+    },
+    "huang_han": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 黄汗之为病，身体肿，发热汗出而渴……汗沾衣，色正黄如柏汁"
+      ],
+      "by": "system:jinkui"
+    },
+    "qi_fen": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 气分，心下坚，大如盘，边如旋杯，水饮所作"
+      ],
+      "by": "system:jinkui"
+    },
+    "yuebi_jia_zhu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 里水者，一身面目黄肿，其脉沉，小便不利……越婢加术汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "yuebi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 风水恶风，一身悉肿，脉浮不渴，续自汗出，无大热，越婢汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "fangji_fuling_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 皮水为病，四肢肿，水气在皮肤中，四肢聂聂动者，防己茯苓汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "gancao_mahuang_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 里水，越婢加术汤主之；甘草麻黄汤亦主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "mahuang_fuzi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 水之为病，其脉沉小，属少阴……脉沉者宜麻黄附子汤"
+      ],
+      "by": "system:jinkui"
+    },
+    "xingzi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 浮者为风……浮者宜杏子汤（方佚）"
+      ],
+      "by": "system:jinkui"
+    },
+    "qishao_guijiu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 宜耆芍桂酒汤主之（黄芪五两、芍药三两、桂枝三两，苦酒一升）"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_jia_huangqi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 此为黄汗，桂枝加黄芪汤主之（桂枝汤加黄芪二两）"
+      ],
+      "by": "system:jinkui"
+    },
+    "guizhi_qu_shaoyao_jia_maxin_fuzi_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 气分，心下坚，大如盘，边如旋杯，水饮所作，桂枝去芍药加麻辛附子汤主之"
+      ],
+      "by": "system:jinkui"
+    },
+    "zhizhu_tang": {
+      "source": "jinkui",
+      "label": "金匮要略原文",
+      "refs": [
+        "金匮要略·水气病脉证并治第十四 · 心下坚，大如盘，边如旋盘，水饮所作，枳术汤主之（枳实七枚、白术二两）"
+      ],
+      "by": "system:jinkui"
     }
   },
   "edges": {}
