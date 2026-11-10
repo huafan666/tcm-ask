@@ -22,10 +22,13 @@ const path = require('path')
 const ROOT = path.join(__dirname, '..')
 const { loadAll } = require(path.join(ROOT, 'core', 'loader'))
 const { registry } = loadAll(path.join(ROOT, 'plugins'))
-const DB = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'texts', '伤寒论-条文.json'), 'utf8'))
 
 const args = process.argv.slice(2)
 const getArg = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d }
+// --book jinkui 时改读金匮的条文 JSON（同一套审核逻辑，两本书都能用）
+const BOOK = getArg('--book', 'shanghan')
+const DB_FILE = BOOK === 'jinkui' ? '金匮要略-条文.json' : '伤寒论-条文.json'
+const DB = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'texts', DB_FILE), 'utf8'))
 const CH = parseInt(getArg('--ch', '0'), 10) || 0
 const GAPS_ONLY = args.includes('--gaps')
 const MISSING_ONLY = args.includes('--missing')
@@ -35,6 +38,27 @@ if (SEQ) {
   const [a, b] = SEQ.split('-')
   seqFrom = parseInt(a, 10) || 0
   seqTo = b ? (parseInt(b, 10) || 9999) : seqFrom
+}
+
+// 金匮的条文 JSON 里没有 formulasHint 字段，这里现算（算法和 extract-shanghanlun.js 一致）
+const FORMULA_TAIL = '湯汤散丸圓圆煎酒膏'
+const NAME_PREFIX = '用與与服宜可先後后更凡若属屬恒常以然此即復复再仍不飲饮'
+function formulaNames(text) {
+  const out = new Set()
+  const re = new RegExp('([\\u4e00-\\u9fff]{2,12}[' + FORMULA_TAIL + '])(?=主之|方|，宜|，與|。|；|$|證)', 'g')
+  let m
+  while ((m = re.exec(text))) {
+    let name = m[1]
+    let changed = true
+    while (changed && name.length > 2) {
+      changed = false
+      if (NAME_PREFIX.includes(name[0])) { name = name.slice(1); changed = true }
+    }
+    if (name.length < 2) continue
+    if (!new RegExp('[' + FORMULA_TAIL + ']$').test(name)) continue
+    out.add(name)
+  }
+  return [...out]
 }
 
 // ---------- 繁简 ----------
@@ -72,21 +96,29 @@ function within1(a, b) {
   return true
 }
 /** 只在「同名 / 只差一个错字 / 前后缀包含得足够多」时才认 */
+// 原文常用简称，库里存的是全名：这几条是人工确认过的等价名
+const SHORT_ALIAS = {
+  肾气丸: '八味肾气丸',
+  赤石脂丸: '乌头赤石脂丸',
+  胶艾汤: '芎归胶艾汤',
+  三物小白散: '三物小白散'
+}
 function findFormula(name) {
-  const k = norm(simp(name))
-  if (!k || k.length < 2) return null
-  if (titleIndex.has(k)) return titleIndex.get(k)
-  // 前后缀包含：原文常把「桂枝去芍药加蜀漆牡蛎龙骨救逆汤」写成「去芍药加…救逆汤」
+  const raw = norm(simp(name))
+  if (!raw || raw.length < 2) return null
+  // 原文常把几个方的名字连在一句里（「攻表宜桂枝汤」「当以温经汤」「浮者宜杏子汤」），
+  // 抽取时前头的动词/主语会粘上来。这里逐字往前剥，剥到能匹配上已知方名为止。
+  for (let cut = 0; cut <= 5 && cut < raw.length - 1; cut++) {
+    const k = raw.slice(cut)
+    if (titleIndex.has(k)) return titleIndex.get(k)
+    if (SHORT_ALIAS[k] && titleIndex.has(norm(SHORT_ALIAS[k]))) return titleIndex.get(norm(SHORT_ALIAS[k]))
+  }
   let best = null
   for (const [t, id] of titleIndex) {
-    if (t === k) return id
-    if (within1(t, k)) return id
-    if (t.startsWith(k) || k.startsWith(t) || t.endsWith(k) || k.endsWith(t)) {
-      const d = Math.abs(t.length - k.length)
-      const minLen = Math.min(t.length, k.length)
-      // minLen 必须 ≥5：否则「葛根黄芩黄连汤」会被后缀匹配到「黄连汤」、
-      // 「柴胡汤」会被匹配到「大柴胡汤」，把真正的缺方藏起来。
-      if (d <= 4 && minLen >= 5 && (!best || d < best.d)) best = { id, d }
+    if (within1(t, raw)) return id
+    if (t.startsWith(raw) || raw.startsWith(t) || t.endsWith(raw) || raw.endsWith(t)) {
+      const d = Math.abs(t.length - raw.length)
+      if (d <= 4 && Math.min(t.length, raw.length) >= 5 && (!best || d < best.d)) best = { id, d }
     }
   }
   return best ? best.id : null
@@ -147,11 +179,15 @@ for (const ch of DB.chapters) {
   }
   for (const u of ch.units) {
     if (u.seq < seqFrom || u.seq > seqTo) continue
+    // 金匮的 skip 条目（整篇跳过 / 与其它篇重复）没有审核价值，直接略过
+    if (u.status === 'skip') continue
     stat.total++
     const st = simp(u.text)
     const negs = negations(st)
     const hits = matchedSymptoms(st)
-    const fnames = u.formulasHint || []
+    // ⚠ 方名要在**原文（繁体的）**上抽：FORMULA_TAIL 用的是繁体「湯散丸圓煎酒膏」，
+    // 先转成简体（湯→汤）就一个都抽不到了。抽出来以后再转简体去匹配插件标题。
+    const fnames = u.formulasHint || formulaNames(u.text)
     const found = fnames.map(n => ({ name: n, id: findFormula(n) }))
     const realFound = found.filter(f => f.id)
     const missing = found.filter(f => !f.id)
@@ -189,7 +225,7 @@ if (MISSING_ONLY) {
   console.log('=== 条文点到、但库里没有的方名（' + missingFormulas.size + ' 个）===')
   const rows = [...missingFormulas.entries()]
   for (const [name, info] of rows) {
-    console.log('  ' + name.padEnd(14) + '  首见 伤寒' + info.seq + '：' + info.text.slice(0, 60))
+    console.log('  ' + name.padEnd(14) + '  首见 ' + BOOK + ' ' + info.seq + '：' + info.text.slice(0, 60))
   }
 } else {
   console.log(lines.join('\n'))

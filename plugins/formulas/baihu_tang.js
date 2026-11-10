@@ -10,7 +10,9 @@ module.exports = {
     // 不加这一条的话，两个方的第一条路径一模一样，永远分不开。
     // 问「口干舌燥」时如果病人答不知道，这条路径不阻断，白虎汤照样留在候选里。
     ['severe_thirst.yes', 'cold_aversion.no', 'mouth_dry.no'],
-    ['zijue_shenre.yes', 'shuangzu_re.yes', 'shouhan.yes', 'dark_urine.yes', 'cold_aversion.no']
+    ['zijue_shenre.yes', 'shuangzu_re.yes', 'shouhan.yes', 'dark_urine.yes', 'cold_aversion.no'],
+    // 350条：脉滑而厥者，里有热 —— 真热假寒，手足厥冷却喜冷饮
+    ['cold_extremities.yes', 'cold_drink_desire.yes']
   ],
   contraindications: ['热盛津伤(大热大渴)', '表未解无汗者忌', '清热生津',
     '与白虎加人参汤的鉴别：兼口干舌燥 / 时时恶风 / 背微恶寒（津气两伤）者用加人参汤，本方不加']

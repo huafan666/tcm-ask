@@ -50,7 +50,8 @@
      "text": "太陽之為病，脈浮，頭項強痛而惡寒。",
      "textSimp": "太阳之为病，脉浮，头项强痛而恶寒。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.2",
@@ -60,7 +61,8 @@
      "text": "太陽病，發熱汗出，惡風，脈緩者，名為中風。",
      "textSimp": "太阳病，发热汗出，恶风，脉缓者，名为中风。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.3",
@@ -70,7 +72,8 @@
      "text": "太陽病，或已發熱，或未發熱，必惡寒，體病，嘔逆，脈陰陽俱緊者，名為傷寒。",
      "textSimp": "太阳病，或已发热，或未发热，必恶寒，体病，呕逆，脉阴阳俱紧者，名为伤寒。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.4",
@@ -80,7 +83,8 @@
      "text": "傷寒一日，太陽受之，脈若靜者，一為不傳，頗欲吐，若躁煩脈數急者，為傳也。",
      "textSimp": "伤寒一日，太阳受之，脉若静者，一为不传，颇欲吐，若躁烦脉数急者，为传也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.5",
@@ -90,7 +94,8 @@
      "text": "傷寒二、三日，陽明少陽證不見者，為不傳也。",
      "textSimp": "伤寒二、三日，阳明少阳证不见者，为不传也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.6",
@@ -100,7 +105,8 @@
      "text": "太陽病，發熱而渴，不惡寒者為溫病。若發汗已，身灼熱者，名風溫。風溫為病，脈陰陽俱浮，自汗出，身重，多眠睡，鼻息必鼾，語言難出。若被下者，小便不利，直視失溲；若被火者，微發黃色，劇則如驚癇，時瘈瘲；若火熏之，一逆尚引日，再逆促命期。",
      "textSimp": "太阳病，发热而渴，不恶寒者为温病。若发汗已，身灼热者，名风温。风温为病，脉阴阳俱浮，自汗出，身重，多眠睡，鼻息必鼾，语言难出。若被下者，小便不利，直視失溲；若被火者，微发黄色，剧则如惊痫，时瘛疭；若火熏之，一逆尚引日，再逆促命期。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.7",
@@ -110,7 +116,8 @@
      "text": "病有發熱惡寒者，發於陽也。無熱惡寒者，發於陰也。發於陽，七日愈。發於陰，六日愈。以陽數七陰數六故也。",
      "textSimp": "病有发热恶寒者，发于阳也。无热恶寒者，发于阴也。发于阳，七日愈。发于阴，六日愈。以阳数七阴数六故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.8",
@@ -120,7 +127,8 @@
      "text": "太陽病，頭痛至七日以上自愈者，以行其經盡故也。若欲作再經者，針足陽明，使經不傳則愈。",
      "textSimp": "太阳病，头痛至七日以上自愈者，以行其经尽故也。若欲作再经者，针足阳明，使经不传则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.9",
@@ -130,7 +138,8 @@
      "text": "太陽病，欲解時，從巳至未上。",
      "textSimp": "太阳病，欲解时，从巳至未上。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.10",
@@ -140,7 +149,8 @@
      "text": "風家，表解而不了了者，十二日愈。",
      "textSimp": "风家，表解而不了了者，十二日愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.11",
@@ -150,7 +160,8 @@
      "text": "病人身大熱，反欲得衣者，熱在皮膚，寒在骨髓也，身大寒，反欲不近衣者，寒在皮膚，熱在骨髓也。",
      "textSimp": "病人身大热，反欲得衣者，热在皮肤，寒在骨髓也，身大寒，反欲不近衣者，寒在皮肤，热在骨髓也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.12",
@@ -162,7 +173,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.13",
@@ -174,7 +186,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.14",
@@ -186,7 +199,8 @@
      "formulasHint": [
       "桂枝加葛根湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.15",
@@ -196,7 +210,8 @@
      "text": "太陽病，下之後，其氣上沖者，可與桂枝湯，方用前法，若不上沖者，不得與之。",
      "textSimp": "太阳病，下之后，其气上冲者，可与桂枝汤，方用前法，若不上冲者，不得与之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.16",
@@ -206,7 +221,8 @@
      "text": "太陽病三日，巳發汗，若吐、若下、若溫針，仍不解者，此為壞病，桂枝不中與之也。觀其脈證，知犯何逆，隨證治之。桂枝本為解肌，若其人脈浮緊，發熱汗不出者，不可與之也。常須識此，勿令誤也。",
      "textSimp": "太阳病三日，巳发汗，若吐、若下、若温针，仍不解者，此为坏病，桂枝不中与之也。观其脉证，知犯何逆，随证治之。桂枝本为解肌，若其人脉浮紧，发热汗不出者，不可与之也。常须识此，勿令误也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.17",
@@ -216,7 +232,8 @@
      "text": "若酒客病，不可與桂枝湯，得之則嘔，以酒客不喜甘故也。",
      "textSimp": "若酒客病，不可与桂枝汤，得之则呕，以酒客不喜甘故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.18",
@@ -226,7 +243,8 @@
      "text": "喘家作，桂枝湯加厚樸、杏子佳。",
      "textSimp": "喘家作，桂枝汤加厚朴、杏子佳。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.19",
@@ -236,7 +254,8 @@
      "text": "凡服桂枝湯吐者，其後必吐膿血也。",
      "textSimp": "凡服桂枝汤吐者，其后必吐脓血也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.20",
@@ -248,7 +267,8 @@
      "formulasHint": [
       "桂枝加附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.21",
@@ -260,7 +280,8 @@
      "formulasHint": [
       "桂枝去芍藥湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.22",
@@ -272,7 +293,8 @@
      "formulasHint": [
       "桂枝去芍藥加附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.23",
@@ -284,7 +306,8 @@
      "formulasHint": [
       "桂枝麻黃各半湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.24",
@@ -294,7 +317,8 @@
      "text": "太陽病，初服桂枝湯，反煩不解者，先刺風池、風府，卻與桂枝湯則愈。",
      "textSimp": "太阳病，初服桂枝汤，反烦不解者，先刺风池、风府，却与桂枝汤则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.25",
@@ -306,7 +330,8 @@
      "formulasHint": [
       "桂枝二麻黃一湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.26",
@@ -318,7 +343,8 @@
      "formulasHint": [
       "白虎加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.27",
@@ -330,7 +356,8 @@
      "formulasHint": [
       "桂枝二越婢一湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.28",
@@ -342,7 +369,8 @@
      "formulasHint": [
       "桂枝去桂加茯苓白术湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.29",
@@ -354,7 +382,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     },
     {
      "id": "伤寒5.30",
@@ -366,7 +395,8 @@
      "formulasHint": [
       "甘草乾薑湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批1.md"
     }
    ]
   },
@@ -387,7 +417,8 @@
      "formulasHint": [
       "葛根湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.32",
@@ -399,7 +430,8 @@
      "formulasHint": [
       "葛根湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.33",
@@ -411,7 +443,8 @@
      "formulasHint": [
       "葛根加半夏湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.34",
@@ -423,7 +456,8 @@
      "formulasHint": [
       "葛根黃芩黃連湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.35",
@@ -435,7 +469,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.36",
@@ -447,7 +482,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.37",
@@ -459,7 +495,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.38",
@@ -471,7 +508,8 @@
      "formulasHint": [
       "大青龍湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.39",
@@ -481,7 +519,8 @@
      "text": "傷寒、脈浮緩，身不疼，但重，乍有輕時，無少陰證者，大青龍湯發之。",
      "textSimp": "伤寒、脉浮缓，身不疼，但重，乍有轻时，无少阴证者，大青龙汤发之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.40",
@@ -493,7 +532,8 @@
      "formulasHint": [
       "小青龍湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.41",
@@ -505,7 +545,8 @@
      "formulasHint": [
       "小青龍湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.42",
@@ -517,7 +558,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.43",
@@ -529,7 +571,8 @@
      "formulasHint": [
       "桂枝加厚樸杏子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.44",
@@ -541,7 +584,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.45",
@@ -553,7 +597,8 @@
      "formulasHint": [
       "桂技湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.46",
@@ -565,7 +610,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.47",
@@ -575,7 +621,8 @@
      "text": "太陽病，脈浮緊，發熱，身無汗，自衄者愈。",
      "textSimp": "太阳病，脉浮紧，发热，身无汗，自衄者愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.48",
@@ -585,7 +632,8 @@
      "text": "二陽並病，太陽初得病時，發其汗，汗先出不徹，因轉屬陽明，續向微汗出，不惡寒。若太陽病證不罷者，不可下，下之為逆，如此可小發汗。設面色緣緣正赤者，陽氣佛鬱在表，當解之熏之。若發汗不徹，不足言，陽氣佛鬱不得越，當汗不汗，其人躁煩，不知痛處，乍在腹中，乍在四肢，按之不可得，其人短氣但坐，以汗出不徹故也，更發汗則愈。何以知汗山不徹？以脈澀故知也。",
      "textSimp": "二阳并病，太阳初得病时，发其汗，汗先出不彻，因转属阳明，续向微汗出，不恶寒。若太阳病证不罢者，不可下，下之为逆，如此可小发汗。设面色缘缘正赤者，阳气佛郁在表，当解之熏之。若发汗不彻，不足言，阳气佛郁不得越，当汗不汗，其人躁烦，不知痛处，乍在腹中，乍在四肢，按之不可得，其人短气但坐，以汗出不彻故也，更发汗则愈。何以知汗山不彻？以脉涩故知也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.49",
@@ -595,7 +643,8 @@
      "text": "脈浮數者，法當汗出而愈，若下之，身重，心悸者，不可發汗，當自汗出乃解。所以然者，尺中脈微，此里虛，須表裡實，津液自和，便自汗出愈。",
      "textSimp": "脉浮数者，法当汗出而愈，若下之，身重，心悸者，不可发汗，当自汗出乃解。所以然者，尺中脉微，此里虚，须表里实，津液自和，便自汗出愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.50",
@@ -605,7 +654,8 @@
      "text": "脈浮緊者，法當身疼痛，宜以汗解之。假令尺中遲者，不可發汗。何以知然？以榮氣不足，血少故也。",
      "textSimp": "脉浮紧者，法当身疼痛，宜以汗解之。假令尺中迟者，不可发汗。何以知然？以荣气不足，血少故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.51",
@@ -617,7 +667,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.52",
@@ -629,7 +680,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.53",
@@ -639,7 +691,8 @@
      "text": "病常自汗出者，此為榮氣和。榮氣和者，外不諧，以衛氣不共榮氣諧和故爾。以榮行脈中，衛行脈外，複發其汗，榮衛和則愈。",
      "textSimp": "病常自汗出者，此为荣气和。荣气和者，外不谐，以卫气不共荣气谐和故尔。以荣行脉中，卫行脉外，复发其汗，荣卫和则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.54",
@@ -651,7 +704,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.55",
@@ -663,7 +717,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.56",
@@ -675,7 +730,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.57",
@@ -687,7 +743,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.58",
@@ -697,7 +754,8 @@
      "text": "凡病，若發許，若吐，若下，若亡血、亡津液，陰陽自和者，必自愈。",
      "textSimp": "凡病，若发许，若吐，若下，若亡血、亡津液，阴阳自和者，必自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.59",
@@ -707,7 +765,8 @@
      "text": "大下之後，複發汗，小便不利者，亡津液故也。勿治之，得小便利，必自愈。",
      "textSimp": "大下之后，复发汗，小便不利者，亡津液故也。勿治之，得小便利，必自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.60",
@@ -717,7 +776,8 @@
      "text": "下之後，複發汗，必振寒，脈微細。所以然者，以內外俱虛故也。",
      "textSimp": "下之后，复发汗，必振寒，脉微细。所以然者，以内外俱虚故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.61",
@@ -729,7 +789,8 @@
      "formulasHint": [
       "乾薑附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.62",
@@ -741,7 +802,8 @@
      "formulasHint": [
       "藥生薑各一兩人參三兩新加湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.63",
@@ -754,7 +816,8 @@
       "行桂枝湯",
       "麻黃杏仁甘草石膏湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.64",
@@ -766,7 +829,8 @@
      "formulasHint": [
       "桂枝甘草湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.65",
@@ -778,7 +842,8 @@
      "formulasHint": [
       "茯苓桂枝甘草大棗湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.66",
@@ -790,7 +855,8 @@
      "formulasHint": [
       "厚樸生薑半夏甘草人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.67",
@@ -802,7 +868,8 @@
      "formulasHint": [
       "茯苓桂枝白術甘草湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.68",
@@ -814,7 +881,8 @@
      "formulasHint": [
       "芍藥甘草附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.69",
@@ -826,7 +894,8 @@
      "formulasHint": [
       "茯苓四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.70",
@@ -838,7 +907,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.71",
@@ -850,7 +920,8 @@
      "formulasHint": [
       "五苓散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.72",
@@ -862,7 +933,8 @@
      "formulasHint": [
       "五苓散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.73",
@@ -875,7 +947,8 @@
       "五苓散",
       "茯苓甘草湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.74",
@@ -887,7 +960,8 @@
      "formulasHint": [
       "五苓散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.75",
@@ -897,7 +971,8 @@
      "text": "未持脈時，病人手叉自冒心，師因教試令咳而不咳者，此必兩耳聾無聞也，所以然者，以重發汗虛故如此。發汗後，飲水多，必喘；以水灌之，亦喘。",
      "textSimp": "未持脉时，病人手叉自冒心，师因教试令咳而不咳者，此必两耳聋无闻也，所以然者，以重发汗虚故如此。发汗后，饮水多，必喘；以水灌之，亦喘。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.76",
@@ -911,7 +986,8 @@
       "梔子甘草豉湯",
       "梔子生薑豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.77",
@@ -923,7 +999,8 @@
      "formulasHint": [
       "梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.78",
@@ -935,7 +1012,8 @@
      "formulasHint": [
       "梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.79",
@@ -947,7 +1025,8 @@
      "formulasHint": [
       "梔子厚樸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.80",
@@ -959,7 +1038,8 @@
      "formulasHint": [
       "梔子乾薑湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.81",
@@ -969,7 +1049,8 @@
      "text": "凡用梔子湯，病人舊微溏者，不可與服之。",
      "textSimp": "凡用栀子汤，病人旧微溏者，不可与服之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.82",
@@ -981,7 +1062,8 @@
      "formulasHint": [
       "真武湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.83",
@@ -991,7 +1073,8 @@
      "text": "咽喉乾燥者，不可發汗。",
      "textSimp": "咽喉干燥者，不可发汗。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.84",
@@ -1001,7 +1084,8 @@
      "text": "淋家，不可發汗，汗出必便血。",
      "textSimp": "淋家，不可发汗，汗出必便血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.85",
@@ -1011,7 +1095,8 @@
      "text": "瘡家，雖身疼痛，不可發汗，發汗則痙。",
      "textSimp": "疮家，虽身疼痛，不可发汗，发汗则痉。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.86",
@@ -1021,7 +1106,8 @@
      "text": "衄家，不可發汗，汗出，必額上陷脈急緊，直視不能目旬，不得眠。",
      "textSimp": "衄家，不可发汗，汗出，必额上陷脉急紧，直視不能目旬，不得眠。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.87",
@@ -1031,7 +1117,8 @@
      "text": "亡血家，不可發汗，發汗則寒慄而振。",
      "textSimp": "亡血家，不可发汗，发汗则寒栗而振。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.88",
@@ -1043,7 +1130,8 @@
      "formulasHint": [
       "禹餘糧丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.89",
@@ -1053,7 +1141,8 @@
      "text": "病人有寒，複發汗，胃中冷，必吐蚘。",
      "textSimp": "病人有寒，复发汗，胃中冷，必吐蛔。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.90",
@@ -1063,7 +1152,8 @@
      "text": "本發汗而復下之，此為逆也，若先發汗，治不為逆。本先下之而反汗之，為逆；若先下之，治不為逆。",
      "textSimp": "本发汗而复下之，此为逆也，若先发汗，治不为逆。本先下之而反汗之，为逆；若先下之，治不为逆。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.91",
@@ -1076,7 +1166,8 @@
       "四逆湯",
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.92",
@@ -1086,7 +1177,8 @@
      "text": "病發熱頭痛。脈反沉，若不差，身體疼痛，當救其里。",
      "textSimp": "病发热头痛。脉反沉，若不差，身体疼痛，当救其里。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.93",
@@ -1096,7 +1188,8 @@
      "text": "太陽病，先下而不愈，因複發汗，以此表裡俱虛，其人因致冒，冒家汗出自愈。所以然者，汗出表和故也，里未和，然後復下之。",
      "textSimp": "太阳病，先下而不愈，因复发汗，以此表里俱虚，其人因致冒，冒家汗出自愈。所以然者，汗出表和故也，里未和，然后复下之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.94",
@@ -1108,7 +1201,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.95",
@@ -1120,7 +1214,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.96",
@@ -1132,7 +1227,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.97",
@@ -1144,7 +1240,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.98",
@@ -1154,7 +1251,8 @@
      "text": "得病六七日，脈遲浮弱，惡風寒，手足溫，醫二三下之，不能食，而脅下滿痛，面目及身黃，頸項強，小便難者，與柴胡湯，後必下重。本渴飲水而嘔者，柴胡不中與也，食谷者噦。",
      "textSimp": "得病六七日，脉迟浮弱，恶风寒，手足温，医二三下之，不能食，而胁下满痛，面目及身黄，颈项强，小便难者，与柴胡汤，后必下重。本渴饮水而呕者，柴胡不中与也，食谷者哕。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.99",
@@ -1166,7 +1264,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.100",
@@ -1178,7 +1277,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.101",
@@ -1190,7 +1290,8 @@
      "formulasHint": [
       "柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.102",
@@ -1202,7 +1303,8 @@
      "formulasHint": [
       "小建中湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.103",
@@ -1214,7 +1316,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.104",
@@ -1226,7 +1329,8 @@
      "formulasHint": [
       "柴胡加芒硝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.105",
@@ -1238,7 +1342,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.106",
@@ -1250,7 +1355,8 @@
      "formulasHint": [
       "桃核承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.107",
@@ -1262,7 +1368,8 @@
      "formulasHint": [
       "柴胡加龍骨牡蠣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.108",
@@ -1272,7 +1379,8 @@
      "text": "傷寒腹滿譫語，寸口脈浮而緊，此肝乘脾也，名曰縱，刺其門。",
      "textSimp": "伤寒腹满谵语，寸口脉浮而紧，此肝乘脾也，名曰纵，刺其门。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.109",
@@ -1282,7 +1390,8 @@
      "text": "傷寒發熱，嗇嗇惡寒，大渴欲飲水，其腹必滿，自汗出，小便利，其病欲解，此肝乘肺也，名曰橫，刺期門。",
      "textSimp": "伤寒发热，啬啬恶寒，大渴欲饮水，其腹必满，自汗出，小便利，其病欲解，此肝乘肺也，名曰横，刺期门。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.110",
@@ -1292,7 +1401,8 @@
      "text": "太陽病二日，反躁，反熨其背而大汗出，火熱入胃，胃中水竭，躁煩，必發譫語；十餘日，振慄，自下利者，此為欲解也。故其汗從腰以下不得汗，欲小便不得，反嘔欲失溲，足下惡風，大便硬，小便當數而反不數及不多；大便已，頭卓然而痛，其人足心必熱，谷氣下流故也。",
      "textSimp": "太阳病二日，反躁，反熨其背而大汗出，火热入胃，胃中水竭，躁烦，必发谵语；十余日，振栗，自下利者，此为欲解也。故其汗从腰以下不得汗，欲小便不得，反呕欲失溲，足下恶风，大便硬，小便当数而反不数及不多；大便已，头卓然而痛，其人足心必热，谷气下流故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.111",
@@ -1302,7 +1412,8 @@
      "text": "太陽病中風，以火劫發汗，邪風被火熱，血氣流溢，失其常度。兩陽相熏灼，其身發黃，陽盛則欲衄，陰虛小便難，陰陽俱虛竭，身體則枯燥。但頭汗出，劑頸而還，腹滿微喘，口乾咽爛，或不大便。久則譫語，甚者至噦，手足躁擾，捻衣摸底，小便利者，其人可治。",
      "textSimp": "太阳病中风，以火劫发汗，邪风被火热，血气流溢，失其常度。两阳相熏灼，其身发黄，阳盛则欲衄，阴虚小便难，阴阳俱虚竭，身体则枯燥。但头汗出，剂颈而还，腹满微喘，口干咽烂，或不大便。久则谵语，甚者至哕，手足躁扰，捻衣摸底，小便利者，其人可治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.112",
@@ -1314,7 +1425,8 @@
      "formulasHint": [
       "去芍藥加蜀漆牡蠣龍骨救逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.113",
@@ -1324,7 +1436,8 @@
      "text": "形作傷寒，其脈不弦緊而弱，弱者必渴，被火必譫語，弱者發熱脈浮，解之，當汗出愈。",
      "textSimp": "形作伤寒，其脉不弦紧而弱，弱者必渴，被火必谵语，弱者发热脉浮，解之，当汗出愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.114",
@@ -1334,7 +1447,8 @@
      "text": "太陽病，以火熏之，不得汗，其人必躁。到經不解，必清血，名為火邪。",
      "textSimp": "太阳病，以火熏之，不得汗，其人必躁。到经不解，必清血，名为火邪。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.115",
@@ -1344,7 +1458,8 @@
      "text": "脈浮熱甚，而反灸之，此為實。實以虛治，因火而動，必咽燥吐血。",
      "textSimp": "脉浮热甚，而反灸之，此为实。实以虚治，因火而动，必咽燥吐血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.116",
@@ -1354,7 +1469,8 @@
      "text": "微數之脈，鎮不可灸。因火為邪，則為煩逆，追虛逐實，血散脈中，火氣雖微，內攻有力，焦骨傷筋，血難復也。脈浮，宜以汗解，用火灸之，邪無從出，因火而盛，病從腰以下，必重而痹，名火逆也。欲自解者，必當先煩，煩乃有汗而解，何以知之？脈浮，故知汗出解。",
      "textSimp": "微数之脉，镇不可灸。因火为邪，则为烦逆，追虚逐实，血散脉中，火气虽微，内攻有力，焦骨伤筋，血难复也。脉浮，宜以汗解，用火灸之，邪无从出，因火而盛，病从腰以下，必重而痹，名火逆也。欲自解者，必当先烦，烦乃有汗而解，何以知之？脉浮，故知汗出解。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.117",
@@ -1364,7 +1480,8 @@
      "text": "燒針令其汗，針處被寒，核起而赤者，必發奔豚，氣從少腹上沖心者，灸其核上各一壯，與桂枝加桂湯，更加桂二兩也。",
      "textSimp": "烧针令其汗，针处被寒，核起而赤者，必发奔豚，气从少腹上冲心者，灸其核上各一壮，与桂枝加桂汤，更加桂二两也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.118",
@@ -1376,7 +1493,8 @@
      "formulasHint": [
       "桂枝甘草龍骨牡蠣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.119",
@@ -1386,7 +1504,8 @@
      "text": "太陽傷寒者，加溫針，必驚也。",
      "textSimp": "太阳伤寒者，加温针，必惊也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.120",
@@ -1396,7 +1515,8 @@
      "text": "太陽病，當惡寒發熱，今自汗出，反不惡寒發熱，關上脈細數者，以醫吐之過也。一二日吐之者，腹中飢，口不能食，三四日吐之者，不喜糜粥，飲食冷食，朝食暮吐，以醫吐之所致也，此為小逆。",
      "textSimp": "太阳病，当恶寒发热，今自汗出，反不恶寒发热，关上脉细数者，以医吐之过也。一二日吐之者，腹中饥，口不能食，三四日吐之者，不喜糜粥，饮食冷食，朝食暮吐，以医吐之所致也，此为小逆。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.121",
@@ -1406,7 +1526,8 @@
      "text": "太陽病吐之，但太陽病當惡寒，今反不惡寒，不欲近衣，此為吐之內煩也。",
      "textSimp": "太阳病吐之，但太阳病当恶寒，今反不恶寒，不欲近衣，此为吐之内烦也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.122",
@@ -1416,7 +1537,8 @@
      "text": "病人脈數，數為熱，當消谷引食，而反吐者，此以發汗，令陽氣微，膈氣虛，脈乃數也。數為客熱。不能消谷，以胃中虛冷，故吐也。",
      "textSimp": "病人脉数，数为热，当消谷引食，而反吐者，此以发汗，令阳气微，膈气虚，脉乃数也。数为客热。不能消谷，以胃中虚冷，故吐也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.123",
@@ -1428,7 +1550,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.124",
@@ -1440,7 +1563,8 @@
      "formulasHint": [
       "抵當湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.125",
@@ -1452,7 +1576,8 @@
      "formulasHint": [
       "抵當湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.126",
@@ -1464,7 +1589,8 @@
      "formulasHint": [
       "抵當丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒6.127",
@@ -1474,7 +1600,8 @@
      "text": "太陽病，小便利者，以飲水多。必心下悸；小便少者，必苦裏急也。捲第四",
      "textSimp": "太阳病，小便利者，以饮水多。必心下悸；小便少者，必苦里急也。卷第四",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -1493,7 +1620,8 @@
      "text": "問曰：病有結胸，有藏結，其狀如何？按之痛，寸脈浮，關脈沉，名曰結胸也。",
      "textSimp": "问曰：病有结胸，有藏结，其状如何？按之痛，寸脉浮，关脉沉，名曰结胸也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.129",
@@ -1503,7 +1631,8 @@
      "text": "何謂藏結？答曰：如結胸狀，飲食如故，時時下利，寸脈浮，關脈四細沉緊，名曰藏結，舌上白胎滑者，難治。",
      "textSimp": "何谓藏结？答曰：如结胸状，饮食如故，时时下利，寸脉浮，关脉四细沉紧，名曰藏结，舌上白胎滑者，难治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.130",
@@ -1513,7 +1642,8 @@
      "text": "藏結無陽證，不住來寒熱，其人反靜，舌上胎滑者，不可攻也。",
      "textSimp": "藏结无阳证，不住来寒热，其人反静，舌上胎滑者，不可攻也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.131",
@@ -1525,7 +1655,8 @@
      "formulasHint": [
       "大陷胸丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.132",
@@ -1535,7 +1666,8 @@
      "text": "結胸證，其脈浮大者，不可下，下之則死。",
      "textSimp": "结胸证，其脉浮大者，不可下，下之则死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.133",
@@ -1545,7 +1677,8 @@
      "text": "結胸證悉具，煩躁者亦死。",
      "textSimp": "结胸证悉具，烦躁者亦死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.134",
@@ -1557,7 +1690,8 @@
      "formulasHint": [
       "大陷胸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.135",
@@ -1569,7 +1703,8 @@
      "formulasHint": [
       "大陷胸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.136",
@@ -1582,7 +1717,8 @@
       "大柴胡湯",
       "大陷胸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.137",
@@ -1594,7 +1730,8 @@
      "formulasHint": [
       "大陷胸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.138",
@@ -1606,7 +1743,8 @@
      "formulasHint": [
       "小陷胸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.139",
@@ -1616,7 +1754,8 @@
      "text": "太陽病二三日，不能卧，但欲起，心下必結，脈微弱者，此本有寒分也。反下之，若利止。必作結胸；未止者，四日復下之，此作協熱利也。",
      "textSimp": "太阳病二三日，不能卧，但欲起，心下必结，脉微弱者，此本有寒分也。反下之，若利止。必作结胸；未止者，四日复下之，此作协热利也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.140",
@@ -1626,7 +1765,8 @@
      "text": "太陽病下之，其脈促，不結胸者，此為欲解也；脈浮者，必結胸，脈緊者，必咽痛；脈弦者，必兩脅拘急；脈細數者，頭痛未止；脈沉緊者，必欲嘔，脈沉滑者，協熱利；脈浮滑者，必下血。",
      "textSimp": "太阳病下之，其脉促，不结胸者，此为欲解也；脉浮者，必结胸，脉紧者，必咽痛；脉弦者，必两胁拘急；脉细数者，头痛未止；脉沉紧者，必欲呕，脉沉滑者，协热利；脉浮滑者，必下血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.141",
@@ -1640,7 +1780,8 @@
       "五苓散",
       "三物小白散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.142",
@@ -1650,7 +1791,8 @@
      "text": "太陽與少陽並病，頭項強痛，或眩冒，時如結胸，心下痞硬者，當刺大椎第一間、肺俞、肝俞，慎不可發汗；發汗則譫語，脈弦，五日以請不止，當刺期間。",
      "textSimp": "太阳与少阳并病，头项强痛，或眩冒，时如结胸，心下痞硬者，当刺大椎第一间、肺俞、肝俞，慎不可发汗；发汗则谵语，脉弦，五日以请不止，当刺期间。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.143",
@@ -1660,7 +1802,8 @@
      "text": "婦人中風，發熱惡寒，經水適來，得之七八日，熱除而脈返身涼，胸脅下滿如結胸狀，譫語者。此為熱入血室也。當刺期門，隨其實而取之。",
      "textSimp": "妇人中风，发热恶寒，经水适来，得之七八日，热除而脉返身凉，胸胁下满如结胸状，谵语者。此为热入血室也。当刺期门，随其实而取之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.144",
@@ -1672,7 +1815,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.145",
@@ -1682,7 +1826,8 @@
      "text": "婦人傷寒，發熱，經水適來，晝日明瞭，暮則譫語如見鬼狀者，此為熱入血室。無犯胃氣及上二焦，必自愈。",
      "textSimp": "妇人伤寒，发热，经水适来，昼日明了，暮则谵语如见鬼状者，此为热入血室。无犯胃气及上二焦，必自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.146",
@@ -1694,7 +1839,8 @@
      "formulasHint": [
       "柴胡桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.147",
@@ -1706,7 +1852,8 @@
      "formulasHint": [
       "柴胡桂枝乾薑湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.148",
@@ -1718,7 +1865,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.149",
@@ -1732,7 +1880,8 @@
       "大陷胸湯",
       "半夏瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.150",
@@ -1742,7 +1891,8 @@
      "text": "太陽少陽並病，而反下之，成結胸，心下硬，下利不止，水漿不下，其人心煩。",
      "textSimp": "太阳少阳并病，而反下之，成结胸，心下硬，下利不止，水浆不下，其人心烦。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.151",
@@ -1752,7 +1902,8 @@
      "text": "脈浮而緊，而復下之，緊反入裏則作痞。按之自濡，但氣痞耳。",
      "textSimp": "脉浮而紧，而复下之，紧反入里则作痞。按之自濡，但气痞耳。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.152",
@@ -1764,7 +1915,8 @@
      "formulasHint": [
       "十棗湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.153",
@@ -1774,7 +1926,8 @@
      "text": "太陽病，醫發汗，遂發熱惡寒，因復下之，心下痞，表裡俱虛。陰陽氣並竭，無陽則陰獨，復加燒針，因胸煩，面色青黃。膚瞤者，難治。今色微黃，手足溫者易愈。",
      "textSimp": "太阳病，医发汗，遂发热恶寒，因复下之，心下痞，表里俱虚。阴阳气并竭，无阳则阴独，复加烧针，因胸烦，面色青黄。肤瞤者，难治。今色微黄，手足温者易愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.154",
@@ -1786,7 +1939,8 @@
      "formulasHint": [
       "大黃黃連瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.155",
@@ -1798,7 +1952,8 @@
      "formulasHint": [
       "附子瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.156",
@@ -1811,7 +1966,8 @@
       "瀉心湯",
       "五苓散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.157",
@@ -1823,7 +1979,8 @@
      "formulasHint": [
       "生薑瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.158",
@@ -1835,7 +1992,8 @@
      "formulasHint": [
       "甘草瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.159",
@@ -1847,7 +2005,8 @@
      "formulasHint": [
       "赤石脂禹餘糧湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.160",
@@ -1857,7 +2016,8 @@
      "text": "傷寒吐下後，發汗，虛煩，脈甚微，八九日心下痞硬，脅下痛，氣上衝咽喉，眩冒，經脈動惕者，久而成痿。",
      "textSimp": "伤寒吐下后，发汗，虚烦，脉甚微，八九日心下痞硬，胁下痛，气上冲咽喉，眩冒，经脉动惕者，久而成痿。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.161",
@@ -1869,7 +2029,8 @@
      "formulasHint": [
       "旋覆代赭湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.162",
@@ -1882,7 +2043,8 @@
       "行桂枝湯",
       "麻黃杏子甘草石膏湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.163",
@@ -1894,7 +2056,8 @@
      "formulasHint": [
       "桂枝人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.164",
@@ -1906,7 +2069,8 @@
      "formulasHint": [
       "大黃黃連瀉心湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.165",
@@ -1918,7 +2082,8 @@
      "formulasHint": [
       "大柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.166",
@@ -1930,7 +2095,8 @@
      "formulasHint": [
       "瓜蒂散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.167",
@@ -1940,7 +2106,8 @@
      "text": "病脅下素有痞，連在臍旁，痛引少腹人陰筋者，此名藏結，死。",
      "textSimp": "病胁下素有痞，连在脐旁，痛引少腹人阴筋者，此名藏结，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.168",
@@ -1952,7 +2119,8 @@
      "formulasHint": [
       "白虎加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.169",
@@ -1964,7 +2132,8 @@
      "formulasHint": [
       "白虎加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.170",
@@ -1976,7 +2145,8 @@
      "formulasHint": [
       "白虎加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.171",
@@ -1986,7 +2156,8 @@
      "text": "太陽少陽並病，心下硬，頸項強而眩者，當刺大椎、肺愈、肝愈。慎勿下之。",
      "textSimp": "太阳少阳并病，心下硬，颈项强而眩者，当刺大椎、肺愈、肝愈。慎勿下之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.172",
@@ -1999,7 +2170,8 @@
       "黃芩湯",
       "黃芩加半夏生薑湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.173",
@@ -2011,7 +2183,8 @@
      "formulasHint": [
       "黃連湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.174",
@@ -2024,7 +2197,8 @@
       "桂校附子湯",
       "去桂加白術湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.175",
@@ -2036,7 +2210,8 @@
      "formulasHint": [
       "甘草附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.176",
@@ -2048,7 +2223,8 @@
      "formulasHint": [
       "白虎湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.177",
@@ -2060,7 +2236,8 @@
      "formulasHint": [
       "炙甘草湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒7.178",
@@ -2070,7 +2247,8 @@
      "text": "脈按之來緩，時一止得來者，名曰結。又脈來動而中止，更來小數，中有還者反動，名曰結陰也。脈來動而中止，不能自還，因而復動者，名曰代陰也。得此脈者，必難治。捲第五",
      "textSimp": "脉按之来缓，时一止得来者，名曰结。又脉来动而中止，更来小数，中有还者反动，名曰结阴也。脉来动而中止，不能自还，因而复动者，名曰代阴也。得此脉者，必难治。卷第五",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -2089,7 +2267,8 @@
      "text": "問曰：病有太陽陽明，有正陽陽明，有少陽陽明，何謂也？答曰：太陽陽明者，脾約是也，正陽陽明者，胃家實是也；少陽陽明者，發汗利小便已，胃中燥煩實，大便難是也。",
      "textSimp": "问曰：病有太阳阳明，有正阳阳明，有少阳阳明，何谓也？答曰：太阳阳明者，脾约是也，正阳阳明者，胃家实是也；少阳阳明者，发汗利小便已，胃中燥烦实，大便难是也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.180",
@@ -2099,7 +2278,8 @@
      "text": "陽明之為病，胃家實是也。",
      "textSimp": "阳明之为病，胃家实是也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.181",
@@ -2109,7 +2289,8 @@
      "text": "問曰：何緣得陽明病？答曰：太陽病，若發汗，若下，若利小便，此亡津液，胃中乾燥，因轉屬陽明，不更衣，內實，大便難者，此名陽明也。",
      "textSimp": "问曰：何缘得阳明病？答曰：太阳病，若发汗，若下，若利小便，此亡津液，胃中干燥，因转属阳明，不更衣，内实，大便难者，此名阳明也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.182",
@@ -2119,7 +2300,8 @@
      "text": "問曰：陽明病外證雲何？答曰：身熱，汗自出，不惡寒反惡熱也。",
      "textSimp": "问曰：阳明病外证云何？答曰：身热，汗自出，不恶寒反恶热也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.183",
@@ -2129,7 +2311,8 @@
      "text": "問曰：病有得之一日，不發熱而惡寒者，何也？答曰：雖得之一日，惡寒將自罷，即自汗出而惡熱也。",
      "textSimp": "问曰：病有得之一日，不发热而恶寒者，何也？答曰：虽得之一日，恶寒将自罢，即自汗出而恶热也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.184",
@@ -2139,7 +2322,8 @@
      "text": "問曰：惡寒何故自罷？答曰：陽明居中主土也，萬物所歸，無所復傳，始雖惡寒，二日自上，此為陽明病也。",
      "textSimp": "问曰：恶寒何故自罢？答曰：阳明居中主土也，万物所归，无所复传，始虽恶寒，二日自上，此为阳明病也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.185",
@@ -2149,7 +2333,8 @@
      "text": "本太陽，初得病時，發其汗，汗先出不徹，因轉屬陽明也。傷寒發熱無汗，嘔不能食，而反汗出濈濈然者，是轉降臨陽明也。",
      "textSimp": "本太阳，初得病时，发其汗，汗先出不彻，因转属阳明也。伤寒发热无汗，呕不能食，而反汗出濈濈然者，是转降临阳明也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.186",
@@ -2159,7 +2344,8 @@
      "text": "傷寒三日，陽明脈大。",
      "textSimp": "伤寒三日，阳明脉大。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.187",
@@ -2169,7 +2355,8 @@
      "text": "傷寒脈浮而緩，手足自溫者，是為系在太陽。太陰者，身當發黃，若小便自利者，不能發黃。至七八日，大便硬者，為陽明病也。",
      "textSimp": "伤寒脉浮而缓，手足自温者，是为系在太阳。太阴者，身当发黄，若小便自利者，不能发黄。至七八日，大便硬者，为阳明病也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.188",
@@ -2179,7 +2366,8 @@
      "text": "傷寒轉系陽明者，其人濈然微汗出也。",
      "textSimp": "伤寒转系阳明者，其人濈然微汗出也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.189",
@@ -2189,7 +2377,8 @@
      "text": "陽明中風，口苦咽乾，腹滿微喘，發熱惡寒，脈浮而緊。若下之，則腹滿，小便難也。",
      "textSimp": "阳明中风，口苦咽干，腹满微喘，发热恶寒，脉浮而紧。若下之，则腹满，小便难也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.190",
@@ -2199,7 +2388,8 @@
      "text": "陽明病，若能食，名中風，不能食，名中寒。",
      "textSimp": "阳明病，若能食，名中风，不能食，名中寒。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.191",
@@ -2209,7 +2399,8 @@
      "text": "陽明病，若中寒者，不能食，小便不利，手足濈然汗出，此欲作固瘕，必大便初硬後溏。所以然者，以胃中冷，水谷不別故也。",
      "textSimp": "阳明病，若中寒者，不能食，小便不利，手足濈然汗出，此欲作固瘕，必大便初硬后溏。所以然者，以胃中冷，水谷不别故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.192",
@@ -2219,7 +2410,8 @@
      "text": "陽明病，初欲食，小便反不利，大便自調，其人骨節疼，翕翕如有熱狀，奄然發狂，濈然汗出而解者，此水不勝谷氣，與汗共並，脈緊則愈。",
      "textSimp": "阳明病，初欲食，小便反不利，大便自调，其人骨节疼，翕翕如有热状，奄然发狂，濈然汗出而解者，此水不胜谷气，与汗共并，脉紧则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.193",
@@ -2229,7 +2421,8 @@
      "text": "陽明病，欲解時，從申至戌上。",
      "textSimp": "阳明病，欲解时，从申至戌上。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.194",
@@ -2239,7 +2432,8 @@
      "text": "陽明病，不能食，攻其熱必噦。所以然者，胃中虛冷故也；以其人本虛，攻其熱必噦。",
      "textSimp": "阳明病，不能食，攻其热必哕。所以然者，胃中虚冷故也；以其人本虚，攻其热必哕。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.195",
@@ -2249,7 +2443,8 @@
      "text": "陽明病，脈遲，食難用飽，飽則微煩頭眩，必小便難，此欲作谷癉。雖下之，腹滿如故，所以然者，脈遲故也。",
      "textSimp": "阳明病，脉迟，食难用饱，饱则微烦头眩，必小便难，此欲作谷疸。虽下之，腹满如故，所以然者，脉迟故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.196",
@@ -2259,7 +2454,8 @@
      "text": "陽明病，法多汗，反無汗，其身如蟲行皮中狀者，此以久虛故也。",
      "textSimp": "阳明病，法多汗，反无汗，其身如虫行皮中状者，此以久虚故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.197",
@@ -2269,7 +2465,8 @@
      "text": "陽明病，反無汗而小便利，二三日嘔而咳，手足厥者，必苦頭痛，若不咳，不嘔，手足不厥者，頭不痛。",
      "textSimp": "阳明病，反无汗而小便利，二三日呕而咳，手足厥者，必苦头痛，若不咳，不呕，手足不厥者，头不痛。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.198",
@@ -2279,7 +2476,8 @@
      "text": "陽明病，但頭眩，不惡寒，故能食而咳，其人咽必痛，若不咳者，咽不痛。",
      "textSimp": "阳明病，但头眩，不恶寒，故能食而咳，其人咽必痛，若不咳者，咽不痛。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.199",
@@ -2289,7 +2487,8 @@
      "text": "陽明病無汗，小便不利，心中懊農者，身心發黃。",
      "textSimp": "阳明病无汗，小便不利，心中懊农者，身心发黄。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.200",
@@ -2299,7 +2498,8 @@
      "text": "陽明病，被火，額上微汗出而小便不利者，必發黃。",
      "textSimp": "阳明病，被火，额上微汗出而小便不利者，必发黄。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.201",
@@ -2309,7 +2509,8 @@
      "text": "陽明病，脈浮而緊者，必潮熱，發作有時，但浮者，必盜汗出。",
      "textSimp": "阳明病，脉浮而紧者，必潮热，发作有时，但浮者，必盗汗出。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.202",
@@ -2319,7 +2520,8 @@
      "text": "陽明病，口燥但欲漱水，不欲咽者，此必衄。",
      "textSimp": "阳明病，口燥但欲漱水，不欲咽者，此必衄。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.203",
@@ -2329,7 +2531,8 @@
      "text": "陽明病，本自汗出，醫更重發汗，病已差，尚微煩不了了者，此必大便硬故也。以亡津液，胃中乾燥，故令大便硬。當問其小便日幾行，若本小便日三四行，今日再行，故知大便不久出，今為小便數少，以津液當還入胃中，故知不久必大便也。",
      "textSimp": "阳明病，本自汗出，医更重发汗，病已差，尚微烦不了了者，此必大便硬故也。以亡津液，胃中干燥，故令大便硬。当问其小便日几行，若本小便日三四行，今日再行，故知大便不久出，今为小便数少，以津液当还入胃中，故知不久必大便也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.204",
@@ -2339,7 +2542,8 @@
      "text": "傷寒嘔多，雖有陽明病證，不可攻之。",
      "textSimp": "伤寒呕多，虽有阳明病证，不可攻之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.205",
@@ -2349,7 +2553,8 @@
      "text": "陽明病，心下硬滿者，不可攻之，攻之利遂不止者死，利止者愈。",
      "textSimp": "阳明病，心下硬满者，不可攻之，攻之利遂不止者死，利止者愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.206",
@@ -2359,7 +2564,8 @@
      "text": "陽明病，面合色赤，不可攻之；攻之必發熱，色黃者，小便不利也。",
      "textSimp": "阳明病，面合色赤，不可攻之；攻之必发热，色黄者，小便不利也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.207",
@@ -2371,7 +2577,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.208",
@@ -2383,7 +2590,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.209",
@@ -2393,7 +2601,8 @@
      "text": "陽明病，潮熱，大便微硬者，可與大承氣湯，不硬者，不可與之。若不大便六七，恐有燥屎，欲知之法，少與小承氣湯，湯入腹中，轉矢氣者，此有燥屎也，乃可攻之；若不轉矢氣者，此但初頭硬，後必溏，不可攻之，攻之必脹滿不能食也。欲飲水者，與水則噦。其後發熱者，必大便複復硬而少也，以小承氣湯和之。不轉矢氣者，慎不可攻也。",
      "textSimp": "阳明病，潮热，大便微硬者，可与大承气汤，不硬者，不可与之。若不大便六七，恐有燥屎，欲知之法，少与小承气汤，汤入腹中，转矢气者，此有燥屎也，乃可攻之；若不转矢气者，此但初头硬，后必溏，不可攻之，攻之必胀满不能食也。欲饮水者，与水则哕。其后发热者，必大便复复硬而少也，以小承气汤和之。不转矢气者，慎不可攻也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.210",
@@ -2403,7 +2612,8 @@
      "text": "夫實則譫語，虛則鄭聲。鄭聲者，重語也。直視譫語，喘滿者死，下利者亦死。",
      "textSimp": "夫实则谵语，虚则郑声。郑声者，重语也。直視谵语，喘满者死，下利者亦死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.211",
@@ -2413,7 +2623,8 @@
      "text": "發汗多，重發汗者，亡其陽，譫語，脈短者死，脈自和者不死。",
      "textSimp": "发汗多，重发汗者，亡其阳，谵语，脉短者死，脉自和者不死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.212",
@@ -2425,7 +2636,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.213",
@@ -2437,7 +2649,8 @@
      "formulasHint": [
       "小承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.214",
@@ -2449,7 +2662,8 @@
      "formulasHint": [
       "小承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.215",
@@ -2459,7 +2673,8 @@
      "text": "陽明病，譫語，有潮熱，反不能食者，胃中必有燥屎五六枚也，若能食者，但硬耳，宜大承氣湯下之。",
      "textSimp": "阳明病，谵语，有潮热，反不能食者，胃中必有燥屎五六枚也，若能食者，但硬耳，宜大承气汤下之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.216",
@@ -2469,7 +2684,8 @@
      "text": "陽明病，下血譫語者，此為熱入血室，但頭汗出者，刺期門，隨其實而瀉之，濈然汗出則愈。",
      "textSimp": "阳明病，下血谵语者，此为热入血室，但头汗出者，刺期门，随其实而泻之，濈然汗出则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.217",
@@ -2481,7 +2697,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.218",
@@ -2491,7 +2708,8 @@
      "text": "傷寒四五日，脈沉而喘滿，沉為在里。而反發其汗，津液越出，大便為難。表虛里實，久則譫語。",
      "textSimp": "伤寒四五日，脉沉而喘满，沉为在里。而反发其汗，津液越出，大便为难。表虚里实，久则谵语。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.219",
@@ -2503,7 +2721,8 @@
      "formulasHint": [
       "自虎湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.220",
@@ -2515,7 +2734,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.221",
@@ -2527,7 +2747,8 @@
      "formulasHint": [
       "梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.222",
@@ -2539,7 +2760,8 @@
      "formulasHint": [
       "白虎加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.223",
@@ -2551,7 +2773,8 @@
      "formulasHint": [
       "豬苓湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.224",
@@ -2563,7 +2786,8 @@
      "formulasHint": [
       "豬苓湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.225",
@@ -2575,7 +2799,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.226",
@@ -2585,7 +2810,8 @@
      "text": "若胃中虛冷，不能食者，飲水則噦。",
      "textSimp": "若胃中虚冷，不能食者，饮水则哕。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.227",
@@ -2595,7 +2821,8 @@
      "text": "脈浮發熱，口乾鼻燥，能食者則衄。",
      "textSimp": "脉浮发热，口干鼻燥，能食者则衄。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.228",
@@ -2607,7 +2834,8 @@
      "formulasHint": [
       "梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.229",
@@ -2619,7 +2847,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.230",
@@ -2631,7 +2860,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.231",
@@ -2643,7 +2873,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.232",
@@ -2655,7 +2886,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.233",
@@ -2665,7 +2897,8 @@
      "text": "陽明病，自汗出，若發汗，小便自利者，此為津液內竭，雖硬不可攻之，當須自欲大便，宜蜜煎導而通之。若土瓜根及大豬膽汁，皆可為導。蜜煎導方食蜜七合上一味。於銅器內，微火煎，當須凝如飴狀，攪之勿令焦著。欲可丸，並手捻作挺，令頭銳，大如指，長二寸許，當熱時急作，冷則硬。以內穀道中，以手急抱，欲大便時乃去之。土瓜根方（附方佚）豬膽汁方（附方）大豬膽一枚，瀉汁，和少許法醋，以灌穀道內。如一食頃，當大便出宿食惡物，甚效。",
      "textSimp": "阳明病，自汗出，若发汗，小便自利者，此为津液内竭，虽硬不可攻之，当须自欲大便，宜蜜煎导而通之。若土瓜根及大猪胆汁，皆可为导。蜜煎导方食蜜七合上一味。于铜器内，微火煎，当须凝如饴状，搅之勿令焦著。欲可丸，并手捻作挺，令头锐，大如指，长二寸许，当热时急作，冷则硬。以内谷道中，以手急抱，欲大便时乃去之。土瓜根方（附方佚）猪胆汁方（附方）大猪胆一枚，泻汁，和少许法醋，以灌谷道内。如一食顷，当大便出宿食恶物，甚效。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.234",
@@ -2677,7 +2910,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.235",
@@ -2689,7 +2923,8 @@
      "formulasHint": [
       "麻黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.236",
@@ -2701,7 +2936,8 @@
      "formulasHint": [
       "茵陳蒿湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.237",
@@ -2711,7 +2947,8 @@
      "text": "陽明證，其人喜忘者，必有蓄血。所以然者，本有久瘀血，故令喜忘。屎雖硬，大便反易，其色必黑者，宜抵當湯下之。",
      "textSimp": "阳明证，其人喜忘者，必有蓄血。所以然者，本有久瘀血，故令喜忘。屎虽硬，大便反易，其色必黑者，宜抵当汤下之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.238",
@@ -2723,7 +2960,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.239",
@@ -2733,7 +2971,8 @@
      "text": "病人不大便五六日，繞臍痛，煩躁，發作有時者，此有燥屎，故使不大便也。",
      "textSimp": "病人不大便五六日，绕脐痛，烦躁，发作有时者，此有燥屎，故使不大便也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.240",
@@ -2745,7 +2984,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.241",
@@ -2757,7 +2997,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.242",
@@ -2767,7 +3008,8 @@
      "text": "病人小便不利，大便乍難乍易，時有微熱，喘冒不能卧者，有燥屎也。",
      "textSimp": "病人小便不利，大便乍难乍易，时有微热，喘冒不能卧者，有燥屎也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.243",
@@ -2779,7 +3021,8 @@
      "formulasHint": [
       "吳茱萸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.244",
@@ -2791,7 +3034,8 @@
      "formulasHint": [
       "五苓散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.245",
@@ -2801,7 +3045,8 @@
      "text": "脈陽微而汗出少者，為自和也，汗出多者，為太過。陽脈實因發其汗，出多者，亦為太過。太過者，為陽絕於里，亡津液，大便因硬也。",
      "textSimp": "脉阳微而汗出少者，为自和也，汗出多者，为太过。阳脉实因发其汗，出多者，亦为太过。太过者，为阳绝于里，亡津液，大便因硬也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.246",
@@ -2811,7 +3056,8 @@
      "text": "脈浮而芤，浮為陽，有為陰。俘芤相搏，胃氣生熱，其陽則絕。",
      "textSimp": "脉浮而芤，浮为阳，有为阴。俘芤相搏，胃气生热，其阳则绝。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.247",
@@ -2823,7 +3069,8 @@
      "formulasHint": [
       "麻子仁丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.248",
@@ -2835,7 +3082,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.249",
@@ -2847,7 +3095,8 @@
      "formulasHint": [
       "調胃承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.250",
@@ -2857,7 +3106,8 @@
      "text": "太陽病，若吐，若下、若發汗後，微煩，小便數，大便因硬者，與小承氣湯和之愈。",
      "textSimp": "太阳病，若吐，若下、若发汗后，微烦，小便数，大便因硬者，与小承气汤和之愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.251",
@@ -2869,7 +3119,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.252",
@@ -2881,7 +3132,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.253",
@@ -2893,7 +3145,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.254",
@@ -2905,7 +3158,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.255",
@@ -2917,7 +3171,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.256",
@@ -2929,7 +3184,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.257",
@@ -2941,7 +3197,8 @@
      "formulasHint": [
       "抵當湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.258",
@@ -2951,7 +3208,8 @@
      "text": "若脈數不解，而下不止，必協熱便膿血也。",
      "textSimp": "若脉数不解，而下不止，必协热便脓血也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.259",
@@ -2961,7 +3219,8 @@
      "text": "傷寒發汗已，身目為黃。所以然者，以寒濕在里不解故也。以為不可下也，於寒濕中求之。",
      "textSimp": "伤寒发汗已，身目为黄。所以然者，以寒湿在里不解故也。以为不可下也，于寒湿中求之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.260",
@@ -2973,7 +3232,8 @@
      "formulasHint": [
       "茵陳蒿湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.261",
@@ -2985,7 +3245,8 @@
      "formulasHint": [
       "梔子檗皮湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒8.262",
@@ -2997,7 +3258,8 @@
      "formulasHint": [
       "麻黃連軺赤小豆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -3016,7 +3278,8 @@
      "text": "少陽之為病，口苦，咽乾，目眩也。",
      "textSimp": "少阳之为病，口苦，咽干，目眩也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.264",
@@ -3026,7 +3289,8 @@
      "text": "少陽中風，兩耳無所聞，目赤，胸中滿而煩者，不可吐下，吐下則悸而驚。",
      "textSimp": "少阳中风，两耳无所闻，目赤，胸中满而烦者，不可吐下，吐下则悸而惊。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.265",
@@ -3036,7 +3300,8 @@
      "text": "傷寒，脈弦細，頭痛發熱者，屬少陽。少陽不可發汗，發汗則譫語。此屬胃，胃和則愈，胃不和，煩而悸。",
      "textSimp": "伤寒，脉弦细，头痛发热者，属少阳。少阳不可发汗，发汗则谵语。此属胃，胃和则愈，胃不和，烦而悸。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.266",
@@ -3048,7 +3313,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.267",
@@ -3060,7 +3326,8 @@
      "formulasHint": [
       "柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.268",
@@ -3070,7 +3337,8 @@
      "text": "三陽合病，脈浮大，上關上，但欲眠睡，目合則汗。",
      "textSimp": "三阳合病，脉浮大，上关上，但欲眠睡，目合则汗。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.269",
@@ -3080,7 +3348,8 @@
      "text": "傷寒六七日，無大熱，其人躁煩者，此為陽去入陰故也。",
      "textSimp": "伤寒六七日，无大热，其人躁烦者，此为阳去入阴故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.270",
@@ -3090,7 +3359,8 @@
      "text": "傷寒三日，三陽為盡，三陰當受邪，其人反能食而不嘔，此為三陰不受邪也。",
      "textSimp": "伤寒三日，三阳为尽，三阴当受邪，其人反能食而不呕，此为三阴不受邪也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.271",
@@ -3100,7 +3370,8 @@
      "text": "傷寒五日，少陽脈小者，欲已也。",
      "textSimp": "伤寒五日，少阳脉小者，欲已也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒9.272",
@@ -3110,7 +3381,8 @@
      "text": "少陽病，欲解時，從寅至辰上。捲第六",
      "textSimp": "少阳病，欲解时，从寅至辰上。卷第六",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -3129,7 +3401,8 @@
      "text": "太陰之為病，腹滿而吐，食不下，自利益甚，時腹自痛。若下之，必胸下結硬。",
      "textSimp": "太阴之为病，腹满而吐，食不下，自利益甚，时腹自痛。若下之，必胸下结硬。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.274",
@@ -3139,7 +3412,8 @@
      "text": "太陰中風，四肢煩疼，脈陽微陰澀而長者，為欲愈。",
      "textSimp": "太阴中风，四肢烦疼，脉阳微阴涩而长者，为欲愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.275",
@@ -3149,7 +3423,8 @@
      "text": "太陰病，欲解時，從亥至丑上。",
      "textSimp": "太阴病，欲解时，从亥至丑上。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.276",
@@ -3161,7 +3436,8 @@
      "formulasHint": [
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.277",
@@ -3171,7 +3447,8 @@
      "text": "自利不渴者，屬太陰，以其藏有寒故也。當溫之，宜服四逆輩。",
      "textSimp": "自利不渴者，属太阴，以其藏有寒故也。当温之，宜服四逆辈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.278",
@@ -3181,7 +3458,8 @@
      "text": "傷寒脈浮而緩，手足自溫者，系在太陰。太陽當發身黃，若小便自利者，不能發黃。至七八日，雖暴煩下利日十餘行，必自止，以脾家實，腐穢當去故也。",
      "textSimp": "伤寒脉浮而缓，手足自温者，系在太阴。太阳当发身黄，若小便自利者，不能发黄。至七八日，虽暴烦下利日十余行，必自止，以脾家实，腐秽当去故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.279",
@@ -3194,7 +3472,8 @@
       "桂枝加芍藥湯",
       "桂枝加大黃湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒10.280",
@@ -3204,7 +3483,8 @@
      "text": "太陰為病，脈弱，其人續自便利，設當行大黃、芍藥者，宜減之。以其人胃氣弱，易動故也。",
      "textSimp": "太阴为病，脉弱，其人续自便利，设当行大黄、芍药者，宜减之。以其人胃气弱，易动故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -3223,7 +3503,8 @@
      "text": "少陰之為病，脈微細，但欲寐也。",
      "textSimp": "少阴之为病，脉微细，但欲寐也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.282",
@@ -3233,7 +3514,8 @@
      "text": "少陰病，欲吐不吐，心煩，但欲寐，五六日自利而渴者，屬少陰也，虛故引水自救；若小便色白者，少陰病形悉具，小便白者，以下焦虛有寒，不能制水，故令色白也。",
      "textSimp": "少阴病，欲吐不吐，心烦，但欲寐，五六日自利而渴者，属少阴也，虚故引水自救；若小便色白者，少阴病形悉具，小便白者，以下焦虚有寒，不能制水，故令色白也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.283",
@@ -3243,7 +3525,8 @@
      "text": "病人脈陰陽俱緊，反汗出者，亡陽也，此屬少陰，法當咽癌而復吐利。",
      "textSimp": "病人脉阴阳俱紧，反汗出者，亡阳也，此属少阴，法当咽癌而复吐利。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.284",
@@ -3253,7 +3536,8 @@
      "text": "少陰病，咳而下利，譫語者，被火氣動故也；小便必難，以強責少陰汗也。",
      "textSimp": "少阴病，咳而下利，谵语者，被火气动故也；小便必难，以强责少阴汗也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.285",
@@ -3263,7 +3547,8 @@
      "text": "少陰病，脈細沉數，病為在里，不可發汗。",
      "textSimp": "少阴病，脉细沉数，病为在里，不可发汗。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.286",
@@ -3273,7 +3558,8 @@
      "text": "少陰病，脈微，不可發汗，亡陽故也，陽已虛，尺脈弱澀者，復不可下之。",
      "textSimp": "少阴病，脉微，不可发汗，亡阳故也，阳已虚，尺脉弱涩者，复不可下之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.287",
@@ -3283,7 +3569,8 @@
      "text": "少陰病，脈緊，至七八日，自下利，脈暴微，手足反溫，脈緊反去者，為欲解也，雖頓，下利必自愈。",
      "textSimp": "少阴病，脉紧，至七八日，自下利，脉暴微，手足反温，脉紧反去者，为欲解也，虽顿，下利必自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.288",
@@ -3293,7 +3580,8 @@
      "text": "少陰病，下利，若利自止，惡寒而踡卧，手足溫者，可治。",
      "textSimp": "少阴病，下利，若利自止，恶寒而蜷卧，手足温者，可治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.289",
@@ -3303,7 +3591,8 @@
      "text": "少陰病，惡寒而踡，時自煩，欲去衣被者，可治。",
      "textSimp": "少阴病，恶寒而蜷，时自烦，欲去衣被者，可治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.290",
@@ -3313,7 +3602,8 @@
      "text": "少陰中風，脈陽微陰浮者，為欲愈。",
      "textSimp": "少阴中风，脉阳微阴浮者，为欲愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.291",
@@ -3323,7 +3613,8 @@
      "text": "少陰病，欲解時，從子至寅上。",
      "textSimp": "少阴病，欲解时，从子至寅上。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.292",
@@ -3333,7 +3624,8 @@
      "text": "少陰病，吐利，手足不逆冷，反發熱者，不死。脈不至者，灸少陰七壯。",
      "textSimp": "少阴病，吐利，手足不逆冷，反发热者，不死。脉不至者，灸少阴七壮。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.293",
@@ -3343,7 +3635,8 @@
      "text": "少陰病八九日，一身手足盡熱者，以熱在膀胱，必便血也。",
      "textSimp": "少阴病八九日，一身手足尽热者，以热在膀胱，必便血也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.294",
@@ -3353,7 +3646,8 @@
      "text": "少陰病，但厥無汗，而強發之，必動其血。未知從何道出，或從口鼻，或從目出者，是名下厥上竭，為難治。",
      "textSimp": "少阴病，但厥无汗，而强发之，必动其血。未知从何道出，或从口鼻，或从目出者，是名下厥上竭，为难治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.295",
@@ -3363,7 +3657,8 @@
      "text": "少陰病，惡寒身踡而利，手足逆冷者，不治。",
      "textSimp": "少阴病，恶寒身蜷而利，手足逆冷者，不治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.296",
@@ -3373,7 +3668,8 @@
      "text": "少陰病，吐利、躁煩、四逆者，死。",
      "textSimp": "少阴病，吐利、躁烦、四逆者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.297",
@@ -3383,7 +3679,8 @@
      "text": "少陰病，下利止而頭眩，時時自冒者，死。",
      "textSimp": "少阴病，下利止而头眩，时时自冒者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.298",
@@ -3393,7 +3690,8 @@
      "text": "少陰病，四逆，惡寒而身踡，脈不至，不煩而躁者，死。",
      "textSimp": "少阴病，四逆，恶寒而身蜷，脉不至，不烦而躁者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.299",
@@ -3403,7 +3701,8 @@
      "text": "少陰病，六七日，息高者，死。",
      "textSimp": "少阴病，六七日，息高者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.300",
@@ -3413,7 +3712,8 @@
      "text": "少陰病，脈微細沉，但欲卧，汗出不煩，自欲吐。至五六日，自利，復煩躁不得卧寐者，死。",
      "textSimp": "少阴病，脉微细沉，但欲卧，汗出不烦，自欲吐。至五六日，自利，复烦躁不得卧寐者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.301",
@@ -3425,7 +3725,8 @@
      "formulasHint": [
       "麻黃細辛附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.302",
@@ -3435,7 +3736,8 @@
      "text": "少陰病，得之二三日，麻黃附子甘草湯微發汗。以二三日無里證，故微發汗也。",
      "textSimp": "少阴病，得之二三日，麻黄附子甘草汤微发汗。以二三日无里证，故微发汗也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.303",
@@ -3447,7 +3749,8 @@
      "formulasHint": [
       "黃連阿膠湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.304",
@@ -3459,7 +3762,8 @@
      "formulasHint": [
       "附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.305",
@@ -3471,7 +3775,8 @@
      "formulasHint": [
       "附子湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.306",
@@ -3483,7 +3788,8 @@
      "formulasHint": [
       "桃花湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.307",
@@ -3495,7 +3801,8 @@
      "formulasHint": [
       "桃花湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.308",
@@ -3505,7 +3812,8 @@
      "text": "少陰病，下利，便膿血者，可刺。",
      "textSimp": "少阴病，下利，便脓血者，可刺。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.309",
@@ -3517,7 +3825,8 @@
      "formulasHint": [
       "吳茱萸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.310",
@@ -3529,7 +3838,8 @@
      "formulasHint": [
       "豬膚湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.311",
@@ -3542,7 +3852,8 @@
       "甘草湯",
       "桔梗湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.312",
@@ -3554,7 +3865,8 @@
      "formulasHint": [
       "苦酒湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.313",
@@ -3566,7 +3878,8 @@
      "formulasHint": [
       "半夏散及湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.314",
@@ -3578,7 +3891,8 @@
      "formulasHint": [
       "白通湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.315",
@@ -3591,7 +3905,8 @@
       "白通湯",
       "白通加豬膽汁湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.316",
@@ -3603,7 +3918,8 @@
      "formulasHint": [
       "真武湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.317",
@@ -3615,7 +3931,8 @@
      "formulasHint": [
       "通脈四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.318",
@@ -3627,7 +3944,8 @@
      "formulasHint": [
       "四逆散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.319",
@@ -3639,7 +3957,8 @@
      "formulasHint": [
       "豬苓湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.320",
@@ -3651,7 +3970,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.321",
@@ -3663,7 +3983,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.322",
@@ -3675,7 +3996,8 @@
      "formulasHint": [
       "大承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.323",
@@ -3685,7 +4007,8 @@
      "text": "少陰病，脈沉者，急溫之，宜四逆場。",
      "textSimp": "少阴病，脉沉者，急温之，宜四逆场。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.324",
@@ -3697,7 +4020,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒11.325",
@@ -3707,7 +4031,8 @@
      "text": "少陰病，下利，脈微澀，嘔而汗出，必數更衣，反少者，當溫其上，灸之。",
      "textSimp": "少阴病，下利，脉微涩，呕而汗出，必数更衣，反少者，当温其上，灸之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     }
    ]
   },
@@ -3726,7 +4051,8 @@
      "text": "厥陰之為病，消渴，氣上撞心，心中疼熱，飢而不欲食，食則吐蚘。下之，利不止。",
      "textSimp": "厥阴之为病，消渴，气上撞心，心中疼热，饥而不欲食，食则吐蛔。下之，利不止。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.327",
@@ -3736,7 +4062,8 @@
      "text": "厥陰中風，脈微浮為欲愈，不浮為未愈。",
      "textSimp": "厥阴中风，脉微浮为欲愈，不浮为未愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.328",
@@ -3746,7 +4073,8 @@
      "text": "厥陰病，欲解時，從醜至卯上。",
      "textSimp": "厥阴病，欲解时，从丑至卯上。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.329",
@@ -3756,7 +4084,8 @@
      "text": "厥陰病，渴欲飲水者，少少與之愈。",
      "textSimp": "厥阴病，渴欲饮水者，少少与之愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.330",
@@ -3766,7 +4095,8 @@
      "text": "諸四逆厥者，不可下之，虛家亦然。",
      "textSimp": "诸四逆厥者，不可下之，虚家亦然。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.331",
@@ -3776,7 +4106,8 @@
      "text": "傷寒先厥，後發熱而利者，必自止，見厥複利。",
      "textSimp": "伤寒先厥，后发热而利者，必自止，见厥复利。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.332",
@@ -3786,7 +4117,8 @@
      "text": "傷寒始發熱六日，厥反九日而利。凡厥利者。當不能食。今反能食者，恐為除中。食以索餅，不發熱者，知胃氣尚在，必愈。恐暴熱來出而復去也，後三日脈之，其熱續在者，期之旦日夜半愈。所以然者，本發熱六日，厥反九日，複發熱三日，並前六日，亦為九日，與厥相應。故期之旦日夜半愈。後三日脈之而脈數，其熱不罷者，此為熱氣有餘，必發癰膿也。",
      "textSimp": "伤寒始发热六日，厥反九日而利。凡厥利者。当不能食。今反能食者，恐为除中。食以索饼，不发热者，知胃气尚在，必愈。恐暴热来出而复去也，后三日脉之，其热续在者，期之旦日夜半愈。所以然者，本发热六日，厥反九日，复发热三日，并前六日，亦为九日，与厥相应。故期之旦日夜半愈。后三日脉之而脉数，其热不罢者，此为热气有余，必发痈脓也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.333",
@@ -3796,7 +4128,8 @@
      "text": "傷寒脈遲六七日，而反與黃書芩湯徹其熱。脈遲為寒，今與黃芩湯復除其熱，腹中應冷，當不能食，今反能食，此名除中。必死。",
      "textSimp": "伤寒脉迟六七日，而反与黄书芩汤彻其热。脉迟为寒，今与黄芩汤复除其热，腹中应冷，当不能食，今反能食，此名除中。必死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.334",
@@ -3806,7 +4139,8 @@
      "text": "傷寒先厥後發熱，下利必自止，而反汗出，咽中痛者，其喉為痹。發熱無汗，而利必自止，若不止，必便膿血，使膿血者，其喉不痹。",
      "textSimp": "伤寒先厥后发热，下利必自止，而反汗出，咽中痛者，其喉为痹。发热无汗，而利必自止，若不止，必便脓血，使脓血者，其喉不痹。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.335",
@@ -3816,7 +4150,8 @@
      "text": "傷寒一二日至四五日，厥者必發熱，前熱者後必厥，厥深者熱亦深，厥微者熱亦微。厥應下之，而反發汗者，必口傷爛赤。",
      "textSimp": "伤寒一二日至四五日，厥者必发热，前热者后必厥，厥深者热亦深，厥微者热亦微。厥应下之，而反发汗者，必口伤烂赤。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.336",
@@ -3826,7 +4161,8 @@
      "text": "傷寒病，厥五日，熱亦五日。設六日，當復厥，不厥者自愈。厥終不過五日，以熱五日，故知自愈。",
      "textSimp": "伤寒病，厥五日，热亦五日。设六日，当复厥，不厥者自愈。厥终不过五日，以热五日，故知自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.337",
@@ -3836,7 +4172,8 @@
      "text": "凡厥者，陰陽氣不相順接，便為厥。厥者，手足逆冷者是也。",
      "textSimp": "凡厥者，阴阳气不相顺接，便为厥。厥者，手足逆冷者是也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.338",
@@ -3848,7 +4185,8 @@
      "formulasHint": [
       "烏梅丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.339",
@@ -3858,7 +4196,8 @@
      "text": "傷寒熱少微厥，指頭寒，嘿嘿不欲食，煩躁。數日，小便利，色白者，此熱除也，欲得食，其病為愈；若厥而嘔，胸脅煩滿者，其後必便血。",
      "textSimp": "伤寒热少微厥，指头寒，嘿嘿不欲食，烦躁。数日，小便利，色白者，此热除也，欲得食，其病为愈；若厥而呕，胸胁烦满者，其后必便血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.340",
@@ -3868,7 +4207,8 @@
      "text": "病者手足厥冷，言我不給胸，小腹滿，按之痛者，此冷結在膀胱關元也。",
      "textSimp": "病者手足厥冷，言我不给胸，小腹满，按之痛者，此冷结在膀胱关元也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.341",
@@ -3878,7 +4218,8 @@
      "text": "傷寒發熱四日，厥反三日，復熱四日，厥少熱多者，其病當愈，四日至七日，熱不除者，必便膿血。",
      "textSimp": "伤寒发热四日，厥反三日，复热四日，厥少热多者，其病当愈，四日至七日，热不除者，必便脓血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.342",
@@ -3888,7 +4229,8 @@
      "text": "傷寒厥四日，熱反三日，復厥五日，其病為進。寒多熱少，陽氣退，故為進也。",
      "textSimp": "伤寒厥四日，热反三日，复厥五日，其病为进。寒多热少，阳气退，故为进也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.343",
@@ -3898,7 +4240,8 @@
      "text": "傷寒六七日，脈微，手足厥冷，煩躁，灸厥陰，厥不還者，死。",
      "textSimp": "伤寒六七日，脉微，手足厥冷，烦躁，灸厥阴，厥不还者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.344",
@@ -3908,7 +4251,8 @@
      "text": "傷寒發熱，下利厥逆，躁不得卧者，死。",
      "textSimp": "伤寒发热，下利厥逆，躁不得卧者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.345",
@@ -3918,7 +4262,8 @@
      "text": "傷寒發熱，下利至在甚，厥不止者，死。",
      "textSimp": "伤寒发热，下利至在甚，厥不止者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.346",
@@ -3928,7 +4273,8 @@
      "text": "傷寒六七日不利，便發熱而利，其人汗出不止者，死，有陰無陽故也。",
      "textSimp": "伤寒六七日不利，便发热而利，其人汗出不止者，死，有阴无阳故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.347",
@@ -3938,7 +4284,8 @@
      "text": "傷寒五六日，不結胸，腹濡，脈虛復厥者，不可下。此亡血，下之，死。",
      "textSimp": "伤寒五六日，不结胸，腹濡，脉虚复厥者，不可下。此亡血，下之，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.348",
@@ -3948,7 +4295,8 @@
      "text": "發熱而厥，七日下利者，為難治。",
      "textSimp": "发热而厥，七日下利者，为难治。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.349",
@@ -3958,7 +4306,8 @@
      "text": "傷寒，脈促，手足厥逆，可灸之。",
      "textSimp": "伤寒，脉促，手足厥逆，可灸之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.350",
@@ -3970,7 +4319,8 @@
      "formulasHint": [
       "白虎湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.351",
@@ -3982,7 +4332,8 @@
      "formulasHint": [
       "當歸四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.352",
@@ -3994,7 +4345,8 @@
      "formulasHint": [
       "當歸四逆加吳茱萸生薑湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.353",
@@ -4006,7 +4358,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.354",
@@ -4018,7 +4371,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.355",
@@ -4030,7 +4384,8 @@
      "formulasHint": [
       "瓜蒂散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.356",
@@ -4040,7 +4395,8 @@
      "text": "傷寒厥而心下悸，宜先治水，當服茯苓甘草湯，卻治其厥。不爾，水漬人胃，必作利也。",
      "textSimp": "伤寒厥而心下悸，宜先治水，当服茯苓甘草汤，却治其厥。不尔，水渍人胃，必作利也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.357",
@@ -4052,7 +4408,8 @@
      "formulasHint": [
       "麻黃升麻湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.358",
@@ -4062,7 +4419,8 @@
      "text": "傷寒四五日，腹中痛，若轉氣下趣少腹者，此欲自利也。",
      "textSimp": "伤寒四五日，腹中痛，若转气下趣少腹者，此欲自利也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.359",
@@ -4074,7 +4432,8 @@
      "formulasHint": [
       "乾薑黃芩黃連人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.360",
@@ -4084,7 +4443,8 @@
      "text": "下利，有微熱而渴，脈弱者，今自愈。",
      "textSimp": "下利，有微热而渴，脉弱者，今自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.361",
@@ -4094,7 +4454,8 @@
      "text": "下利，脈數，有微熱汗出，今自愈；設復緊，為未解。",
      "textSimp": "下利，脉数，有微热汗出，今自愈；设复紧，为未解。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.362",
@@ -4104,7 +4465,8 @@
      "text": "下利，手足厥冷，無脈者，灸之。不溫，若脈不還，反微喘者，死；少陰負跌陽者為順也。",
      "textSimp": "下利，手足厥冷，无脉者，灸之。不温，若脉不还，反微喘者，死；少阴负跌阳者为顺也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.363",
@@ -4114,7 +4476,8 @@
      "text": "下利，寸脈反浮數，心中自澀者，心清膿血。",
      "textSimp": "下利，寸脉反浮数，心中自涩者，心清脓血。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.364",
@@ -4124,7 +4487,8 @@
      "text": "下利清谷，不可攻表，汗出必脹滿。",
      "textSimp": "下利清谷，不可攻表，汗出必胀满。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.365",
@@ -4134,7 +4498,8 @@
      "text": "下，脈沉弦者，下重也；脈大者，為未止；脈微弱數者，為欲自止，雖發熱，不死。",
      "textSimp": "下，脉沉弦者，下重也；脉大者，为未止；脉微弱数者，为欲自止，虽发热，不死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.366",
@@ -4144,7 +4509,8 @@
      "text": "下利，脈沉而遲，其人面少赤，身有微熱，下利清谷者，必鬱冒汗出而解，病人心微厥。所以然者，其面戴陽，下虛故也。",
      "textSimp": "下利，脉沉而迟，其人面少赤，身有微热，下利清谷者，必郁冒汗出而解，病人心微厥。所以然者，其面戴阳，下虚故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.367",
@@ -4154,7 +4520,8 @@
      "text": "下利，脈數而渴者，今自愈。設不差，心清膿血，以有熱故也。",
      "textSimp": "下利，脉数而渴者，今自愈。设不差，心清脓血，以有热故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.368",
@@ -4164,7 +4531,8 @@
      "text": "下利後脈絕，手足厥冷，啐時脈還，手足溫者生，脈不還者死。",
      "textSimp": "下利后脉绝，手足厥冷，啐时脉还，手足温者生，脉不还者死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.369",
@@ -4174,7 +4542,8 @@
      "text": "傷寒下利，日十餘行，脈反實者，死。",
      "textSimp": "伤寒下利，日十余行，脉反实者，死。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.370",
@@ -4186,7 +4555,8 @@
      "formulasHint": [
       "通脈四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.371",
@@ -4198,7 +4568,8 @@
      "formulasHint": [
       "白頭翁湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.372",
@@ -4211,7 +4582,8 @@
       "四逆湯",
       "桂枝湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.373",
@@ -4223,7 +4595,8 @@
      "formulasHint": [
       "白頭翁湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.374",
@@ -4235,7 +4608,8 @@
      "formulasHint": [
       "小承氣湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.375",
@@ -4247,7 +4621,8 @@
      "formulasHint": [
       "梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.376",
@@ -4257,7 +4632,8 @@
      "text": "嘔家，有癰膿者，不可治嘔，膿盡自愈。",
      "textSimp": "呕家，有痈脓者，不可治呕，脓尽自愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.377",
@@ -4269,7 +4645,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.378",
@@ -4281,7 +4658,8 @@
      "formulasHint": [
       "吳茱萸湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.379",
@@ -4293,7 +4671,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.380",
@@ -4303,7 +4682,8 @@
      "text": "傷寒大吐大下之，極虛，復極汗者，其人外氣佛鬱，復與之水，以發其汗，因得噦。所以然者，胃中寒冷故也。",
      "textSimp": "伤寒大吐大下之，极虚，复极汗者，其人外气佛郁，复与之水，以发其汗，因得哕。所以然者，胃中寒冷故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     },
     {
      "id": "伤寒12.381",
@@ -4313,7 +4693,8 @@
      "text": "傷寒，噦而腹滿，視其前後，知何部不利，利之則愈。捲第七",
      "textSimp": "伤寒，哕而腹满，視其前后，知何部不利，利之则愈。卷第七",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批3.md"
     }
    ]
   },
@@ -4332,7 +4713,8 @@
      "text": "問曰，病有霍亂者何？答曰：嘔吐而利，此名霍亂。",
      "textSimp": "问曰，病有霍乱者何？答曰：呕吐而利，此名霍乱。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.383",
@@ -4342,7 +4724,8 @@
      "text": "問曰：病發熱，頭痛，身疼，惡寒，吐利者，此屬何病？答曰。此名霍亂。霍亂自吐下，又利止，復更發熱也。",
      "textSimp": "问曰：病发热，头痛，身疼，恶寒，吐利者，此属何病？答曰。此名霍乱。霍乱自吐下，又利止，复更发热也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.384",
@@ -4352,7 +4735,8 @@
      "text": "傷寒，其脈微澀者，本是霍亂，今是傷寒，卻四五日，至陰經上，轉人陰必利，本嘔下利者，不可治也。欲似大便，而反失氣，仍不利者，此屬陽明也，便必硬，十三日愈。所以然者，經盡故也。不利後，當便硬，硬則能食者愈。今反不能食，到後經中，頗能食，復過一經能食，過之一日當愈，不愈者，不屬陽明也。",
      "textSimp": "伤寒，其脉微涩者，本是霍乱，今是伤寒，却四五日，至阴经上，转人阴必利，本呕下利者，不可治也。欲似大便，而反失气，仍不利者，此属阳明也，便必硬，十三日愈。所以然者，经尽故也。不利后，当便硬，硬则能食者愈。今反不能食，到后经中，颇能食，复过一经能食，过之一日当愈，不愈者，不属阳明也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.385",
@@ -4364,7 +4748,8 @@
      "formulasHint": [
       "四逆加人參湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.386",
@@ -4378,7 +4763,8 @@
       "理中丸",
       "及湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.387",
@@ -4388,7 +4774,8 @@
      "text": "吐利止而身痛不休者，當消息和解其外，宜桂技湯小和之。",
      "textSimp": "吐利止而身痛不休者，当消息和解其外，宜桂技汤小和之。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.388",
@@ -4400,7 +4787,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.389",
@@ -4412,7 +4800,8 @@
      "formulasHint": [
       "四逆湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.390",
@@ -4424,7 +4813,8 @@
      "formulasHint": [
       "通脈四逆加豬膽汁湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒13.391",
@@ -4434,7 +4824,8 @@
      "text": "吐利發汗，脈平，小煩者，以新虛不勝穀氣故也。",
      "textSimp": "吐利发汗，脉平，小烦者，以新虚不胜谷气故也。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -4455,7 +4846,8 @@
      "formulasHint": [
       "燒褌散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.393",
@@ -4467,7 +4859,8 @@
      "formulasHint": [
       "枳實梔子豉湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.394",
@@ -4479,7 +4872,8 @@
      "formulasHint": [
       "小柴胡湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.395",
@@ -4491,7 +4885,8 @@
      "formulasHint": [
       "牡蠣澤瀉散"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.396",
@@ -4503,7 +4898,8 @@
      "formulasHint": [
       "理中丸"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.397",
@@ -4515,7 +4911,8 @@
      "formulasHint": [
       "竹葉石膏湯"
      ],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     },
     {
      "id": "伤寒14.398",
@@ -4525,7 +4922,8 @@
      "text": "病人脈已解，而日暮微煩，以病新差，人強與穀，脾胃氣尚弱，不能消穀，故令微煩。損穀則愈。",
      "textSimp": "病人脉已解，而日暮微烦，以病新差，人强与谷，脾胃气尚弱，不能消谷，故令微烦。损谷则愈。",
      "formulasHint": [],
-     "status": "pending"
+     "status": "done",
+     "reviewedIn": "data/review/伤寒论-批2.md"
     }
    ]
   },
@@ -4593,5 +4991,17 @@
    "skipReason": "可/不可诸篇为主篇条文的重复抄录",
    "units": []
   }
- ]
+ ],
+ "progress": {
+  "note": "逐条审核进度：done = 已对照知识库核过一遍（是否改过见对应 data/review 台账）",
+  "done": 398,
+  "skipped": 0,
+  "notReviewed": 0,
+  "byBatch": {
+   "1": 30,
+   "2": 267,
+   "3": 101
+  },
+  "updatedAt": "2026-11-10"
+ }
 }

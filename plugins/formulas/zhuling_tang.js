@@ -8,7 +8,9 @@ module.exports = {
   needs: [
     ['severe_thirst.yes', 'urination_difficulty.yes'],
     // 金匮 13.14：脉浮发热，渴欲饮水，小便不利者，猪苓汤主之
-    ['urination_difficulty.yes','thirsty.yes','fever.yes']
+    ['urination_difficulty.yes', 'thirsty.yes', 'fever.yes'],
+    // 319条：少阴病，下利六七日，咳而呕渴，心烦不得眠者 —— 这条通篇没提小便
+    ['diarrhea.yes', 'vomiting.yes', 'thirsty.yes', 'vex_insomnia.yes']
   ],
   contraindications: ['渴欲饮水+小便不利(水热互结)', '汗多胃中燥者不可用(第224)', '育阴清热利水(阿胶)', '里热伤阴者宜']
 }

@@ -5044,6 +5044,14 @@
         "393"
       ],
       "by": "system:shanghanlun-batch2"
+    },
+    "mahuang_fuzi_gancao_tang": {
+      "source": "shanghanlun",
+      "label": "伤寒论原方",
+      "refs": [
+        "302"
+      ],
+      "by": "system:shanghanlun-batch6"
     }
   },
   "edges": {}

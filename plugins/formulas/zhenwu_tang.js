@@ -9,7 +9,8 @@ module.exports = {
     ['heart_palp.yes', 'muscle_twitching.yes', 'cold_drink_desire.no'],
     ['heart_palp.yes', 'unsteady_stance.yes', 'cold_drink_desire.no'],
     ['dizziness.yes', 'muscle_twitching.yes', 'cold_drink_desire.no'],
-    ['dizziness.yes', 'unsteady_stance.yes', 'cold_drink_desire.no']
+    ['dizziness.yes', 'unsteady_stance.yes', 'cold_drink_desire.no'],
+    ['urination_difficulty.yes', 'limb_heavy_powerless.yes', 'diarrhea.yes']
   ],
   contraindications: ['阳虚水泛(心下悸+头眩+身瞤动)', '发汗后阳虚、水气凌心', '温阳利水，忌再发汗']
 }

@@ -25,7 +25,11 @@ module.exports = {
     // 阳明腑实反而进不了候选——因为它凑不齐喜冷饮/潮热/谵语/按痛这些佐证。
     ['fever.yes', 'sweat.yes', 'constipation.yes', 'cold_aversion.no', 'poor_complexion.no'],
     // 伤寒 208：手足濈然汗出者，此大便已硬也，大承气汤主之
-    ['shouhan.yes', 'constipation.yes', 'cold_aversion.no']
+    ['shouhan.yes', 'constipation.yes', 'cold_aversion.no'],
+    // 少阴 321：自利清水，色纯青，心下必痛，口干燥者，急下之（热结旁流：下利却是实证）
+    ['diarrhea.yes', 'epigastric_pressing_pain.yes', 'mouth_dry.yes'],
+    // 少阴 322：腹胀不大便者，急下之
+    ['abdominal_fullness.yes', 'constipation.yes']
   ],
   contraindications: ['纯热证才可用(喜冷饮+不恶寒)+身体好(气色不差)', '虚证/气色差/喜热饮者禁用(泻下伤身)', '佐证: 潮热/譫语/左腹按痛/不放屁任一', '峻下热结(大黄芒硝枳朴)', '得下餘勿服', '金匮要略·痉湿暍病脉证并治第二：痉为病，胸满口噤，卧不著席，脚挛急，必齘齿，可与大承气汤']
 }
